@@ -1,0 +1,31 @@
+{
+  "gameTitle": "Weather Machine",
+  "home": {
+    "title": "Weather Machine Solo Helper",
+    "play1": "Play against Agent White and Agent Pink, the Solo Mode opponents of <a href='https://boardgamegeek.com/boardgame/237179/weather-machine' target='_blank' rel='noopener'><b>Weather Machine</b></a>.",
+    "play2": "This helper application replaces the solo cards and hideout board.",
+    "feedback": "Discussion and Feedback:"
+  },
+  "notfound": {
+    "title": "Not Found"
+  },
+  "action": {
+    "playGame": "Play Game",
+    "startGame": "Start Game",
+    "next": "Next",
+    "nextRound": "Next Round",
+    "abortGame": "Abort Game",
+    "abortGameConfirm": "Aborting the running game - are you sure?",
+    "endGame": "End Game",
+    "endGameConfirm": "End this game and return to home screen - are you sure?",
+    "cancel": "Cancel",
+    "backToHome": "Back to Home",
+    "back": "Back",
+    "close": "Close",
+    "reset": "Reset",
+    "pass": "Pass"
+  },
+  "footer": {
+    "credits": "Credits"
+  }
+}
