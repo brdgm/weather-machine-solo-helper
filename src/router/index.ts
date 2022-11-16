@@ -1,5 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import AppHome from '@/views/AppHome.vue'
+import SetupDifficultyLevel from '@/views/SetupDifficultyLevel.vue'
+import SetupGame from '@/views/SetupGame.vue'
 import NotFound from '@/views/NotFound.vue'
 
 const LOCALSTORAGE_KEY = process.env.VUE_APP_LOCALSTORAGE_KEY_PREFIX + "route"
@@ -9,6 +11,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'AppHome',
     component: AppHome
+  },
+  {
+    path: '/setupDifficultyLevel',
+    name: 'SetupDifficultyLevel',
+    component: SetupDifficultyLevel
+  },
+  {
+    path: '/setupGame',
+    name: 'SetupGame',
+    component: SetupGame
   },
   {
     path: '/:pathMatch(.*)*',

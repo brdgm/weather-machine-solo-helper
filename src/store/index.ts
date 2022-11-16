@@ -1,3 +1,4 @@
+import ChallengeCard from '@/services/enum/ChallengeCard'
 import { InjectionKey } from 'vue'
 import { createStore, useStore as baseUseStore, Store } from 'vuex'
 
@@ -10,7 +11,7 @@ export interface State {
   rounds: Round[]
 }
 export interface Setup {
-  xyz: number
+  challengeCards: ChallengeCard[]
 }
 export interface Round {
   round: number
@@ -30,7 +31,7 @@ export const store = createStore<State>({
     language: "en",
     baseFontSize: 1.0,
     setup: {
-      xyz: 1
+      challengeCards: []
     },
     rounds: []
   },
@@ -44,6 +45,9 @@ export const store = createStore<State>({
     },
     language(state : State, language: string) {
       state.language = language
+    },
+    setup(state : State, setup: Setup) {
+      state.setup = setup
     },
     endGame(state : State) {
       state.rounds = []

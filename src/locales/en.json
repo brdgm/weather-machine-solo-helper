@@ -6,6 +6,67 @@
     "play2": "This helper application replaces the solo cards and hideout board.",
     "feedback": "Discussion and Feedback:"
   },
+  "setupDifficultyLevel": {
+    "title": "Setup Difficulty Level",
+    "firstTime": "If you play the first time, go ahead to setup the game.",
+    "greaterChallenge": "For a greater challenge, you can use 1 or more additional challenges:",
+    "pickChallengeCards": "Pick Challenge Cards",
+    "pickRandom": "Pick Random",
+    "clearAll": "Clear All"
+  },
+  "setupGame": {
+    "title": "Setup Game"
+  },
+  "challengeCard": {
+    "fully-stocked-opponents": {
+      "title": "Fully Stocked Opponents",
+      "description": "The Saboteurs start the game with 1 of each Chemical instead of 2 Chemicals."
+    },
+    "jamming-device": {
+      "title": "Jamming Devices",
+      "description": "During each income, increase the Target Value by 1 for each Saboteur Bot on the board."
+    },
+    "creative-accounting": {
+      "title": "Creative Accounting",
+      "description": "The Saboteurs start the game with an Award token. During each income, move one of your Funding markers back one space on one of the tracks. You must choose a track where you are able to do this, if possible."
+    },
+    "nobel-laureate": {
+      "title": "Nobel Laureate",
+      "description": "The Saboteurs start the game with an additional Chemical chosen at random (it may be the same as one they already have). You cannot win the game unless you have the Nobel Prize."
+    },
+    "only-overachievers-apply": {
+      "title": "Only Overachievers Apply",
+      "description": "You cannot win the game unless you meet the conditions of at least 5 of your Goal tiles on the Goal spaces of your Laboratory."
+    },
+    "the-clock-is-ticking": {
+      "title": "The Clock is Ticking",
+      "description": "2 cards of the Security Report deck are removed from play."
+    },
+    "one-step-ahead": {
+      "title": "One Step Ahead",
+      "description": "If, at the end of your turn, the Saboteurs’ Initiative marker is in the leftmost position, raise the Target Value by 3."
+    },
+    "moral-high-ground": {
+      "title": "Moral High Ground",
+      "description": "When placing your Scientist in a Location, you do not gain additional Vouchers for Saboteurs to your left."
+    },
+    "peer-review": {
+      "title": "Peer Review",
+      "description": "You cannot use Citation tokens when publishing a paper. When you unlock a Citation space, you cannot pay a Science Voucher to gain 3 CP."
+    },
+    "independent-prototypes": {
+      "title": "Independent Prototypes",
+      "description": "The Saboteurs start the game with an Award. You cannot use the Saboteurs’ Bots when building a prototype as part of a Breakthrough action."
+    },
+    "budget-cuts": {
+      "title": "Budget Cuts",
+      "description": "The Saboteurs start the game with an additional Chemical chosen at random (it may be the same as one they already have). Whenever you receive funding from the Lab Funding track, treat the modifier below your marker as +0 (you still gain the benefits of the Government or R&D track)."
+    },
+    "publish-or-perish": {
+      "title": "Publish or Perish",
+      "description": "Lower the starting Target Value by 5. Whenever the Saboteurs cause a Lock token to be removed from a Citation space, raise the Target Value by 5. You must win by immediate victory (restoring the good name of Lightning Technologies)."
+    }
+  },
   "notfound": {
     "title": "Not Found"
   },
