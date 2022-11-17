@@ -4,9 +4,17 @@
 
   <p>
     <span v-html="t('setupDifficultyLevel.greaterChallenge')"></span><br/>
-    <button v-if="!showChallengeCards" class="btn btn-secondary btn-sm" @click="doShowChallengeCards()">{{t('setupDifficultyLevel.pickChallengeCards')}}</button>
-    <button v-if="showChallengeCards" class="btn btn-secondary btn-sm" @click="pickRandom()">{{t('setupDifficultyLevel.pickRandom')}}</button>
-    <button v-if="showChallengeCards" class="btn btn-secondary btn-sm" @click="clearAll()">{{t('setupDifficultyLevel.clearAll')}}</button>
+    <button v-if="!showChallengeCards" class="btn btn-secondary btn-sm" @click="doShowChallengeCards()">
+      <AppIcon name="challenge-card" class="icon"/>
+      {{t('setupDifficultyLevel.pickChallengeCards')}}
+    </button>
+    <button v-if="showChallengeCards" class="btn btn-secondary btn-sm" @click="pickRandom()">
+      <AppIcon name="challenge-card" class="icon"/>
+      {{t('setupDifficultyLevel.pickRandom')}}
+    </button>
+    <button v-if="showChallengeCards" class="btn btn-secondary btn-sm" @click="clearAll()">
+      {{t('setupDifficultyLevel.clearAll')}}
+    </button>
   </p>
 
   <div class="container" v-if="showChallengeCards">
@@ -32,11 +40,15 @@
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '@/store'
+import AppIcon from '../structure/AppIcon.vue'
 import rollDice from "brdgm-commons/src/util/random/rollDice"
 import ChallengeCard from '@/services/enum/ChallengeCard'
 
 export default defineComponent({
   name: 'ChallengeCards',
+  components: {
+    AppIcon
+  },
   setup() {
     const { t } = useI18n()
     useStore()
@@ -112,6 +124,11 @@ function toSelectedIndex(selected? : ChallengeCard[]) : boolean[] {
 <style lang="scss" scoped>
 button.btn-sm {
   margin-right: 0.5rem;
+  .icon {
+    height: 1.25rem;
+    margin-top: -0.2rem;
+    margin-right: 0.2rem;
+  }
 }
 .card {
   width: 18rem;
