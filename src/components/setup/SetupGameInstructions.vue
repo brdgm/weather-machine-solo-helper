@@ -1,0 +1,118 @@
+<template>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-md-9 col-lg-7">
+        <ul>
+          <li v-html="t('setupGame.lativBots')"></li>
+          <li v-html="t('setupGame.researchTokens')"></li>
+          <li v-html="t('setupGame.goalTiles')"></li>
+          <ol>
+            <li>
+              <img src="@/assets/goal-tiles.png" class="goal-tiles">
+              <span v-html="t('setupGame.goalTilesStep1')"></span>
+            </li>
+            <li v-html="t('setupGame.goalTilesStep2')"></li>
+            <li v-html="t('setupGame.goalTilesStep3')"></li>
+          </ol>
+          <li v-html="t('setupGame.anotherPlayerColor')"></li>
+          <li v-html="t('setupGame.scoringMarker',{startingTargetValue:startingTargetValue})"></li>
+          <li v-html="t('setupGame.turnOrder')"></li>
+          <li v-html="t('setupGame.hideout')"></li>
+          <ul>
+            <li v-html="t('setupGame.hideoutBots')"></li>
+            <li>
+              <span v-html="t('setupGame.hideoutChemicals')"></span>
+              <div class="text-center">
+                <AppIcon v-for="(chemical,index) of initialChemicals" :key="index" type="chemical" :name="chemical" class="chemical"/>
+              </div>
+            </li>
+            <li v-if="awardToken">
+              <span v-html="t('setupGame.hideoutAward')"></span>
+              <div class="text-center">
+                <AppIcon name="award-token" class="token"/>
+              </div>
+            </li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useStore } from '@/store'
+import AppIcon from '../structure/AppIcon.vue'
+import ChallengeCard from '@/services/enum/ChallengeCard'
+import Chemical from '@/services/enum/Chemical'
+import randomEnum from 'brdgm-commons/src/util/random/randomEnum'
+
+export default defineComponent({
+  name: 'SetupGameInstructions',
+  components: {
+    AppIcon
+  },
+  setup() {
+    const { t } = useI18n()
+    useStore()
+    return { t }
+  },
+  computed: {
+    challengeCards() : ChallengeCard[] {
+      return this.$store.state.setup.challengeCards
+    },
+    initialChemicals() : Chemical[] {
+      const result : Chemical[] = []
+      if (this.challengeCards.includes(ChallengeCard.FULLY_STOCKED_OPPONENTS)) {
+        result.push(...Object.values(Chemical))
+      }
+      else {
+        // pick two random different chemicals
+        while (result.length < 2) {
+          const chemical = randomEnum(Chemical)
+          if (!result.includes(chemical)) {
+            result.push(chemical)
+          }
+        }
+      }
+      if (this.challengeCards.includes(ChallengeCard.NOBEL_LAUREATE)) {
+        result.push(randomEnum(Chemical))
+      }
+      if (this.challengeCards.includes(ChallengeCard.BUDGET_CUTS)) {
+        result.push(randomEnum(Chemical))
+      }
+      return result
+    },
+    startingTargetValue() : number {
+      if (this.challengeCards.includes(ChallengeCard.PUBLISH_OR_PERISH)) {
+        return 30
+      }
+      else {
+        return 35
+      }
+    },
+    awardToken() : boolean {
+      return this.challengeCards.includes(ChallengeCard.INDEPENDENT_PROTOTYPES)
+    }
+  }
+})
+</script>
+
+<style lang="scss" scoped>
+.goal-tiles {
+  float: right;
+  width: 5rem;
+  margin-left: 2rem;
+}
+.chemical {
+  width: 3rem;
+  filter: drop-shadow(0.1rem 0.1rem 0.3rem #aaa);
+  margin: 0.5rem;
+}
+.token {
+  width: 5rem;
+  filter: drop-shadow(0.1rem 0.1rem 0.3rem #aaa);
+  margin: 0.5rem;
+}
+</style>

@@ -15,7 +15,20 @@
     "clearAll": "Alle abwählen"
   },
   "setupGame": {
-    "title": "Spielaufbau"
+    "title": "Spielaufbau",
+    "lativBots": "Stellt einen von <b>Lativs Bots</b> in jeden Zweig der Wettermaschine im Labor.",
+    "researchTokens": "Nutzt nur <b>2 Forschungssteine</b> pro Typ an jedem Hauptort.",
+    "goalTiles": "Bereite die <b>Zielplättchen</b> vor:",
+    "goalTilesStep1": "Entferne alle Zielplättchen, die in der oberen rechten Ecke ein Mehrheitssymbol aufweisen. Entferne auch das Plättchen, für das du 3 Auszeichnungssteine brauchst.",
+    "goalTilesStep2": "Wähle von den übrigen Zielplättchen zufällig 2 pro Farbe. Wenn du 2 mit demselben Symbol in der Mitte ziehst, wirf das zweite ab und ziehe so lange, bis du verschiedene hast.",
+    "goalTilesStep3": "Entferne alle verbliebenen Zielplättchen aus dem Spiel. Die Saboteure nutzen keine Zielplättchen.",
+    "anotherPlayerColor": "Wähle für die Saboteure eine <b>andere Spielerfarbe</b>. Die Saboteure nutzen kein Labor und keine Couponmarker.",
+    "scoringMarker": "Lege den <b>Wertungsmarker der Saboteure</b> auf <b>{startingTargetValue} KP</b>. Das ist der anfängliche Zielwert.",
+    "turnOrder": "Platziere die <b>Reihenfolge-</b> und Initiativemarker (deine und die der Saboteure), wobei du jeweils zuerst am Zug bist.",
+    "hideout": "Bestimme eine Fläche in der Nähe des Spielplans als Versteck der Saboteure.",
+    "hideoutBots": "Setze die <b>Bots der Saboteure</b> in ihr Versteck.",
+    "hideoutChemicals": "Wähle die folgenden <b>Chemikalien</b>, nimm sie von den Feldern ganz links im Vorrat und setze sie in das Versteck:",
+    "hideoutAward": "Die Saboteure beginnen das Spiel mit einem <b>Auszeichnungsstein</b>:"
   },
   "challengeCard": {
     "fully-stocked-opponents": {

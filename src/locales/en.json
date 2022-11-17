@@ -15,7 +15,20 @@
     "clearAll": "Clear All"
   },
   "setupGame": {
-    "title": "Setup Game"
+    "title": "Setup Game",
+    "lativBots": "Place one of <b>Lativ’s Bots</b> in each branch of the Weather Machine in the Lab.",
+    "researchTokens": "Use only <b>2 Research tokens</b> of each type in each Main Location.",
+    "goalTiles": "Prepare the <b>Goal tiles</b>:",
+    "goalTilesStep1": "Remove all Goal tiles that show a majority icon in the top right. Also remove the tile that requires you to have 3 Award tokens.",
+    "goalTilesStep2": "From the remaining Goal tiles choose 2 of each color at random. If you draw any 2 with the same icon in the middle of the tile, discard the second, and keep drawing until you get all different ones.",
+    "goalTilesStep3": "Remove all remaining Goal tiles from the game. The Saboteurs do not use Goal tiles.",
+    "anotherPlayerColor": "Select <b>another player color</b> for the Saboteurs. The Saboteurs do not use a Laboratory or Voucher markers.",
+    "scoringMarker": "Place the <b>Saboteurs’ Scoring marker</b> on <b>{startingTargetValue} CP</b>. This is the initial Target Value.",
+    "turnOrder": "Place the <b>Turn Order</b> and Initiative markers (both yours and the Saboteurs’) with yourself being first in turn order on both.",
+    "hideout": "Designate an area near the Main board as the Saboteurs’ Hideout.",
+    "hideoutBots": "Place the <b>Saboteur’s Bots</b> in the Hideout.",
+    "hideoutChemicals": "Select the following <b>Chemicals</b>, take them from the leftmost spaces in the Supply, and place them in the Hideout:",
+    "hideoutAward": "The Saboteurs start the game with an <b>Award token</b>:"
   },
   "challengeCard": {
     "fully-stocked-opponents": {

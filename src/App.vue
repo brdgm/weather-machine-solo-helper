@@ -127,4 +127,11 @@ export default defineComponent({
   h5 { font-size: calc(v-bind(baseFontSize) * $h5-font-size); }
   h6 { font-size: calc(v-bind(baseFontSize) * $h6-font-size); }
 }
+
+html, body {
+}
+body {
+  background-image: url('~@/assets/background.jpg');
+  background-size: 120rem;
+}
 </style>

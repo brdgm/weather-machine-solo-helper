@@ -5,8 +5,8 @@
   <p>
     <span v-html="t('setupDifficultyLevel.greaterChallenge')"></span><br/>
     <button v-if="!showChallengeCards" class="btn btn-secondary btn-sm" @click="doShowChallengeCards()">{{t('setupDifficultyLevel.pickChallengeCards')}}</button>
-    <button v-if="showChallengeCards" class="btn btn-outline-secondary btn-sm" @click="pickRandom()">{{t('setupDifficultyLevel.pickRandom')}}</button>
-    <button v-if="showChallengeCards" class="btn btn-outline-secondary btn-sm" @click="clearAll()">{{t('setupDifficultyLevel.clearAll')}}</button>
+    <button v-if="showChallengeCards" class="btn btn-secondary btn-sm" @click="pickRandom()">{{t('setupDifficultyLevel.pickRandom')}}</button>
+    <button v-if="showChallengeCards" class="btn btn-secondary btn-sm" @click="clearAll()">{{t('setupDifficultyLevel.clearAll')}}</button>
   </p>
 
   <div class="container" v-if="showChallengeCards">
@@ -80,6 +80,7 @@ export default defineComponent({
     },
     clearAll() {
       this.selectedIndex = []
+      this.showChallengeCards = false
     },
     updateDifficultyLevel(event: Event) {
       const level = parseInt((event.target as HTMLInputElement).value)
