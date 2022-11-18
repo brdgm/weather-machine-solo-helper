@@ -16,6 +16,8 @@ export interface Setup {
 }
 export interface Round {
   round: number
+  cardDeck: CardDeckPersistence
+  saboteurFirstPlayer?: boolean
 }
 export interface CardDeckPersistence {
   deck: number[]

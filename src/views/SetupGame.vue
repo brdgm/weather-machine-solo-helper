@@ -45,7 +45,7 @@ export default defineComponent({
   methods: {
     startGame() : void {
       this.$store.commit('initialCardDeck', this.cardDeck.toPersistence())
-      this.$router.push('/round/1')
+      this.$router.push('/round/1/phaseATurnPlayer')
     }
   }
 })

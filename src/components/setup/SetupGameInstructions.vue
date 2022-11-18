@@ -35,9 +35,8 @@
           </ul>
           <li v-for="(card,index) of setupCards" :key="index">
             <span v-html="t(sameLocationsSetupCard(index) ? 'setupGame.placeAgentRightPosition' : 'setupGame.placeAgentMiddlePosition', {agent:t(`agent.${card.agent}`),location:t(`location.${card.location}`)})"></span>
-            <ul>
-              <li v-html="t('setupGame.takeWeatherToken', {weather:t(`weather.${card.weather}`)})"></li>
-            </ul>
+            <span>&nbsp;</span>
+            <span v-html="t('setupGame.takeWeatherToken', {weather:t(`weather.${card.weather}`)})"></span>
             <div class="text-center mt-2 mb-2">
               <AgentLocationIcon :agent="card.agent" :location="card.location"/>
               <AppIcon type="weather" :name="card.weather" class="weather-token ms-5"/>
