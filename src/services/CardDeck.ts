@@ -1,0 +1,142 @@
+import { CardDeckPersistence } from "@/store"
+import * as _ from "lodash"
+import { shuffle } from "lodash"
+import Card from "./Card"
+import Cards from "./Cards"
+import Location from "./enum/Location"
+
+/**
+ * Deck of security report cards.
+ */
+export default class CardDeck {
+
+  private _deck : Card[]
+  private _current? : Card
+  private _discard : Card[]
+
+  public constructor(deck : Card[], current : Card|undefined, discard : Card[]) {
+    this._deck = deck
+    this._current = current
+    this._discard = discard
+  }
+
+  public get deck() : readonly Card[] {
+    return this._deck
+  }
+
+  public get discard() : readonly Card[] {
+    return this._discard
+  }
+
+  public get currentReport() : Card|undefined {
+    return this._current
+  }
+
+  public get previousReport() : Card|undefined {
+    return this._discard[0]
+  }
+
+  public get isDeckEmpty() : boolean {
+    return this._deck.length == 0
+  }
+
+  /**
+   * Gets persistence view of card deck.
+   */
+  public toPersistence() : CardDeckPersistence {
+    return {
+      deck: this._deck.map(card => card.id),
+      current: this._current?.id,
+      discard: this._discard.map(card => card.id)      
+    }
+  }
+
+  /**
+   * Setup game and initial agent positions.
+   * @param removeCards Remove this number of cards from the game after setup (for higher difficulty level)
+   * @return Returns two card which form the initial discard pile and contain the information for initial agent placement and weather token
+   */
+  public setupGame(removeCards = 0) : Card[] {
+    const foundCards = []
+    const missedCards = []
+
+    // draw two cards with main locations for two different agents
+    while (foundCards.length < 2) {
+      const drawnCard = this._deck.shift()
+      if (!drawnCard) {
+        throw new Error('No card left in deck.')
+      }
+      if (isMainLocation(drawnCard.location) && foundCards.find(item => item.agent==drawnCard.agent)==undefined) {
+        foundCards.push(drawnCard)
+      }
+      else {
+        missedCards.push(drawnCard)
+      }
+    }
+
+    // put missed cards back to deck and shuffle, remove cards from deck
+    this._deck.push(...missedCards)
+    this._deck = shuffle(this._deck)
+    for (let i=0; i<removeCards; i++) {
+      this._deck.shift()
+    }
+
+    // put found cards to discard pile
+    for (let i=0; i<foundCards.length; i++) {
+      this._discard.unshift(foundCards[i])
+    }
+
+    // draw first current report
+    this.draw()
+
+    return foundCards
+  }
+
+  /**
+   * Draw next card.
+   */
+  public draw() : void {
+    if (this._current) {
+      this._discard.unshift(this._current)
+    }
+    const drawnCard = this._deck.shift()
+    if (drawnCard) {
+      this._current = drawnCard
+    }
+    else {
+      throw new Error('No card left in deck.')
+    }
+  }
+
+  /**
+   * Creates a shuffled new card deck.
+   */
+  public static new() : CardDeck {
+    let deck = [...Cards.getAll()]
+    deck = _.shuffle(deck)
+    return new CardDeck(deck, undefined, [])
+  }
+
+  /**
+   * Re-creates a card deck from persistence.
+   */
+  public static fromPersistence(persistence : CardDeckPersistence) : CardDeck {
+    return new CardDeck(
+      persistence.deck.map(Cards.get),
+      persistence.current ? Cards.get(persistence.current) : undefined,
+      persistence.discard.map(Cards.get)
+    )
+  }
+
+}
+
+function isMainLocation(location : Location) : boolean {
+  switch (location) {
+    case Location.GOVERNMENT:
+    case Location.LATIVS_LAB:
+    case Location.RND:
+      return true
+    default:
+      return false
+  }
+}

@@ -16,6 +16,11 @@ export interface Setup {
 export interface Round {
   round: number
 }
+export interface CardDeckPersistence {
+  deck: number[]
+  current?: number
+  discard: number[]
+}
 
 declare module '@vue/runtime-core' {
   // provide typings for `this.$store`
