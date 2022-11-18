@@ -26,10 +26,10 @@
                 <AppIcon v-for="(chemical,index) of initialChemicals" :key="index" type="chemical" :name="chemical" class="chemical"/>
               </div>
             </li>
-            <li v-if="awardToken">
+            <li v-if="awardTokens > 0">
               <span v-html="t('setupGame.hideoutAward')"></span>
               <div class="text-center">
-                <AppIcon name="award-token" class="token"/>
+                <AppIcon v-for="index of awardTokens" :key="index" name="award-token" class="token"/>
               </div>
             </li>
           </ul>
@@ -92,8 +92,15 @@ export default defineComponent({
         return 35
       }
     },
-    awardToken() : boolean {
-      return this.challengeCards.includes(ChallengeCard.INDEPENDENT_PROTOTYPES)
+    awardTokens() : number {
+      let result = 0
+      if (this.challengeCards.includes(ChallengeCard.CREATIVE_ACCOUNTING)) {
+        result++;
+      }
+      if (this.challengeCards.includes(ChallengeCard.INDEPENDENT_PROTOTYPES)) {
+        result++;
+      }
+      return result;
     }
   }
 })

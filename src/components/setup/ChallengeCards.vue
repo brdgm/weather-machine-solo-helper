@@ -8,7 +8,7 @@
       <AppIcon name="challenge-card" class="icon"/>
       {{t('setupDifficultyLevel.pickChallengeCards')}}
     </button>
-    <button v-if="showChallengeCards" class="btn btn-secondary btn-sm" @click="pickRandom()">
+    <button v-if="showChallengeCards && selectedChallengeCards.length < 12" class="btn btn-secondary btn-sm" @click="pickRandom()">
       <AppIcon name="challenge-card" class="icon"/>
       {{t('setupDifficultyLevel.pickRandom')}}
     </button>
@@ -93,10 +93,6 @@ export default defineComponent({
     clearAll() {
       this.selectedIndex = []
       this.showChallengeCards = false
-    },
-    updateDifficultyLevel(event: Event) {
-      const level = parseInt((event.target as HTMLInputElement).value)
-      this.$store.commit('setupDifficultyLevel', level)
     }
   },
   watch: {
