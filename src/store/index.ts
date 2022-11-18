@@ -8,6 +8,7 @@ export interface State {
   language: string
   baseFontSize: number
   setup: Setup
+  initialCardDeck?: CardDeckPersistence
   rounds: Round[]
 }
 export interface Setup {
@@ -54,7 +55,11 @@ export const store = createStore<State>({
     setup(state : State, setup: Setup) {
       state.setup = setup
     },
+    initialCardDeck(state : State, cardDeck: CardDeckPersistence) {
+      state.initialCardDeck = cardDeck
+    },
     endGame(state : State) {
+      state.initialCardDeck = undefined
       state.rounds = []
     },
     zoomFontSize(state : State, baseFontSize: number) {

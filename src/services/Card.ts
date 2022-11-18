@@ -7,6 +7,6 @@ export default interface Card {
   id: number
   agent: Agent
   location: Location
-  weatherPriority: Weather
+  weather: Weather
   selectionPriority: SelectionPriority
 }

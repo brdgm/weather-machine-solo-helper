@@ -33,6 +33,16 @@
               </div>
             </li>
           </ul>
+          <li v-for="(card,index) of setupCards" :key="index">
+            <span v-html="t(sameLocationsSetupCard(index) ? 'setupGame.placeAgentRightPosition' : 'setupGame.placeAgentMiddlePosition', {agent:t(`agent.${card.agent}`),location:t(`location.${card.location}`)})"></span>
+            <ul>
+              <li v-html="t('setupGame.takeWeatherToken', {weather:t(`weather.${card.weather}`)})"></li>
+            </ul>
+            <div class="text-center mt-2 mb-2">
+              <AgentLocationIcon :agent="card.agent" :location="card.location"/>
+              <AppIcon type="weather" :name="card.weather" class="weather-token ms-5"/>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -40,23 +50,32 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '@/store'
 import AppIcon from '../structure/AppIcon.vue'
 import ChallengeCard from '@/services/enum/ChallengeCard'
 import Chemical from '@/services/enum/Chemical'
 import randomEnum from 'brdgm-commons/src/util/random/randomEnum'
+import Card from '@/services/Card'
+import AgentLocationIcon from '../structure/AgentLocationIcon.vue'
 
 export default defineComponent({
   name: 'SetupGameInstructions',
   components: {
-    AppIcon
-  },
+    AppIcon,
+    AgentLocationIcon
+},
   setup() {
     const { t } = useI18n()
     useStore()
     return { t }
+  },
+  props: {
+    setupCards: {
+      type: Object as PropType<Card[]>,
+      required: true
+    }
   },
   computed: {
     challengeCards() : ChallengeCard[] {
@@ -102,6 +121,14 @@ export default defineComponent({
       }
       return result;
     }
+  },
+  methods: {
+    sameLocationsSetupCard(cardIndex : number) : boolean {
+      if (cardIndex == 0) {
+        return false
+      }
+      return this.setupCards[cardIndex]?.location == this.setupCards[0]?.location
+    }
   }
 })
 </script>
@@ -112,7 +139,7 @@ export default defineComponent({
   width: 5rem;
   margin-left: 2rem;
 }
-.chemical {
+.chemical, .weather-token {
   width: 3rem;
   filter: drop-shadow(0.1rem 0.1rem 0.3rem #aaa);
   margin: 0.5rem;

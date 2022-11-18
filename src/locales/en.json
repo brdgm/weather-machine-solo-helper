@@ -28,7 +28,10 @@
     "hideout": "Designate an area near the Main board as the Saboteurs’ Hideout.",
     "hideoutBots": "Place the <b>Saboteur’s Bots</b> in the Hideout.",
     "hideoutChemicals": "Select the following <b>Chemicals</b>, take them from the leftmost spaces in the Supply, and place them in the Hideout:",
-    "hideoutAward": "The Saboteurs start the game with an <b>Award token</b>:"
+    "hideoutAward": "The Saboteurs start the game with an <b>Award token</b>:",
+    "placeAgentMiddlePosition": "Place <b>Agent {agent}</b> on location <b>{location}</b>, middle action space.",
+    "placeAgentRightPosition": "Place <b>Agent {agent}</b> on location <b>{location}</b>, rightmost action space.",
+    "takeWeatherToken": "Move a <b>{weather} Research token</b> from that location to the hideout."
   },
   "challengeCard": {
     "fully-stocked-opponents": {
@@ -79,6 +82,22 @@
       "title": "Publish or Perish",
       "description": "Lower the starting Target Value by 5. Whenever the Saboteurs cause a Lock token to be removed from a Citation space, raise the Target Value by 5. You must win by immediate victory (restoring the good name of Lightning Technologies)."
     }
+  },
+  "agent": {
+    "white": "White",
+    "pink": "Pink"
+  },
+  "location": {
+    "government": "Government",
+    "lativs-lab": "Lativ's Lab",
+    "rnd": "R&D"
+  },
+  "weather": {
+    "rain": "Rain",
+    "wind": "Wind",
+    "sun": "Sun",
+    "fog": "Fog",
+    "snow": "Snow"
   },
   "notfound": {
     "title": "Not Found"

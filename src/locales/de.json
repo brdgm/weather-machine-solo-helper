@@ -28,7 +28,10 @@
     "hideout": "Bestimme eine Fläche in der Nähe des Spielplans als Versteck der Saboteure.",
     "hideoutBots": "Setze die <b>Bots der Saboteure</b> in ihr Versteck.",
     "hideoutChemicals": "Wähle die folgenden <b>Chemikalien</b>, nimm sie von den Feldern ganz links im Vorrat und setze sie in das Versteck:",
-    "hideoutAward": "Die Saboteure beginnen das Spiel mit einem <b>Auszeichnungsstein</b>:"
+    "hideoutAward": "Die Saboteure beginnen das Spiel mit einem <b>Auszeichnungsstein</b>:",
+    "placeAgentMiddlePosition": "Setze <b>Agent {agent}</b> auf den Ort <b>{location}</b>, mittleres Aktionsfeld.",
+    "placeAgentRightPosition": "Setze <b>Agent {agent}</b> auf den Ort <b>{location}</b>, rechtes Aktionsfeld.",
+    "takeWeatherToken": "Verschiebe einen <b>{weather}-Forschungsstein</b> von diesem Ort zum Versteck."
   },
   "challengeCard": {
     "fully-stocked-opponents": {
@@ -79,6 +82,22 @@
       "title": "Veröffentliche oder stirb",
       "description": "Verringere den Zielwert um 5. Immer, wenn die Saboteure einen Schlossstein von einem Zitatfeld entfernen, erhöhe den Zielwert um 5. Du musst durch den direkten Sieg gewinnen (den guten Ruf von Lightning Technologies wiederherstellen)."
     }
+  },
+  "agent": {
+    "white": "White",
+    "pink": "Pink"
+  },
+  "location": {
+    "government": "Regierung",
+    "lativs-lab": "Lativs Labor",
+    "rnd": "F&E"
+  },
+  "weather": {
+    "rain": "Regen",
+    "wind": "Wind",
+    "sun": "Sonne",
+    "fog": "Nebel",
+    "snow": "Schnee"
   },
   "notfound": {
     "title": "Nicht Gefunden"
