@@ -132,4 +132,8 @@ body {
   background-image: url('~@/assets/background.jpg');
   background-size: 120rem;
 }
+
+.modal-content {
+  background-color: #fdf7ec !important;
+}
 </style>

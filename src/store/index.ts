@@ -1,4 +1,5 @@
 import ChallengeCard from '@/services/enum/ChallengeCard'
+import Player from '@/services/enum/Player'
 import { InjectionKey } from 'vue'
 import { createStore, useStore as baseUseStore, Store } from 'vuex'
 
@@ -17,7 +18,7 @@ export interface Setup {
 export interface Round {
   round: number
   cardDeck: CardDeckPersistence
-  saboteurFirstPlayer?: boolean
+  claimInitiative?: Player
 }
 export interface CardDeckPersistence {
   deck: number[]

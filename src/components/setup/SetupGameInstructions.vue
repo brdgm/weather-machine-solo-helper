@@ -69,7 +69,7 @@ export default defineComponent({
   components: {
     AppIcon,
     AgentLocationIcon
-},
+  },
   setup() {
     const { t } = useI18n()
     useStore()

@@ -33,6 +33,24 @@
     "placeAgentRightPosition": "Setze <b>Agent {agent}</b> auf den Ort <b>{location}</b>, rechtes Aktionsfeld.",
     "takeWeatherToken": "Verschiebe einen <b>{weather}-Forschungsstein</b> von diesem Ort zum Versteck."
   },
+  "turnPlayer": {
+    "title": "Dein Zug",
+    "useSubsidyInvestment": "Nutze 1 Subventions- ODER 1 Investmentplättchen.",
+    "moveScientist": "Bewege deinen Wissenschaftler.",
+    "performActions": "Führe Aktionen aus.",
+    "placeResearchTokens": "Setze Forschungsmarker ein."
+  },
+  "turnSaboteur": {
+    "title": "Zug der Saboteure"
+  },
+  "lativMovement": {
+    "title": "Lativ bewegen",
+    "nextLocation": "Wenn Lativ sich bewegt, geht er zum nächsten Ort mit einem verfügbaren Aktionsfeld (soweit links wie möglich).",
+    "weatherMachineActiveBranch": "Prüfe den <b>aktiven Zweig der Wettermaschine</b> im Labor (der, wo der Assistent ist).",
+    "weatherMachineActiveBranchStep1": "Wenn Lativ keinen seiner Bots in diesem Zweig hat, setze 1 von Lativs Bots aus dem Bereich neben dem Labor auf ein leeres Feld auf diesem Zweig (egal welches).",
+    "weatherMachineActiveBranchStep2": "Wenn Lativ bereits einen Bot in dem Zweig hat oder wenn der Zweig voll war, setze einen Bot in den nächsten Zweig (befolge die Pfeile). Wenn alle Zweige entweder voll sind oder einen von Lativs Bots beinhalten, passiert nichts.",
+    "governmentRnd": "Wenn Lativ zur <b>Regierung oder zu F&E</b> geht, werfe einen Forschungsstein von Lativs aktuellem Ort ab, der den gleichen Wettertyp hat wie der Zweig, in dem Lativs Assistent gerade ist."
+  },
   "challengeCard": {
     "fully-stocked-opponents": {
       "title": "Gut ausgestattete Gegner",
