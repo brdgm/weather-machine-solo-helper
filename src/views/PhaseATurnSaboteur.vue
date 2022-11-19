@@ -1,4 +1,6 @@
 <template>
+  <TurnSidebar :navigationState="navigationState"/>
+
   <h1>{{t('turnSaboteur.title')}}</h1>
 
   <router-link :to="nextButtonRouteTo" class="btn btn-primary btn-lg mt-2">
@@ -15,11 +17,13 @@ import FooterButtons from '@/components/structure/FooterButtons.vue'
 import { useStore } from '@/store'
 import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
+import TurnSidebar from '@/components/turn/TurnSidebar.vue'
 
 export default defineComponent({
   name: 'PhaseATurnSaboteur',
   components: {
-    FooterButtons
+    FooterButtons,
+    TurnSidebar
   },
   setup() {
     const { t } = useI18n()
@@ -29,7 +33,7 @@ export default defineComponent({
     const navigationState = new NavigationState(route, store.state)
     const round = navigationState.round
 
-    return { t, round }
+    return { t, round, navigationState }
   },
   computed: {
     nextButtonRouteTo() : string {

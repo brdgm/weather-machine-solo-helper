@@ -33,7 +33,7 @@
 
 <script lang="ts">
 import { Token, useStore } from '@/store'
-import { defineComponent, PropType } from 'vue'
+import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ClaimInitiative from '@/components/turn/ClaimInitiative.vue'
 import NavigationState from '@/util/NavigationState'
@@ -44,7 +44,7 @@ import AppIcon from '../structure/AppIcon.vue'
 import ResearchTokenIcon from '../structure/ResearchTokenIcon.vue'
 
 export default defineComponent({
-  name: 'PlayerSidebar',
+  name: 'TurnSidebar',
   components: {
     ClaimInitiative,
     AgentLocationIcon,

@@ -49,7 +49,7 @@ export default defineComponent({
   },
   emits: {
     claimedInitiative(payload: { player: Player }) {
-      return true
+      return payload != undefined
     }
   },
   setup() {

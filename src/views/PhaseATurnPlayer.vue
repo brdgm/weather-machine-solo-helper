@@ -1,5 +1,5 @@
 <template>
-  <PlayerSidebar :navigationState="navigationState"/>
+  <TurnSidebar :navigationState="navigationState"/>
 
   <h1>{{t('turnPlayer.title')}}</h1>
 
@@ -28,14 +28,14 @@ import { useStore } from '@/store'
 import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
 import LativMovement from '@/components/turn/LativMovement.vue'
-import PlayerSidebar from '@/components/turn/PlayerSidebar.vue'
+import TurnSidebar from '@/components/turn/TurnSidebar.vue'
 
 export default defineComponent({
   name: 'PhaseATurnPlayer',
   components: {
     FooterButtons,
     LativMovement,
-    PlayerSidebar
+    TurnSidebar
   },
   setup() {
     const { t } = useI18n()
