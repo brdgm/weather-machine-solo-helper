@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12 col-md-9 col-lg-7">
+      <div class="col-12 col-md-11 col-lg-9">
         <ul>
           <li v-html="t('setupGame.lativBots')"></li>
           <li v-html="t('setupGame.researchTokens')"></li>

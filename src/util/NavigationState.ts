@@ -10,17 +10,17 @@ export default class NavigationState {
 
   readonly round : number
   readonly player : Player
+  readonly cardDeck : CardDeck
   readonly tokens : Token[]
   readonly citationUnlock : Weather[]
-  readonly cardDeck : CardDeck
   readonly initiativePlayer : Player
 
   constructor(route : RouteLocation, state : State) {
     this.round = parseInt(route.params['round'] as string)
     this.player = (route.name == 'PhaseATurnSaboteur') ? Player.SABOTEUR : Player.PLAYER
+    this.cardDeck = NavigationState.getCardDeck(this.round, state)
     this.tokens = NavigationState.getTokens(this.round, state)
     this.citationUnlock = NavigationState.getCitationUnlock(this.round, state)
-    this.cardDeck = NavigationState.getCardDeck(this.round, state)
     this.initiativePlayer = NavigationState.getInitiativePlayer(this.round, state)
   }
 
@@ -43,6 +43,20 @@ export default class NavigationState {
   }
 
   /**
+   * Get current card deck.
+   */
+  static getCardDeck(roundNo : number, state : State) : CardDeck {
+    const round = state.rounds.find(item => item.round==roundNo)
+    if (!round) {
+      console.log(`No card deck found for round ${roundNo}.`)
+      const cardDeck = CardDeck.new()
+      cardDeck.setupGame()
+      return cardDeck
+    }
+    return CardDeck.fromPersistence(round.cardDeck)
+  }
+
+  /**
    * Get saboteurs' tokens.
    */
   static getTokens(roundNo : number, state : State) : Token[] {
@@ -56,20 +70,6 @@ export default class NavigationState {
   static getCitationUnlock(roundNo : number, state : State) : Weather[] {
     const round = state.rounds.find(item => item.round==roundNo)
     return round?.citationUnlock || []
-  }
-
-  /**
-   * Get current card deck.
-   */
-  static getCardDeck(roundNo : number, state : State) : CardDeck {
-    const round = state.rounds.find(item => item.round==roundNo)
-    if (!round) {
-      console.log(`No card deck found for round ${roundNo}.`)
-      const cardDeck = CardDeck.new()
-      cardDeck.setupGame()
-      return cardDeck
-    }
-    return CardDeck.fromPersistence(round.cardDeck)
   }
 
   /**

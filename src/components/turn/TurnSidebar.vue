@@ -25,7 +25,7 @@
     <div>
       {{t('sidebar.nextFirstPlayer')}}<br/>
       <b>{{t(`claimInitiative.${initiativePlayer}`)}}</b>
-      <div class="mt-2 mb-2">
+      <div v-if="isPlayer" class="mt-2 mb-2">
         <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalClaimInitiative">
           {{t('claimInitiative.title')}}
         </button>
@@ -37,7 +37,7 @@
       <div class="weather">
         <AppIcon type="weather" :name="weather" class="icon"/>
       </div>
-      <div class="lock" :class="{unlocked:isCitationUnlocked(weather)}" @click="openUnlockCitationModal(weather)">
+      <div class="lock" :class="{unlocked:isCitationUnlocked(weather),clickable:isPlayer}" @click="openUnlockCitationModal(weather)">
         <AppIcon v-if="isCitationUnlocked(weather)" name="citation-unlocked" class="icon"/>
         <AppIcon v-else name="citation-locked" class="icon"/>
       </div>
@@ -66,12 +66,12 @@
     </div>
   </div>
 
-  <ClaimInitiative :round="navigationState.round" :player="navigationState.player" @claimed-initiative="claimedInitiative" />
+  <ClaimInitiative :round="round" :player="player" @claimed-initiative="claimedInitiative" />
 </template>
 
 <script lang="ts">
 import { Token, useStore } from '@/store'
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ClaimInitiative from '@/components/turn/ClaimInitiative.vue'
 import NavigationState from '@/util/NavigationState'
@@ -82,6 +82,7 @@ import AppIcon from '../structure/AppIcon.vue'
 import ResearchTokenIcon from '../structure/ResearchTokenIcon.vue'
 import Weather from '@/services/enum/Weather'
 import { Modal } from 'bootstrap'
+import { number } from '@intlify/core-base'
 
 export default defineComponent({
   name: 'TurnSidebar',
@@ -91,6 +92,14 @@ export default defineComponent({
     AppIcon,
     ResearchTokenIcon
   },
+  emits: {
+    updateInitiativePlayer(payload:{player:Player}) {
+      return payload != undefined
+    },
+    updateCitationUnlock(payload:{citationUnlock:Weather[]}) {
+      return payload != undefined
+    }
+  },
   setup() {
     const { t } = useI18n()
     useStore()
@@ -98,53 +107,74 @@ export default defineComponent({
   },
   data() {
     return {
-      initiativePlayer: this.navigationState.initiativePlayer,
-      citationUnlock: this.navigationState.citationUnlock,
       unlockCitationWeather: Weather.RAIN
     }
   },
   props: {
-    navigationState: {
-      type: NavigationState,
+    round: {
+      type: Number,
+      required: true
+    },
+    player: {
+      type: Object as PropType<Player>,
+      required: true
+    },
+    currentReport: {
+      type: Object as PropType<Card>,
+      required: true
+    },
+    previousReport: {
+      type: Object as PropType<Card>,
+      required: true
+    },
+    reportsLeft: {
+      type: Number,
+      required: true
+    },
+    tokens: {
+      type: Object as PropType<Token[]>,
+      required: true
+    },
+    citationUnlock: {
+      type: Object as PropType<Weather[]>,
+      required: true
+    },
+    initiativePlayer: {
+      type: Object as PropType<Player>,
       required: true
     }
   },
   computed: {
-    currentReport() : Card {
-      return this.navigationState.currentReport
-    },
-    previousReport() : Card {
-      return this.navigationState.previousReport
-    },
-    reportsLeft() : number {
-      return this.navigationState.cardDeck.deck.length
-    },
-    tokens() : Token[] {
-      return this.navigationState.tokens
-    },
     weathers() : Weather[] {
       return Object.values(Weather)
+    },
+    isPlayer() : boolean {
+      return this.player == Player.PLAYER
     }
   },
   methods: {
-    claimedInitiative(payload: {player : Player}) : void {
-      this.initiativePlayer = payload.player
+    claimedInitiative(payload : {player:Player}) : void {
+      this.$emit('updateInitiativePlayer',{player:payload.player})
     },
     isCitationUnlocked(weather : Weather) : boolean {
       return this.citationUnlock.includes(weather)
     },
     openUnlockCitationModal(weather : Weather) : void {
+      if (!this.isPlayer) {
+        return
+      }
       this.unlockCitationWeather = weather
       const modal = new Modal(document.getElementById('modalUnlockCitation') as Element)
       modal.show()
     },
     unlockCitation(weather : Weather) {
-      this.citationUnlock.push(weather)
-      this.$store.commit('updateCitation', {round:this.navigationState.round, citationUnlock:this.citationUnlock})
+      const updatedCitationUnlock = this.citationUnlock
+      updatedCitationUnlock.push(weather)
+      this.$emit('updateCitationUnlock', {citationUnlock:updatedCitationUnlock})
     },
     lockCitation(weather : Weather) {
-      this.citationUnlock = this.citationUnlock.filter(item => item != weather)
-      this.$store.commit('updateCitation', {round:this.navigationState.round, citationUnlock:this.citationUnlock})
+      const updatedCitationUnlock = this.citationUnlock.filter(item => item != weather)
+      this.$emit('updateCitationUnlock', {citationUnlock:updatedCitationUnlock})
     }
   }
 })
@@ -154,6 +184,7 @@ export default defineComponent({
 .sidebar {
   float: right;
   width: 15rem;
+  margin-left: 1rem;
   padding: 1rem;
   background-color: #f3e7d8;
   border: 4px double #f2d6c5;
@@ -183,6 +214,7 @@ export default defineComponent({
   float: right;
   margin-top: 1rem;
   margin-left: 1rem;
+  margin-right: -1rem;
   min-height: 10rem;
   .citation {
     .weather {
@@ -201,8 +233,10 @@ export default defineComponent({
       background-color: #87765f;      
       border-top-left-radius: 0.25rem;
       border-bottom-left-radius: 0.25rem;
-      cursor: pointer;
       filter: drop-shadow(0.1rem 0.1rem 0.3rem #aaa);
+      &.clickable {
+        cursor: pointer;
+      }
       .icon {
         position: relative;
         width: 1.4rem;

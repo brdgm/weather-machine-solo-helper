@@ -1,5 +1,14 @@
 <template>
-  <TurnSidebar :navigationState="navigationState"/>
+  <TurnSidebar :round="round"
+      :player="navigationState.player"
+      :current-report="navigationState.currentReport"
+      :previous-report="navigationState.previousReport"
+      :reports-left="navigationState.cardDeck.deck.length"
+      :tokens="tokens"
+      :citation-unlock="citationUnlock"
+      :initiative-player="initiativePlayer"
+      @update-initiative-player="updateInitiativePlayer"
+      @update-citation-unlock="updateCitationUnlock"/>
 
   <h1>{{t('turnPlayer.title')}}</h1>
 
@@ -21,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
 import { useStore } from '@/store'
@@ -29,6 +38,8 @@ import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
 import LativMovement from '@/components/turn/LativMovement.vue'
 import TurnSidebar from '@/components/turn/TurnSidebar.vue'
+import Player from '@/services/enum/Player'
+import Weather from '@/services/enum/Weather'
 
 export default defineComponent({
   name: 'PhaseATurnPlayer',
@@ -44,8 +55,11 @@ export default defineComponent({
 
     const navigationState = new NavigationState(route, store.state)
     const round = navigationState.round
+    const tokens = ref(navigationState.tokens)
+    const citationUnlock = ref(navigationState.citationUnlock)
+    const initiativePlayer = ref(navigationState.initiativePlayer)
 
-    return { t, round, navigationState }
+    return { t, round, navigationState, tokens, citationUnlock, initiativePlayer }
   },
   computed: {
     nextButtonRouteTo() : string {
@@ -58,6 +72,16 @@ export default defineComponent({
       else {
         return ''
       }
+    }
+  },
+  methods: {
+    updateInitiativePlayer(payload:{player:Player}) : void {
+      this.initiativePlayer = payload.player
+      this.$store.commit('claimInitiative', {round:this.round, player:payload.player})
+    },
+    updateCitationUnlock(payload:{citationUnlock:Weather[]}) : void {
+      this.citationUnlock = payload.citationUnlock
+      this.$store.commit('updateCitation', {round:this.round, citationUnlock:this.citationUnlock})
     }
   }
 })

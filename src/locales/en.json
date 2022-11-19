@@ -45,7 +45,7 @@
     "moveSaboteur": "Move Saboteur to action space:",
     "raiseTargetValue": "Raise Target Value for each piece left of the action space.",
     "moveLativ": "Move Lativ, if required.",
-    "performNefariousPlan": "Perform nefarious plan.",
+    "performNefariousPlan": "The nefarious plan:",
     "wreakHavoc": "Wreak havoc."
   },
   "sidebar": {
@@ -73,6 +73,12 @@
     "claim": "Claim Initiative for:",
     "player": "Player",
     "saboteur": "Saboteurs"
+  },
+  "agentLocationSelection": {
+    "select": "Select",
+    "selectA": "A &",
+    "selectBC": "C,B /",
+    "reselect": "Re-select"
   },
   "challengeCard": {
     "fully-stocked-opponents": {
@@ -156,8 +162,7 @@
     "backToHome": "Back to Home",
     "back": "Back",
     "close": "Close",
-    "reset": "Reset",
-    "pass": "Pass"
+    "reset": "Reset"
   },
   "footer": {
     "credits": "Credits"

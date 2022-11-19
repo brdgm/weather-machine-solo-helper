@@ -45,7 +45,7 @@
     "moveSaboteur": "Setze den Saboteur auf ein Aktionsfeld:",
     "raiseTargetValue": "Erhöhe den Zielwert um 1 pro Figur links von dem Aktionsfeld.",
     "moveLativ": "Bewege Lativ, wenn erforderlich.",
-    "performNefariousPlan": "Führe den ruchlosen Plan aus.",
+    "performNefariousPlan": "Der ruchlose Plan:",
     "wreakHavoc": "Richte Schaden an."
   },
   "sidebar": {
@@ -73,6 +73,12 @@
     "claim": "Die Initiative beanspruchen für:",
     "player": "Spieler",
     "saboteur": "Saboteure"
+  },
+  "agentLocationSelection": {
+    "select": "Wählen",
+    "selectA": "A &",
+    "selectBC": "C,B /",
+    "reselect": "Neu wählen"
   },
   "challengeCard": {
     "fully-stocked-opponents": {
@@ -156,8 +162,7 @@
     "backToHome": "Zurück zum Anfang",
     "back": "Zurück",
     "close": "Schließen",
-    "reset": "Zurücksetzen",
-    "pass": "Passen"
+    "select": "Wählen"
   },
   "footer": {
     "credits": "Credits"

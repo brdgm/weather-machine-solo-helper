@@ -1,9 +1,9 @@
 import { CardDeckPersistence } from "@/store"
+import MainLocations from "@/util/MainLocations"
 import * as _ from "lodash"
 import { shuffle } from "lodash"
 import Card from "./Card"
 import Cards from "./Cards"
-import Location from "./enum/Location"
 
 /**
  * Deck of security report cards.
@@ -66,7 +66,7 @@ export default class CardDeck {
       if (!drawnCard) {
         throw new Error('No card left in deck.')
       }
-      if (isMainLocation(drawnCard.location) && foundCards.find(item => item.agent==drawnCard.agent)==undefined) {
+      if (MainLocations.includes(drawnCard.location) && foundCards.find(item => item.agent==drawnCard.agent)==undefined) {
         foundCards.push(drawnCard)
       }
       else {
@@ -126,15 +126,4 @@ export default class CardDeck {
     )
   }
 
-}
-
-function isMainLocation(location : Location) : boolean {
-  switch (location) {
-    case Location.GOVERNMENT:
-    case Location.LATIVS_LAB:
-    case Location.RND:
-      return true
-    default:
-      return false
-  }
 }
