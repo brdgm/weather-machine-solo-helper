@@ -41,7 +41,12 @@
     "placeResearchTokens": "Setze Forschungsmarker ein."
   },
   "turnSaboteur": {
-    "title": "Zug der Saboteure"
+    "title": "Zug der Saboteure",
+    "moveSaboteur": "Setze den Saboteur auf ein Aktionsfeld:",
+    "raiseTargetValue": "Erhöhe den Zielwert um 1 pro Figur links von dem Aktionsfeld.",
+    "moveLativ": "Bewege Lativ, wenn erforderlich.",
+    "performNefariousPlan": "Führe den ruchlosen Plan aus.",
+    "wreakHavoc": "Richte Schaden an."
   },
   "sidebar": {
     "saboteursScheme": "Plan der Saboteure:",

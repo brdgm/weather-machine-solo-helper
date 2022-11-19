@@ -41,7 +41,12 @@
     "placeResearchTokens": "Place Research tokens."
   },
   "turnSaboteur": {
-    "title": "Saboteurs Turn"
+    "title": "Saboteurs Turn",
+    "moveSaboteur": "Move Saboteur to action space:",
+    "raiseTargetValue": "Raise Target Value for each piece left of the action space.",
+    "moveLativ": "Move Lativ, if required.",
+    "performNefariousPlan": "Perform nefarious plan.",
+    "wreakHavoc": "Wreak havoc."
   },
   "sidebar": {
     "saboteursScheme": "Saboteurs' scheme:",

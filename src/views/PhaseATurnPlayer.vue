@@ -5,12 +5,12 @@
 
   <ol>
     <li v-html="t('turnPlayer.useSubsidyInvestment')"></li>
-    <li>
+    <li class="mt-2">
       <span v-html="t('turnPlayer.moveScientist')"></span>
       <LativMovement/>
     </li>
-    <li v-html="t('turnPlayer.performActions')"></li>
-    <li v-html="t('turnPlayer.placeResearchTokens')"></li>
+    <li class="mt-2" v-html="t('turnPlayer.performActions')"></li>
+    <li class="mt-2" v-html="t('turnPlayer.placeResearchTokens')"></li>
   </ol>
 
   <router-link :to="nextButtonRouteTo" class="btn btn-primary btn-lg mt-2">
