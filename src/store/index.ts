@@ -1,5 +1,7 @@
 import ChallengeCard from '@/services/enum/ChallengeCard'
+import Location from '@/services/enum/Location'
 import Player from '@/services/enum/Player'
+import Weather from '@/services/enum/Weather'
 import { InjectionKey } from 'vue'
 import { createStore, useStore as baseUseStore, Store } from 'vuex'
 
@@ -17,7 +19,13 @@ export interface Setup {
 export interface Round {
   round: number
   cardDeck: CardDeckPersistence
+  tokens: Token[]
   claimInitiative?: Player
+}
+export interface Token {
+  award?: boolean
+  location?: Location
+  weather?: Weather
 }
 export interface CardDeckPersistence {
   deck: number[]

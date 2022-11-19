@@ -13,6 +13,13 @@
       {{t('turnPlayer.sidebar.reportsLeft')}} <b>{{reportsLeft}}</b>
     </div>
 
+    <div class="mt-2">
+      <template v-for="(token,index) of tokens" :key="index">
+        <AppIcon v-if="token.award" name="award-token" class="token award"/>
+        <ResearchTokenIcon v-if="token.location && token.weather" :location="token.location" :weather="token.weather" class="token research"/>
+      </template>
+    </div>
+
     <hr/>
 
     <div>
@@ -25,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { useStore } from '@/store'
+import { Token, useStore } from '@/store'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ClaimInitiative from '@/components/turn/ClaimInitiative.vue'
@@ -34,13 +41,15 @@ import Player from '@/services/enum/Player'
 import Card from '@/services/Card'
 import AgentLocationIcon from '../structure/AgentLocationIcon.vue'
 import AppIcon from '../structure/AppIcon.vue'
+import ResearchTokenIcon from '../structure/ResearchTokenIcon.vue'
 
 export default defineComponent({
   name: 'PlayerSidebar',
   components: {
     ClaimInitiative,
     AgentLocationIcon,
-    AppIcon
+    AppIcon,
+    ResearchTokenIcon
   },
   setup() {
     const { t } = useI18n()
@@ -67,6 +76,9 @@ export default defineComponent({
     },
     reportsLeft() : number {
       return this.navigationState.cardDeck.deck.length
+    },
+    tokens() : Token[] {
+      return this.navigationState.tokens
     }
   },
   methods: {
@@ -95,6 +107,15 @@ export default defineComponent({
   }
   .report-cards-warning {
     color: red;
+  }
+  .token {
+    margin-right: 0.5rem;
+    &.award {
+      width: 2.5rem;
+    }
+    &.research {
+      width: 2.25rem;
+    }
   }
 }
 </style>

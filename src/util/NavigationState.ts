@@ -2,19 +2,21 @@ import Card from "@/services/Card"
 import CardDeck from "@/services/CardDeck"
 import Cards from "@/services/Cards"
 import Player from "@/services/enum/Player"
-import { State } from "@/store"
+import { State, Token } from "@/store"
 import { RouteLocation } from "vue-router"
 
 export default class NavigationState {
 
   readonly round : number
   readonly player : Player
+  readonly tokens : Token[]
   readonly cardDeck : CardDeck
   readonly initiativePlayer : Player
 
   constructor(route : RouteLocation, state : State) {
     this.round = parseInt(route.params['round'] as string)
     this.player = (route.name == 'PhaseATurnSaboteur') ? Player.SABOTEUR : Player.PLAYER
+    this.tokens = NavigationState.getTokens(this.round, state)
     this.cardDeck = NavigationState.getCardDeck(this.round, state)
     this.initiativePlayer = NavigationState.getInitiativePlayer(this.round, state)
   }
@@ -40,7 +42,7 @@ export default class NavigationState {
   /**
    * Get current card deck.
    */
-  static getCardDeck(roundNo : number, state : State) : CardDeck {
+   static getCardDeck(roundNo : number, state : State) : CardDeck {
     const round = state.rounds.find(item => item.round==roundNo)
     if (!round) {
       console.log(`No card deck found for round ${roundNo}.`)
@@ -49,6 +51,14 @@ export default class NavigationState {
       return cardDeck
     }
     return CardDeck.fromPersistence(round.cardDeck)
+  }
+
+  /**
+   * Get saboteurs' tokens.
+   */
+  static getTokens(roundNo : number, state : State) : Token[] {
+    const round = state.rounds.find(item => item.round==roundNo)
+    return round?.tokens || []
   }
 
   /**

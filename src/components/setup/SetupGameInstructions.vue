@@ -44,7 +44,7 @@
             <span v-html="t('setupGame.takeWeatherToken', {weather:t(`weather.${card.weather}`)})"></span>
             <div class="text-center mt-2 mb-2">
               <AgentLocationIcon :agent="card.agent" :location="card.location"/>
-              <AppIcon type="weather" :name="card.weather" class="weather-token ms-5"/>
+              <ResearchTokenIcon :location="card.location" :weather="card.weather" class="ms-5"/>
             </div>
           </li>
         </ul>
@@ -63,12 +63,14 @@ import Chemical from '@/services/enum/Chemical'
 import randomEnum from 'brdgm-commons/src/util/random/randomEnum'
 import Card from '@/services/Card'
 import AgentLocationIcon from '../structure/AgentLocationIcon.vue'
+import ResearchTokenIcon from '../structure/ResearchTokenIcon.vue'
 
 export default defineComponent({
   name: 'SetupGameInstructions',
   components: {
     AppIcon,
-    AgentLocationIcon
+    AgentLocationIcon,
+    ResearchTokenIcon
   },
   setup() {
     const { t } = useI18n()
@@ -78,6 +80,10 @@ export default defineComponent({
   props: {
     setupCards: {
       type: Object as PropType<Card[]>,
+      required: true
+    },
+    awardTokens: {
+      type: Number,
       required: true
     }
   },
@@ -114,16 +120,6 @@ export default defineComponent({
       else {
         return 35
       }
-    },
-    awardTokens() : number {
-      let result = 0
-      if (this.challengeCards.includes(ChallengeCard.CREATIVE_ACCOUNTING)) {
-        result++;
-      }
-      if (this.challengeCards.includes(ChallengeCard.INDEPENDENT_PROTOTYPES)) {
-        result++;
-      }
-      return result;
     }
   },
   methods: {
@@ -143,7 +139,7 @@ export default defineComponent({
   width: 5rem;
   margin-left: 2rem;
 }
-.chemical, .weather-token {
+.chemical {
   width: 3rem;
   filter: drop-shadow(0.1rem 0.1rem 0.3rem #aaa);
   margin: 0.5rem;
