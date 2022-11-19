@@ -1,12 +1,6 @@
 <template>
-  <div class="mt-2 mb-2">
-    <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalClaimInitiative">
-      {{t('claimInitiative.title')}}
-    </button>
-  </div>
-
   <div class="modal" tabindex="-1" id="modalClaimInitiative">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">{{t('claimInitiative.title')}}</h5>

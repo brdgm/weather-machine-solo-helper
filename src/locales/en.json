@@ -38,16 +38,22 @@
     "useSubsidyInvestment": "Use 1 Subsidy tile OR 1 Investment tile.",
     "moveScientist": "Move your Scientist.",
     "performActions": "Perform actions.",
-    "placeResearchTokens": "Place Research tokens.",
-    "sidebar": {
-      "saboteursScheme": "Saboteurs' scheme:",
-      "priority": "Priority:",
-      "reportsLeft": "Report cards left:",
-      "nextFirstPlayer": "Next first player:"
-    }
+    "placeResearchTokens": "Place Research tokens."
   },
   "turnSaboteur": {
     "title": "Saboteurs Turn"
+  },
+  "sidebar": {
+    "saboteursScheme": "Saboteurs' scheme:",
+    "priority": "Priority:",
+    "reportsLeft": "Report cards left:",
+    "nextFirstPlayer": "Next first player:",
+    "unlockCitation": {
+      "title": "Unlock Citation Space",
+      "description": "If you unlocked the citation space, you may immediately pay 1 Science Voucher to gain <b>3&nbsp;CP</b>.",
+      "unlock": "Unlock",
+      "lock": "Lock"
+    }
   },
   "lativMovement": {
     "title": "Moving Lativ",

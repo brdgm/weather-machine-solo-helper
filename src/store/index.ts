@@ -20,6 +20,7 @@ export interface Round {
   round: number
   cardDeck: CardDeckPersistence
   tokens: Token[]
+  citationUnlock?: Weather[]
   claimInitiative?: Player
 }
 export interface Token {
@@ -73,6 +74,12 @@ export const store = createStore<State>({
       const round = state.rounds.find(item => item.round == payload.round)
       if (round) {
         round.claimInitiative = payload.player
+      }
+    },
+    updateCitation(state : State, payload:{round: number, citationUnlock: Weather[]}) {
+      const round = state.rounds.find(item => item.round == payload.round)
+      if (round) {
+        round.citationUnlock = payload.citationUnlock
       }
     },
     endGame(state : State) {

@@ -38,16 +38,22 @@
     "useSubsidyInvestment": "Nutze 1 Subventions- ODER 1 Investmentplättchen.",
     "moveScientist": "Bewege deinen Wissenschaftler.",
     "performActions": "Führe Aktionen aus.",
-    "placeResearchTokens": "Setze Forschungsmarker ein.",
-    "sidebar": {
-      "saboteursScheme": "Plan der Saboteure:",
-      "priority": "Priorität:",
-      "reportsLeft": "Verbleibende Reportkarten:",
-      "nextFirstPlayer": "Nächster Startspieler:"
-    }
+    "placeResearchTokens": "Setze Forschungsmarker ein."
   },
   "turnSaboteur": {
     "title": "Zug der Saboteure"
+  },
+  "sidebar": {
+    "saboteursScheme": "Plan der Saboteure:",
+    "priority": "Priorität:",
+    "reportsLeft": "Verbleibende Reportkarten:",
+    "nextFirstPlayer": "Nächster Startspieler:",
+    "unlockCitation": {
+      "title": "Zitatfeld freischalten",
+      "description": "Wenn du das Zitatfeld freigeschaltet hast, darfst du sofort 1 Wissenschaftscoupon zahlen, um <b>3&nbsp;KP</b> zu erhalten.",
+      "unlock": "Freischalten",
+      "lock": "Sperren"
+    }
   },
   "lativMovement": {
     "title": "Lativ bewegen",

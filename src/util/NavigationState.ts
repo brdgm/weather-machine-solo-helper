@@ -2,6 +2,7 @@ import Card from "@/services/Card"
 import CardDeck from "@/services/CardDeck"
 import Cards from "@/services/Cards"
 import Player from "@/services/enum/Player"
+import Weather from "@/services/enum/Weather"
 import { State, Token } from "@/store"
 import { RouteLocation } from "vue-router"
 
@@ -10,6 +11,7 @@ export default class NavigationState {
   readonly round : number
   readonly player : Player
   readonly tokens : Token[]
+  readonly citationUnlock : Weather[]
   readonly cardDeck : CardDeck
   readonly initiativePlayer : Player
 
@@ -17,6 +19,7 @@ export default class NavigationState {
     this.round = parseInt(route.params['round'] as string)
     this.player = (route.name == 'PhaseATurnSaboteur') ? Player.SABOTEUR : Player.PLAYER
     this.tokens = NavigationState.getTokens(this.round, state)
+    this.citationUnlock = NavigationState.getCitationUnlock(this.round, state)
     this.cardDeck = NavigationState.getCardDeck(this.round, state)
     this.initiativePlayer = NavigationState.getInitiativePlayer(this.round, state)
   }
@@ -40,9 +43,25 @@ export default class NavigationState {
   }
 
   /**
+   * Get saboteurs' tokens.
+   */
+  static getTokens(roundNo : number, state : State) : Token[] {
+    const round = state.rounds.find(item => item.round==roundNo)
+    return round?.tokens || []
+  }
+
+  /**
+   * Get saboteurs' tokens.
+   */
+  static getCitationUnlock(roundNo : number, state : State) : Weather[] {
+    const round = state.rounds.find(item => item.round==roundNo)
+    return round?.citationUnlock || []
+  }
+
+  /**
    * Get current card deck.
    */
-   static getCardDeck(roundNo : number, state : State) : CardDeck {
+  static getCardDeck(roundNo : number, state : State) : CardDeck {
     const round = state.rounds.find(item => item.round==roundNo)
     if (!round) {
       console.log(`No card deck found for round ${roundNo}.`)
@@ -51,14 +70,6 @@ export default class NavigationState {
       return cardDeck
     }
     return CardDeck.fromPersistence(round.cardDeck)
-  }
-
-  /**
-   * Get saboteurs' tokens.
-   */
-  static getTokens(roundNo : number, state : State) : Token[] {
-    const round = state.rounds.find(item => item.round==roundNo)
-    return round?.tokens || []
   }
 
   /**
