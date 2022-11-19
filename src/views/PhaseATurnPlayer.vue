@@ -58,15 +58,24 @@ export default defineComponent({
     const tokens = ref(navigationState.tokens)
     const citationUnlock = ref(navigationState.citationUnlock)
     const initiativePlayer = ref(navigationState.initiativePlayer)
+    const lastRoundInitiativePlayer = navigationState.lastRoundInitiativePlayer
 
-    return { t, round, navigationState, tokens, citationUnlock, initiativePlayer }
+    return { t, round, navigationState, tokens, citationUnlock, initiativePlayer, lastRoundInitiativePlayer }
   },
   computed: {
     nextButtonRouteTo() : string {
-      return `/round/${this.round}/phaseATurnSaboteur`
+      if (this.lastRoundInitiativePlayer == Player.SABOTEUR) {
+        return `/round/${this.round}/phaseBExperiment`
+      }
+      else {
+        return `/round/${this.round}/phaseATurnSaboteur`
+      }
     },
     backButtonRouteTo() : string {
-      if (this.round > 1) {
+      if (this.lastRoundInitiativePlayer == Player.SABOTEUR) {
+        return `/round/${this.round}/phaseATurnSaboteur`
+      }
+      else if (this.round > 1) {
         return `/round/${this.round-1}/phaseCEndOfRound`
       }
       else {

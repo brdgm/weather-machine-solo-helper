@@ -14,6 +14,7 @@ export default class NavigationState {
   readonly tokens : Token[]
   readonly citationUnlock : Weather[]
   readonly initiativePlayer : Player
+  readonly lastRoundInitiativePlayer : Player
 
   constructor(route : RouteLocation, state : State) {
     this.round = parseInt(route.params['round'] as string)
@@ -22,6 +23,7 @@ export default class NavigationState {
     this.tokens = NavigationState.getTokens(this.round, state)
     this.citationUnlock = NavigationState.getCitationUnlock(this.round, state)
     this.initiativePlayer = NavigationState.getInitiativePlayer(this.round, state)
+    this.lastRoundInitiativePlayer = NavigationState.getInitiativePlayer(this.round-1, state)
   }
 
   public get currentReport() : Card {

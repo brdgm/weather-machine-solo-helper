@@ -85,8 +85,9 @@ export default defineComponent({
     const tokens = ref(navigationState.tokens)
     const citationUnlock = ref(navigationState.citationUnlock)
     const initiativePlayer = ref(navigationState.initiativePlayer)
+    const lastRoundInitiativePlayer = navigationState.lastRoundInitiativePlayer
 
-    return { t, round, navigationState, tokens, citationUnlock, initiativePlayer }
+    return { t, round, navigationState, tokens, citationUnlock, initiativePlayer, lastRoundInitiativePlayer }
   },
   data() {
     return {
@@ -99,10 +100,23 @@ export default defineComponent({
       return this.selectedLocation != undefined
     },
     nextButtonRouteTo() : string {
-      return `/round/${this.round}/phaseBExperiment`
+      if (this.lastRoundInitiativePlayer == Player.PLAYER) {
+        return `/round/${this.round}/phaseBExperiment`
+      }
+      else {
+        return `/round/${this.round}/phaseATurnPlayer`
+      }
     },
     backButtonRouteTo() : string {
-      return `/round/${this.round}/phaseATurnPlayer`
+      if (this.lastRoundInitiativePlayer == Player.PLAYER) {
+        return `/round/${this.round}/phaseATurnPlayer`
+      }
+      else if (this.round > 1) {
+        return `/round/${this.round-1}/phaseCEndOfRound`
+      }
+      else {
+        return ''
+      }
     },
     currentReport() : Card {
       return this.navigationState.currentReport
@@ -110,6 +124,11 @@ export default defineComponent({
   },
   methods: {
     next() : void {
+      this.$store.commit('claimInitiative', {round:this.round, player:this.initiativePlayer})
+      this.$store.commit('round', {round: this.round+1,
+          cardDeck: this.navigationState.cardDeck.toPersistence(),
+          tokens: this.tokens,
+          citationUnlock: this.citationUnlock})
       this.$router.push(this.nextButtonRouteTo)
     },
     locationSelected(payload: {location:Location, actionSlot?:ActionSlot}) : void {

@@ -15,6 +15,7 @@ import FooterButtons from '@/components/structure/FooterButtons.vue'
 import { useStore } from '@/store'
 import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
+import Player from '@/services/enum/Player'
 
 export default defineComponent({
   name: 'PhaseCEndOfRound',
@@ -28,12 +29,18 @@ export default defineComponent({
 
     const navigationState = new NavigationState(route, store.state)
     const round = navigationState.round
+    const initiativePlayer = navigationState.initiativePlayer
 
-    return { t, round }
+    return { t, round, initiativePlayer }
   },
   computed: {
     nextButtonRouteTo() : string {
-      return `/round/${this.round+1}/phaseATurnPlayer`
+      if (this.initiativePlayer==Player.PLAYER) {
+        return `/round/${this.round+1}/phaseATurnPlayer`
+      }
+      else {
+        return `/round/${this.round+1}/phaseATurnSaboteur`
+      }
     },
     backButtonRouteTo() : string {
       return `/round/${this.round}/phaseBExperiment`
