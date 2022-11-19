@@ -74,7 +74,6 @@ import { Token, useStore } from '@/store'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ClaimInitiative from '@/components/turn/ClaimInitiative.vue'
-import NavigationState from '@/util/NavigationState'
 import Player from '@/services/enum/Player'
 import Card from '@/services/Card'
 import AgentLocationIcon from '../structure/AgentLocationIcon.vue'
@@ -82,7 +81,6 @@ import AppIcon from '../structure/AppIcon.vue'
 import ResearchTokenIcon from '../structure/ResearchTokenIcon.vue'
 import Weather from '@/services/enum/Weather'
 import { Modal } from 'bootstrap'
-import { number } from '@intlify/core-base'
 
 export default defineComponent({
   name: 'TurnSidebar',
