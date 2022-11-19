@@ -35,13 +35,14 @@ export default defineComponent({
   display: inline-block;
   position: relative;
   .agent {
+    position: relative;
     height: 5rem;
+    z-index: 100;
   }
   .arrow {
     position: relative;
     width: 3rem;
     margin-left: -1.5rem;
-    z-index: -100;
   }
   .location {
     height: 5rem;

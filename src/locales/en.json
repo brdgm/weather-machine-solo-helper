@@ -38,7 +38,13 @@
     "useSubsidyInvestment": "Use 1 Subsidy tile OR 1 Investment tile.",
     "moveScientist": "Move your Scientist.",
     "performActions": "Perform actions.",
-    "placeResearchTokens": "Place Research tokens."
+    "placeResearchTokens": "Place Research tokens.",
+    "sidebar": {
+      "saboteursScheme": "Saboteurs' scheme:",
+      "priority": "Priority:",
+      "reportsLeft": "Report cards left:",
+      "nextFirstPlayer": "Next first player:"
+    }
   },
   "turnSaboteur": {
     "title": "Saboteurs Turn"
@@ -50,6 +56,12 @@
     "weatherMachineActiveBranchStep1": "If Lativ does not have one of his Bots in that branch, place 1 of Lativ’s Bots from the area next to the Lab onto any empty space of the branch (it doesn’t matter which one).",
     "weatherMachineActiveBranchStep2": "If Lativ already has a Bot in the branch, or the branch was full, place a Bot in the next branch (following the arrows). If all the branches are either full or already contain one of Lativ’s Bots, nothing happens.",
     "governmentRnd": "When Lativ moves to the <b>Government or R&D</b>, discard a Research token from Lativ’s current Location of the same type of weather as the branch where Lativ’s Assistant currently is."
+  },
+  "claimInitiative": {
+    "title": "Claim Initiative",
+    "claim": "Claim Initiative for:",
+    "player": "Player",
+    "saboteur": "Saboteurs"
   },
   "challengeCard": {
     "fully-stocked-opponents": {

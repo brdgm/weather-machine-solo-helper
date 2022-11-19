@@ -9,7 +9,6 @@ export interface State {
   language: string
   baseFontSize: number
   setup: Setup
-  initialCardDeck?: CardDeckPersistence
   rounds: Round[]
 }
 export interface Setup {
@@ -58,11 +57,17 @@ export const store = createStore<State>({
     setup(state : State, setup: Setup) {
       state.setup = setup
     },
-    initialCardDeck(state : State, cardDeck: CardDeckPersistence) {
-      state.initialCardDeck = cardDeck
+    round(state : State, round: Round) {
+      state.rounds = state.rounds.filter(item => item.round != round.round)
+      state.rounds.push(round)
+    },
+    claimInitiative(state : State, payload:{round: number, player: Player}) {
+      const round = state.rounds.find(item => item.round == payload.round)
+      if (round) {
+        round.claimInitiative = payload.player
+      }
     },
     endGame(state : State) {
-      state.initialCardDeck = undefined
       state.rounds = []
     },
     zoomFontSize(state : State, baseFontSize: number) {
