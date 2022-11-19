@@ -46,7 +46,12 @@
     "raiseTargetValue": "Raise Target Value for each piece left of the action space.",
     "moveLativ": "Move Lativ, if required.",
     "performNefariousPlan": "The nefarious plan:",
-    "wreakHavoc": "Wreak havoc."
+    "wreakHavoc": "Wreak havoc.",
+    "nefariousPlanSupply": {
+      "claimInitiative": "The Saboteurs claim the initiative.",
+      "raiseTargetValue": "Raise the Saboteurs' <b>Target Value by 2</b>.",
+      "takeChemicals": "The Saboteurs take <b>2 Chemicals</b>."
+    }
   },
   "sidebar": {
     "saboteursScheme": "Saboteurs' scheme:",
@@ -79,6 +84,15 @@
     "selectA": "A &",
     "selectBC": "C,B /",
     "reselect": "Re-select"
+  },
+  "takeChemical": {
+    "title": "Take Chemical",
+    "prioritySection": "They select a Chemical from the section that depicts the fewest number of Supply Vouchers.",
+    "priorityLeastAvailable": "If there is more than one type of Chemical in the cheapest section, they take the one they currently have the least of in their Hideout.",
+    "prioritySelection": {
+      "top": "If still tied, they take the <b>topmost</b> one from those tied.",
+      "bottom": "If still tied, they take the <b>bottommost</b> one from those tied."
+    }
   },
   "challengeCard": {
     "fully-stocked-opponents": {

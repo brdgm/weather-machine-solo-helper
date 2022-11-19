@@ -46,7 +46,12 @@
     "raiseTargetValue": "Erhöhe den Zielwert um 1 pro Figur links von dem Aktionsfeld.",
     "moveLativ": "Bewege Lativ, wenn erforderlich.",
     "performNefariousPlan": "Der ruchlose Plan:",
-    "wreakHavoc": "Richte Schaden an."
+    "wreakHavoc": "Richte Schaden an.",
+    "nefariousPlanSupply": {
+      "claimInitiative": "Die Saboteure beanspruchen die Initiative.",
+      "raiseTargetValue": "Die Saboteure erhöhen den <b>Zielwert um 2</b>.",
+      "takeChemicals": "Die Saboteure nehmen <b>2 Chemikalien</b>."
+    }
   },
   "sidebar": {
     "saboteursScheme": "Plan der Saboteure:",
@@ -79,6 +84,15 @@
     "selectA": "A &",
     "selectBC": "C,B /",
     "reselect": "Neu wählen"
+  },
+  "takeChemical": {
+    "title": "Chemikalie nehmen",
+    "prioritySection": "Sie wählen eine Chemikalie aus dem Abschnitt, der die geringste Anzahl von Vorratscoupons anzeigt",
+    "priorityLeastAvailable": "Gibt es mehr als einen Chemikalientyp im günstigsten Abschnitt, nehmen sie die, von der sie aktuell die wenigsten in ihrem Versteck haben.",
+    "prioritySelection": {
+      "top": "Gibt es auch hier eine Auswahl, nehmen sie davon die <b>oberste</b>.",
+      "bottom": "Gibt es auch hier eine Auswahl, nehmen sie davon die <b>unterste</b>."
+    }
   },
   "challengeCard": {
     "fully-stocked-opponents": {

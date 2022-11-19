@@ -30,7 +30,10 @@
       </li>
       <li class="mt-2">
         <p v-html="t('turnSaboteur.performNefariousPlan')"></p>
-        <NefariousPlanSupply v-if="selectedLocation=='supply'"/>
+        <NefariousPlanSupply v-if="selectedLocation=='supply'"
+            :initiative-player="initiativePlayer"
+            :selection-priority="navigationState.previousReport.selectionPriority"
+            @update-initiative-player="updateInitiativePlayer"/>
       </li>
       <li class="mt-2" v-html="t('turnSaboteur.wreakHavoc')"></li>
     </template>
@@ -59,6 +62,7 @@ import AgentLocationSelection from '@/components/turn/AgentLocationSelection.vue
 import AgentLocationIcon from '@/components/structure/AgentLocationIcon.vue'
 import Location from '@/services/enum/Location'
 import ActionSlot from '@/services/enum/ActionSlot'
+import Player from '@/services/enum/Player'
 
 export default defineComponent({
   name: 'PhaseATurnSaboteur',
@@ -115,6 +119,12 @@ export default defineComponent({
     unselectLocation() : void {
       this.selectedLocation = undefined
       this.selectedActionSlot = undefined
+      this.tokens = this.navigationState.tokens
+      this.citationUnlock = this.navigationState.citationUnlock
+      this.initiativePlayer = this.navigationState.initiativePlayer
+    },
+    updateInitiativePlayer(payload:{player:Player}) : void {
+      this.initiativePlayer = payload.player
     }
   }
 })
