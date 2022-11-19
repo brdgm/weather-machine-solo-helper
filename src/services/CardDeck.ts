@@ -82,9 +82,7 @@ export default class CardDeck {
     }
 
     // put found cards to discard pile
-    for (let i=0; i<foundCards.length; i++) {
-      this._discard.unshift(foundCards[i])
-    }
+    foundCards.forEach(card => this._discard.unshift(card))
 
     // draw first current report
     this.draw()

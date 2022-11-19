@@ -15,18 +15,23 @@
             <li v-html="t('setupGame.goalTilesStep3')"></li>
           </ol>
           <li v-html="t('setupGame.anotherPlayerColor')"></li>
-          <li v-html="t('setupGame.scoringMarker',{startingTargetValue:startingTargetValue})"></li>
+          <li>
+            <AppIcon name="challenge-card" class="challenge-icon" v-if="startingTargetValue < 35"/>
+            <span v-html="t('setupGame.scoringMarker',{startingTargetValue:startingTargetValue})"></span>
+          </li>
           <li v-html="t('setupGame.turnOrder')"></li>
           <li v-html="t('setupGame.hideout')"></li>
           <ul>
             <li v-html="t('setupGame.hideoutBots')"></li>
             <li>
+              <AppIcon name="challenge-card" class="challenge-icon" v-if="initialChemicals.length > 2"/>
               <span v-html="t('setupGame.hideoutChemicals')"></span>
               <div class="text-center">
                 <AppIcon v-for="(chemical,index) of initialChemicals" :key="index" type="chemical" :name="chemical" class="chemical"/>
               </div>
             </li>
             <li v-if="awardTokens > 0">
+              <AppIcon name="challenge-card" class="challenge-icon"/>
               <span v-html="t('setupGame.hideoutAward')"></span>
               <div class="text-center">
                 <AppIcon v-for="index of awardTokens" :key="index" name="award-token" class="token"/>
@@ -147,5 +152,10 @@ export default defineComponent({
   width: 5rem;
   filter: drop-shadow(0.1rem 0.1rem 0.3rem #aaa);
   margin: 0.5rem;
+}
+.challenge-icon {
+  height: 1rem;
+  margin-top: -0.15rem;
+  margin-right: 0.25rem;
 }
 </style>
