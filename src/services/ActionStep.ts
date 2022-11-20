@@ -1,3 +1,4 @@
+import { Token } from "@/store"
 import Action from "./enum/Action"
 import SelectionPriority from "./enum/SelectionPriority"
 import Weather from "./enum/Weather"
@@ -8,6 +9,8 @@ export default interface ActionStep {
   optional?: boolean
   selectionPriority?: SelectionPriority
   weatherPriority?: Weather
+  citationUnlock?: Weather[]
+  tokens?: Token[]
   alternativeActions?: ActionStep[]
   alternativeActionsTaken?: boolean
 }

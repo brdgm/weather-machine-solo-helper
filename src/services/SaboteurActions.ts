@@ -34,6 +34,13 @@ export default class SaboteurActions {
     }
     // steps for wreaking havoc (changing sets of research tokens)
     this._actionSteps.push(...SaboteurActions.buildTokenSetActionSteps(params))
+    // add common parameters to all actions steps
+    this._actionSteps.forEach(step => {
+      step.selectionPriority = params.selectionPriority
+      step.weatherPriority = params.weatherPriority
+      step.citationUnlock = params.citationUnlock
+      step.tokens = params.tokens
+    })
   }
 
   public get actionSteps() : readonly ActionStep[] {
@@ -56,8 +63,7 @@ export default class SaboteurActions {
     const result : ActionStep[] = []
     if (params.actionSlot == ActionSlot.AND) {
       result.push({action:Action.TAKE_CHEMICAL, count:1})
-      result.push({action:Action.GOVERNMENT_FLIP_SUBSIDY,
-          weatherPriority:params.weatherPriority, selectionPriority:params.selectionPriority})
+      result.push({action:Action.GOVERNMENT_FLIP_SUBSIDY})
     }
     result.push({action:Action.GOVERNMENT_PLACE_BOT_RESEARCH_PRIORITY})
     result.push({action:Action.GOVERNMENT_PLACE_GEAR_REMOVE_SUBSIDY})

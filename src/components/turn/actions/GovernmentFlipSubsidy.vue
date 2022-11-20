@@ -42,8 +42,9 @@ export default defineComponent({
   }
 })
 </script>
+
 <style lang="scss" scoped>
-div > * {
+div > div, div > img {
   margin-top: 0.5rem;
   margin-right: 1rem;
   vertical-align: middle;

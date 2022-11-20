@@ -19,12 +19,21 @@ export default defineComponent({
   props: {
     weather: {
       type: String as PropType<Weather>,
-      required: true
+      required: false
+    },
+    weathers: {
+      type: Object as PropType<Weather[]>,
+      required: false
     }
   },
   computed: {
     allWeathers() : Weather[] {
-      return getPrioritizedEnumValues(Weather,this.weather)
+      if (this.weathers) {
+        return this.weathers
+      }
+      else {
+        return getPrioritizedEnumValues(Weather, this.weather ?? Weather.RAIN)
+      }
     }
   }
 })
@@ -38,8 +47,8 @@ export default defineComponent({
     position: relative;
     width: 2.5rem;
     &.alternative {
-      width: 1.5rem;
-      margin-left: -0.5rem;
+      width: 2rem;
+      margin-left: -0.25rem;
       vertical-align: bottom;
     }
   }

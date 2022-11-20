@@ -54,16 +54,17 @@
         "text": "The Saboteurs gain an Award token."
       },
       "governmentFlipSubsidy": {
-        "text": "<b>Flip</b> a blue-side up Subsidy tile."
+        "text": "<b>Flip</b> a blue-side up <b>Subsidy tile</b>."
       },
       "governmentGetResearchToken": {
         "text": "GovernmentGetResearchToken"
       },
       "governmentPlaceBotResearchPriority": {
-        "text": "<b>Place a Bot</b> from the Hideout onto an empty Bot space of the chosen branch for which the Saboteurs have a <b>matching Chemical</b>."
+        "text": "<b>Place a Bot</b> onto an empty Bot space of the chosen branch for which the Saboteurs have a <b>matching Chemical</b>. Move the Chemical matching the space from the Hideout to the Supply."
       },
       "governmentPlaceGearRemoveSubsidy": {
-        "text": "GovernmentPlaceGearRemoveSubsidy"
+        "text-top": "<b>Remove</b> the topmost available <b>Subsidy tile</b> from the branch. Replace it with the required <b>Machine Part</b>.",
+        "text-bottom": "<b>Remove</b> the bottommost available <b>Subsidy tile</b> from the branch. Replace it with the required <b>Machine Part</b>."
       },
       "governmentRunMachine": {
         "text": "GovernmentRunMachine"
