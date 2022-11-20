@@ -4,6 +4,8 @@ import Action from "./enum/Action"
 import ActionSlot from "./enum/ActionSlot"
 import Location from "./enum/Location"
 import Player from "./enum/Player"
+import SelectionPriority from "./enum/SelectionPriority"
+import Weather from "./enum/Weather"
 
 /**
  * Determines the saboteurs actions after taking the action location.
@@ -16,31 +18,31 @@ export default class SaboteurActions {
     // steps for main location
     switch (params.location) {
       case Location.SUPPLY:
-        this._actionSteps = SaboteurActions.buildSupplyActionSteps(params.initiativePlayer)
+        this._actionSteps = SaboteurActions.buildSupplyActionSteps(params)
         break;
       case Location.GOVERNMENT:
-        this._actionSteps = SaboteurActions.buildGovernmentActionSteps(params.actionSlot, params.tokens)
+        this._actionSteps = SaboteurActions.buildGovernmentActionSteps(params)
         break;
       case Location.LATIVS_LAB:
-        this._actionSteps = SaboteurActions.buildLativsLabActionSteps(params.actionSlot, params.tokens)
+        this._actionSteps = SaboteurActions.buildLativsLabActionSteps(params)
         break;
       case Location.RND:
-        this._actionSteps = SaboteurActions.buildRndActionSteps(params.actionSlot, params.tokens)
+        this._actionSteps = SaboteurActions.buildRndActionSteps(params)
         break;
       default:
         throw new Error(`Invalid location: ${location}`)
     }
     // steps for wreaking havoc (changing sets of research tokens)
-    this._actionSteps.push(...SaboteurActions.buildTokenSetActionSteps(params.tokens))
+    this._actionSteps.push(...SaboteurActions.buildTokenSetActionSteps(params))
   }
 
   public get actionSteps() : readonly ActionStep[] {
     return this._actionSteps
   }
 
-  private static buildSupplyActionSteps(initiativePlayer : Player) : ActionStep[] {
+  private static buildSupplyActionSteps(params : SaboteurActionsParams) : ActionStep[] {
     const result : ActionStep[] = []
-    if (initiativePlayer == Player.PLAYER) {
+    if (params.initiativePlayer == Player.PLAYER) {
       result.push({action:Action.CLAIM_INITIATIVE})
     }
     else {
@@ -50,11 +52,12 @@ export default class SaboteurActions {
     return result
   }
 
-  private static buildGovernmentActionSteps(actionSlot : ActionSlot|undefined, tokens: Token[]) : ActionStep[] {
+  private static buildGovernmentActionSteps(params : SaboteurActionsParams) : ActionStep[] {
     const result : ActionStep[] = []
-    if (actionSlot == ActionSlot.AND) {
+    if (params.actionSlot == ActionSlot.AND) {
       result.push({action:Action.TAKE_CHEMICAL, count:1})
-      result.push({action:Action.GOVERNMENT_FLIP_SUBSIDY})
+      result.push({action:Action.GOVERNMENT_FLIP_SUBSIDY,
+          weatherPriority:params.weatherPriority, selectionPriority:params.selectionPriority})
     }
     result.push({action:Action.GOVERNMENT_PLACE_BOT_RESEARCH_PRIORITY})
     result.push({action:Action.GOVERNMENT_PLACE_GEAR_REMOVE_SUBSIDY})
@@ -64,9 +67,9 @@ export default class SaboteurActions {
     return result
   }
 
-  private static buildLativsLabActionSteps(actionSlot : ActionSlot|undefined, tokens: Token[]) : ActionStep[] {
+  private static buildLativsLabActionSteps(params : SaboteurActionsParams) : ActionStep[] {
     const result : ActionStep[] = []
-    if (actionSlot == ActionSlot.AND) {
+    if (params.actionSlot == ActionSlot.AND) {
       result.push({action:Action.GET_AWARD_TOKEN})
     }
     result.push({action:Action.LATIVS_LAB_PLACE_BOT_RESEARCH_PRIORITY})
@@ -74,9 +77,9 @@ export default class SaboteurActions {
     return result
   }
 
-  private static buildRndActionSteps(actionSlot : ActionSlot|undefined, tokens: Token[]) : ActionStep[] {
+  private static buildRndActionSteps(params : SaboteurActionsParams) : ActionStep[] {
     const result : ActionStep[] = []
-    if (actionSlot == ActionSlot.AND) {
+    if (params.actionSlot == ActionSlot.AND) {
       result.push({action:Action.RND_PLACE_BOT_PREVIOUS_REPORT_PRIORITY})
       result.push({action:Action.RND_PLACE_CHEMICAL, optional:true})
     }
@@ -90,7 +93,7 @@ export default class SaboteurActions {
   return result
   }
 
-  private static buildTokenSetActionSteps(tokens: Token[]) : ActionStep[] {
+  private static buildTokenSetActionSteps(params : SaboteurActionsParams) : ActionStep[] {
     const result : ActionStep[] = []
     // TODO: implement
     return result
@@ -103,4 +106,6 @@ export interface SaboteurActionsParams {
   actionSlot? : ActionSlot
   tokens: Token[]
   initiativePlayer : Player
+  weatherPriority : Weather
+  selectionPriority : SelectionPriority
 }

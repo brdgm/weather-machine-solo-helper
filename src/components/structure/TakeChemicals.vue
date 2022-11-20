@@ -1,6 +1,7 @@
 <template>
   <div class="icon-container">
     <AppIcon v-for="index in count" :key="index" name="take-chemical" class="icon"/>
+    <AppIcon type="selection-priority" :name="selectionPriority" class="icon"/>
     <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalTakeChemical">
       {{t('takeChemical.title')}}
     </button>
@@ -69,7 +70,7 @@ export default defineComponent({
 .icon-container {
   display: inline-block;
   .icon {
-    width: 3rem;
+    height: 3rem;
     margin-right: 0.5rem;
   }
   button {

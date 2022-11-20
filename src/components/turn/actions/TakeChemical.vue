@@ -30,7 +30,7 @@ export default defineComponent({
     }
   },
   computed: {
-    selectionPriority() {
+    selectionPriority() : SelectionPriority {
       return this.actionStep.selectionPriority || SelectionPriority.TOP
     }
   }

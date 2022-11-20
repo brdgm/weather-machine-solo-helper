@@ -64,8 +64,21 @@ import ActionSlot from '@/services/enum/ActionSlot'
 import Player from '@/services/enum/Player'
 import SaboteurActions from '@/services/SaboteurActions'
 import ClaimInitiative from '@/components/turn/actions/ClaimInitiative.vue'
+import GetAwardToken from '@/components/turn/actions/GetAwardToken.vue'
+import GovernmentFlipSubsidy from '@/components/turn/actions/GovernmentFlipSubsidy.vue'
+import GovernmentGetResearchToken from '@/components/turn/actions/GovernmentGetResearchToken.vue'
+import GovernmentPlaceBotResearchPriority from '@/components/turn/actions/GovernmentPlaceBotResearchPriority.vue'
+import GovernmentPlaceGearRemoveSubsidy from '@/components/turn/actions/GovernmentPlaceGearRemoveSubsidy.vue'
+import GovernmentRunMachine from '@/components/turn/actions/GovernmentRunMachine.vue'
 import IncreaseTargetValue from '@/components/turn/actions/IncreaseTargetValue.vue'
+import LativsLabPayChemical from '@/components/turn/actions/LativsLabPayChemical.vue'
+import LativsLabPlaceBotResearchPriority from '@/components/turn/actions/LativsLabPlaceBotResearchPriority.vue'
+import RndGetResearchToken from '@/components/turn/actions/RndGetResearchToken.vue'
+import RndPlaceBotPreviousReportPriority from '@/components/turn/actions/RndPlaceBotPreviousReportPriority.vue'
+import RndPlaceBotResearchPriority from '@/components/turn/actions/RndPlaceBotResearchPriority.vue'
+import RndPlaceChemical from '@/components/turn/actions/RndPlaceChemical.vue'
 import TakeChemical from '@/components/turn/actions/TakeChemical.vue'
+import UnlockCitation from '@/components/turn/actions/UnlockCitation.vue'
 
 export default defineComponent({
   name: 'PhaseATurnSaboteur',
@@ -77,8 +90,21 @@ export default defineComponent({
     AgentLocationSelection,
     AgentLocationIcon,
     ClaimInitiative,
+    GetAwardToken,
+    GovernmentFlipSubsidy,
+    GovernmentGetResearchToken,
+    GovernmentPlaceBotResearchPriority,
+    GovernmentPlaceGearRemoveSubsidy,
+    GovernmentRunMachine,
     IncreaseTargetValue,
-    TakeChemical
+    LativsLabPayChemical,
+    LativsLabPlaceBotResearchPriority,
+    RndGetResearchToken,
+    RndPlaceBotPreviousReportPriority,
+    RndPlaceBotResearchPriority,
+    RndPlaceChemical,    
+    TakeChemical,
+    UnlockCitation
   },
   setup() {
     const { t } = useI18n()
@@ -126,6 +152,9 @@ export default defineComponent({
     },
     currentReport() : Card {
       return this.navigationState.currentReport
+    },
+    previousReport() : Card {
+      return this.navigationState.previousReport
     }
   },
   methods: {
@@ -141,7 +170,8 @@ export default defineComponent({
       this.selectedLocation = payload.location
       this.selectedActionSlot = payload.actionSlot
       this.saboteurActions = new SaboteurActions({location:this.selectedLocation,
-        actionSlot:this.selectedActionSlot, tokens:this.tokens, initiativePlayer:this.initiativePlayer})
+          actionSlot:this.selectedActionSlot, tokens:this.tokens, initiativePlayer:this.initiativePlayer,          
+          selectionPriority:this.previousReport.selectionPriority,weatherPriority:this.previousReport.weather})
     },
     unselectLocation() : void {
       this.selectedLocation = undefined

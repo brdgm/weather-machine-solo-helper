@@ -50,6 +50,12 @@
       "claimInitiative": {
         "text": "Die Saboteure beanspruchen die Initiative."
       },
+      "getAwardToken": {
+        "text": "Die Saboteure erhalten ein Auszeichnungsstein."
+      },
+      "governmentFlipSubsidy": {
+        "text": "<b>Drehe</b> ein Subventionsplättchen mit der blauen Seite oben um."
+      },
       "increaseTargetValue": {
         "text": "Die Saboteure erhöhen den <b>Zielwert um {count}</b>."
       },

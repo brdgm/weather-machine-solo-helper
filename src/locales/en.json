@@ -50,11 +50,50 @@
       "claimInitiative": {
         "text": "The Saboteurs claim the initiative."
       },
+      "getAwardToken": {
+        "text": "The Saboteurs gain an Award token."
+      },
+      "governmentFlipSubsidy": {
+        "text": "<b>Flip</b> a blue-side up Subsidy tile."
+      },
+      "governmentGetResearchToken": {
+        "text": "GovernmentGetResearchToken"
+      },
+      "governmentPlaceBotResearchPriority": {
+        "text": "<b>Place a Bot</b> from the Hideout onto an empty Bot space of the chosen branch for which the Saboteurs have a <b>matching Chemical</b>."
+      },
+      "governmentPlaceGearRemoveSubsidy": {
+        "text": "GovernmentPlaceGearRemoveSubsidy"
+      },
+      "governmentRunMachine": {
+        "text": "GovernmentRunMachine"
+      },
       "increaseTargetValue": {
         "text": "Raise the Saboteurs' <b>Target Value by {count}</b>."
       },
+      "lativsLabPayChemical": {
+        "text": "LativsLabPayChemical"
+      },
+      "lativsLabPlaceBotResearchPriority": {
+        "text": "LativsLabPlaceBotResearchPriority"
+      },
+      "rndGetResearchToken": {
+        "text": "RndGetResearchToken"
+      },
+      "rndPlaceBotPreviousReportPriority": {
+        "text": "RndPlaceBotPreviousReportPriority"
+      },
+      "rndPlaceBotResearchPriority": {
+        "text": "RndPlaceBotResearchPriority"
+      },
+      "rndPlaceChemical": {
+        "text": "RndPlaceChemical"
+      },
       "takeChemicals": {
         "text": "The Saboteurs take <b>{count} Chemical</b>. | The Saboteurs take <b>{count} Chemicals</b>."
+      },
+      "unlockCitation": {
+        "text": "UnlockCitation"
       }
     }
   },
