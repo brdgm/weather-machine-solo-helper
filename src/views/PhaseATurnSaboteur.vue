@@ -178,6 +178,7 @@ export default defineComponent({
           actionSlot:this.selectedActionSlot, tokens:this.tokens, initiativePlayer:this.initiativePlayer,          
           selectionPriority:this.previousReport.selectionPriority,weatherPriority:this.previousReport.weather,
           citationUnlock:this.citationUnlock})
+      this.processSaboteurActions()
     },
     unselectLocation() : void {
       this.selectedLocation = undefined
@@ -192,12 +193,22 @@ export default defineComponent({
         return
       }
       this.saboteurActions.chooseWeatherBranch(payload.weatherBranchChosen)
+      this.processSaboteurActions()
     },
     doAlternativeAction(payload:{alternativeActionsTaken:boolean}) : void {
       if (!this.saboteurActions) {
         return
       }
       this.saboteurActions.takeAlternativeAction(payload.alternativeActionsTaken)
+      this.processSaboteurActions()
+    },
+    processSaboteurActions() : void {
+      if (!this.saboteurActions) {
+        return
+      }
+      this.tokens = this.saboteurActions.processTokens(this.navigationState.tokens)
+      this.citationUnlock = this.saboteurActions.processCitationUnlock(this.navigationState.citationUnlock)
+      this.initiativePlayer = this.saboteurActions.processInitiativePlayer(this.navigationState.initiativePlayer)
     }
   }
 })

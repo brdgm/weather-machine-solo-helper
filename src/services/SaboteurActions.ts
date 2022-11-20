@@ -1,4 +1,5 @@
 import { Token } from "@/store"
+import { isTemplateNode } from "@vue/compiler-core"
 import ActionStep from "./ActionStep"
 import Action from "./enum/Action"
 import ActionSlot from "./enum/ActionSlot"
@@ -41,6 +42,67 @@ export default class SaboteurActions {
       step.citationUnlock = params.citationUnlock
       step.tokens = params.tokens
     })
+  }
+
+  private static buildSupplyActionSteps(params : SaboteurActionsParams) : ActionStep[] {
+    const result : ActionStep[] = []
+    if (params.initiativePlayer == Player.PLAYER) {
+      result.push({action:Action.CLAIM_INITIATIVE})
+    }
+    else {
+      result.push({action:Action.INCREASE_TARGET_VALUE, count:2})
+    }
+    result.push({action:Action.TAKE_CHEMICAL, count:2})
+    return result
+  }
+
+  private static buildGovernmentActionSteps(params : SaboteurActionsParams) : ActionStep[] {
+    const result : ActionStep[] = []
+    if (params.actionSlot == ActionSlot.AND) {
+      result.push({action:Action.TAKE_CHEMICAL, count:1})
+      result.push({action:Action.GOVERNMENT_FLIP_SUBSIDY})
+    }
+    result.push({action:Action.GOVERNMENT_PLACE_BOT_RESEARCH_PRIORITY,
+        chooseWeatherBranch: true})
+    result.push({action:Action.GOVERNMENT_PLACE_GEAR_REMOVE_SUBSIDY})
+    result.push({action:Action.GOVERNMENT_GET_RESEARCH_TOKEN,
+        alternativeActions:[{action:Action.INCREASE_TARGET_VALUE, count:5}]})
+    result.push({action:Action.GOVERNMENT_RUN_MACHINE, optional:true})
+    return result
+  }
+
+  private static buildLativsLabActionSteps(params : SaboteurActionsParams) : ActionStep[] {
+    const result : ActionStep[] = []
+    if (params.actionSlot == ActionSlot.AND) {
+      result.push({action:Action.GET_AWARD_TOKEN})
+    }
+    result.push({action:Action.LATIVS_LAB_PLACE_BOT_RESEARCH_PRIORITY,
+      chooseWeatherBranch: true})
+    result.push({action:Action.LATIVS_LAB_PAY_CHEMICAL})
+    return result
+  }
+
+  private static buildRndActionSteps(params : SaboteurActionsParams) : ActionStep[] {
+    const result : ActionStep[] = []
+    if (params.actionSlot == ActionSlot.AND) {
+      result.push({action:Action.RND_PLACE_BOT_PREVIOUS_REPORT_PRIORITY})
+      result.push({action:Action.RND_PLACE_CHEMICAL, optional:true})
+    }
+    result.push({action:Action.RND_PLACE_BOT_RESEARCH_PRIORITY,
+      chooseWeatherBranch: true})
+    result.push({action:Action.RND_PLACE_CHEMICAL})
+    result.push({action:Action.RND_GET_RESEARCH_TOKEN,
+      alternativeActions:[
+        {action:Action.INCREASE_TARGET_VALUE, count:5},
+        {action:Action.UNLOCK_CITATION}
+      ]})
+  return result
+  }
+
+  private static buildTokenSetActionSteps(params : SaboteurActionsParams) : ActionStep[] {
+    const result : ActionStep[] = []
+    // TODO: implement
+    return result
   }
 
   /**
@@ -105,65 +167,48 @@ export default class SaboteurActions {
     }
   }
 
-  private static buildSupplyActionSteps(params : SaboteurActionsParams) : ActionStep[] {
-    const result : ActionStep[] = []
-    if (params.initiativePlayer == Player.PLAYER) {
-      result.push({action:Action.CLAIM_INITIATIVE})
+  /**
+   * Adds the tokens from the chosen actions to the existing ones.
+   */
+  public processTokens(tokens : Token[]) : Token[] {
+    const result : Token[] = [...tokens]
+    const tokenSteps = this.actionSteps.filter(item => item.action==Action.GOVERNMENT_GET_RESEARCH_TOKEN
+        || item.action==Action.RND_GET_RESEARCH_TOKEN
+        || item.action==Action.GET_AWARD_TOKEN)
+        .filter(item => !isUnresolved(item))
+    for (const tokenStep of tokenSteps) {
+      if (tokenStep.action == Action.GOVERNMENT_GET_RESEARCH_TOKEN && tokenStep.weatherBranchChosen) {
+        result.push({location:Location.GOVERNMENT,weather:tokenStep.weatherBranchChosen})
+      }
+      if (tokenStep.action == Action.RND_GET_RESEARCH_TOKEN && tokenStep.weatherBranchChosen) {
+        result.push({location:Location.RND,weather:tokenStep.weatherBranchChosen})
+      }
+      if (tokenStep.action == Action.GET_AWARD_TOKEN) {
+        result.push({award:true})
+      }
+    }
+    return result
+  }
+
+  /**
+   * Checks if additional citation spaces were unlocked during this turn.
+   */
+  public processCitationUnlock(citationUnlock : Weather[]) : Weather[] {
+    // TODO: implement
+    return citationUnlock
+  }
+
+  /**
+   * Checks if the saboteurs claimed initiative during this turn.
+   */
+  public processInitiativePlayer(initiativePlayer : Player) : Player {
+    const initiativeStep = this.actionSteps.find(item => item.action==Action.CLAIM_INITIATIVE)
+    if (initiativeStep) {
+      return Player.SABOTEUR
     }
     else {
-      result.push({action:Action.INCREASE_TARGET_VALUE, count:2})
+      return initiativePlayer
     }
-    result.push({action:Action.TAKE_CHEMICAL, count:2})
-    return result
-  }
-
-  private static buildGovernmentActionSteps(params : SaboteurActionsParams) : ActionStep[] {
-    const result : ActionStep[] = []
-    if (params.actionSlot == ActionSlot.AND) {
-      result.push({action:Action.TAKE_CHEMICAL, count:1})
-      result.push({action:Action.GOVERNMENT_FLIP_SUBSIDY})
-    }
-    result.push({action:Action.GOVERNMENT_PLACE_BOT_RESEARCH_PRIORITY,
-        chooseWeatherBranch: true})
-    result.push({action:Action.GOVERNMENT_PLACE_GEAR_REMOVE_SUBSIDY})
-    result.push({action:Action.GOVERNMENT_GET_RESEARCH_TOKEN,
-        alternativeActions:[{action:Action.INCREASE_TARGET_VALUE, count:5}]})
-    result.push({action:Action.GOVERNMENT_RUN_MACHINE, optional:true})
-    return result
-  }
-
-  private static buildLativsLabActionSteps(params : SaboteurActionsParams) : ActionStep[] {
-    const result : ActionStep[] = []
-    if (params.actionSlot == ActionSlot.AND) {
-      result.push({action:Action.GET_AWARD_TOKEN})
-    }
-    result.push({action:Action.LATIVS_LAB_PLACE_BOT_RESEARCH_PRIORITY,
-      chooseWeatherBranch: true})
-    result.push({action:Action.LATIVS_LAB_PAY_CHEMICAL})
-    return result
-  }
-
-  private static buildRndActionSteps(params : SaboteurActionsParams) : ActionStep[] {
-    const result : ActionStep[] = []
-    if (params.actionSlot == ActionSlot.AND) {
-      result.push({action:Action.RND_PLACE_BOT_PREVIOUS_REPORT_PRIORITY})
-      result.push({action:Action.RND_PLACE_CHEMICAL, optional:true})
-    }
-    result.push({action:Action.RND_PLACE_BOT_RESEARCH_PRIORITY,
-      chooseWeatherBranch: true})
-    result.push({action:Action.RND_PLACE_CHEMICAL})
-    result.push({action:Action.RND_GET_RESEARCH_TOKEN,
-      alternativeActions:[
-        {action:Action.INCREASE_TARGET_VALUE, count:5},
-        {action:Action.UNLOCK_CITATION}
-      ]})
-  return result
-  }
-
-  private static buildTokenSetActionSteps(params : SaboteurActionsParams) : ActionStep[] {
-    const result : ActionStep[] = []
-    // TODO: implement
-    return result
   }
 
 }
@@ -191,7 +236,7 @@ export interface SaboteurActionsParams {
   location : Location
   actionSlot? : ActionSlot
   tokens : Token[]
-  initiativePlayer : Player
+  initiativePlayer? : Player
   weatherPriority : Weather
   selectionPriority : SelectionPriority
   citationUnlock : Weather[]
