@@ -43,8 +43,51 @@ export default class SaboteurActions {
     })
   }
 
+  /**
+   * Get list of all actions steps. The list stops when a decision is open to take alternative steps or not.
+   * If the decision was taken, the list includes the alternative steps if required.
+   */
   public get actionSteps() : readonly ActionStep[] {
-    return this._actionSteps
+    const result : ActionStep[] = []
+    for (const actionStep of this._actionSteps) {
+      if (actionStep.alternativeActions) {
+        if (actionStep.alternativeActionsTaken) {
+          // include alternative action in list if decision was to alternative
+          result.push(...actionStep.alternativeActions)
+        }
+        else {
+          result.push(actionStep)
+        }
+        if (actionStep.alternativeActionsTaken == undefined) {
+          // do not include further steps if decision is open
+          break
+        }
+      }
+      else {
+        result.push(actionStep)
+      }
+    }
+    return result
+  }
+
+  /**
+   * Checks if there are no steps left with a decision that needs to be taken.
+   */
+  public get allDecisionsResolved() : boolean {
+    return this._actionSteps.filter(
+      item => item.alternativeActions && item.alternativeActionsTaken == undefined)
+      .length==0
+  }
+
+  /**
+   * Takes a decision for the first open alternative action.
+   */
+  public takeAlternativeAction(alternativeActionsTaken : boolean) : void {
+    const unresolvedStepIndex = this._actionSteps.findIndex(
+      step => step.alternativeActions && step.alternativeActionsTaken == undefined)
+    if (unresolvedStepIndex >= 0) {
+      this._actionSteps[unresolvedStepIndex].alternativeActionsTaken = alternativeActionsTaken
+    }
   }
 
   private static buildSupplyActionSteps(params : SaboteurActionsParams) : ActionStep[] {

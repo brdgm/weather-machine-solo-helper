@@ -42,6 +42,7 @@ export default defineComponent({
   }
 })
 </script>
+
 <style lang="scss" scoped>
 .icon {
   height: 3rem;

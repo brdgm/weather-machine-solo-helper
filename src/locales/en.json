@@ -48,16 +48,17 @@
     "saboteurActions": "Saboteur's actions:",
     "actions": {
       "claimInitiative": {
-        "text": "The Saboteurs claim the initiative."
+        "text": "The Saboteurs claim the <b>initiative</b>."
       },
       "getAwardToken": {
-        "text": "The Saboteurs gain an Award token."
+        "text": "The Saboteurs gain an <b>Award token</b>."
       },
       "governmentFlipSubsidy": {
         "text": "<b>Flip</b> a blue-side up <b>Subsidy tile</b>."
       },
       "governmentGetResearchToken": {
-        "text": "GovernmentGetResearchToken"
+        "text": "The Saboteurs take a <b>Research token</b> from the chosen branch.",
+        "researchTokenAvailable": "Is a research token available?"
       },
       "governmentPlaceBotResearchPriority": {
         "text": "<b>Place a Bot</b> onto an empty Bot space of the chosen branch for which the Saboteurs have a <b>matching Chemical</b>. Move the Chemical matching the space from the Hideout to the Supply."
@@ -67,7 +68,7 @@
         "text-bottom": "<b>Remove</b> the bottommost available <b>Subsidy tile</b> from the branch. Replace it with the required <b>Machine Part</b>."
       },
       "governmentRunMachine": {
-        "text": "GovernmentRunMachine"
+        "text": "If all Bot spaces of the branch are now full, the <b>Government activates that branch</b>. Raise the Target Value by 3 for each Saboteur Bot in that branch."
       },
       "increaseTargetValue": {
         "text": "Raise the Saboteurs' <b>Target Value by {count}</b>."
@@ -221,7 +222,9 @@
     "backToHome": "Back to Home",
     "back": "Back",
     "close": "Close",
-    "reset": "Reset"
+    "select": "Select",
+    "yes": "Yes",
+    "no": "No"
   },
   "footer": {
     "credits": "Credits"

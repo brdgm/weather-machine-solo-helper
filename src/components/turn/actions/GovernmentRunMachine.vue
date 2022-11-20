@@ -1,16 +1,21 @@
 <template>
   <div>
-    <p v-html="t('turnSaboteur.actions.governmentRunMachine.text')"></p>
+    <span v-html="t('turnSaboteur.actions.governmentRunMachine.text')"></span><br/>
+    <AppIcon name="government-run-machine" class="icon mt-2"/>
   </div>
 </template>
 
 <script lang="ts">
 import ActionStep from '@/services/ActionStep'
+import AppIcon from '@/components/structure/AppIcon.vue'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   name: 'GovernmentRunMachine',
+  components: {
+    AppIcon
+  },
   setup() {
     const { t } = useI18n()
     return { t }
@@ -23,3 +28,9 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.icon {
+  height: 3rem;
+}
+</style>

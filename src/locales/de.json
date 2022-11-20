@@ -48,13 +48,17 @@
     "saboteurActions": "Aktionen der Saboteure:",
     "actions": {
       "claimInitiative": {
-        "text": "Die Saboteure beanspruchen die Initiative."
+        "text": "Die Saboteure beanspruchen die <b>Initiative</b>."
       },
       "getAwardToken": {
-        "text": "Die Saboteure erhalten ein Auszeichnungsstein."
+        "text": "Die Saboteure erhalten ein <b>Auszeichnungsstein</b>."
       },
       "governmentFlipSubsidy": {
         "text": "<b>Drehe</b> ein <b>Subventionsplättchen</b> mit der blauen Seite oben um."
+      },
+      "governmentGetResearchToken": {
+        "text": "Die Saboteure nehmen einen <b>Forschungsstein</b> aus dem gewählten Zweig.",
+        "researchTokenAvailable": "Ist ein Forschungsstein verfügbar?"
       },
       "governmentPlaceBotResearchPriority": {
         "text": "<b>Stelle einen Bot</b> auf ein leeres Botfeld des gewählten Zweigs, für den die Saboteure eine <b>passende Chemikalie</b> haben. Verschiebe dann die zum Feld passende Chemikalie aus ihrem Versteck in den Vorrat."
@@ -62,6 +66,9 @@
       "governmentPlaceGearRemoveSubsidy": {
         "text-top": "<b>Entferne</b> das verfügbare <b>Subventionsplättchen</b> aus dem Zweig, das am weitesten oben liegt. Ersetze es durch das benötigte <b>Zahnrad</b>.",
         "text-bottom": "<b>Entferne</b> das verfügbare <b>Subventionsplättchen</b> aus dem Zweig, das am weitesten unten liegt. Ersetze es durch das benötigte <b>Zahnrad</b>."
+      },
+      "governmentRunMachine": {
+        "text": "Wenn nun alle Botfelder dieses Zweiges voll sind, <b>aktiviert die Regierung diesen Zweig</b>. Erhöhe den Zielwert um 3 für jeden Saboteurbot in diesem Zweig."
       },
       "increaseTargetValue": {
         "text": "Die Saboteure erhöhen den <b>Zielwert um {count}</b>."
@@ -194,7 +201,9 @@
     "backToHome": "Zurück zum Anfang",
     "back": "Zurück",
     "close": "Schließen",
-    "select": "Wählen"
+    "select": "Wählen",
+    "yes": "Ja",
+    "no": "Nein"
   },
   "footer": {
     "credits": "Credits"

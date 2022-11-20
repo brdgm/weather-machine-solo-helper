@@ -31,15 +31,15 @@
       <li class="mt-2" v-if="saboteurActions">
         <p v-html="t('turnSaboteur.saboteurActions')"></p>
         <ol type="i">
-          <li v-for="(actionStep,index) of saboteurActions.actionSteps" :key="index" class="mb-2">
-            <component :is="actionStep.action" :action-step="actionStep"/>
+          <li v-for="(actionStep,index) of saboteurActions.actionSteps" :key="index" class="mb-3">
+            <component :is="actionStep.action" :action-step="actionStep" @alternative-action="doAlternativeAction"/>
           </li>
         </ol>
       </li>
     </template>
   </ol>
 
-  <button :disabled="!nextButtonEnabled" class="btn btn-primary btn-lg mt-2" @click="next()">
+  <button v-if="nextButtonEnabled" class="btn btn-primary btn-lg mt-2" @click="next()">
     {{t('action.next')}}
   </button>
 
@@ -130,6 +130,8 @@ export default defineComponent({
   computed: {
     nextButtonEnabled() : boolean {
       return this.selectedLocation != undefined
+          && this.saboteurActions != undefined
+          && this.saboteurActions.allDecisionsResolved
     },
     nextButtonRouteTo() : string {
       if (this.lastRoundInitiativePlayer == Player.PLAYER) {
@@ -181,6 +183,12 @@ export default defineComponent({
       this.citationUnlock = this.navigationState.citationUnlock
       this.initiativePlayer = this.navigationState.initiativePlayer
       this.saboteurActions = undefined
+    },
+    doAlternativeAction(payload:{alternativeActionsTaken:boolean}) : void {
+      if (!this.saboteurActions) {
+        return
+      }
+      this.saboteurActions.takeAlternativeAction(payload.alternativeActionsTaken)
     }
   }
 })
