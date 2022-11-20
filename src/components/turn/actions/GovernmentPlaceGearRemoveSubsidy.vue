@@ -2,6 +2,7 @@
   <div>
     <span v-html="t(`turnSaboteur.actions.governmentPlaceGearRemoveSubsidy.text-${selectionPriority}`)"></span><br/>
     <AppIcon name="government-place-gear-remove-subsidy" class="icon mt-2"/>
+    <AppIcon type="weather" :name="weatherBranch" class="icon weather ms-3 mt-2"/>
     <AppIcon type="selection-priority" :name="selectionPriority" class="icon mt-2 ms-3"/>
   </div>
 </template>
@@ -10,6 +11,7 @@
 import AppIcon from '@/components/structure/AppIcon.vue'
 import ActionStep from '@/services/ActionStep'
 import SelectionPriority from '@/services/enum/SelectionPriority'
+import Weather from '@/services/enum/Weather'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -31,6 +33,9 @@ export default defineComponent({
   computed: {
     selectionPriority() : SelectionPriority {
       return this.actionStep.selectionPriority || SelectionPriority.TOP
+    },
+    weatherBranch() : Weather {
+      return this.actionStep.weatherBranchChosen || Weather.RAIN
     }
   }
 })
@@ -39,5 +44,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .icon {
   height: 3rem;
+  &.weather {
+    height: 2.5rem;
+  }
 }
 </style>

@@ -50,15 +50,15 @@ export default class SaboteurActions {
   public get actionSteps() : readonly ActionStep[] {
     const result : ActionStep[] = []
     for (const actionStep of this._actionSteps) {
-      if (actionStep.alternativeActions) {
-        if (actionStep.alternativeActionsTaken) {
+      if (hasDecision(actionStep)) {
+        if (actionStep.alternativeActions && actionStep.alternativeActionsTaken) {
           // include alternative action in list if decision was to alternative
           result.push(...actionStep.alternativeActions)
         }
         else {
           result.push(actionStep)
         }
-        if (actionStep.alternativeActionsTaken == undefined) {
+        if (isUnresolved(actionStep)) {
           // do not include further steps if decision is open
           break
         }
@@ -74,9 +74,24 @@ export default class SaboteurActions {
    * Checks if there are no steps left with a decision that needs to be taken.
    */
   public get allDecisionsResolved() : boolean {
-    return this._actionSteps.filter(
-      item => item.alternativeActions && item.alternativeActionsTaken == undefined)
-      .length==0
+    return this._actionSteps.filter(isUnresolved).length == 0
+  }
+
+  /**
+   * Takes a decision for the first open alternative action.
+   */
+  public chooseWeatherBranch(weatherBranchChosen : Weather) : void {
+    const unresolvedStepIndex = this._actionSteps.findIndex(
+      step => step.chooseWeatherBranch && step.weatherBranchChosen == undefined)
+    if (unresolvedStepIndex >= 0) {
+      for (let i=unresolvedStepIndex; i<this._actionSteps.length; i++) {
+        const actionStep = this._actionSteps[i]
+        actionStep.weatherBranchChosen = weatherBranchChosen
+        if (actionStep.alternativeActions) {
+          actionStep.alternativeActions.forEach(step => step.weatherBranchChosen = weatherBranchChosen)
+        }
+      }
+    }
   }
 
   /**
@@ -108,7 +123,8 @@ export default class SaboteurActions {
       result.push({action:Action.TAKE_CHEMICAL, count:1})
       result.push({action:Action.GOVERNMENT_FLIP_SUBSIDY})
     }
-    result.push({action:Action.GOVERNMENT_PLACE_BOT_RESEARCH_PRIORITY})
+    result.push({action:Action.GOVERNMENT_PLACE_BOT_RESEARCH_PRIORITY,
+        chooseWeatherBranch: true})
     result.push({action:Action.GOVERNMENT_PLACE_GEAR_REMOVE_SUBSIDY})
     result.push({action:Action.GOVERNMENT_GET_RESEARCH_TOKEN,
         alternativeActions:[{action:Action.INCREASE_TARGET_VALUE, count:5}]})
@@ -121,7 +137,8 @@ export default class SaboteurActions {
     if (params.actionSlot == ActionSlot.AND) {
       result.push({action:Action.GET_AWARD_TOKEN})
     }
-    result.push({action:Action.LATIVS_LAB_PLACE_BOT_RESEARCH_PRIORITY})
+    result.push({action:Action.LATIVS_LAB_PLACE_BOT_RESEARCH_PRIORITY,
+      chooseWeatherBranch: true})
     result.push({action:Action.LATIVS_LAB_PAY_CHEMICAL})
     return result
   }
@@ -132,7 +149,8 @@ export default class SaboteurActions {
       result.push({action:Action.RND_PLACE_BOT_PREVIOUS_REPORT_PRIORITY})
       result.push({action:Action.RND_PLACE_CHEMICAL, optional:true})
     }
-    result.push({action:Action.RND_PLACE_BOT_RESEARCH_PRIORITY})
+    result.push({action:Action.RND_PLACE_BOT_RESEARCH_PRIORITY,
+      chooseWeatherBranch: true})
     result.push({action:Action.RND_PLACE_CHEMICAL})
     result.push({action:Action.RND_GET_RESEARCH_TOKEN,
       alternativeActions:[
@@ -148,6 +166,25 @@ export default class SaboteurActions {
     return result
   }
 
+}
+
+function hasDecision(actionStep: ActionStep) : boolean {
+  return actionStep.alternativeActions != undefined
+      || actionStep.chooseWeatherBranch == true
+}
+
+function isUnresolved(actionStep: ActionStep) : boolean {
+  if (actionStep.chooseWeatherBranch) {
+    if (actionStep.weatherBranchChosen == undefined) {
+      return true
+    }
+  }
+  if (actionStep.alternativeActions) {
+    if (actionStep.alternativeActionsTaken == undefined) {
+      return true
+    }
+  }
+  return false
 }
 
 export interface SaboteurActionsParams {

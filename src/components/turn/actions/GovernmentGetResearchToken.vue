@@ -1,7 +1,7 @@
 <template>
   <div>
     <span v-html="t('turnSaboteur.actions.governmentGetResearchToken.text')"></span><br/>
-    <AppIcon name="government-get-research-token" class="icon mt-2"/>
+    <ResearchTokenIcon :location="location" :weather="weatherBranch" class="icon mt-2"/>
     <div v-if="actionStep.alternativeActionsTaken == undefined" class="decision">
       <span v-html="t('turnSaboteur.actions.governmentGetResearchToken.researchTokenAvailable')"></span><br/>
       <button class="btn btn-success" @click="doAlternativeAction(false)">
@@ -16,14 +16,16 @@
 
 <script lang="ts">
 import ActionStep from '@/services/ActionStep'
-import AppIcon from '@/components/structure/AppIcon.vue'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
+import Weather from '@/services/enum/Weather'
+import ResearchTokenIcon from '@/components/structure/ResearchTokenIcon.vue'
+import Location from '@/services/enum/Location'
 
 export default defineComponent({
   name: 'GovernmentGetResearchToken',
   components: {
-    AppIcon
+    ResearchTokenIcon
   },
   emits: {
     alternativeAction(payload:{alternativeActionsTaken:boolean}) {
@@ -40,6 +42,14 @@ export default defineComponent({
       required: true
     }
   },
+  computed: {
+    location() : Location {
+      return Location.GOVERNMENT
+    },
+    weatherBranch() : Weather {
+      return this.actionStep.weatherBranchChosen || Weather.RAIN
+    }    
+  },
   methods: {
     doAlternativeAction(alternativeActionsTaken:boolean) : void {
       this.$emit('alternativeAction',{alternativeActionsTaken:alternativeActionsTaken})
@@ -50,7 +60,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .icon {
-  height: 3rem;
+  width: 3rem;
   vertical-align: top;
 }
 .decision {

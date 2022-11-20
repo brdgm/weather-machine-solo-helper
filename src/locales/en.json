@@ -61,7 +61,7 @@
         "researchTokenAvailable": "Is a research token available?"
       },
       "governmentPlaceBotResearchPriority": {
-        "text": "<b>Place a Bot</b> onto an empty Bot space of the chosen branch for which the Saboteurs have a <b>matching Chemical</b>. Move the Chemical matching the space from the Hideout to the Supply."
+        "text": "<b>Place a Bot</b> onto an empty Bot space of the chosen branch for which the Saboteurs have a <b>matching Chemical</b>. They prefer branches with available research tokens. Move the Chemical matching the space from the Hideout to the Supply."
       },
       "governmentPlaceGearRemoveSubsidy": {
         "text-top": "<b>Remove</b> the topmost available <b>Subsidy tile</b> from the branch. Replace it with the required <b>Machine Part</b>.",

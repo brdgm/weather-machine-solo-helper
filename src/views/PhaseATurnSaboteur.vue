@@ -32,7 +32,9 @@
         <p v-html="t('turnSaboteur.saboteurActions')"></p>
         <ol type="i">
           <li v-for="(actionStep,index) of saboteurActions.actionSteps" :key="index" class="mb-3">
-            <component :is="actionStep.action" :action-step="actionStep" @alternative-action="doAlternativeAction"/>
+            <component :is="actionStep.action" :action-step="actionStep"
+                @choose-weather-branch="chooseWeatherBranch"
+                @alternative-action="doAlternativeAction"/>
           </li>
         </ol>
       </li>
@@ -79,6 +81,7 @@ import RndPlaceBotResearchPriority from '@/components/turn/actions/RndPlaceBotRe
 import RndPlaceChemical from '@/components/turn/actions/RndPlaceChemical.vue'
 import TakeChemical from '@/components/turn/actions/TakeChemical.vue'
 import UnlockCitation from '@/components/turn/actions/UnlockCitation.vue'
+import Weather from '@/services/enum/Weather'
 
 export default defineComponent({
   name: 'PhaseATurnSaboteur',
@@ -183,6 +186,12 @@ export default defineComponent({
       this.citationUnlock = this.navigationState.citationUnlock
       this.initiativePlayer = this.navigationState.initiativePlayer
       this.saboteurActions = undefined
+    },
+    chooseWeatherBranch(payload:{weatherBranchChosen:Weather}) : void {
+      if (!this.saboteurActions) {
+        return
+      }
+      this.saboteurActions.chooseWeatherBranch(payload.weatherBranchChosen)
     },
     doAlternativeAction(payload:{alternativeActionsTaken:boolean}) : void {
       if (!this.saboteurActions) {

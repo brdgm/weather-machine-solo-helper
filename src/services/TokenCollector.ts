@@ -1,6 +1,7 @@
 import { Token } from "@/store"
 import getPrioritizedEnumValues from "@/util/getPrioritizedEnumValues"
 import MainLocations from "@/util/MainLocations"
+import Location from "./enum/Location"
 import Weather from "./enum/Weather"
 
 /**
@@ -60,7 +61,7 @@ export default class TokenCollector {
   /**
    * Get list of weathers wich helps most to complete a set (and then all remaining weathers based on prioritization).
    */
-  public getWeatherPrioritizationToCompleteSet() : Weather [] {
+  public getWeatherPrioritizationToCompleteSet(location : Location) : Weather [] {
     const result : Weather[] = []
 
     // check weather in priority order
@@ -69,7 +70,7 @@ export default class TokenCollector {
     // check all weathers which do not have the citation space unlocked (3 tokens required)
     for (const weather of allWeathers.filter(item => !this._citationUnlock.includes(item))) {
       const tokenSet = TokenSet.for(weather, this._tokens)
-      if (tokenSet.hasToken && tokenSet.count < 3) {
+      if (tokenSet.hasToken && tokenSet.count < 3 && !tokenSet.tokens.find(item => item.location==location)) {
         result.push(weather)
       }
     }
@@ -77,7 +78,7 @@ export default class TokenCollector {
     // then check all weathers which do have the citation space unlocked (2 tokens required)
     for (const weather of allWeathers.filter(item => this._citationUnlock.includes(item))) {
       const tokenSet = TokenSet.for(weather, this._tokens)
-      if (tokenSet.hasToken && tokenSet.count < 2) {
+      if (tokenSet.hasToken && tokenSet.count < 2 && !tokenSet.tokens.find(item => item.location==location)) {
         result.push(weather)
       }
     }

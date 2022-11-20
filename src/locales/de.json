@@ -61,7 +61,7 @@
         "researchTokenAvailable": "Ist ein Forschungsstein verfügbar?"
       },
       "governmentPlaceBotResearchPriority": {
-        "text": "<b>Stelle einen Bot</b> auf ein leeres Botfeld des gewählten Zweigs, für den die Saboteure eine <b>passende Chemikalie</b> haben. Verschiebe dann die zum Feld passende Chemikalie aus ihrem Versteck in den Vorrat."
+        "text": "<b>Stelle einen Bot</b> auf ein leeres Botfeld des gewählten Zweigs, für den die Saboteure eine <b>passende Chemikalie</b> haben. Sie bevorzugen Zweige mit verfügbaren Forschungssteinen. Verschiebe dann die zum Feld passende Chemikalie aus ihrem Versteck in den Vorrat."
       },
       "governmentPlaceGearRemoveSubsidy": {
         "text-top": "<b>Entferne</b> das verfügbare <b>Subventionsplättchen</b> aus dem Zweig, das am weitesten oben liegt. Ersetze es durch das benötigte <b>Zahnrad</b>.",

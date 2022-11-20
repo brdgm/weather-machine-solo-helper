@@ -2,15 +2,17 @@
   <div>
     <span v-html="t('turnSaboteur.actions.governmentPlaceBotResearchPriority.text')"></span><br/>
     <AppIcon name="government-place-bot" class="icon mt-2"/>
-    <WeatherPriority :weathers="weatherPriorities" class="ms-3 mt-2"/>
     <AppIcon name="pay-chemical" class="icon pay-chemcial ms-3 mt-2"/>
+    <AppIcon v-if="actionStep.weatherBranchChosen" type="weather" :name="actionStep.weatherBranchChosen" class="icon weather ms-3 mt-2"/>
+    <ChooseWeatherBranch v-else :weathers="weatherPriorities" class="mt-2" @choose-weather="chooseWeatherBranch"/>
   </div>
 </template>
 
 <script lang="ts">
 import AppIcon from '@/components/structure/AppIcon.vue'
-import WeatherPriority from '@/components/structure/WeatherPriority.vue'
+import ChooseWeatherBranch from '@/components/structure/ChooseWeatherBranch.vue'
 import ActionStep from '@/services/ActionStep'
+import Location from '@/services/enum/Location'
 import Weather from '@/services/enum/Weather'
 import TokenCollector from '@/services/TokenCollector'
 import { defineComponent, PropType } from 'vue'
@@ -20,7 +22,12 @@ export default defineComponent({
   name: 'GovernmentPlaceBotResearchPriority',
   components: {
     AppIcon,
-    WeatherPriority
+    ChooseWeatherBranch
+  },
+  emits: {
+    chooseWeatherBranch(payload:{weatherBranchChosen:Weather}) {
+      return payload != undefined
+    }
   },
   setup() {
     const { t } = useI18n()
@@ -37,7 +44,12 @@ export default defineComponent({
       const tokenCollector = new TokenCollector(this.actionStep.tokens ?? [],
           this.actionStep.citationUnlock ?? [],
           this.actionStep.weatherPriority ?? Weather.RAIN)
-      return tokenCollector.getWeatherPrioritizationToCompleteSet()
+      return tokenCollector.getWeatherPrioritizationToCompleteSet(Location.GOVERNMENT)
+    }
+  },
+  methods: {
+    chooseWeatherBranch(payload:{weather:Weather}) {
+      this.$emit('chooseWeatherBranch',{weatherBranchChosen:payload.weather})
     }
   }
 })
@@ -47,6 +59,9 @@ export default defineComponent({
 .icon {
   height: 3rem;
   &.pay-chemcial {
+    height: 2.5rem;
+  }
+  &.weather {
     height: 2.5rem;
   }
 }

@@ -11,6 +11,8 @@ export default interface ActionStep {
   weatherPriority?: Weather
   citationUnlock?: Weather[]
   tokens?: Token[]
+  chooseWeatherBranch?: boolean
+  weatherBranchChosen?: Weather
   alternativeActions?: ActionStep[]
   alternativeActionsTaken?: boolean
 }

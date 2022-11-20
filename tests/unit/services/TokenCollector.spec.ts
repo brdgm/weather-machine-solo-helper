@@ -9,7 +9,7 @@ describe('services/TokenCollector.spec', () => {
     const collector = new TokenCollector([], [], Weather.WIND)
 
     expect(collector.getValidResearchTokenSets()).to.eql([])
-    expect(collector.getWeatherPrioritizationToCompleteSet()).to.eql([Weather.WIND,Weather.SUN,Weather.FOG,Weather.SNOW,Weather.RAIN])
+    expect(collector.getWeatherPrioritizationToCompleteSet(Location.GOVERNMENT)).to.eql([Weather.WIND,Weather.SUN,Weather.FOG,Weather.SNOW,Weather.RAIN])
   })
 
   it('tooFew', () => {
@@ -19,7 +19,7 @@ describe('services/TokenCollector.spec', () => {
       ], [], Weather.RAIN)
 
     expect(collector.getValidResearchTokenSets()).to.eql([])
-    expect(collector.getWeatherPrioritizationToCompleteSet()).to.eql([Weather.SUN,Weather.RAIN,Weather.WIND,Weather.FOG,Weather.SNOW])
+    expect(collector.getWeatherPrioritizationToCompleteSet(Location.GOVERNMENT)).to.eql([Weather.RAIN,Weather.WIND,Weather.SUN,Weather.FOG,Weather.SNOW])
   })
 
   it('exactMatch', () => {
@@ -36,7 +36,7 @@ describe('services/TokenCollector.spec', () => {
         token(Location.RND, Weather.SUN)
       ]}
     ])
-    expect(collector.getWeatherPrioritizationToCompleteSet()).to.eql([Weather.RAIN,Weather.WIND,Weather.SUN,Weather.FOG,Weather.SNOW])
+    expect(collector.getWeatherPrioritizationToCompleteSet(Location.GOVERNMENT)).to.eql([Weather.RAIN,Weather.WIND,Weather.SUN,Weather.FOG,Weather.SNOW])
   })
 
   it('multiplePrioritized', () => {
@@ -60,7 +60,7 @@ describe('services/TokenCollector.spec', () => {
         award()
       ]}      
     ])
-    expect(collector.getWeatherPrioritizationToCompleteSet()).to.eql([Weather.SNOW,Weather.WIND,Weather.SUN,Weather.FOG,Weather.RAIN])
+    expect(collector.getWeatherPrioritizationToCompleteSet(Location.RND)).to.eql([Weather.SNOW,Weather.SUN,Weather.FOG,Weather.RAIN,Weather.WIND])
   })
 })
 
