@@ -171,7 +171,8 @@ export default defineComponent({
       this.selectedActionSlot = payload.actionSlot
       this.saboteurActions = new SaboteurActions({location:this.selectedLocation,
           actionSlot:this.selectedActionSlot, tokens:this.tokens, initiativePlayer:this.initiativePlayer,          
-          selectionPriority:this.previousReport.selectionPriority,weatherPriority:this.previousReport.weather})
+          selectionPriority:this.previousReport.selectionPriority,weatherPriority:this.previousReport.weather,
+          citationUnlock:this.citationUnlock})
     },
     unselectLocation() : void {
       this.selectedLocation = undefined

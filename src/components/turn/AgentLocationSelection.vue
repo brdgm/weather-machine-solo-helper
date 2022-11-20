@@ -120,9 +120,10 @@ export default defineComponent({
     margin-left: -1.5rem;
   }
   .location {
-    width: 5rem;
+    height: 6rem;
     &.alternative {
-      width: 3.5rem;
+      margin-top: 2.25rem;
+      height: 4rem;
     }
   }
   .follow-lativ {

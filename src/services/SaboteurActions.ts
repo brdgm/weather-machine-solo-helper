@@ -104,8 +104,9 @@ export default class SaboteurActions {
 export interface SaboteurActionsParams {
   location : Location
   actionSlot? : ActionSlot
-  tokens: Token[]
+  tokens : Token[]
   initiativePlayer : Player
   weatherPriority : Weather
   selectionPriority : SelectionPriority
+  citationUnlock : Weather[]
 }

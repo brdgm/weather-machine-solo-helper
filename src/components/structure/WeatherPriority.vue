@@ -1,13 +1,13 @@
 <template>
   <div class="icon-container">
-    <AppIcon type="weather" :name="weather" class="icon"/>
-    <AppIcon v-for="alternativeWeather of alternativeWeathers" :key="alternativeWeather"
-         type="weather" :name="alternativeWeather" class="icon alternative"/>
+    <AppIcon v-for="(weather,index) of allWeathers" :key="weather" type="weather" :name="weather"
+        class="icon" :class="{alternative:index > 0}"/>
   </div>
 </template>
 
 <script lang="ts">
 import Weather from '@/services/enum/Weather';
+import getPrioritizedEnumValues from '@/util/getPrioritizedEnumValues';
 import { defineComponent, PropType } from 'vue'
 import AppIcon from './AppIcon.vue'
 
@@ -23,17 +23,8 @@ export default defineComponent({
     }
   },
   computed: {
-    alternativeWeathers() : Weather[] {
-      const allWeather = Object.values(Weather)
-      const currentWeatherIndex = allWeather.indexOf(this.weather)
-      const result : Weather[] = []
-      for (let i=currentWeatherIndex+1; i<allWeather.length; i++) {
-        result.push(allWeather[i])
-      }
-      for (let i=0; i<currentWeatherIndex; i++) {
-        result.push(allWeather[i])
-      }
-      return result
+    allWeathers() : Weather[] {
+      return getPrioritizedEnumValues(Weather,this.weather)
     }
   }
 })
