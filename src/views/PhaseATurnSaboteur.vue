@@ -28,14 +28,14 @@
         <span v-html="t('turnSaboteur.moveLativ')"></span><br/>
         <LativMovement/>
       </li>
-      <li class="mt-2">
-        <p v-html="t('turnSaboteur.performNefariousPlan')"></p>
-        <NefariousPlanSupply v-if="selectedLocation=='supply'"
-            :initiative-player="initiativePlayer"
-            :selection-priority="navigationState.previousReport.selectionPriority"
-            @update-initiative-player="updateInitiativePlayer"/>
+      <li class="mt-2" v-if="saboteurActions">
+        <p v-html="t('turnSaboteur.saboteurActions')"></p>
+        <ol type="i">
+          <li v-for="(actionStep,index) of saboteurActions.actionSteps" :key="index" class="mb-2">
+            <component :is="actionStep.action" :action-step="actionStep"/>
+          </li>
+        </ol>
       </li>
-      <li class="mt-2" v-html="t('turnSaboteur.wreakHavoc')"></li>
     </template>
   </ol>
 
@@ -55,7 +55,6 @@ import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
 import TurnSidebar from '@/components/turn/TurnSidebar.vue'
 import LativMovement from '@/components/turn/LativMovement.vue'
-import NefariousPlanSupply from '@/components/turn/NefariousPlanSupply.vue'
 import Card from '@/services/Card'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import AgentLocationSelection from '@/components/turn/AgentLocationSelection.vue'
@@ -63,6 +62,10 @@ import AgentLocationIcon from '@/components/structure/AgentLocationIcon.vue'
 import Location from '@/services/enum/Location'
 import ActionSlot from '@/services/enum/ActionSlot'
 import Player from '@/services/enum/Player'
+import SaboteurActions from '@/services/SaboteurActions'
+import ClaimInitiative from '@/components/turn/actions/ClaimInitiative.vue'
+import IncreaseTargetValue from '@/components/turn/actions/IncreaseTargetValue.vue'
+import TakeChemical from '@/components/turn/actions/TakeChemical.vue'
 
 export default defineComponent({
   name: 'PhaseATurnSaboteur',
@@ -73,7 +76,9 @@ export default defineComponent({
     AppIcon,
     AgentLocationSelection,
     AgentLocationIcon,
-    NefariousPlanSupply
+    ClaimInitiative,
+    IncreaseTargetValue,
+    TakeChemical
   },
   setup() {
     const { t } = useI18n()
@@ -92,7 +97,8 @@ export default defineComponent({
   data() {
     return {
       selectedLocation: undefined as Location|undefined,
-      selectedActionSlot: undefined as ActionSlot|undefined
+      selectedActionSlot: undefined as ActionSlot|undefined,
+      saboteurActions: undefined as SaboteurActions|undefined
     }
   },
   computed: {
@@ -134,6 +140,8 @@ export default defineComponent({
     locationSelected(payload: {location:Location, actionSlot?:ActionSlot}) : void {
       this.selectedLocation = payload.location
       this.selectedActionSlot = payload.actionSlot
+      this.saboteurActions = new SaboteurActions({location:this.selectedLocation,
+        actionSlot:this.selectedActionSlot, tokens:this.tokens, initiativePlayer:this.initiativePlayer})
     },
     unselectLocation() : void {
       this.selectedLocation = undefined
@@ -141,9 +149,7 @@ export default defineComponent({
       this.tokens = this.navigationState.tokens
       this.citationUnlock = this.navigationState.citationUnlock
       this.initiativePlayer = this.navigationState.initiativePlayer
-    },
-    updateInitiativePlayer(payload:{player:Player}) : void {
-      this.initiativePlayer = payload.player
+      this.saboteurActions = undefined
     }
   }
 })

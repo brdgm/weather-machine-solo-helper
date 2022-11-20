@@ -9,7 +9,7 @@ export default function (params?: MockCardDeckParams) : CardDeck {
 }
 
 export interface MockCardDeckParams {
-  deck?: number[],
-  current?: number,
+  deck?: number[]
+  current?: number
   discard?: number[]
 }

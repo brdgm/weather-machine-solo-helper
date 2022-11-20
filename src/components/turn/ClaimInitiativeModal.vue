@@ -37,7 +37,7 @@ import { useI18n } from 'vue-i18n'
 import AppIcon from '../structure/AppIcon.vue'
 
 export default defineComponent({
-  name: 'ClaimInitiative',
+  name: 'ClaimInitiativeModal',
   components: {
     AppIcon
   },

@@ -1,27 +1,23 @@
 <template>
-  <div style="border:1px solid red;">
-    ...
+  <div>
+    <p v-html="t('turnSaboteur.actions.claimInitiative.text')"></p>
   </div>
 </template>
 
 <script lang="ts">
-import ActionSlot from '@/services/enum/ActionSlot'
+import ActionStep from '@/services/ActionStep'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
-import AppIcon from '../structure/AppIcon.vue'
 
 export default defineComponent({
-  name: 'NefariousPlanGovernment',
-  components: {
-    AppIcon
-  },
+  name: 'ClaimInitiative',
   setup() {
     const { t } = useI18n()
     return { t }
   },
   props: {
-    actionSlot: {
-      type: Object as PropType<ActionSlot>,
+    actionStep: {
+      type: Object as PropType<ActionStep>,
       required: true
     }
   }

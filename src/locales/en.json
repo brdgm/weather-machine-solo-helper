@@ -45,12 +45,17 @@
     "moveSaboteur": "Move Saboteur to action space:",
     "raiseTargetValue": "Raise Target Value for each piece left of the action space.",
     "moveLativ": "Move Lativ, if required.",
-    "performNefariousPlan": "The nefarious plan:",
-    "wreakHavoc": "Wreak havoc.",
-    "nefariousPlanSupply": {
-      "claimInitiative": "The Saboteurs claim the initiative.",
-      "raiseTargetValue": "Raise the Saboteurs' <b>Target Value by 2</b>.",
-      "takeChemicals": "The Saboteurs take <b>2 Chemicals</b>."
+    "saboteurActions": "Saboteur's actions:",
+    "actions": {
+      "claimInitiative": {
+        "text": "The Saboteurs claim the initiative."
+      },
+      "increaseTargetValue": {
+        "text": "Raise the Saboteurs' <b>Target Value by {count}</b>."
+      },
+      "takeChemicals": {
+        "text": "The Saboteurs take <b>{count} Chemical</b>. | The Saboteurs take <b>{count} Chemicals</b>."
+      }
     }
   },
   "sidebar": {

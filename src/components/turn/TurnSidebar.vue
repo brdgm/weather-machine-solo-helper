@@ -66,14 +66,14 @@
     </div>
   </div>
 
-  <ClaimInitiative :round="round" :player="player" @claimed-initiative="claimedInitiative" />
+  <ClaimInitiativeModal :round="round" :player="player" @claimed-initiative="claimedInitiative" />
 </template>
 
 <script lang="ts">
 import { Token, useStore } from '@/store'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
-import ClaimInitiative from '@/components/turn/ClaimInitiative.vue'
+import ClaimInitiativeModal from '@/components/turn/ClaimInitiativeModal.vue'
 import Player from '@/services/enum/Player'
 import Card from '@/services/Card'
 import AgentLocationIcon from '../structure/AgentLocationIcon.vue'
@@ -85,7 +85,7 @@ import { Modal } from 'bootstrap'
 export default defineComponent({
   name: 'TurnSidebar',
   components: {
-    ClaimInitiative,
+    ClaimInitiativeModal,
     AgentLocationIcon,
     AppIcon,
     ResearchTokenIcon

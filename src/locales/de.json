@@ -45,12 +45,17 @@
     "moveSaboteur": "Setze den Saboteur auf ein Aktionsfeld:",
     "raiseTargetValue": "Erhöhe den Zielwert um 1 pro Figur links von dem Aktionsfeld.",
     "moveLativ": "Bewege Lativ, wenn erforderlich.",
-    "performNefariousPlan": "Der ruchlose Plan:",
-    "wreakHavoc": "Richte Schaden an.",
-    "nefariousPlanSupply": {
-      "claimInitiative": "Die Saboteure beanspruchen die Initiative.",
-      "raiseTargetValue": "Die Saboteure erhöhen den <b>Zielwert um 2</b>.",
-      "takeChemicals": "Die Saboteure nehmen <b>2 Chemikalien</b>."
+    "saboteurActions": "Aktionen der Saboteure:",
+    "actions": {
+      "claimInitiative": {
+        "text": "Die Saboteure beanspruchen die Initiative."
+      },
+      "increaseTargetValue": {
+        "text": "Die Saboteure erhöhen den <b>Zielwert um {count}</b>."
+      },
+      "takeChemicals": {
+        "text": "Die Saboteure nehmen <b>{count} Chemikalie</b>. | Die Saboteure nehmen <b>{count} Chemikalien</b>."
+      }
     }
   },
   "sidebar": {
