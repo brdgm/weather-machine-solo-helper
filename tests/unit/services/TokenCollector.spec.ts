@@ -4,7 +4,7 @@ import TokenCollector from '@/services/TokenCollector'
 import { Token } from '@/store'
 import { expect } from 'chai'
 
-describe('services/TokenCollector.spec', () => {
+describe('services/TokenCollector', () => {
   it('empty', () => {
     const collector = new TokenCollector([], [], Weather.WIND)
 

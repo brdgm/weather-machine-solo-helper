@@ -1,5 +1,4 @@
 import { Token } from "@/store"
-import { isTemplateNode } from "@vue/compiler-core"
 import ActionStep from "./ActionStep"
 import Action from "./enum/Action"
 import ActionSlot from "./enum/ActionSlot"
