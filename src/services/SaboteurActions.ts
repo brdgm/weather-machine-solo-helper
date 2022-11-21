@@ -214,7 +214,7 @@ export default class SaboteurActions {
 
 function hasDecision(actionStep: ActionStep) : boolean {
   return actionStep.alternativeActions != undefined
-      || actionStep.chooseWeatherBranch == true
+      || (actionStep.chooseWeatherBranch != undefined && actionStep.chooseWeatherBranch)
 }
 
 function isUnresolved(actionStep: ActionStep) : boolean {
