@@ -61,7 +61,7 @@
         "researchTokenAvailable": "Is a research token available?"
       },
       "governmentPlaceBotResearchPriority": {
-        "text": "<b>Place a Bot</b> onto an empty Bot space of the chosen branch for which the Saboteurs have a <b>matching Chemical</b>. They prefer branches with available research tokens. Move the Chemical matching the space from the Hideout to the Supply."
+        "text": "<b>Place a Bot</b> onto an empty Bot space of a branch for which the Saboteurs have a <b>matching Chemical</b>. They prefer branches in the given order with available research tokens. Move the Chemical matching the space from the Hideout to the Supply."
       },
       "governmentPlaceGearRemoveSubsidy": {
         "text-top": "<b>Remove</b> the topmost available <b>Subsidy tile</b> from the branch. Replace it with the required <b>Machine Part</b>.",
@@ -73,11 +73,8 @@
       "increaseTargetValue": {
         "text": "Raise the Saboteurs' <b>Target Value by {count}</b>."
       },
-      "lativsLabPayChemical": {
-        "text": "LativsLabPayChemical"
-      },
       "lativsLabPlaceBotResearchPriority": {
-        "text": "LativsLabPlaceBotResearchPriority"
+        "text": "<b>Place a Bot</b> onto an available Bot space of a branch for which the Saboteurs have a <b>matching Chemical</b>, and with a <b>matching Experiment tile</b> in the display. They prefer branches and spaces in the given order. Lativ's Bots may be moved away. Move the Chemical matching the space from the Hideout to the Supply."
       },
       "rndGetResearchToken": {
         "text": "RndGetResearchToken"

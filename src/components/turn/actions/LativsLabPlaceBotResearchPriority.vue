@@ -1,16 +1,35 @@
 <template>
   <div>
-    <p v-html="t('turnSaboteur.actions.lativsLabPlaceBotResearchPriority.text')"></p>
+    <span v-html="t('turnSaboteur.actions.lativsLabPlaceBotResearchPriority.text')"></span><br/>
+    <AppIcon name="lativs-lab-place-bot-pay-chemical" class="icon mt-2"/>
+    <AppIcon type="selection-priority" :name="selectionPriority" class="icon selection-priority mt-2 ms-3"/>
+    <AppIcon v-if="actionStep.weatherBranchChosen" type="weather" :name="actionStep.weatherBranchChosen" class="icon weather ms-3 mt-2"/>
+    <ChooseWeatherBranch v-else :weathers="weatherPriorities" class="mt-2" @choose-weather="chooseWeatherBranch"/>
   </div>
 </template>
 
 <script lang="ts">
+import AppIcon from '@/components/structure/AppIcon.vue'
+import ChooseWeatherBranch from '@/components/structure/ChooseWeatherBranch.vue'
 import ActionStep from '@/services/ActionStep'
+import Location from '@/services/enum/Location'
+import SelectionPriority from '@/services/enum/SelectionPriority'
+import Weather from '@/services/enum/Weather'
+import TokenCollector from '@/services/TokenCollector'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
-  name: 'LativsLabPlaceBotResearchPriority',
+  name: 'GovernmentPlaceBotResearchPriority',
+  components: {
+    AppIcon,
+    ChooseWeatherBranch
+  },
+  emits: {
+    chooseWeatherBranch(payload:{weatherBranchChosen:Weather}) {
+      return payload != undefined
+    }
+  },
   setup() {
     const { t } = useI18n()
     return { t }
@@ -20,6 +39,34 @@ export default defineComponent({
       type: Object as PropType<ActionStep>,
       required: true
     }
+  },
+  computed: {
+    selectionPriority() : SelectionPriority {
+      return this.actionStep.selectionPriority || SelectionPriority.TOP
+    },
+    weatherPriorities() : Weather[] {
+      const tokenCollector = new TokenCollector(this.actionStep.tokens ?? [],
+          this.actionStep.citationUnlock ?? [],
+          this.actionStep.weatherPriority ?? Weather.RAIN)
+      return tokenCollector.getWeatherPrioritizationToCompleteSet(Location.GOVERNMENT)
+    }
+  },
+  methods: {
+    chooseWeatherBranch(payload:{weather:Weather}) {
+      this.$emit('chooseWeatherBranch',{weatherBranchChosen:payload.weather})
+    }
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.icon {
+  height: 5rem;
+  &.selection-priority {
+    height: 3rem;
+  }
+  &.weather {
+    height: 2.5rem;
+  }
+}
+</style>

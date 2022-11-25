@@ -139,7 +139,6 @@ export default defineComponent({
     width: 5rem;
     margin-right: 0.5rem;    
     text-align: center;
-    cursor: pointer;
     button {
       margin-top: 0.5rem;
     }

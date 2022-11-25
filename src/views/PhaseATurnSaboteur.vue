@@ -73,7 +73,6 @@ import GovernmentPlaceBotResearchPriority from '@/components/turn/actions/Govern
 import GovernmentPlaceGearRemoveSubsidy from '@/components/turn/actions/GovernmentPlaceGearRemoveSubsidy.vue'
 import GovernmentRunMachine from '@/components/turn/actions/GovernmentRunMachine.vue'
 import IncreaseTargetValue from '@/components/turn/actions/IncreaseTargetValue.vue'
-import LativsLabPayChemical from '@/components/turn/actions/LativsLabPayChemical.vue'
 import LativsLabPlaceBotResearchPriority from '@/components/turn/actions/LativsLabPlaceBotResearchPriority.vue'
 import RndGetResearchToken from '@/components/turn/actions/RndGetResearchToken.vue'
 import RndPlaceBotPreviousReportPriority from '@/components/turn/actions/RndPlaceBotPreviousReportPriority.vue'
@@ -100,7 +99,6 @@ export default defineComponent({
     GovernmentPlaceGearRemoveSubsidy,
     GovernmentRunMachine,
     IncreaseTargetValue,
-    LativsLabPayChemical,
     LativsLabPlaceBotResearchPriority,
     RndGetResearchToken,
     RndPlaceBotPreviousReportPriority,

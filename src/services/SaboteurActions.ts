@@ -77,7 +77,6 @@ export default class SaboteurActions {
     }
     result.push({action:Action.LATIVS_LAB_PLACE_BOT_RESEARCH_PRIORITY,
       chooseWeatherBranch: true})
-    result.push({action:Action.LATIVS_LAB_PAY_CHEMICAL})
     return result
   }
 
