@@ -110,21 +110,10 @@ export default class SaboteurActions {
   public get actionSteps() : readonly ActionStep[] {
     const result : ActionStep[] = []
     for (const actionStep of this._actionSteps) {
-      if (hasDecision(actionStep)) {
-        if (actionStep.alternativeActions && actionStep.alternativeActionsTaken) {
-          // include alternative action in list if decision was to alternative
-          result.push(...actionStep.alternativeActions)
-        }
-        else {
-          result.push(actionStep)
-        }
-        if (isUnresolved(actionStep)) {
-          // do not include further steps if decision is open
-          break
-        }
-      }
-      else {
-        result.push(actionStep)
+      result.push(actionStep)
+      if (hasDecision(actionStep) && isUnresolved(actionStep)) {
+        // do not include further steps if decision is open
+        break;
       }
     }
     return result
@@ -186,7 +175,12 @@ export default class SaboteurActions {
     const unresolvedStepIndex = this._actionSteps.findIndex(
       step => step.alternativeActions && step.alternativeActionsTaken == undefined)
     if (unresolvedStepIndex >= 0) {
-      this._actionSteps[unresolvedStepIndex].alternativeActionsTaken = alternativeActionsTaken
+      const stepToResolve = this._actionSteps[unresolvedStepIndex]
+      stepToResolve.alternativeActionsTaken = alternativeActionsTaken
+      if (alternativeActionsTaken) {
+        // insert alternative actions instead of the decision step
+        this._actionSteps.splice(unresolvedStepIndex,1,...(stepToResolve.alternativeActions ?? []))
+      }
     }
   }
 

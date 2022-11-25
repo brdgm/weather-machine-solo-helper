@@ -28,12 +28,22 @@ export default class CardDeck {
     return this._discard
   }
 
-  public get currentReport() : Card|undefined {
-    return this._current
+  public get currentReport() : Card {
+    if (this._current) {
+      return this._current
+    }
+    // fallback with error message
+    console.log('No current report.')
+    return Cards.get(1)
   }
 
-  public get previousReport() : Card|undefined {
-    return this._discard[0]
+  public get previousReport() : Card {
+    if (this._discard.length > 0) {
+      return this._discard[0]
+    }
+    // fallback with error message
+    console.log('No previous report.')
+    return Cards.get(2)
   }
 
   public get isDeckEmpty() : boolean {

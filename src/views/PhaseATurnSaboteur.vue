@@ -83,8 +83,6 @@ import RndPlaceChemical from '@/components/turn/actions/RndPlaceChemical.vue'
 import TakeChemical from '@/components/turn/actions/TakeChemical.vue'
 import UnlockCitation from '@/components/turn/actions/UnlockCitation.vue'
 import Weather from '@/services/enum/Weather'
-import CardDeck from '@/services/CardDeck'
-import Cards from '@/services/Cards'
 
 export default defineComponent({
   name: 'PhaseATurnSaboteur',
@@ -160,18 +158,10 @@ export default defineComponent({
       }
     },
     currentReport() : Card {
-      if (this.cardDeck.currentReport) {
-        return this.cardDeck.currentReport
-      }
-      console.log('No current report.')
-      return Cards.get(1)
+      return this.cardDeck.currentReport
     },
     previousReport() : Card {
-      if (this.cardDeck.previousReport) {
-        return this.cardDeck.previousReport
-      }
-      console.log('No previous report.')
-      return Cards.get(2)
+      return this.cardDeck.previousReport
     }
   },
   methods: {

@@ -1,8 +1,8 @@
 <template>
   <TurnSidebar :round="round"
       :player="navigationState.player"
-      :current-report="navigationState.currentReport"
-      :previous-report="navigationState.previousReport"
+      :current-report="navigationState.cardDeck.currentReport"
+      :previous-report="navigationState.cardDeck.previousReport"
       :reports-left="navigationState.cardDeck.deck.length"
       :tokens="tokens"
       :citation-unlock="citationUnlock"

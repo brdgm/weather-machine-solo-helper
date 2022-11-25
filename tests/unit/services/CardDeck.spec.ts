@@ -7,15 +7,12 @@ describe('services/CardDeck', () => {
 
     expect(cardDeck.deck.length, 'deck size 1').to.eq(20)
     expect(cardDeck.discard.length, 'discard size 1').to.eq(0)
-    expect(cardDeck.currentReport, 'current report 1').to.undefined
-    expect(cardDeck.previousReport, 'previous report 1').to.undefined
 
     cardDeck.draw()
 
     expect(cardDeck.deck.length, 'deck size 2').to.eq(19)
     expect(cardDeck.discard.length, 'discard size 2').to.eq(0)
     expect(cardDeck.currentReport, 'current report 2').to.not.undefined
-    expect(cardDeck.previousReport, 'previous report 2').to.undefined
 
     const lastCurrentReport = cardDeck.currentReport
     cardDeck.draw()
@@ -50,8 +47,6 @@ describe('services/CardDeck', () => {
 
     expect(cardDeck.deck.length, 'deck size initial').to.eq(7)
     expect(cardDeck.discard.length, 'discard size initial').to.eq(0)
-    expect(cardDeck.currentReport, 'current report initial').to.undefined
-    expect(cardDeck.previousReport, 'previous report initial').to.undefined
 
     // setup game, remove two cards
     const setupCards = cardDeck.setupGame(2)
