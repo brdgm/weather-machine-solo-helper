@@ -17,6 +17,7 @@ enum Action {
   RND_PLACE_BOT_RESEARCH_PRIORITY = 'rnd-place-bot-research-priority',
   RND_PLACE_CHEMICAL = 'rnd-place-chemical',
   RND_GET_RESEARCH_TOKEN = 'rnd-get-research-token',
-  UNLOCK_CITATION = 'unlock-citation'
+  UNLOCK_CITATION = 'unlock-citation',
+  DISCARD_SECURITY_REPORT = 'discard-security-report'
 }
 export default Action

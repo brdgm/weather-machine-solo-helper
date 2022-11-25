@@ -31,8 +31,8 @@ describe('util/NavigationState', () => {
     expect(navigationState.tokens.length, 'tokens').to.eq(2)
     expect(navigationState.citationUnlock.length, 'citationUnlock').to.eq(3)
 
-    expect(navigationState.currentReport.id, 'currentReport').to.eq(5)
-    expect(navigationState.previousReport.id, 'previousReport').to.eq(3)
+    expect(navigationState.cardDeck.currentReport?.id, 'currentReport').to.eq(5)
+    expect(navigationState.cardDeck.previousReport?.id, 'previousReport').to.eq(3)
 
     expect(navigationState.initiativePlayer, 'initiativePlayer').to.eq(Player.PLAYER)
     expect(navigationState.lastRoundInitiativePlayer, 'lastRoundInitiativePlayer').to.eq(Player.SABOTEUR)
@@ -49,8 +49,8 @@ describe('util/NavigationState', () => {
     expect(navigationState.tokens.length, 'tokens').to.eq(0)
     expect(navigationState.citationUnlock.length, 'citationUnlock').to.eq(0)
 
-    expect(navigationState.currentReport, 'currentReport').to.not.undefined
-    expect(navigationState.previousReport, 'previousReport').to.not.undefined
+    expect(navigationState.cardDeck.currentReport, 'currentReport').to.not.undefined
+    expect(navigationState.cardDeck.previousReport, 'previousReport').to.not.undefined
 
     expect(navigationState.initiativePlayer, 'initiativePlayer').to.eq(Player.PLAYER)
     expect(navigationState.lastRoundInitiativePlayer, 'lastRoundInitiativePlayer').to.eq(Player.PLAYER)

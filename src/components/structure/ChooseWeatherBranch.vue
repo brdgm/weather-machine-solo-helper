@@ -6,6 +6,11 @@
         {{t('action.select')}}
       </button>
     </div>
+    <div class="select">
+      <button class="btn btn-secondary btn-sm" @click="chooseWeatherNoMatch()">
+        {{t('action.notPossible')}}
+      </button>
+    </div>
   </div>
 </template>
 
@@ -23,6 +28,9 @@ export default defineComponent({
   emits: {
     chooseWeather(payload:{weather:Weather}) {
       return payload != undefined
+    },
+    chooseWeatherNoMatch() {
+      return true
     }
   },
   setup() {
@@ -38,6 +46,9 @@ export default defineComponent({
   methods: {
     chooseWeather(weather:Weather) {
       this.$emit('chooseWeather',{weather:weather})
+    },
+    chooseWeatherNoMatch() {
+      this.$emit('chooseWeatherNoMatch')
     }
   }
 })

@@ -26,24 +26,6 @@ export default class NavigationState {
     this.lastRoundInitiativePlayer = NavigationState.getInitiativePlayer(this.round-1, state)
   }
 
-  public get currentReport() : Card {
-    let card = this.cardDeck.currentReport
-    if (!card) {
-      console.log(`No current security report in round ${this.round}.`)
-      card = Cards.get(1)
-    }
-    return card
-  }
-
-  public get previousReport() : Card {
-    let card = this.cardDeck.previousReport
-    if (!card) {
-      console.log(`No previous security report in round ${this.round}.`)
-      card = Cards.get(2)
-    }
-    return card
-  }
-
   /**
    * Get current card deck.
    */

@@ -138,11 +138,11 @@ export default class SaboteurActions {
   }
 
   /**
-   * Takes a decision for the first open alternative action.
+   * Find the first weather branch selection step and choose the given weather.
    */
   public chooseWeatherBranch(weatherBranchChosen : Weather) : void {
     const unresolvedStepIndex = this._actionSteps.findIndex(
-      step => step.chooseWeatherBranch && step.weatherBranchChosen == undefined)
+      step => step.chooseWeatherBranch && (step.weatherBranchChosen == undefined))
     if (unresolvedStepIndex >= 0) {
       for (let i=unresolvedStepIndex; i<this._actionSteps.length; i++) {
         const actionStep = this._actionSteps[i]
@@ -151,6 +151,31 @@ export default class SaboteurActions {
           actionStep.alternativeActions.forEach(step => step.weatherBranchChosen = weatherBranchChosen)
         }
       }
+    }
+  }
+
+  /**
+   * Find the first weather branch selection step and mark it that no branch was matched, skipping further steps.
+   */
+  public chooseWeatherBranchNoMatchSkipSteps() : void {
+    const unresolvedStepIndex = this._actionSteps.findIndex(
+      step => step.chooseWeatherBranch && (step.weatherBranchChosen == undefined))
+    if (unresolvedStepIndex >= 0) {
+      // remove branch selection and all subsequent steps
+      const deletedSteps = this._actionSteps.splice(unresolvedStepIndex)
+      // instead insert two fallback steps
+      const newSteps : ActionStep[] = [
+        {action:Action.DISCARD_SECURITY_REPORT},
+        {action:Action.TAKE_CHEMICAL,count:1}
+      ]
+      // add common parameters to new actions steps
+      newSteps.forEach(step => {
+        step.selectionPriority = deletedSteps[0].selectionPriority
+        step.weatherPriority = deletedSteps[0].weatherPriority
+        step.citationUnlock = deletedSteps[0].citationUnlock
+        step.tokens = deletedSteps[0].tokens
+      })
+      this._actionSteps.push(...newSteps)
     }
   }
 
@@ -207,6 +232,13 @@ export default class SaboteurActions {
     else {
       return initiativePlayer
     }
+  }
+
+  /**
+   * Checks if the saboteurs claimed initiative during this turn.
+   */
+  public processDiscardSecurityReport() : boolean {
+    return this.actionSteps.find(item => item.action==Action.DISCARD_SECURITY_REPORT) != undefined
   }
 
 }

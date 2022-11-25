@@ -50,6 +50,9 @@
       "claimInitiative": {
         "text": "The Saboteurs claim the <b>initiative</b>."
       },
+      "discardSecurityReport": {
+        "text": "The Saboteurs discard one <b>Security Report</b>."
+      },
       "getAwardToken": {
         "text": "The Saboteurs gain an <b>Award token</b>."
       },
@@ -221,7 +224,8 @@
     "close": "Close",
     "select": "Select",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "notPossible": "Not possible"
   },
   "footer": {
     "credits": "Credits"

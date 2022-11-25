@@ -50,6 +50,9 @@
       "claimInitiative": {
         "text": "Die Saboteure beanspruchen die <b>Initiative</b>."
       },
+      "discardSecurityReport": {
+        "text": "Die Saboteure werfen einen <b>Security-Report</b> ab."
+      },
       "getAwardToken": {
         "text": "Die Saboteure erhalten ein <b>Auszeichnungsstein</b>."
       },
@@ -206,7 +209,8 @@
     "close": "Schließen",
     "select": "Wählen",
     "yes": "Ja",
-    "no": "Nein"
+    "no": "Nein",
+    "notPossible": "Nicht möglich"
   },
   "footer": {
     "credits": "Credits"

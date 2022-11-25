@@ -2,7 +2,7 @@ import CardDeck from '@/services/CardDeck'
 import { expect } from 'chai'
 
 describe('services/CardDeck', () => {
-  it('newRandomDraw', () => {
+  it('newRandomDrawDiscard', () => {
     const cardDeck = CardDeck.new()
 
     expect(cardDeck.deck.length, 'deck size 1').to.eq(20)
@@ -24,6 +24,14 @@ describe('services/CardDeck', () => {
     expect(cardDeck.discard.length, 'discard size 3').to.eq(1)
     expect(cardDeck.currentReport, 'current report 3').to.not.undefined
     expect(cardDeck.previousReport?.id, 'previous report 3').to.eq(lastCurrentReport?.id)
+
+    const topDeckCard = cardDeck.deck[0]
+    cardDeck.discardFromDeck()
+
+    expect(cardDeck.deck.length, 'deck size 4').to.eq(17)
+    expect(cardDeck.discard.length, 'discard size 4').to.eq(2)
+    expect(cardDeck.currentReport, 'current report 4').to.not.undefined
+    expect(cardDeck.previousReport?.id, 'previous report 4').to.eq(topDeckCard?.id)
   })
 
   it('setupGame', () => {

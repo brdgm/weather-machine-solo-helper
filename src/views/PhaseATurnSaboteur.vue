@@ -1,9 +1,9 @@
 <template>
   <TurnSidebar :round="round"
       :player="navigationState.player"
-      :current-report="navigationState.currentReport"
-      :previous-report="navigationState.previousReport"
-      :reports-left="navigationState.cardDeck.deck.length"
+      :current-report="currentReport"
+      :previous-report="previousReport"
+      :reports-left="cardDeck.deck.length"
       :tokens="tokens"
       :citation-unlock="citationUnlock"
       :initiative-player="initiativePlayer"/>
@@ -34,6 +34,7 @@
           <li v-for="(actionStep,index) of saboteurActions.actionSteps" :key="index" class="mb-3">
             <component :is="actionStep.action" :action-step="actionStep"
                 @choose-weather-branch="chooseWeatherBranch"
+                @choose-weather-branch-no-match="chooseWeatherBranchNoMatch"
                 @alternative-action="doAlternativeAction"/>
           </li>
         </ol>
@@ -66,6 +67,7 @@ import ActionSlot from '@/services/enum/ActionSlot'
 import Player from '@/services/enum/Player'
 import SaboteurActions from '@/services/SaboteurActions'
 import ClaimInitiative from '@/components/turn/actions/ClaimInitiative.vue'
+import DiscardSecurityReport from '@/components/turn/actions/DiscardSecurityReport.vue'
 import GetAwardToken from '@/components/turn/actions/GetAwardToken.vue'
 import GovernmentFlipSubsidy from '@/components/turn/actions/GovernmentFlipSubsidy.vue'
 import GovernmentGetResearchToken from '@/components/turn/actions/GovernmentGetResearchToken.vue'
@@ -81,6 +83,8 @@ import RndPlaceChemical from '@/components/turn/actions/RndPlaceChemical.vue'
 import TakeChemical from '@/components/turn/actions/TakeChemical.vue'
 import UnlockCitation from '@/components/turn/actions/UnlockCitation.vue'
 import Weather from '@/services/enum/Weather'
+import CardDeck from '@/services/CardDeck'
+import Cards from '@/services/Cards'
 
 export default defineComponent({
   name: 'PhaseATurnSaboteur',
@@ -92,6 +96,7 @@ export default defineComponent({
     AgentLocationSelection,
     AgentLocationIcon,
     ClaimInitiative,
+    DiscardSecurityReport,
     GetAwardToken,
     GovernmentFlipSubsidy,
     GovernmentGetResearchToken,
@@ -114,12 +119,13 @@ export default defineComponent({
 
     const navigationState = new NavigationState(route, store.state)
     const round = navigationState.round
+    const cardDeck = ref(navigationState.cardDeck.clone())
     const tokens = ref(navigationState.tokens)
     const citationUnlock = ref(navigationState.citationUnlock)
     const initiativePlayer = ref(navigationState.initiativePlayer)
     const lastRoundInitiativePlayer = navigationState.lastRoundInitiativePlayer
 
-    return { t, round, navigationState, tokens, citationUnlock, initiativePlayer, lastRoundInitiativePlayer }
+    return { t, round, navigationState, cardDeck, tokens, citationUnlock, initiativePlayer, lastRoundInitiativePlayer }
   },
   data() {
     return {
@@ -154,17 +160,25 @@ export default defineComponent({
       }
     },
     currentReport() : Card {
-      return this.navigationState.currentReport
+      if (this.cardDeck.currentReport) {
+        return this.cardDeck.currentReport
+      }
+      console.log('No current report.')
+      return Cards.get(1)
     },
     previousReport() : Card {
-      return this.navigationState.previousReport
+      if (this.cardDeck.previousReport) {
+        return this.cardDeck.previousReport
+      }
+      console.log('No previous report.')
+      return Cards.get(2)
     }
   },
   methods: {
     next() : void {
       this.$store.commit('claimInitiative', {round:this.round, player:this.initiativePlayer})
       this.$store.commit('round', {round: this.round+1,
-          cardDeck: this.navigationState.cardDeck.toPersistence(),
+          cardDeck: this.cardDeck.toPersistence(),
           tokens: this.tokens,
           citationUnlock: this.citationUnlock})
       this.$router.push(this.nextButtonRouteTo)
@@ -179,6 +193,7 @@ export default defineComponent({
       this.processSaboteurActions()
     },
     unselectLocation() : void {
+      this.cardDeck = this.navigationState.cardDeck.clone()
       this.selectedLocation = undefined
       this.selectedActionSlot = undefined
       this.tokens = this.navigationState.tokens
@@ -191,6 +206,10 @@ export default defineComponent({
         return
       }
       this.saboteurActions.chooseWeatherBranch(payload.weatherBranchChosen)
+      this.processSaboteurActions()
+    },
+    chooseWeatherBranchNoMatch() : void {
+      this.saboteurActions?.chooseWeatherBranchNoMatchSkipSteps()
       this.processSaboteurActions()
     },
     doAlternativeAction(payload:{alternativeActionsTaken:boolean}) : void {
@@ -207,6 +226,9 @@ export default defineComponent({
       this.tokens = this.saboteurActions.processTokens(this.navigationState.tokens)
       this.citationUnlock = this.saboteurActions.processCitationUnlock(this.navigationState.citationUnlock)
       this.initiativePlayer = this.saboteurActions.processInitiativePlayer(this.navigationState.initiativePlayer)
+      if (this.saboteurActions.processDiscardSecurityReport()) {
+        this.cardDeck.discardFromDeck()
+      }
     }
   }
 })

@@ -107,6 +107,26 @@ export default class CardDeck {
   }
 
   /**
+   * Discard one card from the deck.
+   */
+  public discardFromDeck() : void {
+    const drawnCard = this._deck.shift()
+    if (drawnCard) {
+      this._discard.unshift(drawnCard)
+    }
+    else {
+      throw new Error('No card left in deck.')
+    }
+  }
+
+  /**
+   * @returns Clone of the current card deck
+   */
+  public clone() : CardDeck {
+    return CardDeck.fromPersistence(this.toPersistence())
+  }
+
+  /**
    * Creates a shuffled new card deck.
    */
   public static new() : CardDeck {

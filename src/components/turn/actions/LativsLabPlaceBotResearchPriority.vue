@@ -4,7 +4,8 @@
     <AppIcon name="lativs-lab-place-bot-pay-chemical" class="icon mt-2"/>
     <AppIcon type="selection-priority" :name="selectionPriority" class="icon selection-priority mt-2 ms-3"/>
     <AppIcon v-if="actionStep.weatherBranchChosen" type="weather" :name="actionStep.weatherBranchChosen" class="icon weather ms-3 mt-2"/>
-    <ChooseWeatherBranch v-else :weathers="weatherPriorities" class="mt-2" @choose-weather="chooseWeatherBranch"/>
+    <ChooseWeatherBranch v-else :weathers="weatherPriorities" class="mt-2"
+        @choose-weather="chooseWeatherBranch" @choose-weather-no-match="chooseWeatherBranchNoMatch"/>
   </div>
 </template>
 
@@ -28,6 +29,9 @@ export default defineComponent({
   emits: {
     chooseWeatherBranch(payload:{weatherBranchChosen:Weather}) {
       return payload != undefined
+    },
+    chooseWeatherBranchNoMatch() {
+      return true
     }
   },
   setup() {
@@ -52,8 +56,11 @@ export default defineComponent({
     }
   },
   methods: {
-    chooseWeatherBranch(payload:{weather:Weather}) {
+    chooseWeatherBranch(payload:{weather:Weather}) : void {
       this.$emit('chooseWeatherBranch',{weatherBranchChosen:payload.weather})
+    },
+    chooseWeatherBranchNoMatch() : void {
+      this.$emit('chooseWeatherBranchNoMatch')
     }
   }
 })
