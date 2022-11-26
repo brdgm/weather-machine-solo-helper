@@ -51,11 +51,11 @@ export default defineComponent({
   },
   props: {
     agent: {
-      type: Object as PropType<Agent>,
+      type: String as PropType<Agent>,
       required: true
     },
     location: {
-      type: Object as PropType<Location>,
+      type: String as PropType<Location>,
       required: true
     }
   },

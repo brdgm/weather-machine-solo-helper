@@ -59,7 +59,7 @@ export default defineComponent({
       required: true
     },
     selectionPriority: {
-      type: Object as PropType<SelectionPriority>,
+      type: String as PropType<SelectionPriority>,
       required: true
     }
   }

@@ -114,7 +114,7 @@ export default defineComponent({
       required: true
     },
     player: {
-      type: Object as PropType<Player>,
+      type: String as PropType<Player>,
       required: true
     },
     currentReport: {
@@ -138,7 +138,7 @@ export default defineComponent({
       required: true
     },
     initiativePlayer: {
-      type: Object as PropType<Player>,
+      type: String as PropType<Player>,
       required: true
     }
   },

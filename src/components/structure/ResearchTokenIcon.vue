@@ -18,11 +18,11 @@ export default defineComponent({
   },
   props: {
     location: {
-      type: Object as PropType<Location>,
+      type: String as PropType<Location>,
       required: true
     },
     weather: {
-      type: Object as PropType<Weather>,
+      type: String as PropType<Weather>,
       required: true
     }
   }

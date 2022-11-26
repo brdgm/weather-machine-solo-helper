@@ -57,7 +57,7 @@ export default defineComponent({
       required: true
     },
     player: {
-      type: Object as PropType<Player>,
+      type: String as PropType<Player>,
       required: true
     }
   },
