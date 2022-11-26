@@ -1,12 +1,10 @@
 import Location from '@/services/enum/Location'
 import Player from '@/services/enum/Player'
-import SelectionPriority from '@/services/enum/SelectionPriority'
 import Weather from '@/services/enum/Weather'
 import SaboteurActions from '@/services/SaboteurActions'
 import { expect } from 'chai'
 import Action from '@/services/enum/Action'
 import ActionSlot from '@/services/enum/ActionSlot'
-import { Token } from '@/store'
 
 describe('services/SaboteurActions', () => {
   it('supplyAction-player', () => {
@@ -132,8 +130,7 @@ describe('services/SaboteurActions', () => {
     const saboteurActions = newSaboteurActions({location:Location.RND,actionSlot:ActionSlot.AND})
 
     expect(saboteurActions.actionSteps.map(item => item.action)).to.eql([
-      Action.RND_PLACE_BOT_PREVIOUS_REPORT_PRIORITY, Action.RND_PLACE_CHEMICAL,
-      Action.RND_PLACE_BOT_RESEARCH_PRIORITY
+      Action.RND_PLACE_BOT_PREVIOUS_REPORT_PRIORITY
     ])
     expect(saboteurActions.allDecisionsResolved).to.false
 
@@ -144,19 +141,11 @@ describe('services/SaboteurActions', () => {
 function newSaboteurActions(params : {
   location : Location
   actionSlot? : ActionSlot
-  tokens? : Token[]
   initiativePlayer? : Player
-  weatherPriority? : Weather
-  selectionPriority? : SelectionPriority
-  citationUnlock? : Weather[]
 }) {
   return new SaboteurActions({
     location: params.location,
     actionSlot: params.actionSlot,
-    tokens: params.tokens || [],
     initiativePlayer: params.initiativePlayer || Player.PLAYER,
-    weatherPriority: params.weatherPriority || Weather.RAIN,
-    selectionPriority: params.selectionPriority || SelectionPriority.TOP,
-    citationUnlock: params.citationUnlock || []
   })
 }

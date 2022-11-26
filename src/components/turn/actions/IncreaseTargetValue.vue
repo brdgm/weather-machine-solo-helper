@@ -7,6 +7,7 @@
 
 <script lang="ts">
 import TargetValue from '@/components/structure/TargetValue.vue'
+import ActionContextParams from '@/services/ActionContextParams'
 import ActionStep from '@/services/ActionStep'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -23,6 +24,10 @@ export default defineComponent({
   props: {
     actionStep: {
       type: Object as PropType<ActionStep>,
+      required: true
+    },
+    actionContextParams: {
+      type: Object as PropType<ActionContextParams>,
       required: true
     }
   }

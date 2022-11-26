@@ -13,6 +13,7 @@ import { useI18n } from 'vue-i18n'
 import TakeChemicals from '@/components/structure/TakeChemicals.vue'
 import ActionStep from '@/services/ActionStep'
 import SelectionPriority from '@/services/enum/SelectionPriority'
+import ActionContextParams from '@/services/ActionContextParams'
 
 export default defineComponent({
   name: 'TakeChemical',
@@ -27,11 +28,15 @@ export default defineComponent({
     actionStep: {
       type: Object as PropType<ActionStep>,
       required: true
+    },
+    actionContextParams: {
+      type: Object as PropType<ActionContextParams>,
+      required: true
     }
   },
   computed: {
     selectionPriority() : SelectionPriority {
-      return this.actionStep.selectionPriority || SelectionPriority.TOP
+      return this.actionContextParams.selectionPriority
     }
   }
 })

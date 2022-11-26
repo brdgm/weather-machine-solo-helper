@@ -1,11 +1,9 @@
 import { Token } from "@/store"
-import { update } from "lodash"
 import ActionStep from "./ActionStep"
 import Action from "./enum/Action"
 import ActionSlot from "./enum/ActionSlot"
 import Location from "./enum/Location"
 import Player from "./enum/Player"
-import SelectionPriority from "./enum/SelectionPriority"
 import Weather from "./enum/Weather"
 
 /**
@@ -16,7 +14,6 @@ export default class SaboteurActions {
   private _actionSteps : ActionStep[]
 
   public constructor(params : SaboteurActionsParams) {
-    // steps for main location
     switch (params.location) {
       case Location.SUPPLY:
         this._actionSteps = SaboteurActions.buildSupplyActionSteps(params)
@@ -33,15 +30,6 @@ export default class SaboteurActions {
       default:
         throw new Error(`Invalid location: ${location}`)
     }
-    // steps for wreaking havoc (changing sets of research tokens)
-    this._actionSteps.push(...SaboteurActions.buildTokenSetActionSteps(params))
-    // add common parameters to all actions steps
-    this._actionSteps.forEach(actionStep => updateActionStepRecursively(actionStep, step => {
-      step.selectionPriority = params.selectionPriority
-      step.weatherPriority = params.weatherPriority
-      step.citationUnlock = params.citationUnlock
-      step.tokens = params.tokens
-    }))
   }
 
   private static buildSupplyActionSteps(params : SaboteurActionsParams) : ActionStep[] {
@@ -109,23 +97,17 @@ export default class SaboteurActions {
   return result
   }
 
-  private static buildTokenSetActionSteps(params : SaboteurActionsParams) : ActionStep[] {
-    const result : ActionStep[] = []
-    // TODO: implement
-    return result
-  }
-
   /**
    * Get list of all actions steps. The list stops when a decision is open to take alternative steps or not.
    * If the decision was taken, the list includes the alternative steps if required.
    */
   public get actionSteps() : readonly ActionStep[] {
     const result : ActionStep[] = []
-    for (const actionStep of this._actionSteps) {
-      if (actionStep.action == Action.UNLOCK_CITATION 
-          && actionStep.weatherBranchChosen
-          && actionStep.citationUnlock?.includes(actionStep.weatherBranchChosen)) {
-        // skip citation unlock steps for weathers that are already unlocked
+    for (let i=0; i<this._actionSteps.length; i++) {
+      const actionStep = this._actionSteps[i]
+      // skip duplicate UNLOCK_CITATION step for same type of weather
+      if (actionStep.action == Action.UNLOCK_CITATION && actionStep.weatherBranchChosen
+          && this._actionSteps.findIndex(item => item.action==Action.UNLOCK_CITATION && item.weatherBranchChosen==actionStep.weatherBranchChosen) < i) {
         continue
       }
       result.push(actionStep)
@@ -171,19 +153,12 @@ export default class SaboteurActions {
       step => step.chooseWeatherBranch && (step.weatherBranchChosen == undefined))
     if (unresolvedStepIndex >= 0) {
       // remove branch selection and all subsequent steps
-      const deletedSteps = this._actionSteps.splice(unresolvedStepIndex)
+      this._actionSteps.splice(unresolvedStepIndex)
       // instead insert two fallback steps
       const newSteps : ActionStep[] = [
         {action:Action.DISCARD_SECURITY_REPORT},
         {action:Action.TAKE_CHEMICAL,count:1}
       ]
-      // add common parameters to new actions steps
-      newSteps.forEach(step => {
-        step.selectionPriority = deletedSteps[0].selectionPriority
-        step.weatherPriority = deletedSteps[0].weatherPriority
-        step.citationUnlock = deletedSteps[0].citationUnlock
-        step.tokens = deletedSteps[0].tokens
-      })
       this._actionSteps.push(...newSteps)
     }
   }
@@ -234,9 +209,8 @@ export default class SaboteurActions {
     const result : Weather[] = [...citationUnlock]
     result.push(...this.actionSteps
         .filter(item => item.action == Action.UNLOCK_CITATION)
-        .filter(item => item.weatherBranchChosen != undefined)
-        .filter(item => !citationUnlock.includes(item.weatherBranchChosen!))
-        .map(item => item.weatherBranchChosen!))
+        .filter(item => item.weatherBranchChosen != undefined && !citationUnlock.includes(item.weatherBranchChosen))
+        .map(item => item.weatherBranchChosen ?? Weather.RAIN))
     return result
   }
 
@@ -291,9 +265,5 @@ function isUnresolved(actionStep: ActionStep) : boolean {
 export interface SaboteurActionsParams {
   location : Location
   actionSlot? : ActionSlot
-  tokens : Token[]
   initiativePlayer? : Player
-  weatherPriority : Weather
-  selectionPriority : SelectionPriority
-  citationUnlock : Weather[]
 }

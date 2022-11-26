@@ -90,6 +90,9 @@
       "rndPlaceBotPreviousReportPriority": {
         "text": "<b>Stelle ein Bot</b> auf ein leeres Botfeld. Sie bevorzugen Zweige und Felder in der angegebenen Reihenfolge. Die Saboteure zahlen nicht die zusätzlichen Kosten, wenn sie ihren Bot auf dem untersten Feld des Zweiges einsetzen."
       },
+      "rndPlaceBotResearchPriority": {
+        "text": "<b>Stelle ein Bot</b> auf ein leeres Botfeld eines Zweigs, für den die Saboteure eine <b>passende Chemikalie</b> haben. Sie bevorzugen Zweige in der angegebenen Reihenfolge. Verschiebe dann die zum Feld passende Chemikalie aus ihrem Versteck in den Vorrat."
+      },
       "rndPlaceChemical": {
         "text": "Die Saboteure <b>verschieben die Chemikalie</b> von ihrem Versteck auf das gewählte Botfeld."
       },

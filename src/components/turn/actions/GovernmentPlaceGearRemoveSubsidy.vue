@@ -9,6 +9,7 @@
 
 <script lang="ts">
 import AppIcon from '@/components/structure/AppIcon.vue'
+import ActionContextParams from '@/services/ActionContextParams'
 import ActionStep from '@/services/ActionStep'
 import SelectionPriority from '@/services/enum/SelectionPriority'
 import Weather from '@/services/enum/Weather'
@@ -28,11 +29,15 @@ export default defineComponent({
     actionStep: {
       type: Object as PropType<ActionStep>,
       required: true
+    },
+    actionContextParams: {
+      type: Object as PropType<ActionContextParams>,
+      required: true
     }
   },
   computed: {
     selectionPriority() : SelectionPriority {
-      return this.actionStep.selectionPriority || SelectionPriority.TOP
+      return this.actionContextParams.selectionPriority
     },
     weatherBranch() : Weather {
       return this.actionStep.weatherBranchChosen || Weather.RAIN

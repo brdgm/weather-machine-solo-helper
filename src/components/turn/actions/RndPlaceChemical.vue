@@ -10,6 +10,7 @@ import ActionStep from '@/services/ActionStep'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppIcon from '@/components/structure/AppIcon.vue'
+import ActionContextParams from '@/services/ActionContextParams'
 
 export default defineComponent({
   name: 'RndPlaceChemical',
@@ -23,6 +24,10 @@ export default defineComponent({
   props: {
     actionStep: {
       type: Object as PropType<ActionStep>,
+      required: true
+    },
+    actionContextParams: {
+      type: Object as PropType<ActionContextParams>,
       required: true
     }
   }

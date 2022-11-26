@@ -21,6 +21,7 @@ import { useI18n } from 'vue-i18n'
 import Weather from '@/services/enum/Weather'
 import ResearchTokenIcon from '@/components/structure/ResearchTokenIcon.vue'
 import Location from '@/services/enum/Location'
+import ActionContextParams from '@/services/ActionContextParams'
 
 export default defineComponent({
   name: 'RndGetResearchToken',
@@ -39,6 +40,10 @@ export default defineComponent({
   props: {
     actionStep: {
       type: Object as PropType<ActionStep>,
+      required: true
+    },
+    actionContextParams: {
+      type: Object as PropType<ActionContextParams>,
       required: true
     }
   },

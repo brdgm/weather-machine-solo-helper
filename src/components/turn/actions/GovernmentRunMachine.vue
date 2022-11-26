@@ -10,6 +10,7 @@ import ActionStep from '@/services/ActionStep'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
+import ActionContextParams from '@/services/ActionContextParams'
 
 export default defineComponent({
   name: 'GovernmentRunMachine',
@@ -23,6 +24,10 @@ export default defineComponent({
   props: {
     actionStep: {
       type: Object as PropType<ActionStep>,
+      required: true
+    },
+    actionContextParams: {
+      type: Object as PropType<ActionContextParams>,
       required: true
     }
   }

@@ -12,6 +12,7 @@
 <script lang="ts">
 import AppIcon from '@/components/structure/AppIcon.vue'
 import ChooseWeatherBranch from '@/components/structure/ChooseWeatherBranch.vue'
+import ActionContextParams from '@/services/ActionContextParams'
 import ActionStep from '@/services/ActionStep'
 import Location from '@/services/enum/Location'
 import SelectionPriority from '@/services/enum/SelectionPriority'
@@ -42,16 +43,20 @@ export default defineComponent({
     actionStep: {
       type: Object as PropType<ActionStep>,
       required: true
+    },
+    actionContextParams: {
+      type: Object as PropType<ActionContextParams>,
+      required: true
     }
   },
   computed: {
     selectionPriority() : SelectionPriority {
-      return this.actionStep.selectionPriority || SelectionPriority.TOP
+      return this.actionContextParams.selectionPriority
     },
     weatherPriorities() : Weather[] {
-      const tokenCollector = new TokenCollector(this.actionStep.tokens ?? [],
-          this.actionStep.citationUnlock ?? [],
-          this.actionStep.weatherPriority ?? Weather.RAIN)
+      const tokenCollector = new TokenCollector(this.actionContextParams.tokens,
+          this.actionContextParams.citationUnlock,
+          this.actionContextParams.weatherPriority)
       return tokenCollector.getWeatherPrioritizationToCompleteSet(Location.GOVERNMENT)
     }
   },

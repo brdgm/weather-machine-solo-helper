@@ -13,6 +13,7 @@
 <script lang="ts">
 import AppIcon from '@/components/structure/AppIcon.vue'
 import ChooseWeatherBranch from '@/components/structure/ChooseWeatherBranch.vue'
+import ActionContextParams from '@/services/ActionContextParams'
 import ActionStep from '@/services/ActionStep'
 import SelectionPriority from '@/services/enum/SelectionPriority'
 import Weather from '@/services/enum/Weather'
@@ -42,14 +43,18 @@ export default defineComponent({
     actionStep: {
       type: Object as PropType<ActionStep>,
       required: true
+    },
+    actionContextParams: {
+      type: Object as PropType<ActionContextParams>,
+      required: true
     }
   },
   computed: {
     weatherPriorities() : Weather[] {
-      return getPrioritizedEnumValues(Weather, this.actionStep.weatherPriority ?? Weather.RAIN)
+      return getPrioritizedEnumValues(Weather, this.actionContextParams.weatherPriority)
     },
     selectionPriority() : SelectionPriority {
-      return this.actionStep.selectionPriority || SelectionPriority.TOP
+      return this.actionContextParams.selectionPriority
     }
   },
   methods: {

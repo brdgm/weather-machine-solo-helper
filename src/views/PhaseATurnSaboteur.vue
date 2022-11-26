@@ -8,7 +8,7 @@
       :citation-unlock="citationUnlock"
       :initiative-player="initiativePlayer"/>
 
-  <h1>{{t('turnSaboteur.title')}} {{citationUnlock}}</h1>
+  <h1>{{t('turnSaboteur.title')}}</h1>
 
   <ol>
     <li>
@@ -32,7 +32,9 @@
         <p v-html="t('turnSaboteur.saboteurActions')"></p>
         <ol type="i">
           <li v-for="(actionStep,index) of saboteurActions.actionSteps" :key="index" class="mb-3">
-            <component :is="actionStep.action" :action-step="actionStep"
+            <component :is="actionStep.action"
+                :action-step="actionStep"
+                :action-context-params="actionContextParams"
                 @choose-weather-branch="chooseWeatherBranch"
                 @choose-weather-branch-no-match="chooseWeatherBranchNoMatch"
                 @alternative-action="doAlternativeAction"/>
@@ -84,6 +86,7 @@ import RndPlaceChemical from '@/components/turn/actions/RndPlaceChemical.vue'
 import TakeChemical from '@/components/turn/actions/TakeChemical.vue'
 import UnlockCitation from '@/components/turn/actions/UnlockCitation.vue'
 import Weather from '@/services/enum/Weather'
+import ActionContextParams from '@/services/ActionContextParams'
 
 export default defineComponent({
   name: 'PhaseATurnSaboteur',
@@ -164,6 +167,14 @@ export default defineComponent({
     },
     previousReport() : Card {
       return this.cardDeck.previousReport
+    },
+    actionContextParams() : ActionContextParams {
+      return {
+        selectionPriority: this.previousReport.selectionPriority,
+        weatherPriority: this.previousReport.weather,
+        citationUnlock: this.citationUnlock,
+        tokens: this.tokens
+      }
     }
   },
   methods: {
@@ -179,9 +190,7 @@ export default defineComponent({
       this.selectedLocation = payload.location
       this.selectedActionSlot = payload.actionSlot
       this.saboteurActions = new SaboteurActions({location:this.selectedLocation,
-          actionSlot:this.selectedActionSlot, tokens:this.tokens, initiativePlayer:this.initiativePlayer,          
-          selectionPriority:this.previousReport.selectionPriority,weatherPriority:this.previousReport.weather,
-          citationUnlock:this.citationUnlock})
+          actionSlot:this.selectedActionSlot, initiativePlayer:this.initiativePlayer})
       this.processSaboteurActions()
     },
     unselectLocation() : void {
