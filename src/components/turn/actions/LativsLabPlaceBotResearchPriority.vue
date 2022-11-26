@@ -57,7 +57,7 @@ export default defineComponent({
       const tokenCollector = new TokenCollector(this.actionContextParams.tokens,
           this.actionContextParams.citationUnlock,
           this.actionContextParams.weatherPriority)
-      return tokenCollector.getWeatherPrioritizationToCompleteSet(Location.GOVERNMENT)
+      return tokenCollector.getWeatherPrioritizationToCompleteSet(Location.LATIVS_LAB)
     }
   },
   methods: {
