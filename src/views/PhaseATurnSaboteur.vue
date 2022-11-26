@@ -8,7 +8,7 @@
       :citation-unlock="citationUnlock"
       :initiative-player="initiativePlayer"/>
 
-  <h1>{{t('turnSaboteur.title')}}</h1>
+  <h1>{{t('turnSaboteur.title')}} {{citationUnlock}}</h1>
 
   <ol>
     <li>
@@ -79,6 +79,7 @@ import LativsLabPlaceBotResearchPriority from '@/components/turn/actions/LativsL
 import RndGetResearchToken from '@/components/turn/actions/RndGetResearchToken.vue'
 import RndPlaceBotPreviousReportPriority from '@/components/turn/actions/RndPlaceBotPreviousReportPriority.vue'
 import RndPlaceBotResearchPriority from '@/components/turn/actions/RndPlaceBotResearchPriority.vue'
+import RndChemicalAvailable from '@/components/turn/actions/RndChemicalAvailable.vue'
 import RndPlaceChemical from '@/components/turn/actions/RndPlaceChemical.vue'
 import TakeChemical from '@/components/turn/actions/TakeChemical.vue'
 import UnlockCitation from '@/components/turn/actions/UnlockCitation.vue'
@@ -106,6 +107,7 @@ export default defineComponent({
     RndGetResearchToken,
     RndPlaceBotPreviousReportPriority,
     RndPlaceBotResearchPriority,
+    RndChemicalAvailable,
     RndPlaceChemical,    
     TakeChemical,
     UnlockCitation

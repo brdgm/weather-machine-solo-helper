@@ -15,6 +15,7 @@ enum Action {
   LATIVS_LAB_PAY_CHEMICAL = 'lativs-lab-pay-chemical',
   RND_PLACE_BOT_PREVIOUS_REPORT_PRIORITY = 'rnd-place-bot-previous-report-priority',
   RND_PLACE_BOT_RESEARCH_PRIORITY = 'rnd-place-bot-research-priority',
+  RND_CHEMICAL_AVAILABLE = 'rnd-chemical-available',
   RND_PLACE_CHEMICAL = 'rnd-place-chemical',
   RND_GET_RESEARCH_TOKEN = 'rnd-get-research-token',
   UNLOCK_CITATION = 'unlock-citation',

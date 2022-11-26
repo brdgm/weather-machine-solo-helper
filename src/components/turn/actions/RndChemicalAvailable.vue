@@ -1,13 +1,13 @@
 <template>
   <div>
-    <span v-html="t('turnSaboteur.actions.rndGetResearchToken.text')"></span><br/>
-    <ResearchTokenIcon :location="location" :weather="weatherBranch" class="icon mt-2"/>
-    <div v-if="actionStep.alternativeActionsTaken == undefined" class="decision">
-      <span v-html="t('turnSaboteur.actions.rndGetResearchToken.researchTokenAvailable')"></span><br/>
-      <button class="btn btn-success" @click="doAlternativeAction(false)">
+    <span v-html="t('turnSaboteur.actions.rndChemicalAvailable.text')"></span><br/>
+    <AppIcon name="rnd-place-chemical-available" class="icon mt-2"/>
+    <div v-if="actionStep.alternativeActionsTaken == undefined" class="decision mt-2">
+      <span v-html="t('turnSaboteur.actions.rndChemicalAvailable.chemicalAvailable')"></span><br/>
+      <button class="btn btn-success" @click="doAlternativeAction(true)">
         {{t('action.yes')}}
       </button>
-      <button class="btn btn-danger" @click="doAlternativeAction(true)">
+      <button class="btn btn-danger" @click="doAlternativeAction(false)">
         {{t('action.no')}}
       </button>
     </div>
@@ -18,14 +18,12 @@
 import ActionStep from '@/services/ActionStep'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
-import Weather from '@/services/enum/Weather'
-import ResearchTokenIcon from '@/components/structure/ResearchTokenIcon.vue'
-import Location from '@/services/enum/Location'
+import AppIcon from '@/components/structure/AppIcon.vue'
 
 export default defineComponent({
-  name: 'RndGetResearchToken',
+  name: 'RndChemicalAvailable',
   components: {
-    ResearchTokenIcon
+    AppIcon
   },
   emits: {
     alternativeAction(payload:{alternativeActionsTaken:boolean}) {
@@ -41,14 +39,6 @@ export default defineComponent({
       type: Object as PropType<ActionStep>,
       required: true
     }
-  },
-  computed: {
-    location() : Location {
-      return Location.RND
-    },
-    weatherBranch() : Weather {
-      return this.actionStep.weatherBranchChosen || Weather.RAIN
-    }    
   },
   methods: {
     doAlternativeAction(alternativeActionsTaken:boolean) : void {

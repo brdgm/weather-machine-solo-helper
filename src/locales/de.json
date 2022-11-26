@@ -79,8 +79,25 @@
       "lativsLabPlaceBotResearchPriority": {
         "text": "<b>Stelle einen Bot</b> auf ein verfügbares Botfeld eines Zweigs, für den die Saboteure eine <b>passende Chemikalie</b> haben, und für welchen es ein <b>passendes Experimentplättchen</b> in der Auslage gibt. Sie bevorzugen Zweige und Felder in der angegebenen Reihenfolge. Lativ's Bots können weg bewegt werden. Verschiebe dann die zum Feld passende Chemikalie aus ihrem Versteck in den Vorrat."
       },
+      "rndChemicalAvailable": {
+        "text": "Passende Chemikalie verfügbar?",
+        "chemicalAvailable": "Haben die Saboteure eine Chemikalie, die zum gewählten Botfeld passt?"
+      },
+      "rndGetResearchToken": {
+        "text": "Die Saboteure nehmen einen <b>Forschungsstein</b> aus dem gewählten Zweig.",
+        "researchTokenAvailable": "Ist ein Forschungsstein verfügbar?"
+      },
+      "rndPlaceBotPreviousReportPriority": {
+        "text": "<b>Stelle ein Bot</b> auf ein leeres Botfeld. Sie bevorzugen Zweige und Felder in der angegebenen Reihenfolge. Die Saboteure zahlen nicht die zusätzlichen Kosten, wenn sie ihren Bot auf dem untersten Feld des Zweiges einsetzen."
+      },
+      "rndPlaceChemical": {
+        "text": "Die Saboteure <b>verschieben die Chemikalie</b> von ihrem Versteck auf das gewählte Botfeld."
+      },
       "takeChemicals": {
         "text": "Die Saboteure nehmen <b>{count} Chemikalie</b>. | Die Saboteure nehmen <b>{count} Chemikalien</b>."
+      },
+      "unlockCitation": {
+        "text": "Entferne den <b>Schlossstein</b> vom entsprechenden Zitatfeld."
       }
     }
   },

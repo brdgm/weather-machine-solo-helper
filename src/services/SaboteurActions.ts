@@ -1,4 +1,5 @@
 import { Token } from "@/store"
+import { update } from "lodash"
 import ActionStep from "./ActionStep"
 import Action from "./enum/Action"
 import ActionSlot from "./enum/ActionSlot"
@@ -35,12 +36,12 @@ export default class SaboteurActions {
     // steps for wreaking havoc (changing sets of research tokens)
     this._actionSteps.push(...SaboteurActions.buildTokenSetActionSteps(params))
     // add common parameters to all actions steps
-    this._actionSteps.forEach(step => {
+    this._actionSteps.forEach(actionStep => updateActionStepRecursively(actionStep, step => {
       step.selectionPriority = params.selectionPriority
       step.weatherPriority = params.weatherPriority
       step.citationUnlock = params.citationUnlock
       step.tokens = params.tokens
-    })
+    }))
   }
 
   private static buildSupplyActionSteps(params : SaboteurActionsParams) : ActionStep[] {
@@ -66,7 +67,7 @@ export default class SaboteurActions {
     result.push({action:Action.GOVERNMENT_PLACE_GEAR_REMOVE_SUBSIDY})
     result.push({action:Action.GOVERNMENT_GET_RESEARCH_TOKEN,
         alternativeActions:[{action:Action.INCREASE_TARGET_VALUE, count:5}]})
-    result.push({action:Action.GOVERNMENT_RUN_MACHINE, optional:true})
+    result.push({action:Action.GOVERNMENT_RUN_MACHINE})
     return result
   }
 
@@ -83,17 +84,28 @@ export default class SaboteurActions {
   private static buildRndActionSteps(params : SaboteurActionsParams) : ActionStep[] {
     const result : ActionStep[] = []
     if (params.actionSlot == ActionSlot.AND) {
-      result.push({action:Action.RND_PLACE_BOT_PREVIOUS_REPORT_PRIORITY})
-      result.push({action:Action.RND_PLACE_CHEMICAL, optional:true})
+      result.push({action:Action.RND_PLACE_BOT_PREVIOUS_REPORT_PRIORITY,
+        chooseWeatherBranch: true})
+      result.push({action:Action.RND_CHEMICAL_AVAILABLE,
+        alternativeActions:[
+          {action:Action.RND_PLACE_CHEMICAL},
+          {action:Action.RND_GET_RESEARCH_TOKEN,
+            alternativeActions:[
+              {action:Action.INCREASE_TARGET_VALUE, count:5},
+              {action:Action.UNLOCK_CITATION}
+            ]
+          }
+        ]
+      })
     }
     result.push({action:Action.RND_PLACE_BOT_RESEARCH_PRIORITY,
       chooseWeatherBranch: true})
-    result.push({action:Action.RND_PLACE_CHEMICAL})
     result.push({action:Action.RND_GET_RESEARCH_TOKEN,
       alternativeActions:[
         {action:Action.INCREASE_TARGET_VALUE, count:5},
         {action:Action.UNLOCK_CITATION}
-      ]})
+      ]
+    })
   return result
   }
 
@@ -110,10 +122,16 @@ export default class SaboteurActions {
   public get actionSteps() : readonly ActionStep[] {
     const result : ActionStep[] = []
     for (const actionStep of this._actionSteps) {
+      if (actionStep.action == Action.UNLOCK_CITATION 
+          && actionStep.weatherBranchChosen
+          && actionStep.citationUnlock?.includes(actionStep.weatherBranchChosen)) {
+        // skip citation unlock steps for weathers that are already unlocked
+        continue
+      }
       result.push(actionStep)
       if (hasDecision(actionStep) && isUnresolved(actionStep)) {
         // do not include further steps if decision is open
-        break;
+        break
       }
     }
     return result
@@ -133,12 +151,14 @@ export default class SaboteurActions {
     const unresolvedStepIndex = this._actionSteps.findIndex(
       step => step.chooseWeatherBranch && (step.weatherBranchChosen == undefined))
     if (unresolvedStepIndex >= 0) {
+      // apply chosen weather to weather decision step, and to all subsequent steps
       for (let i=unresolvedStepIndex; i<this._actionSteps.length; i++) {
         const actionStep = this._actionSteps[i]
-        actionStep.weatherBranchChosen = weatherBranchChosen
-        if (actionStep.alternativeActions) {
-          actionStep.alternativeActions.forEach(step => step.weatherBranchChosen = weatherBranchChosen)
+        if (actionStep.chooseWeatherBranch && i>unresolvedStepIndex) {
+          // stop at next action that requires to choose a weather
+          break;
         }
+        updateActionStepRecursively(actionStep, step => step.weatherBranchChosen = weatherBranchChosen)
       }
     }
   }
@@ -211,8 +231,13 @@ export default class SaboteurActions {
    * Checks if additional citation spaces were unlocked during this turn.
    */
   public processCitationUnlock(citationUnlock : Weather[]) : Weather[] {
-    // TODO: implement
-    return citationUnlock
+    const result : Weather[] = [...citationUnlock]
+    result.push(...this.actionSteps
+        .filter(item => item.action == Action.UNLOCK_CITATION)
+        .filter(item => item.weatherBranchChosen != undefined)
+        .filter(item => !citationUnlock.includes(item.weatherBranchChosen!))
+        .map(item => item.weatherBranchChosen!))
+    return result
   }
 
   /**
@@ -235,6 +260,13 @@ export default class SaboteurActions {
     return this.actionSteps.find(item => item.action==Action.DISCARD_SECURITY_REPORT) != undefined
   }
 
+}
+
+function updateActionStepRecursively(actionStep : ActionStep, update: (step: ActionStep) => void) {
+  update(actionStep)
+  if (actionStep.alternativeActions) {
+    actionStep.alternativeActions.forEach(step => updateActionStepRecursively(step, update))
+  }
 }
 
 function hasDecision(actionStep: ActionStep) : boolean {

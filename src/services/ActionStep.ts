@@ -6,7 +6,6 @@ import Weather from "./enum/Weather"
 export default interface ActionStep {
   action: Action
   count?: number
-  optional?: boolean
   selectionPriority?: SelectionPriority
   weatherPriority?: Weather
   citationUnlock?: Weather[]

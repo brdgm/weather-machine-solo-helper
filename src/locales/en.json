@@ -79,23 +79,28 @@
       "lativsLabPlaceBotResearchPriority": {
         "text": "<b>Place a Bot</b> onto an available Bot space of a branch for which the Saboteurs have a <b>matching Chemical</b>, and with a <b>matching Experiment tile</b> in the display. They prefer branches and spaces in the given order. Lativ's Bots may be moved away. Move the Chemical matching the space from the Hideout to the Supply."
       },
+      "rndChemicalAvailable": {
+        "text": "Matching Chemical available?",
+        "chemicalAvailable": "Do the Saboteurs have a Chemical matching with the chosen Bot space?"
+      },
       "rndGetResearchToken": {
-        "text": "RndGetResearchToken"
+        "text": "The Saboteurs take a <b>Research token</b> from the chosen branch.",
+        "researchTokenAvailable": "Is a research token available?"
       },
       "rndPlaceBotPreviousReportPriority": {
-        "text": "RndPlaceBotPreviousReportPriority"
+        "text": "<b>Place a Bot</b> on an empty Bot space of a branch for which the Saboteurs have a <b>matching Chemical</b>. They prefer branches and spaces in the given order. The Saboteurs do not pay the additional cost if they place their Bot at the bottom space of the branch."
       },
       "rndPlaceBotResearchPriority": {
-        "text": "RndPlaceBotResearchPriority"
+        "text": "<b>Place a Bot</b> onto an empty Bot space of a branch for which the Saboteurs have a <b>matching Chemical</b>. They prefer branches in the given order with available research tokens. Move the Chemical matching the space from the Hideout to the Supply."
       },
       "rndPlaceChemical": {
-        "text": "RndPlaceChemical"
+        "text": "The Saboteurs <b>move a Chemical</b> from their hideout to the chosen Bot space."
       },
       "takeChemicals": {
         "text": "The Saboteurs take <b>{count} Chemical</b>. | The Saboteurs take <b>{count} Chemicals</b>."
       },
       "unlockCitation": {
-        "text": "UnlockCitation"
+        "text": "Remove the <b>Lock token</b> from the corresponding Citation space."
       }
     }
   },

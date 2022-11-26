@@ -6,7 +6,7 @@
         {{t('action.select')}}
       </button>
     </div>
-    <div class="select">
+    <div class="select" v-if="!hideNotPossible">
       <button class="btn btn-secondary btn-sm" @click="chooseWeatherNoMatch()">
         {{t('action.notPossible')}}
       </button>
@@ -40,6 +40,10 @@ export default defineComponent({
   props: {
     weathers: {
       type: Object as PropType<Weather[]>,
+      required: false
+    },
+    hideNotPossible: {
+      type: Boolean,
       required: false
     }
   },
