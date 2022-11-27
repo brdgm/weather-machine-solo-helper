@@ -50,8 +50,14 @@
       "claimInitiative": {
         "text": "Die Saboteure beanspruchen die <b>Initiative</b>."
       },
+      "discardResearchTokens": {
+        "text": "Die Saboteure werfen ein Set aus <b>{count} Forschungssteinen</b> ab, entferne sie aus dem Spiel."
+      },
       "discardSecurityReport": {
-        "text": "Die Saboteure werfen einen <b>Security-Report</b> ab."
+        "text": "Die Saboteure werfen den obersten <b>Security-Report</b> vom Stapel ab."
+      },
+      "drawSecurityReport": {
+        "text": "Die Saboteure werfen den aktuellen <b>Security-Report</b> ab und ziehen einen neuen."
       },
       "getAwardToken": {
         "text": "Die Saboteure erhalten ein <b>Auszeichnungsstein</b>."
@@ -76,6 +82,10 @@
       "increaseTargetValue": {
         "text": "Die Saboteure erhöhen den <b>Zielwert um {count}</b>."
       },
+      "increaseTargetValueOrDiscardSecurityReport": {
+        "text": "Entweder erhöhen die Saboteure den <b>Zielwert um {count}</b> oder werfen den obersten Security-Report form Stapel ab.",
+        "increaseTargetValueOrDiscardSecurityReport": "Zielwert der Saboteure erhöhen? Ansonsten wird ein Security-Report abgeworfen."
+      },
       "lativsLabPlaceBotResearchPriority": {
         "text": "<b>Stelle einen Bot</b> auf ein verfügbares Botfeld eines Zweigs, für den die Saboteure eine <b>passende Chemikalie</b> haben, und für welchen es ein <b>passendes Experimentplättchen</b> in der Auslage gibt. Sie bevorzugen Zweige und Felder in der angegebenen Reihenfolge. Lativ's Bots können weg bewegt werden. Verschiebe dann die zum Feld passende Chemikalie aus ihrem Versteck in den Vorrat."
       },
@@ -98,6 +108,9 @@
       },
       "takeChemicals": {
         "text": "Die Saboteure nehmen <b>{count} Chemikalie</b>. | Die Saboteure nehmen <b>{count} Chemikalien</b>."
+      },
+      "takeExtremeWeatherTile": {
+        "text": "Nimm das oberste, zum Wetter passende <b>Extremwetterplättchen</b> vom Stapel und lege es auf das entsprechende Feld in F&E. Ein bereits liegendes Plättchen wird überdeckt. Alle Durchbruchmarker auf dem liegenden Plättchen werden zurück in die Schachtel gelegt und alle Regierungsmarker zurück in den Regierungsbereich."
       },
       "unlockCitation": {
         "text": "Entferne den <b>Schlossstein</b> vom entsprechenden Zitatfeld."

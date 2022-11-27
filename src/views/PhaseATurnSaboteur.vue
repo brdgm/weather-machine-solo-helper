@@ -65,10 +65,13 @@ import AppIcon from '@/components/structure/AppIcon.vue'
 import AgentLocationSelection from '@/components/turn/AgentLocationSelection.vue'
 import AgentLocationIcon from '@/components/structure/AgentLocationIcon.vue'
 import Location from '@/services/enum/Location'
+import Action from '@/services/enum/Action'
 import ActionSlot from '@/services/enum/ActionSlot'
 import Player from '@/services/enum/Player'
 import SaboteurActions from '@/services/SaboteurActions'
 import ClaimInitiative from '@/components/turn/actions/ClaimInitiative.vue'
+import DiscardResearchTokens from '@/components/turn/actions/DiscardResearchTokens.vue'
+import DrawSecurityReport from '@/components/turn/actions/DrawSecurityReport.vue'
 import DiscardSecurityReport from '@/components/turn/actions/DiscardSecurityReport.vue'
 import GetAwardToken from '@/components/turn/actions/GetAwardToken.vue'
 import GovernmentFlipSubsidy from '@/components/turn/actions/GovernmentFlipSubsidy.vue'
@@ -77,6 +80,7 @@ import GovernmentPlaceBotResearchPriority from '@/components/turn/actions/Govern
 import GovernmentPlaceGearRemoveSubsidy from '@/components/turn/actions/GovernmentPlaceGearRemoveSubsidy.vue'
 import GovernmentRunMachine from '@/components/turn/actions/GovernmentRunMachine.vue'
 import IncreaseTargetValue from '@/components/turn/actions/IncreaseTargetValue.vue'
+import IncreaseTargetValueOrDiscardSecurityReport from '@/components/turn/actions/IncreaseTargetValueOrDiscardSecurityReport.vue'
 import LativsLabPlaceBotResearchPriority from '@/components/turn/actions/LativsLabPlaceBotResearchPriority.vue'
 import RndGetResearchToken from '@/components/turn/actions/RndGetResearchToken.vue'
 import RndPlaceBotPreviousReportPriority from '@/components/turn/actions/RndPlaceBotPreviousReportPriority.vue'
@@ -84,9 +88,11 @@ import RndPlaceBotResearchPriority from '@/components/turn/actions/RndPlaceBotRe
 import RndChemicalAvailable from '@/components/turn/actions/RndChemicalAvailable.vue'
 import RndPlaceChemical from '@/components/turn/actions/RndPlaceChemical.vue'
 import TakeChemical from '@/components/turn/actions/TakeChemical.vue'
+import TakeExtremeWeatherTile from '@/components/turn/actions/TakeExtremeWeatherTile.vue'
 import UnlockCitation from '@/components/turn/actions/UnlockCitation.vue'
 import Weather from '@/services/enum/Weather'
 import ActionContextParams from '@/services/ActionContextParams'
+import TokenCollector from '@/services/TokenCollector'
 
 export default defineComponent({
   name: 'PhaseATurnSaboteur',
@@ -98,6 +104,8 @@ export default defineComponent({
     AgentLocationSelection,
     AgentLocationIcon,
     ClaimInitiative,
+    DiscardResearchTokens,
+    DrawSecurityReport,
     DiscardSecurityReport,
     GetAwardToken,
     GovernmentFlipSubsidy,
@@ -106,6 +114,7 @@ export default defineComponent({
     GovernmentPlaceGearRemoveSubsidy,
     GovernmentRunMachine,
     IncreaseTargetValue,
+    IncreaseTargetValueOrDiscardSecurityReport,
     LativsLabPlaceBotResearchPriority,
     RndGetResearchToken,
     RndPlaceBotPreviousReportPriority,
@@ -113,6 +122,7 @@ export default defineComponent({
     RndChemicalAvailable,
     RndPlaceChemical,    
     TakeChemical,
+    TakeExtremeWeatherTile,
     UnlockCitation
   },
   setup() {
@@ -134,7 +144,9 @@ export default defineComponent({
     return {
       selectedLocation: undefined as Location|undefined,
       selectedActionSlot: undefined as ActionSlot|undefined,
-      saboteurActions: undefined as SaboteurActions|undefined
+      saboteurActions: undefined as SaboteurActions|undefined,
+      endOfTurnDrawSecurityReportAdded: false,
+      endOfTurnResearchTokenSetAdded: false
     }
   },
   computed: {
@@ -202,6 +214,8 @@ export default defineComponent({
       this.citationUnlock = this.navigationState.citationUnlock
       this.initiativePlayer = this.navigationState.initiativePlayer
       this.saboteurActions = undefined
+      this.endOfTurnDrawSecurityReportAdded = false
+      this.endOfTurnResearchTokenSetAdded = false
     },
     chooseWeatherBranch(payload:{weatherBranchChosen:Weather}) : void {
       if (!this.saboteurActions) {
@@ -228,8 +242,33 @@ export default defineComponent({
       this.tokens = this.saboteurActions.processTokens(this.navigationState.tokens)
       this.citationUnlock = this.saboteurActions.processCitationUnlock(this.navigationState.citationUnlock)
       this.initiativePlayer = this.saboteurActions.processInitiativePlayer(this.navigationState.initiativePlayer)
-      if (this.saboteurActions.processDiscardSecurityReport()) {
-        this.cardDeck.discardFromDeck()
+      this.cardDeck = this.navigationState.cardDeck.clone()
+      this.saboteurActions.processSecurityReport().forEach(action => {
+        if (action==Action.DRAW_SECURITY_REPORT) {
+          this.cardDeck.draw()
+        }
+        else if (action==Action.DISCARD_SECURITY_REPORT) {
+          this.cardDeck.discardFromDeck()
+        }
+      })
+      if (!this.saboteurActions.allDecisionsResolved) {
+        return
+      }
+      if (!this.endOfTurnDrawSecurityReportAdded) {
+        // draw next security report card
+        this.saboteurActions.addDrawSecurityReport()
+        this.endOfTurnDrawSecurityReportAdded = true
+      }
+      if (!this.endOfTurnResearchTokenSetAdded) {
+        // check if saboteurs can complete one token set
+        const tokenCollector = new TokenCollector(this.tokens, this.citationUnlock, this.currentReport.weather)
+        const researchTokenSets = tokenCollector.getValidResearchTokenSets()
+        if (researchTokenSets.length > 0) {
+          const researchTokenSet = researchTokenSets[0]
+          this.saboteurActions.addResearchTokenSetActions(researchTokenSet)
+          this.endOfTurnResearchTokenSetAdded = true
+          this.processSaboteurActions()
+        }
       }
     }
   }

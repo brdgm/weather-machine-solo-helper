@@ -51,7 +51,7 @@ export default class TokenCollector {
       const requiredAwardTokens = requiredTokensPerSet - tokenSet.count
       if (tokens.filter(item => item.award).length >= requiredAwardTokens) {
         tokenSet.fillWithAwardTokens(requiredAwardTokens)
-        tokenSet.removeMatchingTokensFrom(tokens)
+        TokenCollector.removeMatchingTokensFrom(tokens, tokenSet.tokens)
         result.push(tokenSet.toResearchTokenSet())
       }
     }
@@ -92,7 +92,21 @@ export default class TokenCollector {
 
     return result
   }
-  
+
+  /**
+   * Remove matching token in the given list of all token.s
+   * @param allTokens All tokens to remove from
+   * @param tokensToRemove Tokens to remove
+   */
+  static removeMatchingTokensFrom(allTokens : Token[], tokensToRemove : Token[]) {
+    for (const token of tokensToRemove) {
+      const index = allTokens.findIndex(item => item.award==token.award && item.location==token.location && item.weather==token.weather)
+      if (index >= 0) {
+        allTokens.splice(index, 1)
+      }
+    }
+  }
+
 }
 
 class TokenSet {
@@ -124,18 +138,6 @@ class TokenSet {
   fillWithAwardTokens(count : number) : void {
     for (let i=0; i<count; i++) {
       this.tokens.push({award:true})
-    }
-  }
-
-  /**
-   * Remove tokens matching this set in the given list of tokens.
-   */
-  removeMatchingTokensFrom(tokens : Token[]) {
-    for (const token of this.tokens) {
-      const index = tokens.findIndex(item => item.award==token.award && item.location==token.location && item.weather==token.weather)
-      if (index >= 0) {
-        tokens.splice(index, 1)
-      }
     }
   }
 

@@ -4,6 +4,7 @@
 enum Action {
   CLAIM_INITIATIVE = 'claim-initiative',
   INCREASE_TARGET_VALUE = 'increase-target-value',
+  INCREASE_TARGET_VALUE_OR_DISCARD_SECURITY_REPORT = 'increase-target-value-or-discard-security-report',
   TAKE_CHEMICAL = 'take-chemical',
   GOVERNMENT_FLIP_SUBSIDY = 'government-flip-subsidy',
   GOVERNMENT_PLACE_BOT_RESEARCH_PRIORITY = 'government-place-bot-research-priority',
@@ -19,6 +20,9 @@ enum Action {
   RND_PLACE_CHEMICAL = 'rnd-place-chemical',
   RND_GET_RESEARCH_TOKEN = 'rnd-get-research-token',
   UNLOCK_CITATION = 'unlock-citation',
-  DISCARD_SECURITY_REPORT = 'discard-security-report'
+  DISCARD_SECURITY_REPORT = 'discard-security-report',
+  DRAW_SECURITY_REPORT = 'draw-security-report',
+  DISCARD_RESEARCH_TOKENS = 'discard-research-tokens',
+  TAKE_EXTREME_WEATHER_TILE = 'take-extreme-weather-tile'
 }
 export default Action

@@ -5,6 +5,7 @@ import ActionSlot from "./enum/ActionSlot"
 import Location from "./enum/Location"
 import Player from "./enum/Player"
 import Weather from "./enum/Weather"
+import TokenCollector, { ResearchTokenSet } from "./TokenCollector"
 
 /**
  * Determines the saboteurs actions after taking the action location.
@@ -202,6 +203,10 @@ export default class SaboteurActions {
         result.push({award:true})
       }
     }
+    const discardResearchTokensStep = this.actionSteps.find(item => item.action==Action.DISCARD_RESEARCH_TOKENS)
+    if (discardResearchTokensStep && discardResearchTokensStep.researchTokenSet) {
+      TokenCollector.removeMatchingTokensFrom(result, discardResearchTokensStep.researchTokenSet.tokens)
+    }
     return result
   }
 
@@ -231,10 +236,42 @@ export default class SaboteurActions {
   }
 
   /**
-   * Checks if the saboteurs claimed initiative during this turn.
+   * Gets all actions related to drawing or discarding security reports.
    */
-  public processDiscardSecurityReport() : boolean {
-    return this.actionSteps.find(item => item.action==Action.DISCARD_SECURITY_REPORT) != undefined
+  public processSecurityReport() : Action[] {
+    return this.actionSteps
+        .filter(item => item.action==Action.DISCARD_SECURITY_REPORT || item.action==Action.DRAW_SECURITY_REPORT)
+        .map(item => item.action)
+  }
+
+  /**
+   * Add discard security report action for end of turn
+   */
+  public addDrawSecurityReport() : void {
+    this._actionSteps.push({action:Action.DRAW_SECURITY_REPORT})
+  }
+
+  /**
+   * Generate list of actions if the saboteurs have a valid research token set.
+   * @param researchTokenSet Research token set
+   * @returns Actions
+   */
+  public addResearchTokenSetActions(researchTokenSet : ResearchTokenSet) : void {
+    if (researchTokenSet.tokens.length == 3) {
+      this._actionSteps.push(...[
+        {action:Action.DISCARD_RESEARCH_TOKENS,weatherBranchChosen:researchTokenSet.weather,researchTokenSet:researchTokenSet},
+        {action:Action.TAKE_EXTREME_WEATHER_TILE,weatherBranchChosen:researchTokenSet.weather},
+        {action:Action.DISCARD_SECURITY_REPORT},
+        {action:Action.UNLOCK_CITATION,weatherBranchChosen:researchTokenSet.weather}
+      ])
+    }
+    else {
+      this._actionSteps.push(...[
+        {action:Action.DISCARD_RESEARCH_TOKENS,weatherBranchChosen:researchTokenSet.weather,researchTokenSet:researchTokenSet},
+        {action:Action.INCREASE_TARGET_VALUE_OR_DISCARD_SECURITY_REPORT,count:5,
+          alternativeActions:[{action:Action.DISCARD_SECURITY_REPORT}]}
+      ])
+    }
   }
 
 }

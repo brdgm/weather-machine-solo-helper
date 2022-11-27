@@ -13,11 +13,12 @@ describe('services/SaboteurActions', () => {
     expect(saboteurActions.actionSteps.map(item => item.action)).to.eql([
       Action.CLAIM_INITIATIVE, Action.TAKE_CHEMICAL
     ])
+    expect(saboteurActions.allDecisionsResolved).to.true
 
     expect(saboteurActions.processTokens([])).to.eql([])
     expect(saboteurActions.processCitationUnlock([])).to.eql([])
     expect(saboteurActions.processInitiativePlayer(Player.PLAYER)).to.eq(Player.SABOTEUR)
-    expect(saboteurActions.processDiscardSecurityReport()).to.false
+    expect(saboteurActions.processSecurityReport()).to.eql([])
   })
 
   it('supplyAction-saboteur', () => {
@@ -26,11 +27,92 @@ describe('services/SaboteurActions', () => {
     expect(saboteurActions.actionSteps.map(item => item.action)).to.eql([
       Action.INCREASE_TARGET_VALUE, Action.TAKE_CHEMICAL
     ])
+    expect(saboteurActions.allDecisionsResolved).to.true
 
     expect(saboteurActions.processTokens([])).to.eql([])
     expect(saboteurActions.processCitationUnlock([])).to.eql([])
     expect(saboteurActions.processInitiativePlayer(Player.SABOTEUR)).to.eq(Player.SABOTEUR)
-    expect(saboteurActions.processDiscardSecurityReport()).to.false
+    expect(saboteurActions.processSecurityReport()).to.eql([])
+  })
+
+  it('supplyAction-exchangeTokens-3', () => {
+    const saboteurActions = newSaboteurActions({location:Location.SUPPLY,initiativePlayer:Player.SABOTEUR})
+
+    expect(saboteurActions.actionSteps.map(item => item.action)).to.eql([
+      Action.INCREASE_TARGET_VALUE, Action.TAKE_CHEMICAL
+    ])
+    expect(saboteurActions.allDecisionsResolved).to.true
+
+    saboteurActions.addDrawSecurityReport()
+    saboteurActions.addResearchTokenSetActions({
+      weather: Weather.SUN,
+      tokens: [
+        {location:Location.GOVERNMENT,weather:Weather.SUN},
+        {location:Location.LATIVS_LAB,weather:Weather.SUN},
+        {award:true}
+      ]
+    })
+    expect(saboteurActions.actionSteps.map(item => item.action)).to.eql([
+      Action.INCREASE_TARGET_VALUE, Action.TAKE_CHEMICAL,
+      Action.DRAW_SECURITY_REPORT,
+      Action.DISCARD_RESEARCH_TOKENS,Action.TAKE_EXTREME_WEATHER_TILE,
+      Action.DISCARD_SECURITY_REPORT,Action.UNLOCK_CITATION
+    ])
+    expect(saboteurActions.allDecisionsResolved).to.true
+
+    expect(saboteurActions.processTokens([
+      {location:Location.RND,weather:Weather.RAIN},
+      {location:Location.GOVERNMENT,weather:Weather.SUN},
+      {location:Location.LATIVS_LAB,weather:Weather.SUN},
+      {award:true}
+    ])).to.eql([{location:Location.RND,weather:Weather.RAIN}])
+    expect(saboteurActions.processCitationUnlock([])).to.eql([Weather.SUN])
+    expect(saboteurActions.processInitiativePlayer(Player.SABOTEUR)).to.eq(Player.SABOTEUR)
+    expect(saboteurActions.processSecurityReport()).to.eql([Action.DRAW_SECURITY_REPORT,Action.DISCARD_SECURITY_REPORT])
+  })
+
+  it('supplyAction-exchangeTokens-2', () => {
+    const saboteurActions = newSaboteurActions({location:Location.SUPPLY,initiativePlayer:Player.SABOTEUR})
+
+    expect(saboteurActions.actionSteps.map(item => item.action)).to.eql([
+      Action.INCREASE_TARGET_VALUE, Action.TAKE_CHEMICAL
+    ])
+    expect(saboteurActions.allDecisionsResolved).to.true
+
+    saboteurActions.addDrawSecurityReport()
+    saboteurActions.addResearchTokenSetActions({
+      weather: Weather.SUN,
+      tokens: [
+        {location:Location.GOVERNMENT,weather:Weather.SUN},
+        {location:Location.LATIVS_LAB,weather:Weather.SUN}
+      ]
+    })
+    expect(saboteurActions.actionSteps.map(item => item.action)).to.eql([
+      Action.INCREASE_TARGET_VALUE, Action.TAKE_CHEMICAL,
+      Action.DRAW_SECURITY_REPORT,
+      Action.DISCARD_RESEARCH_TOKENS,
+      Action.INCREASE_TARGET_VALUE_OR_DISCARD_SECURITY_REPORT
+    ])
+    expect(saboteurActions.allDecisionsResolved).to.false
+
+    saboteurActions.takeAlternativeAction(true)
+    expect(saboteurActions.actionSteps.map(item => item.action)).to.eql([
+      Action.INCREASE_TARGET_VALUE, Action.TAKE_CHEMICAL,
+      Action.DRAW_SECURITY_REPORT,
+      Action.DISCARD_RESEARCH_TOKENS,
+      Action.DISCARD_SECURITY_REPORT
+    ])
+    expect(saboteurActions.allDecisionsResolved).to.true
+
+    expect(saboteurActions.processTokens([
+      {location:Location.RND,weather:Weather.RAIN},
+      {location:Location.GOVERNMENT,weather:Weather.SUN},
+      {location:Location.LATIVS_LAB,weather:Weather.SUN},
+      {award:true}
+    ])).to.eql([{location:Location.RND,weather:Weather.RAIN},{award:true}])
+    expect(saboteurActions.processCitationUnlock([Weather.SUN])).to.eql([Weather.SUN])
+    expect(saboteurActions.processInitiativePlayer(Player.SABOTEUR)).to.eq(Player.SABOTEUR)
+    expect(saboteurActions.processSecurityReport()).to.eql([Action.DRAW_SECURITY_REPORT,Action.DISCARD_SECURITY_REPORT])
   })
 
   it('governmentAction-or', () => {
@@ -61,7 +143,7 @@ describe('services/SaboteurActions', () => {
     expect(saboteurActions.processTokens([])).to.eql([])
     expect(saboteurActions.processCitationUnlock([])).to.eql([])
     expect(saboteurActions.processInitiativePlayer(Player.PLAYER)).to.eq(Player.PLAYER)
-    expect(saboteurActions.processDiscardSecurityReport()).to.false
+    expect(saboteurActions.processSecurityReport()).to.eql([])
   })
 
   it('governmentAction-and', () => {
@@ -102,7 +184,7 @@ describe('services/SaboteurActions', () => {
     expect(saboteurActions.processTokens([])).to.eql([{location:Location.GOVERNMENT,weather:Weather.SNOW}])
     expect(saboteurActions.processCitationUnlock([])).to.eql([])
     expect(saboteurActions.processInitiativePlayer(Player.PLAYER)).to.eq(Player.PLAYER)
-    expect(saboteurActions.processDiscardSecurityReport()).to.false
+    expect(saboteurActions.processSecurityReport()).to.eql([])
   })
 
   it('lativsLab-or', () => {
@@ -122,7 +204,7 @@ describe('services/SaboteurActions', () => {
     expect(saboteurActions.processTokens([])).to.eql([])
     expect(saboteurActions.processCitationUnlock([])).to.eql([])
     expect(saboteurActions.processInitiativePlayer(Player.PLAYER)).to.eq(Player.PLAYER)
-    expect(saboteurActions.processDiscardSecurityReport()).to.true
+    expect(saboteurActions.processSecurityReport()).to.eql([Action.DISCARD_SECURITY_REPORT])
   })
 
   it('lativsLab-and', () => {
@@ -142,7 +224,7 @@ describe('services/SaboteurActions', () => {
     expect(saboteurActions.processTokens([])).to.eql([{award:true}])
     expect(saboteurActions.processCitationUnlock([])).to.eql([])
     expect(saboteurActions.processInitiativePlayer(Player.PLAYER)).to.eq(Player.PLAYER)
-    expect(saboteurActions.processDiscardSecurityReport()).to.false
+    expect(saboteurActions.processSecurityReport()).to.eql([])
   })
 
   it('rnd-or', () => {
@@ -170,7 +252,7 @@ describe('services/SaboteurActions', () => {
     expect(saboteurActions.processTokens([])).to.eql([{location:Location.RND,weather:Weather.SUN}])
     expect(saboteurActions.processCitationUnlock([])).to.eql([])
     expect(saboteurActions.processInitiativePlayer(Player.PLAYER)).to.eq(Player.PLAYER)
-    expect(saboteurActions.processDiscardSecurityReport()).to.false
+    expect(saboteurActions.processSecurityReport()).to.eql([])
   })
 
   it('rnd-or-citation-already-unlocked', () => {
@@ -198,7 +280,7 @@ describe('services/SaboteurActions', () => {
     expect(saboteurActions.processTokens([])).to.eql([])
     expect(saboteurActions.processCitationUnlock([Weather.SUN,Weather.RAIN])).to.eql([Weather.SUN,Weather.RAIN])
     expect(saboteurActions.processInitiativePlayer(Player.PLAYER)).to.eq(Player.PLAYER)
-    expect(saboteurActions.processDiscardSecurityReport()).to.false
+    expect(saboteurActions.processSecurityReport()).to.eql([])
   })
 
   it('rnd-and', () => {
@@ -259,7 +341,7 @@ describe('services/SaboteurActions', () => {
     expect(saboteurActions.processTokens([])).to.eql([])
     expect(saboteurActions.processCitationUnlock([])).to.eql([Weather.RAIN])
     expect(saboteurActions.processInitiativePlayer(Player.PLAYER)).to.eq(Player.PLAYER)
-    expect(saboteurActions.processDiscardSecurityReport()).to.false
+    expect(saboteurActions.processSecurityReport()).to.eql([])
   })
 })
 

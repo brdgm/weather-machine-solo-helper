@@ -50,8 +50,14 @@
       "claimInitiative": {
         "text": "The Saboteurs claim the <b>initiative</b>."
       },
+      "discardResearchTokens": {
+        "text": "The Saboteurs discard a set of <b>{count} Research tokens</b>, remove them from the game."
+      },
       "discardSecurityReport": {
-        "text": "The Saboteurs discard one <b>Security Report</b>."
+        "text": "The Saboteurs discard the top <b>Security Report</b> card from the deck."
+      },
+      "drawSecurityReport": {
+        "text": "The Saboteurs discard the current <b>Security Report</b> and draw a new one."
       },
       "getAwardToken": {
         "text": "The Saboteurs gain an <b>Award token</b>."
@@ -76,6 +82,10 @@
       "increaseTargetValue": {
         "text": "Raise the Saboteurs' <b>Target Value by {count}</b>."
       },
+      "increaseTargetValueOrDiscardSecurityReport": {
+        "text": "Either Raise the Saboteurs' <b>Target Value by {count}</b> or discard the top card of the Security Report deck.",
+        "increaseTargetValueOrDiscardSecurityReport": "Increase the target value of the Saboteurs? Otherwise a Security Report will be discarded."
+      },
       "lativsLabPlaceBotResearchPriority": {
         "text": "<b>Place a Bot</b> onto an available Bot space of a branch for which the Saboteurs have a <b>matching Chemical</b>, and with a <b>matching Experiment tile</b> in the display. They prefer branches and spaces in the given order. Lativ's Bots may be moved away. Move the Chemical matching the space from the Hideout to the Supply."
       },
@@ -98,6 +108,9 @@
       },
       "takeChemicals": {
         "text": "The Saboteurs take <b>{count} Chemical</b>. | The Saboteurs take <b>{count} Chemicals</b>."
+      },
+      "takeExtremeWeatherTile": {
+        "text": "Take the top <b>Extreme Weather tile</b> matching the type of weather from the stack and place it on the corresponding space in R&D, covering any tile already there. Any Breakthrough markers on the existing tile are returned to the box, and any Government markers are returned to the Government area."
       },
       "unlockCitation": {
         "text": "Remove the <b>Lock token</b> from the corresponding Citation space."
