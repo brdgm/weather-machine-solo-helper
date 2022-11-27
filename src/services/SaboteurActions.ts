@@ -12,8 +12,10 @@ import Weather from "./enum/Weather"
 export default class SaboteurActions {
 
   private _actionSteps : ActionStep[]
+  private _citationUnlock : Weather[]
 
   public constructor(params : SaboteurActionsParams) {
+    this._citationUnlock = params.citationUnlock
     switch (params.location) {
       case Location.SUPPLY:
         this._actionSteps = SaboteurActions.buildSupplyActionSteps(params)
@@ -105,9 +107,10 @@ export default class SaboteurActions {
     const result : ActionStep[] = []
     for (let i=0; i<this._actionSteps.length; i++) {
       const actionStep = this._actionSteps[i]
-      // skip duplicate UNLOCK_CITATION step for same type of weather
+      // skip duplicate UNLOCK_CITATION step for same type of weather, and for for already unlocked weathers
       if (actionStep.action == Action.UNLOCK_CITATION && actionStep.weatherBranchChosen
-          && this._actionSteps.findIndex(item => item.action==Action.UNLOCK_CITATION && item.weatherBranchChosen==actionStep.weatherBranchChosen) < i) {
+          && (this._actionSteps.findIndex(item => item.action==Action.UNLOCK_CITATION && item.weatherBranchChosen==actionStep.weatherBranchChosen) < i
+          || this._citationUnlock.includes(actionStep.weatherBranchChosen))) {
         continue
       }
       result.push(actionStep)
@@ -266,4 +269,5 @@ export interface SaboteurActionsParams {
   location : Location
   actionSlot? : ActionSlot
   initiativePlayer? : Player
+  citationUnlock: Weather[]
 }

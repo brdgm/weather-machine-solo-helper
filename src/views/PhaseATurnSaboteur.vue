@@ -190,7 +190,8 @@ export default defineComponent({
       this.selectedLocation = payload.location
       this.selectedActionSlot = payload.actionSlot
       this.saboteurActions = new SaboteurActions({location:this.selectedLocation,
-          actionSlot:this.selectedActionSlot, initiativePlayer:this.initiativePlayer})
+          actionSlot:this.selectedActionSlot, initiativePlayer:this.initiativePlayer,
+          citationUnlock:this.citationUnlock})
       this.processSaboteurActions()
     },
     unselectLocation() : void {

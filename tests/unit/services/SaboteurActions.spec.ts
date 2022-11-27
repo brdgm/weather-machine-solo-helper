@@ -173,6 +173,34 @@ describe('services/SaboteurActions', () => {
     expect(saboteurActions.processDiscardSecurityReport()).to.false
   })
 
+  it('rnd-or-citation-already-unlocked', () => {
+    const saboteurActions = newSaboteurActions({location:Location.RND,actionSlot:ActionSlot.OR,citationUnlock:[Weather.SUN,Weather.RAIN]})
+
+    expect(saboteurActions.actionSteps.map(item => item.action)).to.eql([
+      Action.RND_PLACE_BOT_RESEARCH_PRIORITY
+    ])
+    expect(saboteurActions.allDecisionsResolved).to.false
+
+    saboteurActions.chooseWeatherBranch(Weather.SUN)
+    expect(saboteurActions.actionSteps.map(item => item.action)).to.eql([
+      Action.RND_PLACE_BOT_RESEARCH_PRIORITY,
+      Action.RND_GET_RESEARCH_TOKEN
+    ])
+    expect(saboteurActions.allDecisionsResolved).to.false
+
+    saboteurActions.takeAlternativeAction(true)
+    expect(saboteurActions.actionSteps.map(item => item.action)).to.eql([
+      Action.RND_PLACE_BOT_RESEARCH_PRIORITY,
+      Action.INCREASE_TARGET_VALUE
+    ])
+    expect(saboteurActions.allDecisionsResolved).to.true
+
+    expect(saboteurActions.processTokens([])).to.eql([])
+    expect(saboteurActions.processCitationUnlock([Weather.SUN,Weather.RAIN])).to.eql([Weather.SUN,Weather.RAIN])
+    expect(saboteurActions.processInitiativePlayer(Player.PLAYER)).to.eq(Player.PLAYER)
+    expect(saboteurActions.processDiscardSecurityReport()).to.false
+  })
+
   it('rnd-and', () => {
     const saboteurActions = newSaboteurActions({location:Location.RND,actionSlot:ActionSlot.AND})
 
@@ -239,10 +267,12 @@ function newSaboteurActions(params : {
   location : Location
   actionSlot? : ActionSlot
   initiativePlayer? : Player
+  citationUnlock? : Weather[]
 }) {
   return new SaboteurActions({
     location: params.location,
     actionSlot: params.actionSlot,
     initiativePlayer: params.initiativePlayer || Player.PLAYER,
+    citationUnlock: params.citationUnlock || []
   })
 }
