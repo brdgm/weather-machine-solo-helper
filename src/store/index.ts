@@ -67,7 +67,7 @@ export const store = createStore<State>({
       state.setup = setup
     },
     round(state : State, round: Round) {
-      state.rounds = state.rounds.filter(item => item.round != round.round)
+      state.rounds = state.rounds.filter(item => item.round < round.round)
       state.rounds.push(round)
     },
     claimInitiative(state : State, payload:{round: number, player: Player}) {

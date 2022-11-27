@@ -258,6 +258,7 @@ export default defineComponent({
         // draw next security report card
         this.saboteurActions.addDrawSecurityReport()
         this.endOfTurnDrawSecurityReportAdded = true
+        this.processSaboteurActions()
       }
       if (!this.endOfTurnResearchTokenSetAdded) {
         // check if saboteurs can complete one token set
