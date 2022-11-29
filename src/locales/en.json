@@ -117,6 +117,12 @@
       }
     }
   },
+  "experiment": {
+    "title": "Run Weather Machine Experiment"
+  },
+  "endOfRound": {
+    "title": "End of Round"
+  },
   "sidebar": {
     "saboteursScheme": "Saboteurs' scheme:",
     "priority": "Priority:",

@@ -117,6 +117,12 @@
       }
     }
   },
+  "experiment": {
+    "title": "Wettermaschinen-Experiment starten"
+  },
+  "endOfRound": {
+    "title": "Rundenende"
+  },
   "sidebar": {
     "saboteursScheme": "Plan der Saboteure:",
     "priority": "Priorität:",

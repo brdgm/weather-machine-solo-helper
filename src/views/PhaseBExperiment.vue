@@ -1,6 +1,8 @@
 <template>
   <h1>{{t('experiment.title')}}</h1>
 
+  <WeatherMachineExperiment :navigation-state="navigationState"/>
+
   <router-link :to="nextButtonRouteTo" class="btn btn-primary btn-lg mt-2">
     {{t('action.next')}}
   </router-link>
@@ -16,11 +18,13 @@ import { useStore } from '@/store'
 import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
 import Player from '@/services/enum/Player'
+import WeatherMachineExperiment from '@/components/turn/WeatherMachineExperiment.vue'
 
 export default defineComponent({
   name: 'PhaseBExperiment',
   components: {
-    FooterButtons
+    FooterButtons,
+    WeatherMachineExperiment
   },
   setup() {
     const { t } = useI18n()
@@ -31,7 +35,7 @@ export default defineComponent({
     const round = navigationState.round
     const lastRoundInitiativePlayer = navigationState.lastRoundInitiativePlayer
 
-    return { t, round, lastRoundInitiativePlayer }
+    return { t, round, lastRoundInitiativePlayer, navigationState }
   },
   computed: {
     nextButtonRouteTo() : string {
