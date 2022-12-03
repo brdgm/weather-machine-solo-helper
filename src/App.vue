@@ -3,6 +3,7 @@
 
   <div id="content-container" class="container-fluid mt-5 mb-5">
     <router-view :key="$route.fullPath"/>
+    <EndGameConditionsModal />
   </div>
 
   <AppFooter :build-number="buildNumber" :credits-label="t('footer.credits')" credits-modal-id="creditsModal" zoom-enabled @zoomFontSize="zoomFontSize"/>
@@ -67,12 +68,14 @@ import AppHeader from 'brdgm-commons/src/components/structure/AppHeader.vue'
 import AppFooter from 'brdgm-commons/src/components/structure/AppFooter.vue'
 import { Modal } from 'bootstrap'
 import getErrorMessage from 'brdgm-commons/src/util/error/getErrorMessage'
+import EndGameConditionsModal from './components/turn/EndGameConditionsModal.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
     AppHeader,
-    AppFooter
+    AppFooter,
+    EndGameConditionsModal
   },
   setup() {
     const { t, locale } = useI18n({
@@ -118,6 +121,7 @@ export default defineComponent({
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/utilities";
+
 #content-container {
   font-size: calc(v-bind(baseFontSize) * $font-size-base);
   h1 { font-size: calc(v-bind(baseFontSize) * $h1-font-size); }
@@ -126,5 +130,29 @@ export default defineComponent({
   h4 { font-size: calc(v-bind(baseFontSize) * $h4-font-size); }
   h5 { font-size: calc(v-bind(baseFontSize) * $h5-font-size); }
   h6 { font-size: calc(v-bind(baseFontSize) * $h6-font-size); }
+
+  .modal {
+    --bs-modal-bg: #fdf7ec;
+  }
+
+  .accordion {
+    --bs-accordion-bg: #fdf7ec;
+    --bs-accordion-btn-bg: #f9ece4;
+    --bs-accordion-active-bg: #f9ece4;
+    --bs-accordion-active-color: black;
+    .accordion-button {
+      font-weight: bold;
+    }
+  }
+}
+#creditsModal {
+  &.modal {
+    --bs-modal-bg: #fdf7ec;
+  }
+}
+
+body {
+  background-image: url('~@/assets/background.jpg');
+  background-size: 120rem;
 }
 </style>

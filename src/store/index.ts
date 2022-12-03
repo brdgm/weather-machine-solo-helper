@@ -1,3 +1,7 @@
+import ChallengeCard from '@/services/enum/ChallengeCard'
+import Location from '@/services/enum/Location'
+import Player from '@/services/enum/Player'
+import Weather from '@/services/enum/Weather'
 import { InjectionKey } from 'vue'
 import { createStore, useStore as baseUseStore, Store } from 'vuex'
 
@@ -10,10 +14,25 @@ export interface State {
   rounds: Round[]
 }
 export interface Setup {
-  xyz: number
+  challengeCards: ChallengeCard[]
 }
 export interface Round {
   round: number
+  cardDeck: CardDeckPersistence
+  tokens: Token[]
+  weatherExperimentToken?: Token
+  citationUnlock?: Weather[]
+  claimInitiative?: Player
+}
+export interface Token {
+  award?: boolean
+  location?: Location
+  weather?: Weather
+}
+export interface CardDeckPersistence {
+  deck: number[]
+  current?: number
+  discard: number[]
 }
 
 declare module '@vue/runtime-core' {
@@ -30,7 +49,7 @@ export const store = createStore<State>({
     language: "en",
     baseFontSize: 1.0,
     setup: {
-      xyz: 1
+      challengeCards: []
     },
     rounds: []
   },
@@ -44,6 +63,37 @@ export const store = createStore<State>({
     },
     language(state : State, language: string) {
       state.language = language
+    },
+    setup(state : State, setup: Setup) {
+      state.setup = setup
+    },
+    round(state : State, round: Round) {
+      state.rounds = state.rounds.filter(item => item.round < round.round)
+      state.rounds.push(round)
+    },
+    roundCardDeck(state : State, payload:{round: number, cardDeck: CardDeckPersistence}) {
+      const round = state.rounds.find(item => item.round == payload.round)
+      if (round) {
+        round.cardDeck = payload.cardDeck
+      }
+    },
+    roundWeatherExperimentToken(state : State, payload:{round: number, token: Token|undefined}) {
+      const round = state.rounds.find(item => item.round == payload.round)
+      if (round) {
+        round.weatherExperimentToken = payload.token
+      }
+    },
+    claimInitiative(state : State, payload:{round: number, player: Player}) {
+      const round = state.rounds.find(item => item.round == payload.round)
+      if (round) {
+        round.claimInitiative = payload.player
+      }
+    },
+    updateCitation(state : State, payload:{round: number, citationUnlock: Weather[]}) {
+      const round = state.rounds.find(item => item.round == payload.round)
+      if (round) {
+        round.citationUnlock = payload.citationUnlock
+      }
     },
     endGame(state : State) {
       state.rounds = []
