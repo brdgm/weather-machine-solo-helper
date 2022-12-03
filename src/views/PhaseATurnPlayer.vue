@@ -16,6 +16,9 @@
     <li v-html="t('turnPlayer.useSubsidyInvestment')"></li>
     <li class="mt-2">
       <span v-html="t('turnPlayer.moveScientist')"></span>
+      <ul v-if="round==1">
+        <li v-html="t('turnPlayer.moveScientistRound1')"></li>
+      </ul>
       <LativMovement/>
     </li>
     <li class="mt-2" v-html="t('turnPlayer.performActions')"></li>

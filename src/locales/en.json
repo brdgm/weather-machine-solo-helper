@@ -37,6 +37,7 @@
     "title": "Your Turn",
     "useSubsidyInvestment": "Use 1 Subsidy tile OR 1 Investment tile.",
     "moveScientist": "Move your Scientist.",
+    "moveScientistRound1": "Round 1: You are not allowed to select the leftmost action space.",
     "performActions": "Perform actions.",
     "placeResearchTokens": "Place Research tokens."
   },

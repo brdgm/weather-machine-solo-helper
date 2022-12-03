@@ -37,6 +37,7 @@
     "title": "Dein Zug",
     "useSubsidyInvestment": "Nutze 1 Subventions- ODER 1 Investmentplättchen.",
     "moveScientist": "Bewege deinen Wissenschaftler.",
+    "moveScientistRound1": "Runde 1: Du darfst nicht ein Aktionsfeld ganz links wählen.",
     "performActions": "Führe Aktionen aus.",
     "placeResearchTokens": "Setze Forschungsmarker ein."
   },
