@@ -211,6 +211,34 @@
     "player": "Player",
     "saboteur": "Saboteurs"
   },
+  "endGameConditions": {
+    "title": "End Game Conditions",
+    "goToEndOfGame": "Go to End Of Game",
+    "immediateWin": {
+      "title": "Restoring the good name of Lightning Technologies",
+      "intro": "You must meet <b>all</b> of the following conditions at the <i>beginning of your turn</i>:",
+      "targetValueHigher": "Your CP is higher than the Target value.",
+      "goalTiles": "You are currently meeting the conditions for at least 4 of your Goal tiles on the Goal spaces of your Laboratory.",
+      "fundingTracks": "At least 2 of your Funding markers are on or beyond the 5th space of their Funding track (The space where your marker starts is the 0th space).",
+      "outro": "If this happens, <b>you win the game</b> immediately."
+    },
+    "standardEnding": {
+      "title": "Time runs out and the Government steps in",
+      "intro": "This happens if the game end is triggered due to any of the regular end game conditions:",
+      "nobelPrize": "You gain the Nobel Prize.",
+      "lastExperimentTile": "The last Experiment tile is placed in the display.",
+      "governmentMachine": "The Government Machine is completed.",
+      "researchFull": "All the Research spaces in R&D are occupied.",
+      "outro": "If this happens, play one more round as usual, then proceed to final scoring. During final scoring, the Target Value of the saboteurs is <b>increased by additional 30 CP</b>. After final scoring, if your CP is higher than the Target Value, you win the game."
+    },
+    "fail": {
+      "title": "The Saboteurs’ Nefarious Plans are successful",
+      "intro": "This happens if <b>either of</b> the following occurs:",
+      "extremeWeather": "At the end of your turn, there are 2 or more Level 3 Extreme Weather tiles on the board.",
+      "deckEmpty": "At the beginning of the Saboteurs’ turn, all Security Report cards are in the discard pile.",
+      "outro": "If this happens, <b>you lose immediately</b>. <i>We had such high hopes for you.</i>"
+    }
+  },
   "agentLocationSelection": {
     "select": "Select",
     "selectA": "A &",

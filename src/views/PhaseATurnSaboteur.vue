@@ -11,8 +11,11 @@
   <h1>{{t('turnSaboteur.title')}}</h1>
 
   <template v-if="gameLostDeckEmpty">
-    <p class="mt-4" v-html="t('turnSaboteur.gameLost')"></p>
-    <p class="fst-italic" v-html="t('turnSaboteur.gameLostHopes')"></p>
+    <div class="mt-4">
+      <AppIcon name="end-game-deck-empty" class="end-game-deck-empty-icon float-start me-3"/>
+      <p v-html="t('turnSaboteur.gameLost')"></p>
+      <p class="fst-italic" v-html="t('turnSaboteur.gameLostHopes')"></p>
+    </div>
   </template>
   <template v-else>
     <ol>
@@ -289,5 +292,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .saboteur-move-raise-target-value-icon {
   width: 10rem;
+}
+.end-game-deck-empty-icon {
+  width: 5rem;
 }
 </style>

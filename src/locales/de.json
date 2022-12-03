@@ -194,12 +194,6 @@
     "weatherMachineActiveBranchStep2": "Wenn Lativ bereits einen Bot in dem Zweig hat oder wenn der Zweig voll war, setze einen Bot in den nächsten Zweig (befolge die Pfeile). Wenn alle Zweige entweder voll sind oder einen von Lativs Bots beinhalten, passiert nichts.",
     "governmentRnd": "Wenn Lativ zur <b>Regierung oder zu F&E</b> geht, werfe einen Forschungsstein von Lativs aktuellem Ort ab, der den gleichen Wettertyp hat wie der Zweig, in dem Lativs Assistent gerade ist."
   },
-  "claimInitiative": {
-    "title": "Initiative beanspruchen",
-    "claim": "Die Initiative beanspruchen für:",
-    "player": "Spieler",
-    "saboteur": "Saboteure"
-  },
   "callSecurity": {
     "title": "Security rufen",
     "confirm": "Möchtest Du die Security rufen?",
@@ -210,6 +204,40 @@
       "discard": "Abwerfen"
     },
     "finish": "Security rufen abschließen"
+  },
+  "claimInitiative": {
+    "title": "Initiative beanspruchen",
+    "claim": "Die Initiative beanspruchen für:",
+    "player": "Spieler",
+    "saboteur": "Saboteure"
+  },
+  "endGameConditions": {
+    "title": "Spielende-Bedingungen",
+    "goToEndOfGame": "Gehe zum Spielende",
+    "immediateWin": {
+      "title": "Dr gute Ruf von Lightning Technologies wird wieder hergestellt",
+      "intro": "Dafür musst du <i>zu Beginn</i> deines Zuges <b>alle</b> folgenden Bedingungen erfüllen:",
+      "targetValueHigher": "Deine KP sind höher als der Zielwert.",
+      "goalTiles": "Du erfüllst gegenwärtig die Bedingungen von mindestens 4 deiner Zielplättchen auf den Zielfeldern deines Laboratoriums.",
+      "fundingTracks": "Mindestens 2 deiner Finanzierungsmarker sind auf dem 5. Feld ihrer Finanzierungsleiste oder einem höheren Feld (deine Marker starten auf dem Feld „0“).",
+      "outro": "Wenn das passiert, <b>gewinnst du das Spiel augenblicklich</b>."
+    },
+    "standardEnding": {
+      "title": "Die Zeit ist um und die Regierung schreitet ein",
+      "intro": "Das kommt vor, wenn das Spielende durch eine der regulären Spielende-Bedingungen eingeläutet wird:",
+      "nobelPrize": "Du erhältst den Nobelpreis.",
+      "lastExperimentTile": "Das letzte Experimentplättchen wird in die Auslage gelegt.",
+      "governmentMachine": "Die Regierungsmaschine ist vollständig.",
+      "researchFull": "Alle Forschungsfelder in F&E sind besetzt.",
+      "outro": "Wenn das passiert, spiele eine weitere Runde und fahre dann mit der Schlusswertung fort.  Während der Schlusswertung wird der Zielwert der Saboteure um <b>zusätzliche 30 KP erhöht</b>. Wenn nach der Schlusswertung deine KP höher sind als der Zielwert, gewinnst du das Spiel."
+    },
+    "fail": {
+      "title": "Die ruchlosen Pläne der Saboteure haben Erfolg",
+      "intro": "Das kommt vor, wenn <b>eines der beiden</b> folgenden Ereignisse eintritt:",
+      "extremeWeather": "Am Ende deines Zuges gibt es 2 oder mehr Extremwetterplättchen der Stufe 3 auf dem Plan.",
+      "deckEmpty": "Zu Beginn des Zuges der Saboteure befinden sich alle Security-Reportkarten im Ablagestapel.",
+      "outro": "Wenn das passiert, <b>verlierst du augenblicklich</b>. <i>Wir hatten so viel Hoffnung in dich gesetzt.</i>"
+    }
   },
   "agentLocationSelection": {
     "select": "Wählen",

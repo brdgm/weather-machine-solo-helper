@@ -16,6 +16,10 @@
     {{t('action.next')}}
   </router-link>
 
+  <button class="btn btn-outline-secondary btn-sm mt-2 ms-3" data-bs-toggle="modal" data-bs-target="#modalEndeGameConditions">
+    {{t('endGameConditions.title')}}
+  </button>
+
   <FooterButtons :backButtonRouteTo="backButtonRouteTo" endGameButtonType="abortGame"/>
 </template>
 

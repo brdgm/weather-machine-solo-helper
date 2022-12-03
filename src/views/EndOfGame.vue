@@ -1,7 +1,7 @@
 <template>
   <h1>{{t('endOfGame.title')}}</h1>
 
-  <FooterButtons backButtonRouteTo="/" endGameButtonType="endGame"/>
+  <FooterButtons endGameButtonType="endGame"/>
 </template>
 
 <script lang="ts">

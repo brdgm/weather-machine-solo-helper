@@ -23,15 +23,23 @@
     <hr/>
 
     <div>
-      {{t('sidebar.nextFirstPlayer')}}<br/>
-      <b>{{t(`claimInitiative.${initiativePlayer}`)}}</b>
-      <div v-if="isPlayer" class="mt-2 mb-2">
+      <div class="mb-2">
+        {{t('sidebar.nextFirstPlayer')}}<br/>
+        <b>{{t(`claimInitiative.${initiativePlayer}`)}}</b>
+      </div>
+      <div v-if="isPlayer">
         <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalClaimInitiative">
           {{t('claimInitiative.title')}}
         </button><br/>
-
+      </div>
+      <div v-if="isPlayer">
         <button class="btn btn-secondary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#modalCallSecurity" v-if="deck.length >= 2">
           {{t('callSecurity.title')}}
+        </button>
+      </div>
+      <div>
+        <button class="btn btn-outline-secondary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#modalEndeGameConditions">
+          {{t('endGameConditions.title')}}
         </button>
       </div>
     </div>
