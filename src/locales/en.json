@@ -40,6 +40,12 @@
     "moveScientistRound1": "Round 1: You are not allowed to select the leftmost action space.",
     "performActions": "Perform actions.",
     "placeResearchTokens": "Place Research tokens.",
+    "challengeOneStepAhead": "If, at the end of your turn, the Saboteurs’ Initiative marker is in the leftmost position, raise the Target Value by 3.",
+    "challengeMoralHighGround": "When placing your Scientist in a Location, you do not gain additional Vouchers for Saboteurs to your left.",
+    "challengePeerReview": "You cannot use Citation tokens when publishing a paper.",
+    "challengePeerReviewUnlock": "When you unlock a Citation space, you <b>cannot</b> pay a Science Voucher to gain 3 CP.",
+    "challengeIndependentPrototypes": "You cannot use the Saboteurs’ Bots when building a prototype as part of a Breakthrough action.",
+    "challengeBudgetCuts": "Whenever you receive funding from the Lab Funding track, treat the modifier below your marker as +0 (you still gain the benefits of the Government or R&D track).",
     "infoGovernmentRunMachine": "When the government activates a branch of their machine, raise the Target Value by 3 for each Saboteur Bot in that branch.",
     "infoRndBreakthrough": "When you perform a Breakthrough action, for each Saboteur Bot that provides a part for you when building your prototype, raise the Target Value by 2."
   },
@@ -172,6 +178,8 @@
     },
     "lativOffice": "If Lativ is at his office:",
     "income": "Income: Gain benefits.",
+    "challengeJammingDevices": "During each income, increase the Target Value by 1 for each Saboteur Bot on the board.",
+    "challengeCreativeAccounting": "During each income, move one of your Funding markers back one space on one of the tracks. You must choose a track where you are able to do this, if possible.",
     "moveLativSupply": "Move Lativ to Supply."
   },
   "endOfGame": {
@@ -277,6 +285,11 @@
   "endGameConditions": {
     "title": "End Game Conditions",
     "goToEndOfGame": "Go to End Of Game",
+    "challengeCard": {
+      "nobelLaureate": "You cannot win the game unless you have the <b>Nobel Prize</b>.",
+      "onlyOverachieversApply": "You cannot win the game unless you meet the conditions of at <b>least 5 of your Goal tiles</b> on the Goal spaces of your Laboratory.",
+      "publishOrPerish": "You must win by <b>immediate victory</b> (restoring the good name of Lightning Technologies)."
+    },
     "immediateWin": {
       "title": "Restoring the good name of Lightning Technologies",
       "intro": "You must meet <b>all</b> of the following conditions at the <i>beginning of your turn</i>:",

@@ -40,6 +40,12 @@
     "moveScientistRound1": "Runde 1: Du darfst nicht ein Aktionsfeld ganz links wählen.",
     "performActions": "Führe Aktionen aus.",
     "placeResearchTokens": "Setze Forschungsmarker ein.",
+    "challengeOneStepAhead": "Wenn der Initiativemarker der Saboteure am Ende deines Zuges auf dem Feld ganz links ist, erhöhe den Zielwert um 3.",
+    "challengeMoralHighGround": "Wenn du deinen Wissenschaftler an einem Ort einsetzt, erhältst du keine zusätzlichen Coupons für Wissenschaftler links von ihm.",
+    "challengePeerReview": "Du darfst bei der Veröffentlichung einer Abhandlung keine Zitatsteine nutzen.",
+    "challengePeerReviewUnlock": "Wenn du ein Zitatfeld freischaltest, darfst du <b>keinen</b> Wissenschaftscoupon ausgeben, um 3 KP zu erhalten.",
+    "challengeIndependentPrototypes": "Du darfst die Saboteur-Bots nicht als Teil der Durchbruch-Aktion beim Bau deines Prototypen nutzen.",
+    "challengeBudgetCuts": "Immer, wenn du Finanzierung von der Laborfinanzierungsleiste erhältst, behandle den Modifikator unter deinem Marker als +0 (du erhältst dennoch die Boni von der Regierungs- oder F&E-Leiste).",
     "infoGovernmentRunMachine": "Wenn die Regierung einen Zweig ihrer Maschine aktiviert, erhöhe den Zielwert um 3 für jeden Saboteurbot in diesem Zweig.",
     "infoRndBreakthrough": "Wenn du eine Durchbruch-Aktion durchführst, erhöhst du den Zielwert für jeden Saboteur-Bot, der für deinen Bau des Prototyps ein Teil bereitstellt, um 2."
   },
@@ -277,6 +283,11 @@
   "endGameConditions": {
     "title": "Spielende-Bedingungen",
     "goToEndOfGame": "Gehe zum Spielende",
+    "challengeCard": {
+      "nobelLaureate": "Du kannst das Spiel nur mit dem <b>Nobelpreis</b> gewinnen.",
+      "onlyOverachieversApply": "Du kannst das Spiel nur gewinnen, wenn du die Bedingungen von <b>mindestens 5 Zielplättchen</b> auf den Zielfeldern deines Laboratoriums erfüllst.",
+      "publishOrPerish": "Du musst durch den <b>direkten Sieg</b> gewinnen (den guten Ruf von Lightning Technologies wiederherstellen)."
+    },
     "immediateWin": {
       "title": "Der gute Ruf von Lightning Technologies wurde wieder hergestellt",
       "intro": "Dafür musst du <i>zu Beginn</i> deines Zuges <b>alle</b> folgenden Bedingungen erfüllen:",

@@ -8,6 +8,12 @@
         </div>
         <div class="modal-body">
 
+          <ul v-if="nobelLaureate || onlyOverachieversApply || publishOrPerish">
+            <li v-if="nobelLaureate"><ChallengeIcon/> <span v-html="t('endGameConditions.challengeCard.nobelLaureate')"></span></li>
+            <li v-if="onlyOverachieversApply"><ChallengeIcon/> <span v-html="t('endGameConditions.challengeCard.onlyOverachieversApply')"></span></li>
+            <li v-if="publishOrPerish"><ChallengeIcon/> <span v-html="t('endGameConditions.challengeCard.publishOrPerish')"></span></li>
+          </ul>
+
           <div class="accordion" id="accordionCondition">
             <div class="accordion-item">
 
@@ -100,21 +106,38 @@
 </template>
 
 <script lang="ts">
+import ChallengeCard from '@/services/enum/ChallengeCard'
 import Player from '@/services/enum/Player'
 import { useStore } from '@/store'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppIcon from '../structure/AppIcon.vue'
+import ChallengeIcon from '../structure/ChallengeIcon.vue'
 
 export default defineComponent({
   name: 'EndGameConditionsModal',
   components: {
-    AppIcon
+    AppIcon,
+    ChallengeIcon
   },
   setup() {
     const { t } = useI18n()
     useStore()
     return { t }
+  },
+  computed: {
+    challengeCards() : ChallengeCard[] {
+      return this.$store.state.setup.challengeCards
+    },
+    nobelLaureate() : boolean {
+      return this.challengeCards.includes(ChallengeCard.NOBEL_LAUREATE)
+    },
+    onlyOverachieversApply() : boolean {
+      return this.challengeCards.includes(ChallengeCard.NOBEL_LAUREATE)
+    },
+    publishOrPerish() : boolean {
+      return this.challengeCards.includes(ChallengeCard.PUBLISH_OR_PERISH)
+    }
   },
   methods: {
     goToEndOfGame() : void {

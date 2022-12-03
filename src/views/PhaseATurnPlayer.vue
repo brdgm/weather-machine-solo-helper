@@ -26,6 +26,14 @@
     <li class="mt-2" v-html="t('turnPlayer.placeResearchTokens')"></li>
   </ol>
 
+  <ul v-if="challengeOneStepAhead || challengeMoralHighGround || challengePeerReview || challengeIndependentPrototypes || challengeBudgetCuts" class="small">
+    <li><ChallengeIcon/> <span v-if="challengeOneStepAhead" v-html="t('turnPlayer.challengeOneStepAhead')"></span></li>
+    <li><ChallengeIcon/> <span v-if="challengeMoralHighGround" v-html="t('turnPlayer.challengeMoralHighGround')"></span></li>
+    <li><ChallengeIcon/> <span v-if="challengePeerReview" v-html="t('turnPlayer.challengePeerReview')"></span></li>
+    <li><ChallengeIcon/> <span v-if="challengeIndependentPrototypes" v-html="t('turnPlayer.challengeIndependentPrototypes')"></span></li>
+    <li><ChallengeIcon/> <span v-if="challengeBudgetCuts" v-html="t('turnPlayer.challengeBudgetCuts')"></span></li>
+  </ul>
+
   <router-link :to="nextButtonRouteTo" class="btn btn-primary btn-lg mt-2">
     {{t('action.next')}}
   </router-link>
@@ -58,6 +66,8 @@ import Player from '@/services/enum/Player'
 import Weather from '@/services/enum/Weather'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import { CallSecurityAction } from '@/services/CardDeck'
+import ChallengeIcon from '@/components/structure/ChallengeIcon.vue'
+import ChallengeCard from '@/services/enum/ChallengeCard'
 
 export default defineComponent({
   name: 'PhaseATurnPlayer',
@@ -65,7 +75,8 @@ export default defineComponent({
     FooterButtons,
     LativMovement,
     TurnSidebar,
-    AppIcon
+    AppIcon,
+    ChallengeIcon
   },
   setup() {
     const { t } = useI18n()
@@ -101,6 +112,24 @@ export default defineComponent({
       else {
         return ''
       }
+    },
+    challengeCards() : ChallengeCard[] {
+      return this.$store.state.setup.challengeCards
+    },
+    challengeOneStepAhead() : boolean {
+      return this.challengeCards.includes(ChallengeCard.ONE_STEP_AHEAD)
+    },
+    challengeMoralHighGround() : boolean {
+      return this.challengeCards.includes(ChallengeCard.MORAL_HIGH_GROUND)
+    },
+    challengePeerReview() : boolean {
+      return this.challengeCards.includes(ChallengeCard.PEER_REVIEW)
+    },
+    challengeIndependentPrototypes() : boolean {
+      return this.challengeCards.includes(ChallengeCard.INDEPENDENT_PROTOTYPES)
+    },
+    challengeBudgetCuts() : boolean {
+      return this.challengeCards.includes(ChallengeCard.BUDGET_CUTS)
     }
   },
   methods: {

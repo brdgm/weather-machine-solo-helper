@@ -7,6 +7,8 @@
       <span v-html="t('endOfRound.lativOffice')"></span>
       <ul>
         <li v-html="t('endOfRound.income')"></li>
+        <li v-if="challengeJammingDevices"><ChallengeIcon/> <span v-html="t('endOfRound.challengeJammingDevices')"></span></li>
+        <li v-if="challengeCreativeAccounting"><ChallengeIcon/> <span v-html="t('endOfRound.challengeCreativeAccounting')"></span></li>
         <li v-html="t('endOfRound.moveLativSupply')"></li>
       </ul>
     </li>
@@ -31,11 +33,14 @@ import { useStore } from '@/store'
 import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
 import Player from '@/services/enum/Player'
+import ChallengeCard from '@/services/enum/ChallengeCard'
+import ChallengeIcon from '@/components/structure/ChallengeIcon.vue'
 
 export default defineComponent({
   name: 'PhaseCEndOfRound',
   components: {
-    FooterButtons
+    FooterButtons,
+    ChallengeIcon
   },
   setup() {
     const { t } = useI18n()
@@ -59,6 +64,15 @@ export default defineComponent({
     },
     backButtonRouteTo() : string {
       return `/round/${this.round}/phaseBExperiment`
+    },
+    challengeCards() : ChallengeCard[] {
+      return this.$store.state.setup.challengeCards
+    },
+    challengeJammingDevices() : boolean {
+      return this.challengeCards.includes(ChallengeCard.JAMMING_DEVICE)
+    },
+    challengeCreativeAccounting() : boolean {
+      return this.challengeCards.includes(ChallengeCard.CREATIVE_ACCOUNTING)
     }
   }
 })

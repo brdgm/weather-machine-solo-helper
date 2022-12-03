@@ -4,12 +4,19 @@
     <AppIcon name="citation-unlocked" class="icon mt-2"/>
     <AppIcon type="weather" :name="weather" class="icon weather ms-2 mt-2"/>
   </div>
+  <div v-if="challengePublishOrPerish">
+    <ChallengeIcon/> <span v-html="t('turnSaboteur.actions.increaseTargetValue.text',{count:5})"></span><br/>
+    <TargetValue :value="5" class="mt-2"/>
+  </div>
 </template>
 
 <script lang="ts">
 import AppIcon from '@/components/structure/AppIcon.vue'
+import ChallengeIcon from '@/components/structure/ChallengeIcon.vue'
+import TargetValue from '@/components/structure/TargetValue.vue'
 import ActionContextParams from '@/services/ActionContextParams'
 import ActionStep from '@/services/ActionStep'
+import ChallengeCard from '@/services/enum/ChallengeCard'
 import Weather from '@/services/enum/Weather'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -17,7 +24,9 @@ import { useI18n } from 'vue-i18n'
 export default defineComponent({
   name: 'UnlockCitation',
   components: {
-    AppIcon
+    AppIcon,
+    TargetValue,
+    ChallengeIcon
   },
   setup() {
     const { t } = useI18n()
@@ -36,6 +45,12 @@ export default defineComponent({
   computed: {
     weather() : Weather {
       return this.actionStep.weatherBranchChosen || Weather.RAIN
+    },
+    challengeCards() : ChallengeCard[] {
+      return this.$store.state.setup.challengeCards
+    },
+    challengePublishOrPerish() : boolean {
+      return this.challengeCards.includes(ChallengeCard.PUBLISH_OR_PERISH)
     }
   }
 })

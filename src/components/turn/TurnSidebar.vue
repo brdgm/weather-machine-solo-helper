@@ -39,6 +39,7 @@
       </div>
       <div>
         <button class="btn btn-outline-secondary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#modalEndeGameConditions">
+          <ChallengeIcon v-if="endGameConditionChallenge"/>
           {{t('endGameConditions.title')}}
         </button>
       </div>
@@ -67,7 +68,8 @@
           <div class="float-start">
             <AppIcon type="weather" :name="unlockCitationWeather" class="icon"/>
           </div>
-          <p v-html="t('sidebar.unlockCitation.description')"></p>
+          <p v-if="challengePeerReview"><ChallengeIcon/> <span v-html="t('turnPlayer.challengePeerReviewUnlock')"></span></p>
+          <p v-else v-html="t('sidebar.unlockCitation.description')"></p>
         </div>
         <div class="modal-footer">
           <button v-if="isCitationUnlocked(unlockCitationWeather)" type="button" class="btn btn-danger" data-bs-dismiss="modal" @click="lockCitation(unlockCitationWeather)">{{t('sidebar.unlockCitation.lock')}}</button>
@@ -96,6 +98,8 @@ import ResearchTokenIcon from '../structure/ResearchTokenIcon.vue'
 import Weather from '@/services/enum/Weather'
 import { Modal } from 'bootstrap'
 import { CallSecurityAction } from '@/services/CardDeck'
+import ChallengeIcon from '../structure/ChallengeIcon.vue'
+import ChallengeCard from '@/services/enum/ChallengeCard'
 
 export default defineComponent({
   name: 'TurnSidebar',
@@ -104,7 +108,8 @@ export default defineComponent({
     ClaimInitiativeModal,
     AgentLocationIcon,
     AppIcon,
-    ResearchTokenIcon
+    ResearchTokenIcon,
+    ChallengeIcon
   },
   emits: {
     updateInitiativePlayer(payload:{player:Player}) {
@@ -167,6 +172,17 @@ export default defineComponent({
     },
     isPlayer() : boolean {
       return this.player == Player.PLAYER
+    },
+    challengeCards() : ChallengeCard[] {
+      return this.$store.state.setup.challengeCards
+    },
+    endGameConditionChallenge() : boolean {
+      return this.challengeCards.includes(ChallengeCard.NOBEL_LAUREATE)
+          || this.challengeCards.includes(ChallengeCard.ONLY_OVERACHIEVERS_APPLY)
+          || this.challengeCards.includes(ChallengeCard.PUBLISH_OR_PERISH)
+    },
+    challengePeerReview() : boolean {
+      return this.challengeCards.includes(ChallengeCard.PEER_REVIEW)
     }
   },
   methods: {

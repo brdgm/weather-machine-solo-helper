@@ -16,7 +16,7 @@
           </ol>
           <li v-html="t('setupGame.anotherPlayerColor')"></li>
           <li>
-            <AppIcon name="challenge-card" class="challenge-icon" v-if="startingTargetValue < 35"/>
+            <ChallengeIcon v-if="startingTargetValue < 35"/>
             <span v-html="t('setupGame.scoringMarker',{startingTargetValue:startingTargetValue})"></span>
           </li>
           <li v-html="t('setupGame.turnOrder')"></li>
@@ -24,14 +24,14 @@
           <ul>
             <li v-html="t('setupGame.hideoutBots')"></li>
             <li>
-              <AppIcon name="challenge-card" class="challenge-icon" v-if="initialChemicals.length > 2"/>
+              <ChallengeIcon v-if="initialChemicals.length > 2"/>
               <span v-html="t('setupGame.hideoutChemicals')"></span>
               <div class="text-center">
                 <AppIcon v-for="(chemical,index) of initialChemicals" :key="index" type="chemical" :name="chemical" class="chemical"/>
               </div>
             </li>
             <li v-if="awardTokens > 0">
-              <AppIcon name="challenge-card" class="challenge-icon"/>
+              <ChallengeIcon />
               <span v-html="t('setupGame.hideoutAward')"></span>
               <div class="text-center">
                 <AppIcon v-for="index of awardTokens" :key="index" name="award-token" class="token"/>
@@ -58,6 +58,7 @@ import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '@/store'
 import AppIcon from '../structure/AppIcon.vue'
+import ChallengeIcon from '../structure/ChallengeIcon.vue'
 import ChallengeCard from '@/services/enum/ChallengeCard'
 import Chemical from '@/services/enum/Chemical'
 import randomEnum from 'brdgm-commons/src/util/random/randomEnum'
@@ -69,6 +70,7 @@ export default defineComponent({
   name: 'SetupGameInstructions',
   components: {
     AppIcon,
+    ChallengeIcon,
     AgentLocationIcon,
     ResearchTokenIcon
   },
@@ -148,10 +150,5 @@ export default defineComponent({
   width: 5rem;
   filter: drop-shadow(0.1rem 0.1rem 0.3rem #aaa);
   margin: 0.5rem;
-}
-.challenge-icon {
-  height: 1rem;
-  margin-top: -0.15rem;
-  margin-right: 0.25rem;
 }
 </style>
