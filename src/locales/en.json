@@ -39,7 +39,9 @@
     "moveScientist": "Move your Scientist.",
     "moveScientistRound1": "Round 1: You are not allowed to select the leftmost action space.",
     "performActions": "Perform actions.",
-    "placeResearchTokens": "Place Research tokens."
+    "placeResearchTokens": "Place Research tokens.",
+    "infoGovernmentRunMachine": "When the government activates a branch of their machine, raise the Target Value by 3 for each Saboteur Bot in that branch.",
+    "infoRndBreakthrough": "When you perform a Breakthrough action, for each Saboteur Bot that provides a part for you when building your prototype, raise the Target Value by 2."
   },
   "turnSaboteur": {
     "title": "Saboteurs Turn",

@@ -29,6 +29,18 @@
     {{t('action.next')}}
   </router-link>
 
+  <hr/>
+
+  <div class="info-box">
+    <AppIcon name="government-run-machine" class="icon"/>
+    <p class="small muted mt-2" v-html="t('turnPlayer.infoGovernmentRunMachine')"></p>
+  </div>
+
+  <div class="info-box">
+    <AppIcon name="rnd-breakthrough" class="icon"/>
+    <p class="small mt-2" v-html="t('turnPlayer.infoRndBreakthrough')"></p>
+  </div>
+
   <FooterButtons :backButtonRouteTo="backButtonRouteTo" endGameButtonType="abortGame"/>
 </template>
 
@@ -43,13 +55,15 @@ import LativMovement from '@/components/turn/LativMovement.vue'
 import TurnSidebar from '@/components/turn/TurnSidebar.vue'
 import Player from '@/services/enum/Player'
 import Weather from '@/services/enum/Weather'
+import AppIcon from '@/components/structure/AppIcon.vue'
 
 export default defineComponent({
   name: 'PhaseATurnPlayer',
   components: {
     FooterButtons,
     LativMovement,
-    TurnSidebar
+    TurnSidebar,
+    AppIcon
   },
   setup() {
     const { t } = useI18n()
@@ -98,3 +112,16 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.info-box {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 20rem;
+  margin-right: 1rem;
+}
+.icon {
+  width: 8rem;
+  margin-right: 0.75rem;
+}
+</style>

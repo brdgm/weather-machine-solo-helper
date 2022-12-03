@@ -39,7 +39,9 @@
     "moveScientist": "Bewege deinen Wissenschaftler.",
     "moveScientistRound1": "Runde 1: Du darfst nicht ein Aktionsfeld ganz links wählen.",
     "performActions": "Führe Aktionen aus.",
-    "placeResearchTokens": "Setze Forschungsmarker ein."
+    "placeResearchTokens": "Setze Forschungsmarker ein.",
+    "infoGovernmentRunMachine": "Wenn die Regierung einen Zweig ihrer Maschine aktiviert, erhöhe den Zielwert um 3 für jeden Saboteurbot in diesem Zweig.",
+    "infoRndBreakthrough": "Wenn du eine Durchbruch-Aktion durchführst, erhöhst du den Zielwert für jeden Saboteur-Bot, der für deinen Bau des Prototyps ein Teil bereitstellt, um 2."
   },
   "turnSaboteur": {
     "title": "Zug der Saboteure",
