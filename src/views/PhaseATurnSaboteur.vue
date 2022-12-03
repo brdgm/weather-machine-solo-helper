@@ -10,45 +10,51 @@
 
   <h1>{{t('turnSaboteur.title')}}</h1>
 
-  <ol>
-    <li>
-      <span v-html="t('turnSaboteur.moveSaboteur')"></span><br/>
-      <AgentLocationSelection v-if="!selectedLocation" class="mt-2" :agent="currentReport.agent" :location="currentReport.location" @location-selected="locationSelected"/>
-      <template v-else>
-        <AgentLocationIcon class="mt-2" :agent="currentReport.agent" :location="selectedLocation" :action-slot="selectedActionSlot"/>
-        <button class="btn btn-outline-secondary btn-sm" @click="unselectLocation">{{t('action.reselect')}}</button>
+  <template v-if="gameLostDeckEmpty">
+    <p class="mt-4" v-html="t('turnSaboteur.gameLost')"></p>
+    <p class="fst-italic" v-html="t('turnSaboteur.gameLostHopes')"></p>
+  </template>
+  <template v-else>
+    <ol>
+      <li>
+        <span v-html="t('turnSaboteur.moveSaboteur')"></span><br/>
+        <AgentLocationSelection v-if="!selectedLocation" class="mt-2" :agent="currentReport.agent" :location="currentReport.location" @location-selected="locationSelected"/>
+        <template v-else>
+          <AgentLocationIcon class="mt-2" :agent="currentReport.agent" :location="selectedLocation" :action-slot="selectedActionSlot"/>
+          <button class="btn btn-outline-secondary btn-sm" @click="unselectLocation">{{t('action.reselect')}}</button>
+        </template>
+      </li>
+      <template v-if="selectedLocation">
+        <li v-if="selectedLocation != 'supply'" class="mt-2">
+          <span v-html="t('turnSaboteur.raiseTargetValue')"></span><br/>
+          <AppIcon name="saboteur-move-raise-target-value" class="saboteur-move-raise-target-value-icon"/>
+        </li>
+        <li class="mt-2">
+          <span v-html="t('turnSaboteur.moveLativ')"></span><br/>
+          <LativMovement/>
+        </li>
+        <li class="mt-2" v-if="saboteurActions">
+          <p v-html="t('turnSaboteur.saboteurActions')"></p>
+          <ol type="i">
+            <li v-for="(actionStep,index) of saboteurActions.actionSteps" :key="index" class="mb-3">
+              <component :is="actionStep.action"
+                  :action-step="actionStep"
+                  :action-context-params="actionContextParams"
+                  @choose-weather-branch="chooseWeatherBranch"
+                  @choose-weather-branch-no-match="chooseWeatherBranchNoMatch"
+                  @alternative-action="doAlternativeAction"/>
+            </li>
+          </ol>
+        </li>
       </template>
-    </li>
-    <template v-if="selectedLocation">
-      <li v-if="selectedLocation != 'supply'" class="mt-2">
-        <span v-html="t('turnSaboteur.raiseTargetValue')"></span><br/>
-        <AppIcon name="saboteur-move-raise-target-value" class="saboteur-move-raise-target-value-icon"/>
-      </li>
-      <li class="mt-2">
-        <span v-html="t('turnSaboteur.moveLativ')"></span><br/>
-        <LativMovement/>
-      </li>
-      <li class="mt-2" v-if="saboteurActions">
-        <p v-html="t('turnSaboteur.saboteurActions')"></p>
-        <ol type="i">
-          <li v-for="(actionStep,index) of saboteurActions.actionSteps" :key="index" class="mb-3">
-            <component :is="actionStep.action"
-                :action-step="actionStep"
-                :action-context-params="actionContextParams"
-                @choose-weather-branch="chooseWeatherBranch"
-                @choose-weather-branch-no-match="chooseWeatherBranchNoMatch"
-                @alternative-action="doAlternativeAction"/>
-          </li>
-        </ol>
-      </li>
-    </template>
-  </ol>
+    </ol>
+  </template>
 
   <button v-if="nextButtonEnabled" class="btn btn-primary btn-lg mt-2" @click="next()">
     {{t('action.next')}}
   </button>
 
-  <FooterButtons :backButtonRouteTo="backButtonRouteTo" endGameButtonType="abortGame"/>
+  <FooterButtons :backButtonRouteTo="backButtonRouteTo" :endGameButtonType="gameLostDeckEmpty ? 'endGame' : 'abortGame'"/>
 </template>
 
 <script lang="ts">
@@ -154,6 +160,7 @@ export default defineComponent({
       return this.selectedLocation != undefined
           && this.saboteurActions != undefined
           && this.saboteurActions.allDecisionsResolved
+          && !this.gameLostDeckEmpty
     },
     nextButtonRouteTo() : string {
       if (this.lastRoundInitiativePlayer == Player.PLAYER) {
@@ -173,6 +180,9 @@ export default defineComponent({
       else {
         return ''
       }
+    },
+    gameLostDeckEmpty() : boolean {
+      return this.navigationState.cardDeck.deck.length == 0
     },
     currentReport() : Card {
       return this.cardDeck.currentReport

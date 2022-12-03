@@ -45,6 +45,8 @@
   },
   "turnSaboteur": {
     "title": "Zug der Saboteure",
+    "gameLost": "Der Security-Reportkartenstapel ist leer. <b>Du hast verloren.</b>",
+    "gameLostHopes": "Wir hatten so viel Hoffnung in dich gesetzt.",
     "moveSaboteur": "Setze den Saboteur auf ein Aktionsfeld:",
     "raiseTargetValue": "Erhöhe den Zielwert um 1 pro Figur links von dem Aktionsfeld.",
     "moveLativ": "Bewege Lativ, wenn erforderlich.",
