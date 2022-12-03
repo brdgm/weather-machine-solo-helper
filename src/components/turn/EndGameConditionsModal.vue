@@ -107,9 +107,8 @@
 
 <script lang="ts">
 import ChallengeCard from '@/services/enum/ChallengeCard'
-import Player from '@/services/enum/Player'
 import { useStore } from '@/store'
-import { defineComponent, PropType } from 'vue'
+import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppIcon from '../structure/AppIcon.vue'
 import ChallengeIcon from '../structure/ChallengeIcon.vue'
