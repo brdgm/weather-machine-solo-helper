@@ -174,6 +174,69 @@
     "income": "Income: Gain benefits.",
     "moveLativSupply": "Move Lativ to Supply."
   },
+  "endOfGame": {
+    "title": "End Of Game",
+    "phaseB": {
+      "title": "During Phase B of the Final Round:",
+      "completeExperiments": "Starting with the branch where the Assistant is, and proceeding in order of the arrows, check each completed branch of the Weather Machine. For each branch, if there is a current Experiment tile matching the type of weather, run the experiment following the usual rules.",
+      "noExtremeWeather": "Do not place new Extreme Weather tiles at this time.",
+      "placeResearchTokens": "You may place any Research tokens and/or Award tokens you have next to your Laboratory onto empty spaces of your Office, following the usual rules."
+    },
+    "saboteurFinalScoring": {
+      "title": "Final Scoring for Saboteurs:",
+      "targetValue": "Raise the Target Value by 30."
+    },
+    "playerFinalScoring": {
+      "title": "You score for the following:",
+      "fundingTracks": "CP according to the position of their marker on each Funding track. Score the highest value CP above or to the left of your marker.",
+      "goalTiles": "5 CP for each Goal tile on one of their Goal spaces that they meet the conditions for (see Player Aid).",
+      "nobelPrize": "5 CP if a player has the Nobel Prize."
+    },
+    "winSummary": "After this, if your CP exceeds the Target Value, you have <b>won the game</b> and saved the company. <i>Otherwise, you join the rest of the unemployed scientists of the once great Lightning Technologies in updating your resume.</i>",
+    "additionalQualifications": {
+      "title": "Additional Qualifications",
+      "level1": {
+        "title": "1. Terraformer",
+        "condition1": "120+ CP",
+        "condition2": "Lowest Funding track is on at least the 4th space",
+        "condition3": "Highest Funding track is on the last space",
+        "condition4": "6+ Workshop tiles",
+        "condition5": "No more than 2 total Vouchers remaining"
+      },
+      "level2": {
+        "title": "2. Climatologist",
+        "condition1": "110+ CP",
+        "condition2": "Nobel Prize",
+        "condition3": "4+ Goal tiles met",
+        "condition4": "All Bots unlocked",
+        "condition5": ""
+      },
+      "level3": {
+        "title": "3. Meteorologist",
+        "condition1": "100+ CP",
+        "condition2": "3+ Papers published",
+        "condition3": "1+ Funding track on at least the 8th space",
+        "condition4": "3+ Goal tiles met",
+        "condition5": "2+ Awards"
+      },
+      "level4": {
+        "title": "4. Forecaster",
+        "condition1": "3+ Papers published",
+        "condition2": "7+ Bots on the main board",
+        "condition3": "3+ Goals tiles met",
+        "condition4": "1+ Award",
+        "condition5": ""
+      },
+      "level5": {
+        "title": "5. Stormchaser",
+        "condition1": "2+ Goal tiles met",
+        "condition2": "1+ Award",
+        "condition3": "",
+        "condition4": "",
+        "condition5": ""
+      }
+    }
+  },
   "sidebar": {
     "saboteursScheme": "Saboteurs' scheme:",
     "priority": "Priority:",
@@ -229,7 +292,7 @@
       "lastExperimentTile": "The last Experiment tile is placed in the display.",
       "governmentMachine": "The Government Machine is completed.",
       "researchFull": "All the Research spaces in R&D are occupied.",
-      "outro": "If this happens, play one more round as usual, then proceed to final scoring. During final scoring, the Target Value of the saboteurs is <b>increased by additional 30 CP</b>. After final scoring, if your CP is higher than the Target Value, you win the game."
+      "outro": "If this happens, <b>play one more round</b> as usual, then proceed to final scoring. During final scoring, the Target Value of the saboteurs is <b>increased by additional 30 CP</b>. After final scoring, if your CP is higher than the Target Value, you win the game."
     },
     "fail": {
       "title": "The Saboteurs’ Nefarious Plans are successful",

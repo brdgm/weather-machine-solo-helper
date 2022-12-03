@@ -174,6 +174,69 @@
     "income": "Einkommen: Erhalte die Boni.",
     "moveLativSupply": "Lativ wandert auf sein Feld im Vorrat."
   },
+  "endOfGame": {
+    "title": "Spielende",
+    "phaseB": {
+      "title": "Während Phase B der letzten Runde:",
+      "completeExperiments": "Prüfe jeden vollständigen Zweig der Wettermaschine, indem du mit dem Zweig, in dem sich der Assistent befindet, beginnst und in Richtung der Pfeile fortfährst. Für jeden Zweig führst du, wenn ein Experimentplättchen zu dem Wettertyp dort passt, ein Experiment nach den üblichen Regeln aus.",
+      "noExtremeWeather": "Lege jetzt keine neuen Extremwetterplättchen aus.",
+      "placeResearchTokens": "Du darfst alle Forschungs- und/oder Auszeichnungssteine, die neben deinem Laboratorium liegen, nach den üblichen Regeln auf leere Felder in dein Büro ablegen."
+    },
+    "saboteurFinalScoring": {
+      "title": "Schlusswertung für die Saboteure:",
+      "targetValue": "Erhöhe den Zielwert um 30."
+    },
+    "playerFinalScoring": {
+      "title": "Du bekommst Punkte für Folgendes:",
+      "fundingTracks": "KP entsprechend der Position deiner Marker auf jeder Finanzierungsleiste. Du erhältst den höchsten KP-Wert über oder links von deinem Marker.",
+      "goalTiles": "5 KP pro Zielplättchen auf einem deiner Zielfelder, dessen Bedingungen du erfüllt hast (siehe Spielerhilfe).",
+      "nobelPrize": "5 KP, wenn du den Nobelpreis hast."
+    },
+    "winSummary": "Wenn hiernach deine KP den Zielwert übertreffen, hast du <b>das Spiel gewonnen</b> und das Unternehmen gerettet. <i>Andernfalls schließt du dich den restlichen arbeitslosen Wissenschaftlern der einst großen Lightning Technologies an, indem du deinen Lebenslauf aktualisierst.</i>",
+    "additionalQualifications": {
+      "title": "Zusatzqualifikationen",
+      "level1": {
+        "title": "1. Terraformer",
+        "condition1": "120+ KP",
+        "condition2": "Die niedrigste Finanzierungsleiste ist mind. auf dem 4. Feld",
+        "condition3": "Die höchste Finanzierungsleiste ist auf dem letzten Feld",
+        "condition4": "6+ Werkstattplättchen",
+        "condition5": "Nicht mehr als 2 Coupons insgesamt übrig"
+      },
+      "level2": {
+        "title": "2. Klimatologe",
+        "condition1": "110+ KP",
+        "condition2": "Nobelpreis",
+        "condition3": "4+ Zielplättchen erfüllt",
+        "condition4": "Alle Bots freigeschaltet",
+        "condition5": ""
+      },
+      "level3": {
+        "title": "3. Meteorologe",
+        "condition1": "100+ KP",
+        "condition2": "3+ Abhandlungen veröffentlicht",
+        "condition3": "1+ Finanzierungsleiste mindestens. auf dem 8. Feld",
+        "condition4": "3+ Zielplättchen erfüllt",
+        "condition5": "2+ Auszeichnungen"
+      },
+      "level4": {
+        "title": "4. Wetterfrosch",
+        "condition1": "3+ Abhandlungen veröffentlicht",
+        "condition2": "7+ Bots auf dem Hauptplan",
+        "condition3": "3+ Zielplättchen erfüllt",
+        "condition4": "1+ Auszeichnungen",
+        "condition5": ""
+      },
+      "level5": {
+        "title": "5. Sturmjäger",
+        "condition1": "2+ Zielplättchen erfüllt",
+        "condition2": "1+ Auszeichnung",
+        "condition3": "",
+        "condition4": "",
+        "condition5": ""
+      }
+    }
+  },
   "sidebar": {
     "saboteursScheme": "Plan der Saboteure:",
     "priority": "Priorität:",
@@ -215,7 +278,7 @@
     "title": "Spielende-Bedingungen",
     "goToEndOfGame": "Gehe zum Spielende",
     "immediateWin": {
-      "title": "Dr gute Ruf von Lightning Technologies wird wieder hergestellt",
+      "title": "Der gute Ruf von Lightning Technologies wurde wieder hergestellt",
       "intro": "Dafür musst du <i>zu Beginn</i> deines Zuges <b>alle</b> folgenden Bedingungen erfüllen:",
       "targetValueHigher": "Deine KP sind höher als der Zielwert.",
       "goalTiles": "Du erfüllst gegenwärtig die Bedingungen von mindestens 4 deiner Zielplättchen auf den Zielfeldern deines Laboratoriums.",
@@ -229,7 +292,7 @@
       "lastExperimentTile": "Das letzte Experimentplättchen wird in die Auslage gelegt.",
       "governmentMachine": "Die Regierungsmaschine ist vollständig.",
       "researchFull": "Alle Forschungsfelder in F&E sind besetzt.",
-      "outro": "Wenn das passiert, spiele eine weitere Runde und fahre dann mit der Schlusswertung fort.  Während der Schlusswertung wird der Zielwert der Saboteure um <b>zusätzliche 30 KP erhöht</b>. Wenn nach der Schlusswertung deine KP höher sind als der Zielwert, gewinnst du das Spiel."
+      "outro": "Wenn das passiert, <b>spiele eine weitere Runde</b> und fahre dann mit der Schlusswertung fort.  Während der Schlusswertung wird der Zielwert der Saboteure um <b>zusätzliche 30 KP erhöht</b>. Wenn nach der Schlusswertung deine KP höher sind als der Zielwert, gewinnst du das Spiel."
     },
     "fail": {
       "title": "Die ruchlosen Pläne der Saboteure haben Erfolg",
