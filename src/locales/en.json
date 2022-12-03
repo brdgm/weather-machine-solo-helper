@@ -6,6 +6,395 @@
     "play2": "This helper application replaces the solo cards and hideout board.",
     "feedback": "Discussion and Feedback:"
   },
+  "setupDifficultyLevel": {
+    "title": "Setup Difficulty Level",
+    "firstTime": "If you play the first time, go ahead to setup the game.",
+    "greaterChallenge": "For a greater challenge, you can use 1 or more additional challenges:",
+    "pickChallengeCards": "Pick Challenge Cards",
+    "pickRandom": "Pick Random",
+    "clearAll": "Clear All"
+  },
+  "setupGame": {
+    "title": "Setup Game",
+    "lativBots": "Place one of <b>Lativ’s Bots</b> in each branch of the Weather Machine in the Lab.",
+    "researchTokens": "Use only <b>2 Research tokens</b> of each type in each Main Location.",
+    "goalTiles": "Prepare the <b>Goal tiles</b>:",
+    "goalTilesStep1": "Remove all Goal tiles that show a majority icon in the top right. Also remove the tile that requires you to have 3 Award tokens.",
+    "goalTilesStep2": "From the remaining Goal tiles choose 2 of each color at random. If you draw any 2 with the same icon in the middle of the tile, discard the second, and keep drawing until you get all different ones.",
+    "goalTilesStep3": "Remove all remaining Goal tiles from the game. The Saboteurs do not use Goal tiles.",
+    "anotherPlayerColor": "Select <b>another player color</b> for the Saboteurs. The Saboteurs do not use a Laboratory or Voucher markers.",
+    "scoringMarker": "Place the <b>Saboteurs’ Scoring marker</b> on <b>{startingTargetValue} CP</b>. This is the initial Target Value.",
+    "turnOrder": "Place the <b>Turn Order</b> and Initiative markers (both yours and the Saboteurs’) with yourself being first in turn order on both.",
+    "hideout": "Designate an area near the Main board as the Saboteurs’ Hideout.",
+    "hideoutBots": "Place the <b>Saboteur’s Bots</b> in the Hideout.",
+    "hideoutChemicals": "Select the following <b>Chemicals</b>, take them from the leftmost spaces in the Supply, and place them in the Hideout:",
+    "hideoutAward": "The Saboteurs start the game with an <b>Award token</b>:",
+    "placeAgentMiddlePosition": "Place <b>Agent {agent}</b> on location <b>{location}</b>, middle action space.",
+    "placeAgentRightPosition": "Place <b>Agent {agent}</b> on location <b>{location}</b>, rightmost action space.",
+    "takeWeatherToken": "Move a <b>{weather} Research token</b> from that location to the hideout."
+  },
+  "turnPlayer": {
+    "title": "Your Turn",
+    "useSubsidyInvestment": "Use 1 Subsidy tile OR 1 Investment tile.",
+    "moveScientist": "Move your Scientist.",
+    "moveScientistRound1": "Round 1: You are not allowed to select the leftmost action space.",
+    "performActions": "Perform actions.",
+    "placeResearchTokens": "Place Research tokens.",
+    "challengeOneStepAhead": "If, at the end of your turn, the Saboteurs’ Initiative marker is in the leftmost position, raise the Target Value by 3.",
+    "challengeMoralHighGround": "When placing your Scientist in a Location, you do not gain additional Vouchers for Saboteurs to your left.",
+    "challengePeerReview": "You cannot use Citation tokens when publishing a paper.",
+    "challengePeerReviewUnlock": "When you unlock a Citation space, you <b>cannot</b> pay a Science Voucher to gain 3 CP.",
+    "challengeIndependentPrototypes": "You cannot use the Saboteurs’ Bots when building a prototype as part of a Breakthrough action.",
+    "challengeBudgetCuts": "Whenever you receive funding from the Lab Funding track, treat the modifier below your marker as +0 (you still gain the benefits of the Government or R&D track).",
+    "infoGovernmentRunMachine": "When the government activates a branch of their machine, raise the Target Value by 3 for each Saboteur Bot in that branch.",
+    "infoRndBreakthrough": "When you perform a Breakthrough action, for each Saboteur Bot that provides a part for you when building your prototype, raise the Target Value by 2."
+  },
+  "turnSaboteur": {
+    "title": "Saboteurs Turn",
+    "gameLost": "The Security Report deck is empty. <b>You've lost.</b>",
+    "gameLostHopes": "We had such high hopes for you.",
+    "moveSaboteur": "Move Saboteur to action space:",
+    "raiseTargetValue": "Raise Target Value for each piece left of the action space.",
+    "moveLativ": "Move Lativ, if required.",
+    "saboteurActions": "Saboteur's actions:",
+    "actions": {
+      "claimInitiative": {
+        "text": "The Saboteurs claim the <b>initiative</b>."
+      },
+      "discardResearchTokens": {
+        "text": "The Saboteurs discard a set of <b>{count} Research tokens</b>, remove them from the game."
+      },
+      "discardSecurityReport": {
+        "text": "The Saboteurs discard the top <b>Security Report</b> card from the deck."
+      },
+      "drawSecurityReport": {
+        "text": "The Saboteurs discard the current <b>Security Report</b> and draw a new one."
+      },
+      "getAwardToken": {
+        "text": "The Saboteurs gain an <b>Award token</b>."
+      },
+      "governmentFlipSubsidy": {
+        "text": "<b>Flip</b> a blue-side up <b>Subsidy tile</b>."
+      },
+      "governmentGetResearchToken": {
+        "text": "The Saboteurs take a <b>Research token</b> from the chosen branch.",
+        "researchTokenAvailable": "Is a research token available?"
+      },
+      "governmentPlaceBotResearchPriority": {
+        "text": "<b>Place a Bot</b> onto an empty Bot space of a branch for which the Saboteurs have a <b>matching Chemical</b>. They prefer branches in the given order with available research tokens. Move the Chemical matching the space from the Hideout to the Supply."
+      },
+      "governmentPlaceGearRemoveSubsidy": {
+        "text-top": "<b>Remove</b> the topmost available <b>Subsidy tile</b> from the branch. Replace it with the required <b>Machine Part</b>.",
+        "text-bottom": "<b>Remove</b> the bottommost available <b>Subsidy tile</b> from the branch. Replace it with the required <b>Machine Part</b>."
+      },
+      "governmentRunMachine": {
+        "text": "If all Bot spaces of the branch are now full, the <b>Government activates that branch</b>. Raise the Target Value by 3 for each Saboteur Bot in that branch."
+      },
+      "increaseTargetValue": {
+        "text": "Raise the Saboteurs' <b>Target Value by {count}</b>."
+      },
+      "increaseTargetValueOrDiscardSecurityReport": {
+        "text": "Either Raise the Saboteurs' <b>Target Value by {count}</b> or discard the top card of the Security Report deck.",
+        "increaseTargetValueOrDiscardSecurityReport": "Increase the target value of the Saboteurs? Otherwise a Security Report will be discarded."
+      },
+      "lativsLabPlaceBotResearchPriority": {
+        "text": "<b>Place a Bot</b> onto an available Bot space of a branch for which the Saboteurs have a <b>matching Chemical</b>, and with a <b>matching Experiment tile</b> in the display. They prefer branches and spaces in the given order. Lativ's Bots may be moved away. Move the Chemical matching the space from the Hideout to the Supply."
+      },
+      "rndChemicalAvailable": {
+        "text": "Matching Chemical available?",
+        "chemicalAvailable": "Do the Saboteurs have a Chemical matching with the chosen Bot space?"
+      },
+      "rndGetResearchToken": {
+        "text": "The Saboteurs take a <b>Research token</b> from the chosen branch.",
+        "researchTokenAvailable": "Is a research token available?"
+      },
+      "rndPlaceBotPreviousReportPriority": {
+        "text": "<b>Place a Bot</b> on an empty Bot space of a branch for which the Saboteurs have a <b>matching Chemical</b>. They prefer branches and spaces in the given order. The Saboteurs do not pay the additional cost if they place their Bot at the bottom space of the branch."
+      },
+      "rndPlaceBotResearchPriority": {
+        "text": "<b>Place a Bot</b> onto an empty Bot space of a branch for which the Saboteurs have a <b>matching Chemical</b>. They prefer branches in the given order with available research tokens. Move the Chemical matching the space from the Hideout to the Supply."
+      },
+      "rndPlaceChemical": {
+        "text": "The Saboteurs <b>move a Chemical</b> from their hideout to the chosen Bot space."
+      },
+      "takeChemicals": {
+        "text": "The Saboteurs take <b>{count} Chemical</b>. | The Saboteurs take <b>{count} Chemicals</b>."
+      },
+      "takeExtremeWeatherTile": {
+        "text": "Take the top <b>Extreme Weather tile</b> matching the type of weather from the stack and place it on the corresponding space in R&D, covering any tile already there. Any Breakthrough markers on the existing tile are returned to the box, and any Government markers are returned to the Government area."
+      },
+      "unlockCitation": {
+        "text": "Remove the <b>Lock token</b> from the corresponding Citation space."
+      }
+    }
+  },
+  "experiment": {
+    "title": "Run Weather Machine Experiment",
+    "checkRunning": {
+      "runsIfBoth": "The experiment runs if <b>both</b> conditions are met:",
+      "atLeastOneTile": "There is at least one Experiment tile in the display matching the weather of the active branch.",
+      "allBots": "There is a Bot on every space in the active branch."
+    },
+    "running": {
+      "title": "Experiment is running",
+      "player": {
+        "title": "Your Turn",
+        "returnBots": "Return your Bots from the active branch.",
+        "ifVouchersPayed": "If you pay Science Vouchers of the active Experiment tile:",
+        "gainCP": "Gain CP as depicted on the Experiment tile for each Bot you just returned.",
+        "gainBenefit": "Gain one of the two benefits depicted on the tile.",
+        "takeResearchToken": "Take a Research token from the active branch (if available)."
+      },
+      "saboteur": {
+        "title": "Saboteurs Turn",
+        "returnBots": "For each of the Saboteurs Bots in the active branch, return that Bot to the Hideout and raise the Target Value by the CP depicted on the Experiment tile.",
+        "takeResearchToken": "Take a Research token from below the active branch (if available).",
+        "researchTokenAvailable": "Is a research token available? If yes, choose the weather of the active branch."
+      }
+    },
+    "afterExperiment": {
+      "title": "After the Experiment",
+      "lativBotRemoveResearchToken": "If there is one of Lativ’s Bots on the branch, remove from the game 1 Research token from below the active branch, if able.",
+      "returnLativBots": "Return any of Lativ’s Bots on the active branch to the side of the Lab.",
+      "takeExtremeWeatherTile": "Take the top Extreme Weather tile from the stack matching the type of weather and place it on the corresponding space in R&D."
+    },
+    "notRunning": {
+      "title": "Experiment is <i>not</i> running",
+      "returnPlayerBots": "You may choose to return your bots from the active branch.",
+      "saboteurBotExtremeWeather": "If the Saboteurs have at least on Bot present in the active branch: Place a new Extreme Weather tile. The Bots stay in the branch.",
+      "returnLativBots": "Return any of Lativ’s Bots on the active branch to the side of the Lab."
+    },
+    "prepareNext": {
+      "title": "Prepare for the next experiment",
+      "removeExperimentTile": "Remove the rightmost Experiment tile in the display matching the weather of the active branch (if any). Refill the display.",
+      "moveLativAssistant": "Move Lativ’s Assistant to the next branch."
+    }
+  },
+  "endOfRound": {
+    "title": "End of Round",
+    "turnOrder": {
+      "player": "Turn order: <b>You</b> go first.",
+      "saboteur": "Turn order: <b>Saboteurs</b> go first."
+    },
+    "lativOffice": "If Lativ is at his office:",
+    "income": "Income: Gain benefits.",
+    "challengeJammingDevices": "During each income, increase the Target Value by 1 for each Saboteur Bot on the board.",
+    "challengeCreativeAccounting": "During each income, move one of your Funding markers back one space on one of the tracks. You must choose a track where you are able to do this, if possible.",
+    "moveLativSupply": "Move Lativ to Supply."
+  },
+  "endOfGame": {
+    "title": "End Of Game",
+    "phaseB": {
+      "title": "During Phase B of the Final Round:",
+      "completeExperiments": "Starting with the branch where the Assistant is, and proceeding in order of the arrows, check each completed branch of the Weather Machine. For each branch, if there is a current Experiment tile matching the type of weather, run the experiment following the usual rules.",
+      "noExtremeWeather": "Do not place new Extreme Weather tiles at this time.",
+      "placeResearchTokens": "You may place any Research tokens and/or Award tokens you have next to your Laboratory onto empty spaces of your Office, following the usual rules."
+    },
+    "saboteurFinalScoring": {
+      "title": "Final Scoring for Saboteurs:",
+      "targetValue": "Raise the Target Value by 30."
+    },
+    "playerFinalScoring": {
+      "title": "You score for the following:",
+      "fundingTracks": "CP according to the position of their marker on each Funding track. Score the highest value CP above or to the left of your marker.",
+      "goalTiles": "5 CP for each Goal tile on one of their Goal spaces that they meet the conditions for (see Player Aid).",
+      "nobelPrize": "5 CP if a player has the Nobel Prize."
+    },
+    "winSummary": "After this, if your CP exceeds the Target Value, you have <b>won the game</b> and saved the company. <i>Otherwise, you join the rest of the unemployed scientists of the once great Lightning Technologies in updating your resume.</i>",
+    "additionalQualifications": {
+      "title": "Additional Qualifications",
+      "level1": {
+        "title": "1. Terraformer",
+        "condition1": "120+ CP",
+        "condition2": "Lowest Funding track is on at least the 4th space",
+        "condition3": "Highest Funding track is on the last space",
+        "condition4": "6+ Workshop tiles",
+        "condition5": "No more than 2 total Vouchers remaining"
+      },
+      "level2": {
+        "title": "2. Climatologist",
+        "condition1": "110+ CP",
+        "condition2": "Nobel Prize",
+        "condition3": "4+ Goal tiles met",
+        "condition4": "All Bots unlocked",
+        "condition5": ""
+      },
+      "level3": {
+        "title": "3. Meteorologist",
+        "condition1": "100+ CP",
+        "condition2": "3+ Papers published",
+        "condition3": "1+ Funding track on at least the 8th space",
+        "condition4": "3+ Goal tiles met",
+        "condition5": "2+ Awards"
+      },
+      "level4": {
+        "title": "4. Forecaster",
+        "condition1": "3+ Papers published",
+        "condition2": "7+ Bots on the main board",
+        "condition3": "3+ Goals tiles met",
+        "condition4": "1+ Award",
+        "condition5": ""
+      },
+      "level5": {
+        "title": "5. Stormchaser",
+        "condition1": "2+ Goal tiles met",
+        "condition2": "1+ Award",
+        "condition3": "",
+        "condition4": "",
+        "condition5": ""
+      }
+    }
+  },
+  "sidebar": {
+    "saboteursScheme": "Saboteurs' scheme:",
+    "priority": "Priority:",
+    "reportsLeft": "Report cards left:",
+    "nextFirstPlayer": "Next first player:",
+    "unlockCitation": {
+      "title": "Unlock Citation Space",
+      "description": "If you unlocked the citation space, you may immediately pay 1 Science Voucher to gain <b>3&nbsp;CP</b>.",
+      "unlock": "Unlock",
+      "lock": "Lock"
+    }
+  },
+  "lativMovement": {
+    "title": "Moving Lativ",
+    "nextLocation": "If Lativ moves, he goes to the next location with an available action space (left-most).",
+    "weatherMachineActiveBranch": "Check the <b>active branch of the Weather Machine</b> in the Lab (the one where the Assistant is).",
+    "weatherMachineActiveBranchStep1": "If Lativ does not have one of his Bots in that branch, place 1 of Lativ’s Bots from the area next to the Lab onto any empty space of the branch (it doesn’t matter which one).",
+    "weatherMachineActiveBranchStep2": "If Lativ already has a Bot in the branch, or the branch was full, place a Bot in the next branch (following the arrows). If all the branches are either full or already contain one of Lativ’s Bots, nothing happens.",
+    "governmentRnd": "When Lativ moves to the <b>Government or R&D</b>, discard a Research token from Lativ’s current Location of the same type of weather as the branch where Lativ’s Assistant currently is."
+  },
+  "callSecurity": {
+    "title": "Call Security",
+    "confirm": "Do you want to call security?",
+    "payVoucher": "To continue, you have to pay <b>1 Voucher</b> (of the type matching the Location where you are, or a science voucher).",
+    "report": {
+      "makeCurrent": "Current Report",
+      "putBack": "Put Back",
+      "discard": "Discard"
+    },
+    "finish": "Finish Call Security"
+  },
+  "claimInitiative": {
+    "title": "Claim Initiative",
+    "claim": "Claim Initiative for:",
+    "player": "Player",
+    "saboteur": "Saboteurs"
+  },
+  "endGameConditions": {
+    "title": "End Game Conditions",
+    "goToEndOfGame": "Go to End Of Game",
+    "challengeCard": {
+      "nobelLaureate": "You cannot win the game unless you have the <b>Nobel Prize</b>.",
+      "onlyOverachieversApply": "You cannot win the game unless you meet the conditions of at <b>least 5 of your Goal tiles</b> on the Goal spaces of your Laboratory.",
+      "publishOrPerish": "You must win by <b>immediate victory</b> (restoring the good name of Lightning Technologies)."
+    },
+    "immediateWin": {
+      "title": "Restoring the good name of Lightning Technologies",
+      "intro": "You must meet <b>all</b> of the following conditions at the <i>beginning of your turn</i>:",
+      "targetValueHigher": "Your CP is higher than the Target value.",
+      "goalTiles": "You are currently meeting the conditions for at least 4 of your Goal tiles on the Goal spaces of your Laboratory.",
+      "fundingTracks": "At least 2 of your Funding markers are on or beyond the 5th space of their Funding track (The space where your marker starts is the 0th space).",
+      "outro": "If this happens, <b>you win the game</b> immediately."
+    },
+    "standardEnding": {
+      "title": "Time runs out and the Government steps in",
+      "intro": "This happens if the game end is triggered due to any of the regular end game conditions:",
+      "nobelPrize": "You gain the Nobel Prize.",
+      "lastExperimentTile": "The last Experiment tile is placed in the display.",
+      "governmentMachine": "The Government Machine is completed.",
+      "researchFull": "All the Research spaces in R&D are occupied.",
+      "outro": "If this happens, <b>play one more round</b> as usual, then proceed to final scoring. During final scoring, the Target Value of the saboteurs is <b>increased by additional 30 CP</b>. After final scoring, if your CP is higher than the Target Value, you win the game."
+    },
+    "fail": {
+      "title": "The Saboteurs’ Nefarious Plans are successful",
+      "intro": "This happens if <b>either of</b> the following occurs:",
+      "extremeWeather": "At the end of your turn, there are 2 or more Level 3 Extreme Weather tiles on the board.",
+      "deckEmpty": "At the beginning of the Saboteurs’ turn, all Security Report cards are in the discard pile.",
+      "outro": "If this happens, <b>you lose immediately</b>. <i>We had such high hopes for you.</i>"
+    }
+  },
+  "agentLocationSelection": {
+    "select": "Select",
+    "selectA": "A &",
+    "selectBC": "C,B /"
+  },
+  "takeChemical": {
+    "title": "Take Chemical",
+    "prioritySection": "They select a Chemical from the section that depicts the fewest number of Supply Vouchers.",
+    "priorityLeastAvailable": "If there is more than one type of Chemical in the cheapest section, they take the one they currently have the least of in their Hideout.",
+    "prioritySelection": {
+      "top": "If still tied, they take the <b>topmost</b> one from those tied.",
+      "bottom": "If still tied, they take the <b>bottommost</b> one from those tied."
+    }
+  },
+  "challengeCard": {
+    "fully-stocked-opponents": {
+      "title": "Fully Stocked Opponents",
+      "description": "The Saboteurs start the game with 1 of each Chemical instead of 2 Chemicals."
+    },
+    "jamming-device": {
+      "title": "Jamming Devices",
+      "description": "During each income, increase the Target Value by 1 for each Saboteur Bot on the board."
+    },
+    "creative-accounting": {
+      "title": "Creative Accounting",
+      "description": "The Saboteurs start the game with an Award token. During each income, move one of your Funding markers back one space on one of the tracks. You must choose a track where you are able to do this, if possible."
+    },
+    "nobel-laureate": {
+      "title": "Nobel Laureate",
+      "description": "The Saboteurs start the game with an additional Chemical chosen at random (it may be the same as one they already have). You cannot win the game unless you have the Nobel Prize."
+    },
+    "only-overachievers-apply": {
+      "title": "Only Overachievers Apply",
+      "description": "You cannot win the game unless you meet the conditions of at least 5 of your Goal tiles on the Goal spaces of your Laboratory."
+    },
+    "the-clock-is-ticking": {
+      "title": "The Clock is Ticking",
+      "description": "2 cards of the Security Report deck are removed from play."
+    },
+    "one-step-ahead": {
+      "title": "One Step Ahead",
+      "description": "If, at the end of your turn, the Saboteurs’ Initiative marker is in the leftmost position, raise the Target Value by 3."
+    },
+    "moral-high-ground": {
+      "title": "Moral High Ground",
+      "description": "When placing your Scientist in a Location, you do not gain additional Vouchers for Saboteurs to your left."
+    },
+    "peer-review": {
+      "title": "Peer Review",
+      "description": "You cannot use Citation tokens when publishing a paper. When you unlock a Citation space, you cannot pay a Science Voucher to gain 3 CP."
+    },
+    "independent-prototypes": {
+      "title": "Independent Prototypes",
+      "description": "The Saboteurs start the game with an Award. You cannot use the Saboteurs’ Bots when building a prototype as part of a Breakthrough action."
+    },
+    "budget-cuts": {
+      "title": "Budget Cuts",
+      "description": "The Saboteurs start the game with an additional Chemical chosen at random (it may be the same as one they already have). Whenever you receive funding from the Lab Funding track, treat the modifier below your marker as +0 (you still gain the benefits of the Government or R&D track)."
+    },
+    "publish-or-perish": {
+      "title": "Publish or Perish",
+      "description": "Lower the starting Target Value by 5. Whenever the Saboteurs cause a Lock token to be removed from a Citation space, raise the Target Value by 5. You must win by immediate victory (restoring the good name of Lightning Technologies)."
+    }
+  },
+  "agent": {
+    "white": "White",
+    "pink": "Pink"
+  },
+  "location": {
+    "government": "Government",
+    "lativs-lab": "Lativ's Lab",
+    "rnd": "R&D"
+  },
+  "weather": {
+    "rain": "Rain",
+    "wind": "Wind",
+    "sun": "Sun",
+    "fog": "Fog",
+    "snow": "Snow"
+  },
   "notfound": {
     "title": "Not Found"
   },
@@ -22,8 +411,11 @@
     "backToHome": "Back to Home",
     "back": "Back",
     "close": "Close",
-    "reset": "Reset",
-    "pass": "Pass"
+    "select": "Select",
+    "reselect": "Re-select",
+    "yes": "Yes",
+    "no": "No",
+    "notPossible": "Not possible"
   },
   "footer": {
     "credits": "Credits"

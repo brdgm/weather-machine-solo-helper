@@ -6,6 +6,393 @@
     "play2": "Diese Applikation ersetzt die Solo-Karten und das Versteck.",
     "feedback": "Discussion and Feedback:"
   },
+  "setupDifficultyLevel": {
+    "title": "Schwierigkeitsgrad",
+    "firstTime": "Wenn du das erste mal spielst, fahre direkt fort mit dem Spielaufbau.",
+    "greaterChallenge": "Für eine größere Herausforderung wähle 1 oder mehrere Herausforderungskarten:",
+    "pickChallengeCards": "Herausforderungskarten auswählen",
+    "pickRandom": "Zufällig wählen",
+    "clearAll": "Alle abwählen"
+  },
+  "setupGame": {
+    "title": "Spielaufbau",
+    "lativBots": "Stellt einen von <b>Lativs Bots</b> in jeden Zweig der Wettermaschine im Labor.",
+    "researchTokens": "Nutzt nur <b>2 Forschungssteine</b> pro Typ an jedem Hauptort.",
+    "goalTiles": "Bereite die <b>Zielplättchen</b> vor:",
+    "goalTilesStep1": "Entferne alle Zielplättchen, die in der oberen rechten Ecke ein Mehrheitssymbol aufweisen. Entferne auch das Plättchen, für das du 3 Auszeichnungssteine brauchst.",
+    "goalTilesStep2": "Wähle von den übrigen Zielplättchen zufällig 2 pro Farbe. Wenn du 2 mit demselben Symbol in der Mitte ziehst, wirf das zweite ab und ziehe so lange, bis du verschiedene hast.",
+    "goalTilesStep3": "Entferne alle verbliebenen Zielplättchen aus dem Spiel. Die Saboteure nutzen keine Zielplättchen.",
+    "anotherPlayerColor": "Wähle für die Saboteure eine <b>andere Spielerfarbe</b>. Die Saboteure nutzen kein Labor und keine Couponmarker.",
+    "scoringMarker": "Lege den <b>Wertungsmarker der Saboteure</b> auf <b>{startingTargetValue} KP</b>. Das ist der anfängliche Zielwert.",
+    "turnOrder": "Platziere die <b>Reihenfolge-</b> und Initiativemarker (deine und die der Saboteure), wobei du jeweils zuerst am Zug bist.",
+    "hideout": "Bestimme eine Fläche in der Nähe des Spielplans als Versteck der Saboteure.",
+    "hideoutBots": "Setze die <b>Bots der Saboteure</b> in ihr Versteck.",
+    "hideoutChemicals": "Wähle die folgenden <b>Chemikalien</b>, nimm sie von den Feldern ganz links im Vorrat und setze sie in das Versteck:",
+    "hideoutAward": "Die Saboteure beginnen das Spiel mit einem <b>Auszeichnungsstein</b>:",
+    "placeAgentMiddlePosition": "Setze <b>Agent {agent}</b> auf den Ort <b>{location}</b>, mittleres Aktionsfeld.",
+    "placeAgentRightPosition": "Setze <b>Agent {agent}</b> auf den Ort <b>{location}</b>, rechtes Aktionsfeld.",
+    "takeWeatherToken": "Verschiebe einen <b>{weather}-Forschungsstein</b> von diesem Ort zum Versteck."
+  },
+  "turnPlayer": {
+    "title": "Dein Zug",
+    "useSubsidyInvestment": "Nutze 1 Subventions- ODER 1 Investmentplättchen.",
+    "moveScientist": "Bewege deinen Wissenschaftler.",
+    "moveScientistRound1": "Runde 1: Du darfst nicht ein Aktionsfeld ganz links wählen.",
+    "performActions": "Führe Aktionen aus.",
+    "placeResearchTokens": "Setze Forschungsmarker ein.",
+    "challengeOneStepAhead": "Wenn der Initiativemarker der Saboteure am Ende deines Zuges auf dem Feld ganz links ist, erhöhe den Zielwert um 3.",
+    "challengeMoralHighGround": "Wenn du deinen Wissenschaftler an einem Ort einsetzt, erhältst du keine zusätzlichen Coupons für Wissenschaftler links von ihm.",
+    "challengePeerReview": "Du darfst bei der Veröffentlichung einer Abhandlung keine Zitatsteine nutzen.",
+    "challengePeerReviewUnlock": "Wenn du ein Zitatfeld freischaltest, darfst du <b>keinen</b> Wissenschaftscoupon ausgeben, um 3 KP zu erhalten.",
+    "challengeIndependentPrototypes": "Du darfst die Saboteur-Bots nicht als Teil der Durchbruch-Aktion beim Bau deines Prototypen nutzen.",
+    "challengeBudgetCuts": "Immer, wenn du Finanzierung von der Laborfinanzierungsleiste erhältst, behandle den Modifikator unter deinem Marker als +0 (du erhältst dennoch die Boni von der Regierungs- oder F&E-Leiste).",
+    "infoGovernmentRunMachine": "Wenn die Regierung einen Zweig ihrer Maschine aktiviert, erhöhe den Zielwert um 3 für jeden Saboteurbot in diesem Zweig.",
+    "infoRndBreakthrough": "Wenn du eine Durchbruch-Aktion durchführst, erhöhst du den Zielwert für jeden Saboteur-Bot, der für deinen Bau des Prototyps ein Teil bereitstellt, um 2."
+  },
+  "turnSaboteur": {
+    "title": "Zug der Saboteure",
+    "gameLost": "Der Security-Reportkartenstapel ist leer. <b>Du hast verloren.</b>",
+    "gameLostHopes": "Wir hatten so viel Hoffnung in dich gesetzt.",
+    "moveSaboteur": "Setze den Saboteur auf ein Aktionsfeld:",
+    "raiseTargetValue": "Erhöhe den Zielwert um 1 pro Figur links von dem Aktionsfeld.",
+    "moveLativ": "Bewege Lativ, wenn erforderlich.",
+    "saboteurActions": "Aktionen der Saboteure:",
+    "actions": {
+      "claimInitiative": {
+        "text": "Die Saboteure beanspruchen die <b>Initiative</b>."
+      },
+      "discardResearchTokens": {
+        "text": "Die Saboteure werfen ein Set aus <b>{count} Forschungssteinen</b> ab, entferne sie aus dem Spiel."
+      },
+      "discardSecurityReport": {
+        "text": "Die Saboteure werfen den obersten <b>Security-Report</b> vom Stapel ab."
+      },
+      "drawSecurityReport": {
+        "text": "Die Saboteure werfen den aktuellen <b>Security-Report</b> ab und ziehen einen neuen."
+      },
+      "getAwardToken": {
+        "text": "Die Saboteure erhalten ein <b>Auszeichnungsstein</b>."
+      },
+      "governmentFlipSubsidy": {
+        "text": "<b>Drehe</b> ein <b>Subventionsplättchen</b> mit der blauen Seite oben um."
+      },
+      "governmentGetResearchToken": {
+        "text": "Die Saboteure nehmen einen <b>Forschungsstein</b> aus dem gewählten Zweig.",
+        "researchTokenAvailable": "Ist ein Forschungsstein verfügbar?"
+      },
+      "governmentPlaceBotResearchPriority": {
+        "text": "<b>Stelle einen Bot</b> auf ein leeres Botfeld eines Zweigs, für den die Saboteure eine <b>passende Chemikalie</b> haben. Sie bevorzugen Zweige in der angegebenen Reihenfolge mit verfügbaren Forschungssteinen. Verschiebe dann die zum Feld passende Chemikalie aus ihrem Versteck in den Vorrat."
+      },
+      "governmentPlaceGearRemoveSubsidy": {
+        "text-top": "<b>Entferne</b> das verfügbare <b>Subventionsplättchen</b> aus dem Zweig, das am weitesten oben liegt. Ersetze es durch das benötigte <b>Zahnrad</b>.",
+        "text-bottom": "<b>Entferne</b> das verfügbare <b>Subventionsplättchen</b> aus dem Zweig, das am weitesten unten liegt. Ersetze es durch das benötigte <b>Zahnrad</b>."
+      },
+      "governmentRunMachine": {
+        "text": "Wenn nun alle Botfelder dieses Zweiges voll sind, <b>aktiviert die Regierung diesen Zweig</b>. Erhöhe den Zielwert um 3 für jeden Saboteurbot in diesem Zweig."
+      },
+      "increaseTargetValue": {
+        "text": "Die Saboteure erhöhen den <b>Zielwert um {count}</b>."
+      },
+      "increaseTargetValueOrDiscardSecurityReport": {
+        "text": "Entweder erhöhen die Saboteure den <b>Zielwert um {count}</b> oder werfen den obersten Security-Report form Stapel ab.",
+        "increaseTargetValueOrDiscardSecurityReport": "Zielwert der Saboteure erhöhen? Ansonsten wird ein Security-Report abgeworfen."
+      },
+      "lativsLabPlaceBotResearchPriority": {
+        "text": "<b>Stelle einen Bot</b> auf ein verfügbares Botfeld eines Zweigs, für den die Saboteure eine <b>passende Chemikalie</b> haben, und für welchen es ein <b>passendes Experimentplättchen</b> in der Auslage gibt. Sie bevorzugen Zweige und Felder in der angegebenen Reihenfolge. Lativ's Bots können weg bewegt werden. Verschiebe dann die zum Feld passende Chemikalie aus ihrem Versteck in den Vorrat."
+      },
+      "rndChemicalAvailable": {
+        "text": "Passende Chemikalie verfügbar?",
+        "chemicalAvailable": "Haben die Saboteure eine Chemikalie, die zum gewählten Botfeld passt?"
+      },
+      "rndGetResearchToken": {
+        "text": "Die Saboteure nehmen einen <b>Forschungsstein</b> aus dem gewählten Zweig.",
+        "researchTokenAvailable": "Ist ein Forschungsstein verfügbar?"
+      },
+      "rndPlaceBotPreviousReportPriority": {
+        "text": "<b>Stelle ein Bot</b> auf ein leeres Botfeld. Sie bevorzugen Zweige und Felder in der angegebenen Reihenfolge. Die Saboteure zahlen nicht die zusätzlichen Kosten, wenn sie ihren Bot auf dem untersten Feld des Zweiges einsetzen."
+      },
+      "rndPlaceBotResearchPriority": {
+        "text": "<b>Stelle ein Bot</b> auf ein leeres Botfeld eines Zweigs, für den die Saboteure eine <b>passende Chemikalie</b> haben. Sie bevorzugen Zweige in der angegebenen Reihenfolge. Verschiebe dann die zum Feld passende Chemikalie aus ihrem Versteck in den Vorrat."
+      },
+      "rndPlaceChemical": {
+        "text": "Die Saboteure <b>verschieben die Chemikalie</b> von ihrem Versteck auf das gewählte Botfeld."
+      },
+      "takeChemicals": {
+        "text": "Die Saboteure nehmen <b>{count} Chemikalie</b>. | Die Saboteure nehmen <b>{count} Chemikalien</b>."
+      },
+      "takeExtremeWeatherTile": {
+        "text": "Nimm das oberste, zum Wetter passende <b>Extremwetterplättchen</b> vom Stapel und lege es auf das entsprechende Feld in F&E. Ein bereits liegendes Plättchen wird überdeckt. Alle Durchbruchmarker auf dem liegenden Plättchen werden zurück in die Schachtel gelegt und alle Regierungsmarker zurück in den Regierungsbereich."
+      },
+      "unlockCitation": {
+        "text": "Entferne den <b>Schlossstein</b> vom entsprechenden Zitatfeld."
+      }
+    }
+  },
+  "experiment": {
+    "title": "Wettermaschinen-Experiment starten",
+    "checkRunning": {
+      "runsIfBoth": "Das Experiment läuft, wenn <b>beide</b> der folgenden Bedingungen erfüllt sind:",
+      "atLeastOneTile": "Mindestens ein Experimentplättchen in der Auslage passt zum Wetter des aktiven Zweigs.",
+      "allBots": "Auf jedem Feld des aktiven Zweigs ist ein Bot."
+    },
+    "running": {
+      "title": "Experiment läuft",
+      "player": {
+        "title": "Dein Zug",
+        "returnBots": "Nehme deine Bots vom aktiven Zweig zurück.",
+        "ifVouchersPayed": "Wenn du die Wissenschaftscoupons des aktiven Experimentplättchens bezahlt hast:",
+        "gainCP": "Erhalte die auf dem Experimentplättchen angegebene Anzahl an KP für jeden gerade zurückgegebenen Bot.",
+        "gainBenefit": "Erhalte einen der zwei auf dem Plättchen angegebenen Boni.",
+        "takeResearchToken": "Nehme einen Forschungsstein des aktiven Zweigs (falls vorhanden)."
+      },
+      "saboteur": {
+        "title": "Zug der Saboteure",
+        "returnBots": "Erhöhe für jeden der Saboteur-Bots im aktiven Zweig den Zielwert um die KP, die auf dem Experimentplättchen angegeben sind und stelle den Bot zurück in ihr Versteck.",
+        "takeResearchToken": "Sie nehmen einen Forschungsstein von dem aktiven Zweig, wenn verfügbar.",
+        "researchTokenAvailable": "Ist ein Forschungsstein verfügbar? Wenn ja, wähle das Wetter des aktiven Zweigs."
+      }
+    },
+    "afterExperiment": {
+      "title": "Nach dem Experiment",
+      "lativBotRemoveResearchToken": "Falls einer von Lativs Bots auf dem aktiven Zweig ist, entferne 1 Forschungsstein vom aktiven Zweigs, wenn möglich.",
+      "returnLativBots": "Stellt alle von Lativs Bots vom aktiven Zweig an die Seite des Labors.",
+      "takeExtremeWeatherTile": "Nehmt dann das obere Extremwetterplättchen vom Stapel mit dem passenden Wetter und legt es auf das entsprechende Feld in F&E."
+    },
+    "notRunning": {
+      "title": "Experiment läuft <i>nicht</i>",
+      "returnPlayerBots": "Du darfst deine Bots zurück nehmen.",
+      "saboteurBotExtremeWeather": "Wenn mindestens ein Saboteur-Bot im Zweig stand, wird ein neues Extremwetterplättchen ausgelegt. Die Saboteur-Bots bleiben in dem Zweig.",
+      "returnLativBots": "Stellt alle von Lativs Bots vom aktiven Zweig zurück an die Seite des Labors."
+    },
+    "prepareNext": {
+      "title": "Auf das nächste Experiment vorbereiten",
+      "removeExperimentTile": "Entferne das am weitesten rechts liegende Experimentplättchen in der Auslage, das zum Wetter im aktiven Zweig passt (wenn vorhanden) aus dem Spiel. Fülle die Auslage wieder auf.",
+      "moveLativAssistant": "Bewegt Lativs Assistenten zum nächsten Zweig."
+    }
+  },
+  "endOfRound": {
+    "title": "Rundenende",
+    "turnOrder": {
+      "player": "Reihenfolge: <b>Du</b> bist als erstes am Zug.",
+      "saboteur": "Reihenfolge: Die <b>Saboteure</b> sind als erstes am Zug."
+    },
+    "lativOffice": "Wenn Lativ sich in seinem Büro befindet:",
+    "income": "Einkommen: Erhalte die Boni.",
+    "moveLativSupply": "Lativ wandert auf sein Feld im Vorrat."
+  },
+  "endOfGame": {
+    "title": "Spielende",
+    "phaseB": {
+      "title": "Während Phase B der letzten Runde:",
+      "completeExperiments": "Prüfe jeden vollständigen Zweig der Wettermaschine, indem du mit dem Zweig, in dem sich der Assistent befindet, beginnst und in Richtung der Pfeile fortfährst. Für jeden Zweig führst du, wenn ein Experimentplättchen zu dem Wettertyp dort passt, ein Experiment nach den üblichen Regeln aus.",
+      "noExtremeWeather": "Lege jetzt keine neuen Extremwetterplättchen aus.",
+      "placeResearchTokens": "Du darfst alle Forschungs- und/oder Auszeichnungssteine, die neben deinem Laboratorium liegen, nach den üblichen Regeln auf leere Felder in dein Büro ablegen."
+    },
+    "saboteurFinalScoring": {
+      "title": "Schlusswertung für die Saboteure:",
+      "targetValue": "Erhöhe den Zielwert um 30."
+    },
+    "playerFinalScoring": {
+      "title": "Du bekommst Punkte für Folgendes:",
+      "fundingTracks": "KP entsprechend der Position deiner Marker auf jeder Finanzierungsleiste. Du erhältst den höchsten KP-Wert über oder links von deinem Marker.",
+      "goalTiles": "5 KP pro Zielplättchen auf einem deiner Zielfelder, dessen Bedingungen du erfüllt hast (siehe Spielerhilfe).",
+      "nobelPrize": "5 KP, wenn du den Nobelpreis hast."
+    },
+    "winSummary": "Wenn hiernach deine KP den Zielwert übertreffen, hast du <b>das Spiel gewonnen</b> und das Unternehmen gerettet. <i>Andernfalls schließt du dich den restlichen arbeitslosen Wissenschaftlern der einst großen Lightning Technologies an, indem du deinen Lebenslauf aktualisierst.</i>",
+    "additionalQualifications": {
+      "title": "Zusatzqualifikationen",
+      "level1": {
+        "title": "1. Terraformer",
+        "condition1": "120+ KP",
+        "condition2": "Die niedrigste Finanzierungsleiste ist mind. auf dem 4. Feld",
+        "condition3": "Die höchste Finanzierungsleiste ist auf dem letzten Feld",
+        "condition4": "6+ Werkstattplättchen",
+        "condition5": "Nicht mehr als 2 Coupons insgesamt übrig"
+      },
+      "level2": {
+        "title": "2. Klimatologe",
+        "condition1": "110+ KP",
+        "condition2": "Nobelpreis",
+        "condition3": "4+ Zielplättchen erfüllt",
+        "condition4": "Alle Bots freigeschaltet",
+        "condition5": ""
+      },
+      "level3": {
+        "title": "3. Meteorologe",
+        "condition1": "100+ KP",
+        "condition2": "3+ Abhandlungen veröffentlicht",
+        "condition3": "1+ Finanzierungsleiste mindestens. auf dem 8. Feld",
+        "condition4": "3+ Zielplättchen erfüllt",
+        "condition5": "2+ Auszeichnungen"
+      },
+      "level4": {
+        "title": "4. Wetterfrosch",
+        "condition1": "3+ Abhandlungen veröffentlicht",
+        "condition2": "7+ Bots auf dem Hauptplan",
+        "condition3": "3+ Zielplättchen erfüllt",
+        "condition4": "1+ Auszeichnungen",
+        "condition5": ""
+      },
+      "level5": {
+        "title": "5. Sturmjäger",
+        "condition1": "2+ Zielplättchen erfüllt",
+        "condition2": "1+ Auszeichnung",
+        "condition3": "",
+        "condition4": "",
+        "condition5": ""
+      }
+    }
+  },
+  "sidebar": {
+    "saboteursScheme": "Plan der Saboteure:",
+    "priority": "Priorität:",
+    "reportsLeft": "Verbleibende Reportkarten:",
+    "nextFirstPlayer": "Nächster Startspieler:",
+    "unlockCitation": {
+      "title": "Zitatfeld freischalten",
+      "description": "Wenn du das Zitatfeld freigeschaltet hast, darfst du sofort 1 Wissenschaftscoupon zahlen, um <b>3&nbsp;KP</b> zu erhalten.",
+      "unlock": "Freischalten",
+      "lock": "Sperren"
+    }
+  },
+  "lativMovement": {
+    "title": "Lativ bewegen",
+    "nextLocation": "Wenn Lativ sich bewegt, geht er zum nächsten Ort mit einem verfügbaren Aktionsfeld (soweit links wie möglich).",
+    "weatherMachineActiveBranch": "Prüfe den <b>aktiven Zweig der Wettermaschine</b> im Labor (der, wo der Assistent ist).",
+    "weatherMachineActiveBranchStep1": "Wenn Lativ keinen seiner Bots in diesem Zweig hat, setze 1 von Lativs Bots aus dem Bereich neben dem Labor auf ein leeres Feld auf diesem Zweig (egal welches).",
+    "weatherMachineActiveBranchStep2": "Wenn Lativ bereits einen Bot in dem Zweig hat oder wenn der Zweig voll war, setze einen Bot in den nächsten Zweig (befolge die Pfeile). Wenn alle Zweige entweder voll sind oder einen von Lativs Bots beinhalten, passiert nichts.",
+    "governmentRnd": "Wenn Lativ zur <b>Regierung oder zu F&E</b> geht, werfe einen Forschungsstein von Lativs aktuellem Ort ab, der den gleichen Wettertyp hat wie der Zweig, in dem Lativs Assistent gerade ist."
+  },
+  "callSecurity": {
+    "title": "Security rufen",
+    "confirm": "Möchtest Du die Security rufen?",
+    "payVoucher": "Um fortzufahren, musst du <b>1 Coupon</b> zahlen (passend zum Typ des Ortes, an dem du dich aufhältst oder einen Wissenschaftscoupon).",
+    "report": {
+      "makeCurrent": "Laufender Report",
+      "putBack": "Zurücklegen",
+      "discard": "Abwerfen"
+    },
+    "finish": "Security rufen abschließen"
+  },
+  "claimInitiative": {
+    "title": "Initiative beanspruchen",
+    "claim": "Die Initiative beanspruchen für:",
+    "player": "Spieler",
+    "saboteur": "Saboteure"
+  },
+  "endGameConditions": {
+    "title": "Spielende-Bedingungen",
+    "goToEndOfGame": "Gehe zum Spielende",
+    "challengeCard": {
+      "nobelLaureate": "Du kannst das Spiel nur mit dem <b>Nobelpreis</b> gewinnen.",
+      "onlyOverachieversApply": "Du kannst das Spiel nur gewinnen, wenn du die Bedingungen von <b>mindestens 5 Zielplättchen</b> auf den Zielfeldern deines Laboratoriums erfüllst.",
+      "publishOrPerish": "Du musst durch den <b>direkten Sieg</b> gewinnen (den guten Ruf von Lightning Technologies wiederherstellen)."
+    },
+    "immediateWin": {
+      "title": "Der gute Ruf von Lightning Technologies wurde wieder hergestellt",
+      "intro": "Dafür musst du <i>zu Beginn</i> deines Zuges <b>alle</b> folgenden Bedingungen erfüllen:",
+      "targetValueHigher": "Deine KP sind höher als der Zielwert.",
+      "goalTiles": "Du erfüllst gegenwärtig die Bedingungen von mindestens 4 deiner Zielplättchen auf den Zielfeldern deines Laboratoriums.",
+      "fundingTracks": "Mindestens 2 deiner Finanzierungsmarker sind auf dem 5. Feld ihrer Finanzierungsleiste oder einem höheren Feld (deine Marker starten auf dem Feld „0“).",
+      "outro": "Wenn das passiert, <b>gewinnst du das Spiel augenblicklich</b>."
+    },
+    "standardEnding": {
+      "title": "Die Zeit ist um und die Regierung schreitet ein",
+      "intro": "Das kommt vor, wenn das Spielende durch eine der regulären Spielende-Bedingungen eingeläutet wird:",
+      "nobelPrize": "Du erhältst den Nobelpreis.",
+      "lastExperimentTile": "Das letzte Experimentplättchen wird in die Auslage gelegt.",
+      "governmentMachine": "Die Regierungsmaschine ist vollständig.",
+      "researchFull": "Alle Forschungsfelder in F&E sind besetzt.",
+      "outro": "Wenn das passiert, <b>spiele eine weitere Runde</b> und fahre dann mit der Schlusswertung fort.  Während der Schlusswertung wird der Zielwert der Saboteure um <b>zusätzliche 30 KP erhöht</b>. Wenn nach der Schlusswertung deine KP höher sind als der Zielwert, gewinnst du das Spiel."
+    },
+    "fail": {
+      "title": "Die ruchlosen Pläne der Saboteure haben Erfolg",
+      "intro": "Das kommt vor, wenn <b>eines der beiden</b> folgenden Ereignisse eintritt:",
+      "extremeWeather": "Am Ende deines Zuges gibt es 2 oder mehr Extremwetterplättchen der Stufe 3 auf dem Plan.",
+      "deckEmpty": "Zu Beginn des Zuges der Saboteure befinden sich alle Security-Reportkarten im Ablagestapel.",
+      "outro": "Wenn das passiert, <b>verlierst du augenblicklich</b>. <i>Wir hatten so viel Hoffnung in dich gesetzt.</i>"
+    }
+  },
+  "agentLocationSelection": {
+    "select": "Wählen",
+    "selectA": "A &",
+    "selectBC": "C,B /"
+  },
+  "takeChemical": {
+    "title": "Chemikalie nehmen",
+    "prioritySection": "Sie wählen eine Chemikalie aus dem Abschnitt, der die geringste Anzahl von Vorratscoupons anzeigt",
+    "priorityLeastAvailable": "Gibt es mehr als einen Chemikalientyp im günstigsten Abschnitt, nehmen sie die, von der sie aktuell die wenigsten in ihrem Versteck haben.",
+    "prioritySelection": {
+      "top": "Gibt es auch hier eine Auswahl, nehmen sie davon die <b>oberste</b>.",
+      "bottom": "Gibt es auch hier eine Auswahl, nehmen sie davon die <b>unterste</b>."
+    }
+  },
+  "challengeCard": {
+    "fully-stocked-opponents": {
+      "title": "Gut ausgestattete Gegner",
+      "description": "Die Saboteure beginnen das Spiel mit 1 Chemikalie pro Typ anstatt mit 2 Chemikalien."
+    },
+    "jamming-device": {
+      "title": "Störende Geräte",
+      "description": "Erhöhe in jeder Einkommensphase den Zielwert um 1 für jeden Saboteur-Bot auf dem Plan."
+    },
+    "creative-accounting": {
+      "title": "Kreative Buchhaltung",
+      "description": "Die Saboteure beginnen das Spiel mit einem Auszeichnungsstein. Rücke in jeder Einkommensphase 1 deiner Finanzierungsmarker auf einer der Leisten ein Feld zurück. Du musst dabei eine Leiste wählen, wo das geht, falls möglich."
+    },
+    "nobel-laureate": {
+      "title": "Nobelpreisträger",
+      "description": "Die Saboteure beginnen das Spiel mit einer zusätzlichen, zufällig gezogenen Chemikalie (es kann eine sein, die sie bereits haben). Du kannst das Spiel nur mit dem Nobelpreis gewinnen."
+    },
+    "only-overachievers-apply": {
+      "title": "Nur für Überflieger",
+      "description": "Du kannst das Spiel nur gewinnen, wenn du die Bedingungen von mindestens 5 Zielplättchen auf den Zielfeldern deines Laboratoriums erfüllst."
+    },
+    "the-clock-is-ticking": {
+      "title": "Die Zeit läuft",
+      "description": "2 Karten des Security-Reportstapels werden aus dem Spiel entfernt."
+    },
+    "one-step-ahead": {
+      "title": "Einen Schritt voraus",
+      "description": "Wenn der Initiativemarker der Saboteure am Ende deines Zuges auf dem Feld ganz links ist, erhöhe den Zielwert um 3."
+    },
+    "moral-high-ground": {
+      "title": "Moralisch im Recht",
+      "description": "Wenn du deinen Wissenschaftler an einem Ort einsetzt, erhältst du keine zusätzlichen Coupons für Wissenschaftler links von ihm."
+    },
+    "peer-review": {
+      "title": "Vergleichende Analyse",
+      "description": "Du darfst bei der Veröffentlichung einer Abhandlung keine Zitatsteine nutzen. Wenn du ein Zitatfeld freischaltest, darfst du keinen Wissenschaftscoupon ausgeben, um 3 KP zu erhalten."
+    },
+    "independent-prototypes": {
+      "title": "Unabhängige Prototypen",
+      "description": "Die Saboteure beginnen das Spiel mit einem Auszeichnungsstein. Du darfst die Saboteur-Bots nicht als Teil der Durchbruch-Aktion beim Bau deines Prototypen nutzen."
+    },
+    "budget-cuts": {
+      "title": "Budgetkürzungen",
+      "description": "Die Saboteure beginnen das Spiel mit einer zusätzlichen, zufällig gezogenen Chemikalie (es kann eine sein, die sie bereits haben). Immer, wenn du Finanzierung von der Labor&shy;finanzierungs&shy;leiste erhältst, behandle den Modifikator unter deinem Marker als +0 (du erhältst dennoch die Boni von der Regierungs- oder F&E-Leiste)."
+    },
+    "publish-or-perish": {
+      "title": "Veröffentliche oder stirb",
+      "description": "Verringere den Zielwert um 5. Immer, wenn die Saboteure einen Schlossstein von einem Zitatfeld entfernen, erhöhe den Zielwert um 5. Du musst durch den direkten Sieg gewinnen (den guten Ruf von Lightning Technologies wiederherstellen)."
+    }
+  },
+  "agent": {
+    "white": "White",
+    "pink": "Pink"
+  },
+  "location": {
+    "government": "Regierung",
+    "lativs-lab": "Lativs Labor",
+    "rnd": "F&E"
+  },
+  "weather": {
+    "rain": "Regen",
+    "wind": "Wind",
+    "sun": "Sonne",
+    "fog": "Nebel",
+    "snow": "Schnee"
+  },
   "notfound": {
     "title": "Nicht Gefunden"
   },
@@ -22,8 +409,11 @@
     "backToHome": "Zurück zum Anfang",
     "back": "Zurück",
     "close": "Schließen",
-    "reset": "Zurücksetzen",
-    "pass": "Passen"
+    "select": "Wählen",
+    "reselect": "Neu wählen",
+    "yes": "Ja",
+    "no": "Nein",
+    "notPossible": "Nicht möglich"
   },
   "footer": {
     "credits": "Credits"

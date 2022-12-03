@@ -19,7 +19,7 @@
   </p>
   -->
 
-  <router-link to="/setupGame" class="btn btn-primary btn-lg mt-3">{{t('action.playGame')}}</router-link>
+  <router-link to="/setupDifficultyLevel" class="btn btn-primary btn-lg mt-3">{{t('action.playGame')}}</router-link>
 
   <p class="disclaimer">
     This is not an official Eagle-Gryphon Games product and has no affiliation with <a href="https://www.eaglegames.net/" target="_blank" rel="noopener">Eagle-Gryphon Games</a>.
