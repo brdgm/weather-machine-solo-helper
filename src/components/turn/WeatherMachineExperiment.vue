@@ -157,7 +157,7 @@ export default defineComponent({
     },
     checkExperimentPhaseStatus() : void {
       let completed = false
-      if (!(this.experimentRunning == undefined)) {
+      if (this.experimentRunning != undefined) {
         if (this.experimentRunning) {
           completed = this.noWeatherBranchChosen != undefined
         }

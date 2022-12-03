@@ -160,7 +160,14 @@
     }
   },
   "endOfRound": {
-    "title": "Rundenende"
+    "title": "Rundenende",
+    "turnOrder": {
+      "player": "Reihenfolge: <b>Du</b> bist als erstes am Zug.",
+      "saboteur": "Reihenfolge: Die <b>Saboteure</b> sind als erstes am Zug."
+    },
+    "lativOffice": "Wenn Lativ sich in seinem Büro befindet:",
+    "income": "Einkommen: Erhalte die Boni.",
+    "moveLativSupply": "Lativ wandert auf sein Feld im Vorrat."
   },
   "sidebar": {
     "saboteursScheme": "Plan der Saboteure:",

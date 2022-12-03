@@ -1,6 +1,17 @@
 <template>
   <h1>{{t('endOfRound.title')}}</h1>
 
+  <ul>
+    <li v-html="t(`endOfRound.turnOrder.${initiativePlayer}`)"></li>
+    <li>
+      <span v-html="t('endOfRound.lativOffice')"></span>
+      <ul>
+        <li v-html="t('endOfRound.income')"></li>
+        <li v-html="t('endOfRound.moveLativSupply')"></li>
+      </ul>
+    </li>
+  </ul>
+
   <router-link :to="nextButtonRouteTo" class="btn btn-primary btn-lg mt-2">
     {{t('action.next')}}
   </router-link>

@@ -160,7 +160,14 @@
     }
   },
   "endOfRound": {
-    "title": "End of Round"
+    "title": "End of Round",
+    "turnOrder": {
+      "player": "Turn order: <b>You</b> go first.",
+      "saboteur": "Turn order: <b>Saboteurs</b> go first."
+    },
+    "lativOffice": "If Lativ is at his office:",
+    "income": "Income: Gain benefits.",
+    "moveLativSupply": "Move Lativ to Supply."
   },
   "sidebar": {
     "saboteursScheme": "Saboteurs' scheme:",
