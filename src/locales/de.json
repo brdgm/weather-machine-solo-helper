@@ -118,7 +118,45 @@
     }
   },
   "experiment": {
-    "title": "Wettermaschinen-Experiment starten"
+    "title": "Wettermaschinen-Experiment starten",
+    "checkRunning": {
+      "runsIfBoth": "Das Experiment läuft, wenn <b>beide</b> der folgenden Bedingungen erfüllt sind:",
+      "atLeastOneTile": "Mindestens ein Experimentplättchen in der Auslage passt zum Wetter des aktiven Zweigs.",
+      "allBots": "Auf jedem Feld des aktiven Zweigs ist ein Bot."
+    },
+    "running": {
+      "title": "Experiment läuft",
+      "player": {
+        "title": "Dein Zug",
+        "returnBots": "Nehme deine Bots vom aktiven Zweig zurück.",
+        "ifVouchersPayed": "Wenn du die Wissenschaftscoupons des aktiven Experimentplättchens bezahlt hast:",
+        "gainCP": "Erhalte die auf dem Experimentplättchen angegebene Anzahl an KP für jeden gerade zurückgegebenen Bot.",
+        "gainBenefit": "Erhalte einen der zwei auf dem Plättchen angegebenen Boni.",
+        "takeResearchToken": "Nehme einen Forschungsstein des aktiven Zweigs (falls vorhanden)."
+      },
+      "saboteur": {
+        "title": "Zug der Saboteure",
+        "returnBots": "Erhöhe für jeden der Saboteur-Bots im aktiven Zweig den Zielwert um die KP, die auf dem Experimentplättchen angegeben sind und stelle den Bot zurück in ihr Versteck.",
+        "takeResearchToken": "Sie nehmen einen Forschungsstein von dem aktiven Zweig, wenn verfügbar. <b>FRAGE</b>"
+      }
+    },
+    "afterExperiment": {
+      "title": "Nach dem Experiment",
+      "lativBotRemoveResearchToken": "Falls einer von Lativs Bots auf dem aktiven Zweig ist, entferne 1 Forschungsstein vom aktiven Zweigs, wenn möglich.",
+      "returnLativBots": "Stellt alle von Lativs Bots vom aktiven Zweig an die Seite des Labors.",
+      "takeExtremeWeatherTile": "Nehmt dann das obere Extremwetterplättchen vom Stapel mit dem passenden Wetter und legt es auf das entsprechende Feld in F&E."
+    },
+    "notRunning": {
+      "title": "Experiment läuft <i>nicht</i>",
+      "returnPlayerBots": "Du darfst deine Bots zurück nehmen.",
+      "saboteurBotExtremeWeather": "Wenn mindestens ein Saboteur-Bot im Zweig stand, wird ein neues Extremwetterplättchen ausgelegt. Die Saboteur-Bots bleiben in dem Zweig.",
+      "returnLativBots": "Stellt alle von Lativs Bots vom aktiven Zweig zurück an die Seite des Labors."
+    },
+    "prepareNext": {
+      "title": "Auf das nächste Experiment vorbereiten",
+      "removeExperimentTile": "Entferne das am weitesten rechts liegende Experimentplättchen in der Auslage, das zum Wetter im aktiven Zweig passt (wenn vorhanden) aus dem Spiel. Fülle die Auslage wieder auf.",
+      "moveLativAssistant": "Bewegt Lativs Assistenten zum nächsten Zweig."
+    }
   },
   "endOfRound": {
     "title": "Rundenende"
@@ -152,8 +190,7 @@
   "agentLocationSelection": {
     "select": "Wählen",
     "selectA": "A &",
-    "selectBC": "C,B /",
-    "reselect": "Neu wählen"
+    "selectBC": "C,B /"
   },
   "takeChemical": {
     "title": "Chemikalie nehmen",
@@ -247,6 +284,7 @@
     "back": "Zurück",
     "close": "Schließen",
     "select": "Wählen",
+    "reselect": "Neu wählen",
     "yes": "Ja",
     "no": "Nein",
     "notPossible": "Nicht möglich"

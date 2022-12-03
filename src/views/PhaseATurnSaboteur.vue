@@ -16,7 +16,7 @@
       <AgentLocationSelection v-if="!selectedLocation" class="mt-2" :agent="currentReport.agent" :location="currentReport.location" @location-selected="locationSelected"/>
       <template v-else>
         <AgentLocationIcon class="mt-2" :agent="currentReport.agent" :location="selectedLocation" :action-slot="selectedActionSlot"/>
-        <button class="btn btn-outline-secondary btn-sm" @click="unselectLocation">{{t('agentLocationSelection.reselect')}}</button>
+        <button class="btn btn-outline-secondary btn-sm" @click="unselectLocation">{{t('action.reselect')}}</button>
       </template>
     </li>
     <template v-if="selectedLocation">

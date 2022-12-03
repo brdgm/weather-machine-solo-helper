@@ -118,7 +118,45 @@
     }
   },
   "experiment": {
-    "title": "Run Weather Machine Experiment"
+    "title": "Run Weather Machine Experiment",
+    "checkRunning": {
+      "runsIfBoth": "The experiment runs if <b>both</b> conditions are met:",
+      "atLeastOneTile": "There is at least one Experiment tile in the display matching the weather of the active branch.",
+      "allBots": "There is a Bot on every space in the active branch."
+    },
+    "running": {
+      "title": "Experiment is running",
+      "player": {
+        "title": "Your Turn",
+        "returnBots": "Return your Bots from the active branch.",
+        "ifVouchersPayed": "If you pay Science Vouchers of the active Experiment tile:",
+        "gainCP": "Gain CP as depicted on the Experiment tile for each Bot you just returned.",
+        "gainBenefit": "Gain one of the two benefits depicted on the tile.",
+        "takeResearchToken": "Take a Research token from the active branch (if available)."
+      },
+      "saboteur": {
+        "title": "Saboteurs Turn",
+        "returnBots": "For each of the Saboteurs Bots in the active branch, return that Bot to the Hideout and raise the Target Value by the CP depicted on the Experiment tile.",
+        "takeResearchToken": "Take a Research token from below the active branch (if available). <b>QUESTION</b>"
+      }
+    },
+    "afterExperiment": {
+      "title": "After the Experiment",
+      "lativBotRemoveResearchToken": "If there is one of Lativ’s Bots on the branch, remove from the game 1 Research token from below the active branch, if able.",
+      "returnLativBots": "Return any of Lativ’s Bots on the active branch to the side of the Lab.",
+      "takeExtremeWeatherTile": "Take the top Extreme Weather tile from the stack matching the type of weather and place it on the corresponding space in R&D."
+    },
+    "notRunning": {
+      "title": "Experiment is <i>not</i> running",
+      "returnPlayerBots": "You may choose to return your bots from the active branch.",
+      "saboteurBotExtremeWeather": "If the Saboteurs have at least on Bot present in the active branch: Place a new Extreme Weather tile. The Bots stay in the branch.",
+      "returnLativBots": "Return any of Lativ’s Bots on the active branch to the side of the Lab."
+    },
+    "prepareNext": {
+      "title": "Prepare for the next experiment",
+      "removeExperimentTile": "Remove the rightmost Experiment tile in the display matching the weather of the active branch (if any). Refill the display.",
+      "moveLativAssistant": "Move Lativ’s Assistant to the next branch."
+    }
   },
   "endOfRound": {
     "title": "End of Round"
@@ -152,8 +190,7 @@
   "agentLocationSelection": {
     "select": "Select",
     "selectA": "A &",
-    "selectBC": "C,B /",
-    "reselect": "Re-select"
+    "selectBC": "C,B /"
   },
   "takeChemical": {
     "title": "Take Chemical",
@@ -247,6 +284,7 @@
     "back": "Back",
     "close": "Close",
     "select": "Select",
+    "reselect": "Re-select",
     "yes": "Yes",
     "no": "No",
     "notPossible": "Not possible"
