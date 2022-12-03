@@ -17,6 +17,7 @@ describe('util/NavigationState', () => {
         mockRound({round:3,
           cardDeck:mockCardDeck({current:5,discard:[3,4]}).toPersistence(),
           tokens:[{award:true},{location:Location.RND,weather:Weather.SUN}],
+          weatherExperimentToken: {location:Location.LATIVS_LAB,weather:Weather.FOG},
           citationUnlock:[Weather.FOG,Weather.SNOW,Weather.WIND],
           claimInitiative:Player.PLAYER
         })
@@ -28,7 +29,7 @@ describe('util/NavigationState', () => {
     expect(navigationState.round, 'round').to.eq(3)
     expect(navigationState.player, 'player').to.eq(Player.PLAYER)
     expect(navigationState.cardDeck, 'cardDeck').to.not.undefined
-    expect(navigationState.tokens.length, 'tokens').to.eq(2)
+    expect(navigationState.tokens, 'tokens').to.eql([{award:true},{location:Location.RND,weather:Weather.SUN},{location:Location.LATIVS_LAB,weather:Weather.FOG}])
     expect(navigationState.citationUnlock.length, 'citationUnlock').to.eq(3)
 
     expect(navigationState.cardDeck.currentReport?.id, 'currentReport').to.eq(5)

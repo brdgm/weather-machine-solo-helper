@@ -1,6 +1,6 @@
 <template>
   <div class="icon-container">
-    <div v-for="weather of weathers" :key="weather" class="select">
+    <div v-for="weather of availableWeathers" :key="weather" class="select">
       <AppIcon  type="weather" :name="weather" class="icon"/><br/>
       <button class="btn btn-primary btn-sm" @click="chooseWeather(weather)">
         {{t('action.select')}}
@@ -16,6 +16,7 @@
 
 <script lang="ts">
 import Weather from '@/services/enum/Weather';
+import getAllEnumValues from 'brdgm-commons/src/util/enum/getAllEnumValues';
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n';
 import AppIcon from './AppIcon.vue'
@@ -45,6 +46,11 @@ export default defineComponent({
     hideNotPossible: {
       type: Boolean,
       required: false
+    }
+  },
+  computed: {
+    availableWeathers() : Weather[] {
+      return this.weathers || getAllEnumValues(Weather)
     }
   },
   methods: {

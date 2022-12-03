@@ -137,7 +137,8 @@
       "saboteur": {
         "title": "Saboteurs Turn",
         "returnBots": "For each of the Saboteurs Bots in the active branch, return that Bot to the Hideout and raise the Target Value by the CP depicted on the Experiment tile.",
-        "takeResearchToken": "Take a Research token from below the active branch (if available). <b>QUESTION</b>"
+        "takeResearchToken": "Take a Research token from below the active branch (if available).",
+        "researchTokenAvailable": "Is a research token available? If yes, choose the weather of the active branch."
       }
     },
     "afterExperiment": {

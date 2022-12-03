@@ -1,11 +1,12 @@
 <template>
   <h1>{{t('experiment.title')}}</h1>
 
-  <WeatherMachineExperiment :navigation-state="navigationState"/>
+  <WeatherMachineExperiment :navigation-state="navigationState"
+      @experiment-phase-status="experimentPhaseStatus" @saboteur-research-token-gained="saboteurResearchTokenGained"/>
 
-  <router-link :to="nextButtonRouteTo" class="btn btn-primary btn-lg mt-2">
+  <button class="btn btn-primary btn-lg mt-2" v-if="experimentPhaseCompleted" @click="next()">
     {{t('action.next')}}
-  </router-link>
+  </button>
 
   <FooterButtons :backButtonRouteTo="backButtonRouteTo" endGameButtonType="abortGame"/>
 </template>
@@ -19,6 +20,8 @@ import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
 import Player from '@/services/enum/Player'
 import WeatherMachineExperiment from '@/components/turn/WeatherMachineExperiment.vue'
+import Weather from '@/services/enum/Weather'
+import Location from '@/services/enum/Location'
 
 export default defineComponent({
   name: 'PhaseBExperiment',
@@ -37,6 +40,12 @@ export default defineComponent({
 
     return { t, round, lastRoundInitiativePlayer, navigationState }
   },
+  data() {
+    return {
+      experimentPhaseCompleted: false,
+      researchTokenGained: undefined as Weather|undefined
+    }
+  },
   computed: {
     nextButtonRouteTo() : string {
       return `/round/${this.round}/phaseCEndOfRound`
@@ -48,6 +57,22 @@ export default defineComponent({
       else {
         return `/round/${this.round}/phaseATurnPlayer`
       }
+    }
+  },
+  methods: {
+    next() : void {
+      let token = undefined
+      if (this.researchTokenGained != undefined) {
+        token = {location:Location.LATIVS_LAB,weather:this.researchTokenGained}
+      }
+      this.$store.commit('roundWeatherExperimentToken',{round:this.round+1,token})
+      this.$router.push(this.nextButtonRouteTo)
+    },
+    experimentPhaseStatus(payload:{completed:boolean}) : void {
+      this.experimentPhaseCompleted = payload.completed
+    },
+    saboteurResearchTokenGained(payload:{weather:Weather|undefined}) : void {
+      this.researchTokenGained = payload.weather
     }
   }
 })

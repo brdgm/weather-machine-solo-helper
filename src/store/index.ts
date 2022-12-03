@@ -20,6 +20,7 @@ export interface Round {
   round: number
   cardDeck: CardDeckPersistence
   tokens: Token[]
+  weatherExperimentToken?: Token
   citationUnlock?: Weather[]
   claimInitiative?: Player
 }
@@ -69,6 +70,12 @@ export const store = createStore<State>({
     round(state : State, round: Round) {
       state.rounds = state.rounds.filter(item => item.round < round.round)
       state.rounds.push(round)
+    },
+    roundWeatherExperimentToken(state : State, payload:{round: number, token: Token|undefined}) {
+      const round = state.rounds.find(item => item.round == payload.round)
+      if (round) {
+        round.weatherExperimentToken = payload.token
+      }
     },
     claimInitiative(state : State, payload:{round: number, player: Player}) {
       const round = state.rounds.find(item => item.round == payload.round)

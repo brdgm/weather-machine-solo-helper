@@ -8,6 +8,7 @@ export default function (params?: MockRoundParams) : Round {
     round: params?.round ?? 1,
     cardDeck: params?.cardDeck ?? CardDeck.new().toPersistence(),
     tokens: params?.tokens ?? [],
+    weatherExperimentToken: params?.weatherExperimentToken,
     citationUnlock: params?.citationUnlock,
     claimInitiative: params?.claimInitiative
   }
@@ -17,6 +18,7 @@ export interface MockRoundParams {
   round? : number
   cardDeck? : CardDeckPersistence
   tokens?: Token[]
+  weatherExperimentToken?: Token
   citationUnlock?: Weather[]
   claimInitiative?: Player
 }

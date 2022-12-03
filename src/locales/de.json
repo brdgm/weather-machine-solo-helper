@@ -137,7 +137,8 @@
       "saboteur": {
         "title": "Zug der Saboteure",
         "returnBots": "Erhöhe für jeden der Saboteur-Bots im aktiven Zweig den Zielwert um die KP, die auf dem Experimentplättchen angegeben sind und stelle den Bot zurück in ihr Versteck.",
-        "takeResearchToken": "Sie nehmen einen Forschungsstein von dem aktiven Zweig, wenn verfügbar. <b>FRAGE</b>"
+        "takeResearchToken": "Sie nehmen einen Forschungsstein von dem aktiven Zweig, wenn verfügbar.",
+        "researchTokenAvailable": "Ist ein Forschungsstein verfügbar? Wenn ja, wähle das Wetter des aktiven Zweigs."
       }
     },
     "afterExperiment": {

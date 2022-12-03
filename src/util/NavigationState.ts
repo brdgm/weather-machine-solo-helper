@@ -42,8 +42,15 @@ export default class NavigationState {
    * Get saboteurs' tokens.
    */
   static getTokens(roundNo : number, state : State) : Token[] {
+    const tokens : Token[] = []
     const round = state.rounds.find(item => item.round==roundNo)
-    return round?.tokens || []
+    if (round) {
+      tokens.push(...round.tokens)
+      if (round.weatherExperimentToken) {
+        tokens.push(round.weatherExperimentToken)
+      }
+    }
+    return tokens
   }
 
   /**

@@ -13,7 +13,7 @@
         <button class="btn btn-success me-2" @click="runExperiment(true)" v-html="t('experiment.running.title')"></button>
         <button class="btn btn-danger" @click="runExperiment(false)" v-html="t('experiment.notRunning.title')"></button>
       </template>
-      <button v-else class="btn btn-outline-secondary btn-sm" @click="runExperiment(undefined)" v-html="t('action.reselect')"></button>
+      <button v-else class="btn btn-outline-secondary btn-sm" @click="reselect()" v-html="t('action.reselect')"></button>
     </div>
   </div>
   <div class="mt-3" v-if="experimentRunning==true">
@@ -36,7 +36,16 @@
           <b>{{t('experiment.running.saboteur.title')}}</b>
           <ol>
             <li v-html="t('experiment.running.saboteur.returnBots')"></li>
-            <li v-html="t('experiment.running.saboteur.takeResearchToken')"></li>
+            <li>
+              <span v-html="t('experiment.running.saboteur.takeResearchToken')"></span>
+              <div class="decision mt-2" v-if="noWeatherBranchChosen == undefined">
+                <span v-html="t('experiment.running.saboteur.researchTokenAvailable')"></span><br/>
+                <ChooseWeatherBranch @choose-weather="chooseWeather" @choose-weather-no-match="chooseWeatherNoMatch" class="mt-2"/>
+              </div>
+              <div v-else-if="weatherBranchChosen" class="mt-2">
+                <ResearchTokenIcon :location="location" :weather="weatherBranchChosen"/>
+              </div>
+            </li>
           </ol>
         </li>
       </template>
@@ -75,12 +84,26 @@ import NavigationState from '@/util/NavigationState'
 import { useI18n } from 'vue-i18n'
 import getPrioritizedEnumValues from 'brdgm-commons/src/util/enum/getPrioritizedEnumValues'
 import Player from '@/services/enum/Player'
+import ChooseWeatherBranch from '../structure/ChooseWeatherBranch.vue'
+import Weather from '@/services/enum/Weather'
+import ResearchTokenIcon from '../structure/ResearchTokenIcon.vue'
+import Location from '@/services/enum/Location'
 
 export default defineComponent({
   name: 'WeatherMachineExperiment',
   components: {
-    AppIcon
-  },  
+    AppIcon,
+    ChooseWeatherBranch,
+    ResearchTokenIcon
+  },
+  emits: {
+    experimentPhaseStatus(payload:{completed:boolean}) {
+      return payload != undefined
+    },
+    saboteurResearchTokenGained(payload:{weather:Weather|undefined}) {
+      return payload != undefined
+    }
+  },
   setup() {
     const { t } = useI18n()
     return { t }
@@ -93,20 +116,56 @@ export default defineComponent({
   },
   data() {
     return {
-      experimentRunning: undefined as boolean|undefined
+      experimentRunning: undefined as boolean|undefined,
+      weatherBranchChosen: undefined as Weather|undefined,
+      noWeatherBranchChosen: undefined as boolean|undefined
     }
   },
   computed: {
     playerOrder() : Player[] {
       return getPrioritizedEnumValues(Player, this.navigationState.lastRoundInitiativePlayer)
+    },
+    location() : Location {
+      return Location.LATIVS_LAB
     }
   },
   methods: {
-    runExperiment(isRunning: boolean|undefined) : void {
-      this.experimentRunning= isRunning
+    runExperiment(isRunning: boolean) : void {
+      this.experimentRunning = isRunning
+      this.checkExperimentPhaseStatus()
+    },
+    reselect() : void {
+      this.experimentRunning = undefined
+      this.weatherBranchChosen = undefined
+      this.noWeatherBranchChosen = undefined
+      this.checkExperimentPhaseStatus()
     },
     isPlayer(player : Player) : boolean {
       return player == Player.PLAYER
+    },
+    chooseWeather(payload:{weather:Weather}) : void {
+      this.weatherBranchChosen = payload.weather
+      this.noWeatherBranchChosen = false
+      this.$emit('saboteurResearchTokenGained',{weather:payload.weather})
+      this.checkExperimentPhaseStatus()
+    },
+    chooseWeatherNoMatch() : void {
+      this.weatherBranchChosen = undefined
+      this.noWeatherBranchChosen = true
+      this.$emit('saboteurResearchTokenGained',{weather:undefined})
+      this.checkExperimentPhaseStatus()
+    },
+    checkExperimentPhaseStatus() : void {
+      let completed = false
+      if (!(this.experimentRunning == undefined)) {
+        if (this.experimentRunning) {
+          completed = this.noWeatherBranchChosen != undefined
+        }
+        else {
+          completed = true
+        }
+      }
+      this.$emit('experimentPhaseStatus', {completed:completed})
     }
   }
 })
@@ -119,5 +178,11 @@ export default defineComponent({
 }
 .icon {
   height: 4rem;  
+}
+.decision {
+  span {
+    font-weight: bold;
+    color: green;
+  }
 }
 </style>
