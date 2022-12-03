@@ -13,7 +13,7 @@
           <p>
             <span v-html="t('claimInitiative.claim')"></span><br/>
             <template v-for="player of players" :key="player">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" :id="`initiative-${player}`" :value="player" v-model="selectedPlayer">
+              <input class="form-check-input" type="radio" :id="`initiative-${player}`" :value="player" v-model="selectedPlayer">
               <label class="form-check-label" :for="`initiative-${player}`" :class="{'fw-bold':selectedPlayer==player}">
                 {{t(`claimInitiative.${player}`)}}
               </label><br/>

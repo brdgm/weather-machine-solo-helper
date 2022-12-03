@@ -71,6 +71,12 @@ export const store = createStore<State>({
       state.rounds = state.rounds.filter(item => item.round < round.round)
       state.rounds.push(round)
     },
+    roundCardDeck(state : State, payload:{round: number, cardDeck: CardDeckPersistence}) {
+      const round = state.rounds.find(item => item.round == payload.round)
+      if (round) {
+        round.cardDeck = payload.cardDeck
+      }
+    },
     roundWeatherExperimentToken(state : State, payload:{round: number, token: Token|undefined}) {
       const round = state.rounds.find(item => item.round == payload.round)
       if (round) {

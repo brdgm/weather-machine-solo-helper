@@ -9,8 +9,8 @@
       <AppIcon type="weather" :name="previousReport.weather" class="weather-icon mt-2"/>
       <AppIcon type="selection-priority" :name="previousReport.selectionPriority" class="selection-priority-icon mt-2"/>
     </div>
-    <div class="mt-2" :class="{'report-cards-warning':reportsLeft <= 3}">
-      {{t('sidebar.reportsLeft')}} <b>{{reportsLeft}}</b>
+    <div class="mt-2" :class="{'report-cards-warning':deck.length <= 3}">
+      {{t('sidebar.reportsLeft')}} <b>{{deck.length}}</b>
     </div>
 
     <div class="mt-2">
@@ -28,6 +28,10 @@
       <div v-if="isPlayer" class="mt-2 mb-2">
         <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalClaimInitiative">
           {{t('claimInitiative.title')}}
+        </button><br/>
+
+        <button class="btn btn-secondary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#modalCallSecurity" v-if="deck.length >= 2">
+          {{t('callSecurity.title')}}
         </button>
       </div>
     </div>
@@ -66,6 +70,7 @@
     </div>
   </div>
 
+  <CallSecurityModal :current-report="currentReport" :deck="deck" @call-security="callSecurity"/>
   <ClaimInitiativeModal :round="round" :player="player" @claimed-initiative="claimedInitiative" />
 </template>
 
@@ -73,6 +78,7 @@
 import { Token, useStore } from '@/store'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
+import CallSecurityModal from '@/components/turn/CallSecurityModal.vue'
 import ClaimInitiativeModal from '@/components/turn/ClaimInitiativeModal.vue'
 import Player from '@/services/enum/Player'
 import Card from '@/services/Card'
@@ -81,10 +87,12 @@ import AppIcon from '../structure/AppIcon.vue'
 import ResearchTokenIcon from '../structure/ResearchTokenIcon.vue'
 import Weather from '@/services/enum/Weather'
 import { Modal } from 'bootstrap'
+import { CallSecurityAction } from '@/services/CardDeck'
 
 export default defineComponent({
   name: 'TurnSidebar',
   components: {
+    CallSecurityModal,
     ClaimInitiativeModal,
     AgentLocationIcon,
     AppIcon,
@@ -95,6 +103,9 @@ export default defineComponent({
       return payload != undefined
     },
     updateCitationUnlock(payload:{citationUnlock:Weather[]}) {
+      return payload != undefined
+    },
+    callSecurity(payload: CallSecurityAction[]) {
       return payload != undefined
     }
   },
@@ -125,8 +136,8 @@ export default defineComponent({
       type: Object as PropType<Card>,
       required: true
     },
-    reportsLeft: {
-      type: Number,
+    deck: {
+      type: Object as PropType<readonly Card[]>,
       required: true
     },
     tokens: {
@@ -165,12 +176,15 @@ export default defineComponent({
       const modal = new Modal(document.getElementById('modalUnlockCitation') as Element)
       modal.show()
     },
-    unlockCitation(weather : Weather) {
+    callSecurity(payload: CallSecurityAction[]) : void {
+      this.$emit('callSecurity', payload)
+    },
+    unlockCitation(weather : Weather) : void {
       const updatedCitationUnlock = this.citationUnlock
       updatedCitationUnlock.push(weather)
       this.$emit('updateCitationUnlock', {citationUnlock:updatedCitationUnlock})
     },
-    lockCitation(weather : Weather) {
+    lockCitation(weather : Weather) : void {
       const updatedCitationUnlock = this.citationUnlock.filter(item => item != weather)
       this.$emit('updateCitationUnlock', {citationUnlock:updatedCitationUnlock})
     }

@@ -4,6 +4,7 @@ import * as _ from "lodash"
 import { shuffle } from "lodash"
 import Card from "./Card"
 import Cards from "./Cards"
+import CallSecurityCardAction from "./enum/CallSecurityCardAction"
 
 /**
  * Deck of security report cards.
@@ -130,6 +131,23 @@ export default class CardDeck {
   }
 
   /**
+   * Execute call security by drawing 2 cards from deck together with current report,
+   * keeping 1 as current report, putting 1 back and discarding 1.
+   */
+  public callSecurity(actions: CallSecurityAction[]) : void {
+    const currentCard = actions.find(item => item.callSecurityCardAction==CallSecurityCardAction.MAKE_CURRENT)?.card
+    const putBackCard = actions.find(item => item.callSecurityCardAction==CallSecurityCardAction.PUT_BACK)?.card
+    const discardCard = actions.find(item => item.callSecurityCardAction==CallSecurityCardAction.DISCARD)?.card
+    if (!currentCard || !putBackCard || !discardCard) {
+      throw new Error('One card expected for each call security card action.')
+    }
+    this._deck = this._deck.filter(item => item != currentCard && item != putBackCard && item != discardCard)
+    this._deck.unshift(putBackCard)
+    this._current = currentCard
+    this._discard.unshift(discardCard)
+  }
+
+  /**
    * @returns Clone of the current card deck
    */
   public clone() : CardDeck {
@@ -156,4 +174,9 @@ export default class CardDeck {
     )
   }
 
+}
+
+export interface CallSecurityAction {
+  card : Card
+  callSecurityCardAction : CallSecurityCardAction
 }

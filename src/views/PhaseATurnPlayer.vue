@@ -1,12 +1,13 @@
 <template>
   <TurnSidebar :round="round"
       :player="navigationState.player"
-      :current-report="navigationState.cardDeck.currentReport"
-      :previous-report="navigationState.cardDeck.previousReport"
-      :reports-left="navigationState.cardDeck.deck.length"
+      :current-report="cardDeck.currentReport"
+      :previous-report="cardDeck.previousReport"
+      :deck="cardDeck.deck"
       :tokens="tokens"
       :citation-unlock="citationUnlock"
       :initiative-player="initiativePlayer"
+      @call-security="callSecurity"
       @update-initiative-player="updateInitiativePlayer"
       @update-citation-unlock="updateCitationUnlock"/>
 
@@ -56,6 +57,7 @@ import TurnSidebar from '@/components/turn/TurnSidebar.vue'
 import Player from '@/services/enum/Player'
 import Weather from '@/services/enum/Weather'
 import AppIcon from '@/components/structure/AppIcon.vue'
+import { CallSecurityAction } from '@/services/CardDeck'
 
 export default defineComponent({
   name: 'PhaseATurnPlayer',
@@ -72,12 +74,13 @@ export default defineComponent({
 
     const navigationState = new NavigationState(route, store.state)
     const round = navigationState.round
-    const tokens = ref(navigationState.tokens)
+    const cardDeck = ref(navigationState.cardDeck.clone())
+    const tokens = navigationState.tokens
     const citationUnlock = ref(navigationState.citationUnlock)
     const initiativePlayer = ref(navigationState.initiativePlayer)
     const lastRoundInitiativePlayer = navigationState.lastRoundInitiativePlayer
 
-    return { t, round, navigationState, tokens, citationUnlock, initiativePlayer, lastRoundInitiativePlayer }
+    return { t, round, navigationState, cardDeck, tokens, citationUnlock, initiativePlayer, lastRoundInitiativePlayer }
   },
   computed: {
     nextButtonRouteTo() : string {
@@ -108,6 +111,10 @@ export default defineComponent({
     updateCitationUnlock(payload:{citationUnlock:Weather[]}) : void {
       this.citationUnlock = payload.citationUnlock
       this.$store.commit('updateCitation', {round:this.round, citationUnlock:this.citationUnlock})
+    },
+    callSecurity(payload: CallSecurityAction[]) : void {
+      this.cardDeck.callSecurity(payload)
+      this.$store.commit('roundCardDeck', {round:this.round, cardDeck:this.cardDeck.toPersistence()})
     }
   }
 })

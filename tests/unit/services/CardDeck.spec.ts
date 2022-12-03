@@ -1,4 +1,6 @@
 import CardDeck from '@/services/CardDeck'
+import Cards from '@/services/Cards'
+import CallSecurityCardAction from '@/services/enum/CallSecurityCardAction'
 import { expect } from 'chai'
 
 describe('services/CardDeck', () => {
@@ -59,5 +61,24 @@ describe('services/CardDeck', () => {
     expect(cardDeck.discard.length, 'discard size').to.eq(2)
     expect(cardDeck.currentReport, 'current report').to.not.undefined
     expect(cardDeck.previousReport?.id, 'previous report id').to.eq(2)
+  })
+
+  it('callSecurity', () => {
+    const cardDeck = CardDeck.fromPersistence({
+      deck: [1,2,3],
+      current: 4,
+      discard: [5,6]
+    })
+
+    cardDeck.callSecurity([
+      {card:Cards.get(1),callSecurityCardAction:CallSecurityCardAction.DISCARD},
+      {card:Cards.get(4),callSecurityCardAction:CallSecurityCardAction.PUT_BACK},
+      {card:Cards.get(2),callSecurityCardAction:CallSecurityCardAction.MAKE_CURRENT}
+    ])
+
+    const persistence = cardDeck.toPersistence()
+    expect(persistence.deck, 'deck').to.eql([4,3])
+    expect(persistence.current, 'current report').to.eq(2)
+    expect(persistence.discard, 'discard').to.eql([1,5,6])
   })
 })

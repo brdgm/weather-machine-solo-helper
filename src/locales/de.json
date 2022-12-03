@@ -198,6 +198,17 @@
     "player": "Spieler",
     "saboteur": "Saboteure"
   },
+  "callSecurity": {
+    "title": "Security rufen",
+    "confirm": "Möchtest Du die Security rufen?",
+    "payVoucher": "Um fortzufahren, musst du <b>1 Coupon</b> zahlen (passend zum Typ des Ortes, an dem du dich aufhältst oder einen Wissenschaftscoupon).",
+    "report": {
+      "makeCurrent": "Laufender Report",
+      "putBack": "Zurücklegen",
+      "discard": "Abwerfen"
+    },
+    "finish": "Security rufen abschließen"
+  },
   "agentLocationSelection": {
     "select": "Wählen",
     "selectA": "A &",

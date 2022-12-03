@@ -192,6 +192,17 @@
     "weatherMachineActiveBranchStep2": "If Lativ already has a Bot in the branch, or the branch was full, place a Bot in the next branch (following the arrows). If all the branches are either full or already contain one of Lativ’s Bots, nothing happens.",
     "governmentRnd": "When Lativ moves to the <b>Government or R&D</b>, discard a Research token from Lativ’s current Location of the same type of weather as the branch where Lativ’s Assistant currently is."
   },
+  "callSecurity": {
+    "title": "Call Security",
+    "confirm": "Do you want to call security?",
+    "payVoucher": "To continue, you have to pay <b>1 Voucher</b> (of the type matching the Location where you are, or a science voucher).",
+    "report": {
+      "makeCurrent": "Current Report",
+      "putBack": "Put Back",
+      "discard": "Discard"
+    },
+    "finish": "Finish Call Security"
+  },
   "claimInitiative": {
     "title": "Claim Initiative",
     "claim": "Claim Initiative for:",

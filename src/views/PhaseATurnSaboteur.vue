@@ -3,7 +3,7 @@
       :player="navigationState.player"
       :current-report="currentReport"
       :previous-report="previousReport"
-      :reports-left="cardDeck.deck.length"
+      :deck="cardDeck.deck"
       :tokens="tokens"
       :citation-unlock="citationUnlock"
       :initiative-player="initiativePlayer"/>
