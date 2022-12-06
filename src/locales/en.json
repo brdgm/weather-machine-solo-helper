@@ -16,6 +16,7 @@
   },
   "setupGame": {
     "title": "Setup Game",
+    "setupWithChanges": "Set up the game with the following changes:",
     "lativBots": "Place one of <b>Lativ’s Bots</b> in each branch of the Weather Machine in the Lab.",
     "researchTokens": "Use only <b>2 Research tokens</b> of each type in each Main Location.",
     "goalTiles": "Prepare the <b>Goal tiles</b>:",
@@ -31,7 +32,11 @@
     "hideoutAward": "The Saboteurs start the game with an <b>Award token</b>:",
     "placeAgentMiddlePosition": "Place <b>Agent {agent}</b> on location <b>{location}</b>, middle action space.",
     "placeAgentRightPosition": "Place <b>Agent {agent}</b> on location <b>{location}</b>, rightmost action space.",
-    "takeWeatherToken": "Move a <b>{weather} Research token</b> from that location to the hideout."
+    "takeWeatherToken": "Move a <b>{weather} Research token</b> from that location to the hideout.",
+    "playerLaboratory": "Player's Laboratory",
+    "playerSetupLaboratory": "Setup your laboratory as usual including one random <b>Workshop tile</b> and one random <b>Machine Part</b>.",
+    "playerDetermineMachinePart": "Determine Machine Part",
+    "playerPostSetupSupplyRound": "Take your post-setup <b>supply round</b>."
   },
   "turnPlayer": {
     "title": "Your Turn",

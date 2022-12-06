@@ -16,6 +16,7 @@
   },
   "setupGame": {
     "title": "Spielaufbau",
+    "setupWithChanges": "Baue das Spiel auf mit den folgenden Änderungen:",
     "lativBots": "Stellt einen von <b>Lativs Bots</b> in jeden Zweig der Wettermaschine im Labor.",
     "researchTokens": "Nutzt nur <b>2 Forschungssteine</b> pro Typ an jedem Hauptort.",
     "goalTiles": "Bereite die <b>Zielplättchen</b> vor:",
@@ -31,7 +32,11 @@
     "hideoutAward": "Die Saboteure beginnen das Spiel mit einem <b>Auszeichnungsstein</b>:",
     "placeAgentMiddlePosition": "Setze <b>Agent {agent}</b> auf den Ort <b>{location}</b>, mittleres Aktionsfeld.",
     "placeAgentRightPosition": "Setze <b>Agent {agent}</b> auf den Ort <b>{location}</b>, rechtes Aktionsfeld.",
-    "takeWeatherToken": "Verschiebe einen <b>{weather}-Forschungsstein</b> von diesem Ort zum Versteck."
+    "takeWeatherToken": "Verschiebe einen <b>{weather}-Forschungsstein</b> von diesem Ort zum Versteck.",
+    "playerLaboratory": "Spielerlaboratorium",
+    "playerSetupLaboratory": "Baue dein Laboratorium wie üblich auf, einschließlich einem zufälligem <b>Werkstattplättchen</b> und einem zufälligen <b>Zahnrad</b>.",
+    "playerDetermineMachinePart": "Zahnrad bestimmen",
+    "playerPostSetupSupplyRound": "Führe deine <b>Vorratsrunde</b> nach dem Aufbau durch."
   },
   "turnPlayer": {
     "title": "Dein Zug",
