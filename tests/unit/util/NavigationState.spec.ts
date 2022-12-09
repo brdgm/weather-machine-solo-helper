@@ -14,12 +14,12 @@ describe('util/NavigationState', () => {
       rounds: [
         mockRound({round:1}),
         mockRound({round:2,claimInitiative:Player.SABOTEUR}),
-        mockRound({round:3,
+        mockRound({round:3,claimInitiative:Player.PLAYER}),
+        mockRound({round:4,
           cardDeck:mockCardDeck({current:5,discard:[3,4]}).toPersistence(),
           tokens:[{award:true},{location:Location.RND,weather:Weather.SUN}],
           weatherExperimentToken: {location:Location.LATIVS_LAB,weather:Weather.FOG},
-          citationUnlock:[Weather.FOG,Weather.SNOW,Weather.WIND],
-          claimInitiative:Player.PLAYER
+          citationUnlock:[Weather.FOG,Weather.SNOW,Weather.WIND]
         })
       ]
     })
@@ -36,6 +36,35 @@ describe('util/NavigationState', () => {
     expect(navigationState.cardDeck.previousReport?.id, 'previousReport').to.eq(3)
 
     expect(navigationState.initiativePlayer, 'initiativePlayer').to.eq(Player.PLAYER)
+    expect(navigationState.lastRoundInitiativePlayer, 'lastRoundInitiativePlayer').to.eq(Player.SABOTEUR)
+  })
+
+  it('turnSaboteur', () => {
+    const state = mockState({
+      rounds: [
+        mockRound({round:1}),
+        mockRound({round:2,claimInitiative:Player.SABOTEUR}),
+        mockRound({round:3,
+          cardDeck:mockCardDeck({current:5,discard:[3,4]}).toPersistence(),
+          tokens:[{award:true},{location:Location.RND,weather:Weather.SUN}],
+          weatherExperimentToken: {location:Location.LATIVS_LAB,weather:Weather.FOG},
+          citationUnlock:[Weather.FOG,Weather.SNOW,Weather.WIND]
+        })
+      ]
+    })
+    const route = mockRouteLocation({params:{'round':'3'},name:'PhaseATurnSaboteur'})
+    const navigationState = new NavigationState(route, state)
+
+    expect(navigationState.round, 'round').to.eq(3)
+    expect(navigationState.player, 'player').to.eq(Player.SABOTEUR)
+    expect(navigationState.cardDeck, 'cardDeck').to.not.undefined
+    expect(navigationState.tokens, 'tokens').to.eql([{award:true},{location:Location.RND,weather:Weather.SUN},{location:Location.LATIVS_LAB,weather:Weather.FOG}])
+    expect(navigationState.citationUnlock.length, 'citationUnlock').to.eq(3)
+
+    expect(navigationState.cardDeck.currentReport?.id, 'currentReport').to.eq(5)
+    expect(navigationState.cardDeck.previousReport?.id, 'previousReport').to.eq(3)
+
+    expect(navigationState.initiativePlayer, 'initiativePlayer').to.eq(Player.SABOTEUR)
     expect(navigationState.lastRoundInitiativePlayer, 'lastRoundInitiativePlayer').to.eq(Player.SABOTEUR)
   })
 
