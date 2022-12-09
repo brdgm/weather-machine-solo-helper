@@ -144,15 +144,16 @@
     "running": {
       "title": "Experiment is running",
       "player": {
-        "title": "Your Turn",
+        "title": "Your Turn (if you have bots on the active branch)",
         "returnBots": "Return your Bots from the active branch.",
         "ifVouchersPayed": "If you pay Science Vouchers of the active Experiment tile:",
         "gainCP": "Gain CP as depicted on the Experiment tile for each Bot you just returned.",
         "gainBenefit": "Gain one of the two benefits depicted on the tile.",
-        "takeResearchToken": "Take a Research token from the active branch (if available)."
+        "takeResearchToken": "Take a Research token from the active branch (if available), immediately placing it in your Office."
       },
       "saboteur": {
         "title": "Saboteurs Turn",
+        "botsInActiveBranch": "Do the saboteurs have a bot in the active branch?",
         "returnBots": "For each of the Saboteurs Bots in the active branch, return that Bot to the Hideout and raise the Target Value by the CP depicted on the Experiment tile.",
         "takeResearchToken": "Take a Research token from below the active branch (if available).",
         "researchTokenAvailable": "Is a research token available? If yes, choose the weather of the active branch."

@@ -144,15 +144,16 @@
     "running": {
       "title": "Experiment läuft",
       "player": {
-        "title": "Dein Zug",
+        "title": "Dein Zug (wenn du Bots auf dem aktiven Zweig hast)",
         "returnBots": "Nehme deine Bots vom aktiven Zweig zurück.",
         "ifVouchersPayed": "Wenn du die Wissenschaftscoupons des aktiven Experimentplättchens bezahlt hast:",
         "gainCP": "Erhalte die auf dem Experimentplättchen angegebene Anzahl an KP für jeden gerade zurückgegebenen Bot.",
         "gainBenefit": "Erhalte einen der zwei auf dem Plättchen angegebenen Boni.",
-        "takeResearchToken": "Nehme einen Forschungsstein des aktiven Zweigs (falls vorhanden)."
+        "takeResearchToken": "Nehme einen Forschungsstein des aktiven Zweigs (falls vorhanden) und lege ihn sofort in dein Büro."
       },
       "saboteur": {
         "title": "Zug der Saboteure",
+        "botsInActiveBranch": "Haben die Saboteure einen Bot im aktiven Zweig?",
         "returnBots": "Erhöhe für jeden der Saboteur-Bots im aktiven Zweig den Zielwert um die KP, die auf dem Experimentplättchen angegeben sind und stelle den Bot zurück in ihr Versteck.",
         "takeResearchToken": "Sie nehmen einen Forschungsstein von dem aktiven Zweig, wenn verfügbar.",
         "researchTokenAvailable": "Ist ein Forschungsstein verfügbar? Wenn ja, wähle das Wetter des aktiven Zweigs."
