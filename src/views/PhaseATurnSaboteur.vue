@@ -28,7 +28,7 @@
         </template>
       </li>
       <template v-if="selectedLocation">
-        <li v-if="selectedLocation != 'supply'" class="mt-2">
+        <li v-if="isSaboteurMoveRaiseTargetValue" class="mt-2">
           <span v-html="t('turnSaboteur.raiseTargetValue')"></span><br/>
           <AppIcon name="saboteur-move-raise-target-value" class="saboteur-move-raise-target-value-icon"/>
         </li>
@@ -200,6 +200,9 @@ export default defineComponent({
         citationUnlock: this.citationUnlock,
         tokens: this.tokens
       }
+    },
+    isSaboteurMoveRaiseTargetValue() : boolean {
+      return this.selectedLocation != Location.SUPPLY && this.selectedActionSlot != ActionSlot.AND
     }
   },
   methods: {

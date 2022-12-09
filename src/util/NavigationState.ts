@@ -8,20 +8,27 @@ export default class NavigationState {
 
   readonly round : number
   readonly player : Player
+  readonly initiativePlayer : Player
+  readonly lastRoundInitiativePlayer : Player
   readonly cardDeck : CardDeck
   readonly tokens : Token[]
   readonly citationUnlock : Weather[]
-  readonly initiativePlayer : Player
-  readonly lastRoundInitiativePlayer : Player
 
   constructor(route : RouteLocation, state : State) {
     this.round = parseInt(route.params['round'] as string)
     this.player = (route.name == 'PhaseATurnSaboteur') ? Player.SABOTEUR : Player.PLAYER
-    this.cardDeck = NavigationState.getCardDeck(this.round, state)
-    this.tokens = NavigationState.getTokens(this.round, state)
-    this.citationUnlock = NavigationState.getCitationUnlock(this.round, state)
     this.initiativePlayer = NavigationState.getInitiativePlayer(this.round, state)
     this.lastRoundInitiativePlayer = NavigationState.getInitiativePlayer(this.round-1, state)
+
+    let loadStateRound = this.round
+    if (this.player == Player.PLAYER && this.lastRoundInitiativePlayer != Player.PLAYER) {
+      // player is after saboteurs in this round - so load state from next round stored in saboteurs turn
+      loadStateRound = this.round + 1
+    }
+
+    this.cardDeck = NavigationState.getCardDeck(loadStateRound, state)
+    this.tokens = NavigationState.getTokens(loadStateRound, state)
+    this.citationUnlock = NavigationState.getCitationUnlock(loadStateRound, state)
   }
 
   /**

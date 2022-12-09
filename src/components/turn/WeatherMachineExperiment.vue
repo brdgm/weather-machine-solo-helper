@@ -32,9 +32,18 @@
             </ol>
           </ol>
         </li>
-        <li v-else>
+        <li v-else-if="saboteurBotsInExperiment == undefined || saboteurBotsInExperiment">
           <b>{{t('experiment.running.saboteur.title')}}</b>
-          <ol>
+          <div class="decision mt-2 mb-2" v-if="saboteurBotsInExperiment == undefined">
+            <span v-html="t('experiment.running.saboteur.botsInActiveBranch')"></span><br/>
+            <button class="btn btn-success" @click="chooseSaboteurBotsInExperiment(true)">
+              {{t('action.yes')}}
+            </button>
+            <button class="btn btn-danger" @click="chooseSaboteurBotsInExperiment(false)">
+              {{t('action.no')}}
+            </button>
+          </div>
+          <ol v-if="saboteurBotsInExperiment">
             <li v-html="t('experiment.running.saboteur.returnBots')"></li>
             <li>
               <span v-html="t('experiment.running.saboteur.takeResearchToken')"></span>
@@ -51,7 +60,7 @@
       </template>
     </ul>
   </div>
-  <div class="mt-3" v-if="experimentRunning==true">
+  <div class="mt-3" v-if="experimentRunning==true && saboteurDecisionsCompleted">
     <h3 v-html="t('experiment.afterExperiment.title')"></h3>
     <ul>
       <li v-html="t('experiment.afterExperiment.lativBotRemoveResearchToken')"></li>
@@ -59,7 +68,7 @@
       <li v-html="t('experiment.afterExperiment.takeExtremeWeatherTile')"></li>
     </ul>
   </div>
-  <div class="mt-3" v-if="experimentRunning==false">
+  <div class="mt-3" v-if="experimentRunning==false && saboteurDecisionsCompleted">
     <h3 v-html="t('experiment.notRunning.title')"></h3>
     <ul>
       <li v-html="t('experiment.notRunning.returnPlayerBots')"></li>
@@ -67,7 +76,7 @@
       <li v-html="t('experiment.notRunning.returnLativBots')"></li>
     </ul>
   </div>
-  <div class="mt-3" v-if="experimentRunning != undefined">
+  <div class="mt-3" v-if="experimentRunning != undefined && saboteurDecisionsCompleted">
     <h3 v-html="t('experiment.prepareNext.title')"></h3>
     <ul>
       <li v-html="t('experiment.prepareNext.removeExperimentTile')"></li>
@@ -117,6 +126,7 @@ export default defineComponent({
   data() {
     return {
       experimentRunning: undefined as boolean|undefined,
+      saboteurBotsInExperiment: undefined as boolean|undefined,
       weatherBranchChosen: undefined as Weather|undefined,
       noWeatherBranchChosen: undefined as boolean|undefined
     }
@@ -127,6 +137,19 @@ export default defineComponent({
     },
     location() : Location {
       return Location.LATIVS_LAB
+    },
+    saboteurDecisionsCompleted() : boolean {
+      let completed = false
+      if (this.experimentRunning != undefined) {
+        if (this.experimentRunning) {
+          completed = (this.saboteurBotsInExperiment && this.noWeatherBranchChosen != undefined) 
+              || (this.saboteurBotsInExperiment != undefined && !this.saboteurBotsInExperiment)
+        }
+        else {
+          completed = true
+        }
+      }
+      return completed
     }
   },
   methods: {
@@ -136,12 +159,17 @@ export default defineComponent({
     },
     reselect() : void {
       this.experimentRunning = undefined
+      this.saboteurBotsInExperiment = undefined
       this.weatherBranchChosen = undefined
       this.noWeatherBranchChosen = undefined
       this.checkExperimentPhaseStatus()
     },
     isPlayer(player : Player) : boolean {
       return player == Player.PLAYER
+    },
+    chooseSaboteurBotsInExperiment(saboteurBotsInExperiment : boolean) {
+      this.saboteurBotsInExperiment = saboteurBotsInExperiment
+      this.checkExperimentPhaseStatus()
     },
     chooseWeather(payload:{weather:Weather}) : void {
       this.weatherBranchChosen = payload.weather
@@ -156,16 +184,7 @@ export default defineComponent({
       this.checkExperimentPhaseStatus()
     },
     checkExperimentPhaseStatus() : void {
-      let completed = false
-      if (this.experimentRunning != undefined) {
-        if (this.experimentRunning) {
-          completed = this.noWeatherBranchChosen != undefined
-        }
-        else {
-          completed = true
-        }
-      }
-      this.$emit('experimentPhaseStatus', {completed:completed})
+      this.$emit('experimentPhaseStatus', {completed:this.saboteurDecisionsCompleted})
     }
   }
 })
@@ -183,6 +202,9 @@ export default defineComponent({
   span {
     font-weight: bold;
     color: green;
+  }
+  button {
+    margin-right: 0.5rem;
   }
 }
 </style>

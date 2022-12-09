@@ -2,6 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 col-md-11 col-lg-9">
+        <p v-html="t('setupGame.setupWithChanges')"></p>
         <ul>
           <li v-html="t('setupGame.lativBots')"></li>
           <li v-html="t('setupGame.researchTokens')"></li>
@@ -48,6 +49,15 @@
             </div>
           </li>
         </ul>
+        <h3 v-html="t('setupGame.playerLaboratory')"></h3>
+        <ul>
+          <li>
+            <span v-html="t('setupGame.playerSetupLaboratory')"></span>
+            <button v-if="!machinePart" class="btn btn-outline-secondary btn-sm ms-2" @click="determineMachinePart">{{t('setupGame.playerDetermineMachinePart')}}</button>
+            <MachinePartIcon v-else class="ms-2" :machine-part="machinePart"/>
+          </li>
+          <li v-html="t('setupGame.playerPostSetupSupplyRound')"></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -60,11 +70,13 @@ import { useStore } from '@/store'
 import AppIcon from '../structure/AppIcon.vue'
 import ChallengeIcon from '../structure/ChallengeIcon.vue'
 import ChallengeCard from '@/services/enum/ChallengeCard'
+import MachinePart from '@/services/enum/MachinePart'
 import Chemical from '@/services/enum/Chemical'
 import randomEnum from 'brdgm-commons/src/util/random/randomEnum'
 import Card from '@/services/Card'
 import AgentLocationIcon from '../structure/AgentLocationIcon.vue'
 import ResearchTokenIcon from '../structure/ResearchTokenIcon.vue'
+import MachinePartIcon from '../structure/MachinePartIcon.vue'
 
 export default defineComponent({
   name: 'SetupGameInstructions',
@@ -72,7 +84,8 @@ export default defineComponent({
     AppIcon,
     ChallengeIcon,
     AgentLocationIcon,
-    ResearchTokenIcon
+    ResearchTokenIcon,
+    MachinePartIcon
   },
   setup() {
     const { t } = useI18n()
@@ -87,6 +100,11 @@ export default defineComponent({
     awardTokens: {
       type: Number,
       required: true
+    }
+  },
+  data() {
+    return {
+      machinePart: undefined as MachinePart|undefined
     }
   },
   computed: {
@@ -130,6 +148,9 @@ export default defineComponent({
         return false
       }
       return this.setupCards[cardIndex]?.location == this.setupCards[0]?.location
+    },
+    determineMachinePart() : void {
+      this.machinePart = randomEnum(MachinePart)
     }
   }
 })

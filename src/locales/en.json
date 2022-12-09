@@ -16,6 +16,7 @@
   },
   "setupGame": {
     "title": "Setup Game",
+    "setupWithChanges": "Set up the game with the following changes:",
     "lativBots": "Place one of <b>Lativ’s Bots</b> in each branch of the Weather Machine in the Lab.",
     "researchTokens": "Use only <b>2 Research tokens</b> of each type in each Main Location.",
     "goalTiles": "Prepare the <b>Goal tiles</b>:",
@@ -31,7 +32,11 @@
     "hideoutAward": "The Saboteurs start the game with an <b>Award token</b>:",
     "placeAgentMiddlePosition": "Place <b>Agent {agent}</b> on location <b>{location}</b>, middle action space.",
     "placeAgentRightPosition": "Place <b>Agent {agent}</b> on location <b>{location}</b>, rightmost action space.",
-    "takeWeatherToken": "Move a <b>{weather} Research token</b> from that location to the hideout."
+    "takeWeatherToken": "Move a <b>{weather} Research token</b> from that location to the hideout.",
+    "playerLaboratory": "Player's Laboratory",
+    "playerSetupLaboratory": "Setup your laboratory as usual including one random <b>Workshop tile</b> and one random <b>Machine Part</b>.",
+    "playerDetermineMachinePart": "Determine Machine Part",
+    "playerPostSetupSupplyRound": "Take your post-setup <b>supply round</b>."
   },
   "turnPlayer": {
     "title": "Your Turn",
@@ -46,6 +51,7 @@
     "challengePeerReviewUnlock": "When you unlock a Citation space, you <b>cannot</b> pay a Science Voucher to gain 3 CP.",
     "challengeIndependentPrototypes": "You cannot use the Saboteurs’ Bots when building a prototype as part of a Breakthrough action.",
     "challengeBudgetCuts": "Whenever you receive funding from the Lab Funding track, treat the modifier below your marker as +0 (you still gain the benefits of the Government or R&D track).",
+    "infoCitationUnlock": "When you unlock a citation space on the game board, unlock it here in the app as well.",
     "infoGovernmentRunMachine": "When the government activates a branch of their machine, raise the Target Value by 3 for each Saboteur Bot in that branch.",
     "infoRndBreakthrough": "When you perform a Breakthrough action, for each Saboteur Bot that provides a part for you when building your prototype, raise the Target Value by 2."
   },
@@ -138,15 +144,16 @@
     "running": {
       "title": "Experiment is running",
       "player": {
-        "title": "Your Turn",
+        "title": "Your Turn (if you have bots on the active branch)",
         "returnBots": "Return your Bots from the active branch.",
         "ifVouchersPayed": "If you pay Science Vouchers of the active Experiment tile:",
         "gainCP": "Gain CP as depicted on the Experiment tile for each Bot you just returned.",
         "gainBenefit": "Gain one of the two benefits depicted on the tile.",
-        "takeResearchToken": "Take a Research token from the active branch (if available)."
+        "takeResearchToken": "Take a Research token from the active branch (if available), immediately placing it in your Office."
       },
       "saboteur": {
         "title": "Saboteurs Turn",
+        "botsInActiveBranch": "Do the saboteurs have a bot in the active branch?",
         "returnBots": "For each of the Saboteurs Bots in the active branch, return that Bot to the Hideout and raise the Target Value by the CP depicted on the Experiment tile.",
         "takeResearchToken": "Take a Research token from below the active branch (if available).",
         "researchTokenAvailable": "Is a research token available? If yes, choose the weather of the active branch."

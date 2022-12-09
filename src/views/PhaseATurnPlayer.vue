@@ -41,6 +41,11 @@
   <hr/>
 
   <div class="info-box">
+    <AppIcon name="citation-unlocked" class="icon citation-unlocked"/>
+    <p class="small muted mt-2" v-html="t('turnPlayer.infoCitationUnlock')"></p>
+  </div>
+
+  <div class="info-box">
     <AppIcon name="government-run-machine" class="icon"/>
     <p class="small muted mt-2" v-html="t('turnPlayer.infoGovernmentRunMachine')"></p>
   </div>
@@ -153,11 +158,11 @@ export default defineComponent({
 .info-box {
   display: inline-block;
   vertical-align: top;
-  max-width: 20rem;
-  margin-right: 1rem;
+  max-width: 16rem;
+  margin-right: 1.5rem;
 }
 .icon {
-  width: 8rem;
+  height: 2.5rem;
   margin-right: 0.75rem;
 }
 </style>
