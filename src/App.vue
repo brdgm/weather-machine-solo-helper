@@ -38,6 +38,8 @@
             <dd>Vital Lacerda</dd>
             <dt>Graphics design</dt>
             <dd>Ian O'Toole</dd>
+            <dt>Solo Mode Design</dt>
+            <dd>Dávid Turczi</dd>
             <dt>Publisher</dt>
             <dd><a href="https://www.eaglegames.net/" target="_blank" rel="noopener">Eagle-Gryphon Games</a></dd>
           </dl>
