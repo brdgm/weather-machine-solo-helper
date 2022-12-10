@@ -8,7 +8,7 @@
       <button class="btn btn-success" @click="doAlternativeAction(false)">
         {{t('action.yes')}}
       </button>
-      <button class="btn btn-danger" @click="doAlternativeAction(true)">
+      <button class="btn btn-danger" @click="doAlternativeAction(true)" :disabled="!discardSecurityReportPossible">
         {{t('action.no')}}
       </button>
     </div>
@@ -44,6 +44,11 @@ export default defineComponent({
     actionContextParams: {
       type: Object as PropType<ActionContextParams>,
       required: true
+    }
+  },
+  computed: {
+    discardSecurityReportPossible() : boolean {
+      return this.actionContextParams.reportsLeft > 0
     }
   },
   methods: {
