@@ -11,13 +11,11 @@
   <p v-html="t('home.play1')"></p>
   <p v-html="t('home.play2')"></p>
 
-  <!--
   <p class="text-muted fst-italic">
     {{t('home.feedback')}}
-    <a href="https://boardgamegeek.com/thread/XXX" target="_blank" rel="noopener">Board Game Geek Thread</a> |
+    <a href="https://boardgamegeek.com/thread/2986425/brdgmme-weather-machine-solo-helper-web-applicatio" target="_blank" rel="noopener">Board Game Geek Thread</a> |
     <a href="https://github.com/brdgm/weather-machine-solo-helper" target="_blank" rel="noopener">GitHub</a>
   </p>
-  -->
 
   <router-link to="/setupDifficultyLevel" class="btn btn-primary btn-lg mt-3">{{t('action.playGame')}}</router-link>
 
