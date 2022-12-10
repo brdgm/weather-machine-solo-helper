@@ -104,7 +104,7 @@
         "increaseTargetValueOrDiscardSecurityReport": "Increase the target value of the Saboteurs? Otherwise a Security Report will be discarded."
       },
       "lativsLabPlaceBotResearchPriority": {
-        "text": "<b>Place a Bot</b> onto an available Bot space of a branch for which the Saboteurs have a <b>matching Chemical</b>, and with a <b>matching Experiment tile</b> in the display. They prefer branches and spaces in the given order. Lativ's Bots may be moved away. Move the Chemical matching the space from the Hideout to the Supply."
+        "text": "<b>Place a Bot</b> onto an available Bot space of a branch for which the Saboteurs have a <b>matching Chemical</b>, and with a <b>matching Experiment tile</b> in the display. They prefer branches and spaces in the given order with available research tokens and most other bots. Lativ's Bots may be moved away. Move the Chemical matching the space from the Hideout to the Supply."
       },
       "rndChemicalAvailable": {
         "text": "Matching Chemical available?",
