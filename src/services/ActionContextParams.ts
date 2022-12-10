@@ -7,4 +7,5 @@ export default interface ActionContextParams {
   weatherPriority: Weather
   citationUnlock: Weather[]
   tokens: Token[]
+  reportsLeft: number
 }

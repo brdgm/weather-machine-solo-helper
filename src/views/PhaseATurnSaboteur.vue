@@ -64,7 +64,7 @@
 import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
-import { useStore } from '@/store'
+import { Token, useStore } from '@/store'
 import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
 import TurnSidebar from '@/components/turn/TurnSidebar.vue'
@@ -102,6 +102,7 @@ import UnlockCitation from '@/components/turn/actions/UnlockCitation.vue'
 import Weather from '@/services/enum/Weather'
 import ActionContextParams from '@/services/ActionContextParams'
 import TokenCollector from '@/services/TokenCollector'
+import SelectionPriority from '@/services/enum/SelectionPriority'
 
 export default defineComponent({
   name: 'PhaseATurnSaboteur',
@@ -194,11 +195,23 @@ export default defineComponent({
       return this.cardDeck.previousReport
     },
     actionContextParams() : ActionContextParams {
+      const that = this  // eslint-disable-line @typescript-eslint/no-this-alias
       return {
-        selectionPriority: this.previousReport.selectionPriority,
-        weatherPriority: this.previousReport.weather,
-        citationUnlock: this.citationUnlock,
-        tokens: this.tokens
+        get selectionPriority() : SelectionPriority {
+          return that.previousReport.selectionPriority
+        },
+        get weatherPriority() : Weather {
+          return that.previousReport.weather
+        },
+        get citationUnlock() : Weather[] {
+          return that.citationUnlock
+        },
+        get tokens() : Token[] {
+          return that.tokens
+        },
+        get reportsLeft() : number {
+          return that.cardDeck.deck.length
+        }
       }
     },
     isSaboteurMoveRaiseTargetValue() : boolean {
@@ -260,11 +273,13 @@ export default defineComponent({
       this.initiativePlayer = this.saboteurActions.processInitiativePlayer(this.navigationState.initiativePlayer)
       this.cardDeck = this.navigationState.cardDeck.clone()
       this.saboteurActions.processSecurityReport().forEach(action => {
-        if (action==Action.DRAW_SECURITY_REPORT) {
-          this.cardDeck.draw()
-        }
-        else if (action==Action.DISCARD_SECURITY_REPORT) {
-          this.cardDeck.discardFromDeck()
+        if (this.cardDeck.deck.length > 0) {
+          if (action==Action.DRAW_SECURITY_REPORT) {
+            this.cardDeck.draw()
+          }
+          else if (action==Action.DISCARD_SECURITY_REPORT) {
+            this.cardDeck.discardFromDeck()
+          }
         }
       })
       if (!this.saboteurActions.allDecisionsResolved) {
