@@ -104,7 +104,7 @@
         "increaseTargetValueOrDiscardSecurityReport": "Zielwert der Saboteure erhöhen? Ansonsten wird ein Security-Report abgeworfen."
       },
       "lativsLabPlaceBotResearchPriority": {
-        "text": "<b>Stelle einen Bot</b> auf ein verfügbares Botfeld eines Zweigs, für den die Saboteure eine <b>passende Chemikalie</b> haben, und für welchen es ein <b>passendes Experimentplättchen</b> in der Auslage gibt. Sie bevorzugen Zweige und Felder in der angegebenen Reihenfolge mit verfügbaren Forschungssteinen und den meisten anderen Bots. Lativ's Bots können weg bewegt werden. Verschiebe dann die zum Feld passende Chemikalie aus ihrem Versteck in den Vorrat."
+        "text": "<b>Stelle einen Bot</b> auf ein verfügbares Botfeld eines Zweigs, für den die Saboteure eine <b>passende Chemikalie</b> haben, und für welchen es ein <b>passendes Experimentplättchen</b> in der Auslage gibt. Sie bevorzugen Zweige mit den <b>meisten Bots</b> (inklusive Lativs Bots) und Felder in der angegebenen Reihenfolge. Kommen mehrere infrage, bevorzugen sie Zweige mit verfügbaren Forschungssteinen. Lativs Bots können weg bewegt werden. Verschiebe dann die zum Feld passende Chemikalie aus ihrem Versteck in den Vorrat."
       },
       "rndChemicalAvailable": {
         "text": "Passende Chemikalie verfügbar?",
