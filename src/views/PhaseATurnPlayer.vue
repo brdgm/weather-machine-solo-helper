@@ -27,11 +27,11 @@
   </ol>
 
   <ul v-if="challengeOneStepAhead || challengeMoralHighGround || challengePeerReview || challengeIndependentPrototypes || challengeBudgetCuts" class="small">
-    <li><ChallengeIcon/> <span v-if="challengeOneStepAhead" v-html="t('turnPlayer.challengeOneStepAhead')"></span></li>
-    <li><ChallengeIcon/> <span v-if="challengeMoralHighGround" v-html="t('turnPlayer.challengeMoralHighGround')"></span></li>
-    <li><ChallengeIcon/> <span v-if="challengePeerReview" v-html="t('turnPlayer.challengePeerReview')"></span></li>
-    <li><ChallengeIcon/> <span v-if="challengeIndependentPrototypes" v-html="t('turnPlayer.challengeIndependentPrototypes')"></span></li>
-    <li><ChallengeIcon/> <span v-if="challengeBudgetCuts" v-html="t('turnPlayer.challengeBudgetCuts')"></span></li>
+    <li v-if="challengeOneStepAhead"><ChallengeIcon/> <span v-html="t('turnPlayer.challengeOneStepAhead')"></span></li>
+    <li v-if="challengeMoralHighGround"><ChallengeIcon/> <span v-html="t('turnPlayer.challengeMoralHighGround')"></span></li>
+    <li v-if="challengePeerReview"><ChallengeIcon/> <span v-html="t('turnPlayer.challengePeerReview')"></span></li>
+    <li v-if="challengeIndependentPrototypes"><ChallengeIcon/> <span v-html="t('turnPlayer.challengeIndependentPrototypes')"></span></li>
+    <li v-if="challengeBudgetCuts"><ChallengeIcon/> <span v-html="t('turnPlayer.challengeBudgetCuts')"></span></li>
   </ul>
 
   <router-link :to="nextButtonRouteTo" class="btn btn-primary btn-lg mt-2">
