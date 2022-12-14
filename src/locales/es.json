@@ -104,7 +104,7 @@
         "increaseTargetValueOrDiscardSecurityReport": "¿Aumenta el Valor Objetivo de los Saboteadores? De lo contrario, se descartará una carta de Informe de Seguridad."
       },
       "lativsLabPlaceBotResearchPriority": {
-        "text": "<b>Coloque un Bot</b> en un espacio de Bot disponible de una sección para la cual los Saboteadores tengan un <b>Químico que coincida</b>, y con una <b>loseta de Experimento que coincida</b> en el despliegue . Los Saboteadores elegirán secciones y espacios en el orden dado las losetas de Investigación disponibles y con la mayoría de los otros bots. Los Bots de Lativ pueden ser retirados. Mueva el Químico que coincida con el espacio de la Guarida al Suministro."
+        "text": "<b>Coloque un Bot</b> en un espacio de Bot disponible de una sección para la cual los Saboteadores tengan un <b>Químico que coincida</b>, y con una <b>loseta de Experimento que coincida</b> en el despliegue . Los Saboteadores elegirán secciones con <b>la mayoría de los bots</b> (incluidos los bots de Lativ) y espacios en el orden dado. En caso de empate, preferirán las secciones con Fichas de Investigación disponibles. Los Bots de Lativ pueden ser retirados. Mueva el Químico que coincida con el espacio de la Guarida al Suministro."
       },
       "rndChemicalAvailable": {
         "text": "¿Químico que coincida disponible?",
@@ -115,7 +115,7 @@
         "researchTokenAvailable": "¿Hay una Ficha de Investigación disponible?"
       },
       "rndPlaceBotPreviousReportPriority": {
-        "text": "<b>Coloque un Bot</b> en un espacio de Bot vacío de una sección para la cual los Saboteadores tengan un <b>Químico que coincida</b>. Elija secciones y espacios en el orden dado. Los Saboteadores no pagan el costo adicional si colocan su Bot en el espacio inferior de la sección."
+        "text": "<b>Coloque un Bot</b> en un espacio de Bot vacío de una sección. Preferiblemente secciones y espacios en el orden dado. Los Saboteadores no pagan el coste adicional si colocan su Bot en el espacio inferior de la sección."
       },
       "rndPlaceBotResearchPriority": {
         "text": "<b>Coloque un Bot</b> en un espacio de Bot vacío de una sección para la cual los Saboteadores tengan un <b>Químico que coincida</b>. Elija secciones en el orden dado con Fichas de Investigación disponibles. Mueve el químico que coincida con el espacio de la Guarida al Suministro."
