@@ -1,0 +1,430 @@
+{
+  "gameTitle": "Weather Machine",
+  "home": {
+    "title": "Ayudante del solitario de Weather Machine",
+    "play1": "Juega contra los Saboteadores, los oponentes del Modo Solitario de <a href='https://boardgamegeek.com/boardgame/237179/weather-machine' target='_blank' rel='noopener'><b>Weather Machine</b></a>.",
+    "play2": "Esta aplicación de ayuda reemplaza las cartas del solitario y el tablero de guarida. Realiza un seguimiento de las Fichas de Investigación de los saboteadores y el desbloqueo de citas para guiar a los saboteadores a los lugares correctos de acuerdo con las reglas.",
+    "feedback": "Discusión y Comentarios:"
+  },
+  "setupDifficultyLevel": {
+    "title": "Configuración del nivel de dificultad",
+    "firstTime": "Si juegas por primera vez, continúa para configurar el juego.",
+    "greaterChallenge": "Para un desafío mayor, puedes usar 1 o más desafíos adicionales:",
+    "pickChallengeCards": "Elige Cartas de Desafío",
+    "pickRandom": "Elegir al azar",
+    "clearAll": "Limpiar todo"
+  },
+  "setupGame": {
+    "title": "Prepara la partida",
+    "setupWithChanges": "Prepara la partida con los siguientes cambios:",
+    "lativBots": "Coloca un <b>Bot de Lativ</b> en cada sección de la Máquina Meteorológica en el Laboratorio.",
+    "researchTokens": "Utiliza solo <b>2 Fichas de Investigación</b> de cada tipo en cada Localización principal (2, 3 y 4).",
+    "goalTiles": "Prepara las <b>losetas de Objetivo</b>:",
+    "goalTilesStep1": "Retira todas las losetas de Objetivo en las que aparezca un icono de mayoría en la esquina superior derecha. Retira también la loseta que requiere que obtengas 3 fichas de Galardón.",
+    "goalTilesStep2": "De entre las losetas de Objetivo restantes, coge 2 al azar de cada color. Si robas 2 que tengan el mismo icono en el centro de la loseta, descarta la segunda y sigue robando hasta que todas las losetas sean distintas.",
+    "goalTilesStep3": "Retira de la partida las losetas de Objetivo sobrantes. Los Saboteadores no las usan.",
+    "anotherPlayerColor": "Selecciona otro <b>color de jugador</b> para asignar a los Saboteadores. Los Saboteadores no utilizan Laboratorio ni marcadores de Pase.",
+    "scoringMarker": "Coloca el <b>marcador de puntuación del color de los Saboteadores</b> en <b>{startingTargetValue} puntos de Clima (PC)</b>. Este es el Valor Objetivo inicial.",
+    "turnOrder": "Coloca los <b>marcadores de orden de turno e Iniciativa</b> (el tuyo y el de los Saboteadores), siendo el tuyo el primero en ambos casos.",
+    "hideout": "Designa un área cerca del tablero central para la Guarida de los Saboteadores.",
+    "hideoutBots": "Coloca los <b>Bots de los Saboteadores </b>en la Guarida.",
+    "hideoutChemicals": "Determina los siguientes <b>Productos Químicos</b>, cógelos de las casillas situadas más a la izquierda del Suministro y colócalos en la Guarida:",
+    "hideoutAward": "Los Saboteadores empiezan la partida con 1 <b>Galardón</b>:",
+    "placeAgentMiddlePosition": "Coloca al <b>Agente {agent}</b> en la ubicación <b>{location}</b>, espacio de acción central.",
+    "placeAgentRightPosition": "Coloca al <b>Agente {agent}</b> en la ubicación <b>{location}</b>, espacio de acción más a la derecha.",
+    "takeWeatherToken": "Mueve una <b>Ficha de Investigación de {weather}</b> de esa ubicación a la Guarida.",
+    "playerLaboratory": "Laboratorio del Jugador",
+    "playerSetupLaboratory": "Prepara tu laboratorio como de costumbre, incluyendo una <b>loseta de Taller</b> aleatoria y una <b>Pieza de Máquina</b> aleatoria.",
+    "playerDetermineMachinePart": "Determinar la Pieza de Máquina",
+    "playerPostSetupSupplyRound": "Realiza tu <b>Ronda de Suministro Postpreparatoria</b>."
+  },
+  "turnPlayer": {
+    "title": "Tu turno",
+    "useSubsidyInvestment": "Usa 1 loseta de Subvención o 1 loseta de Inversión.",
+    "moveScientist": "Mueve a tu Científico.",
+    "moveScientistRound1": "Ronda 1: no puede seleccionar el espacio de acción más a la izquierda.",
+    "performActions": "Realizar acciones.",
+    "placeResearchTokens": "Colocar Fichas de Investigación.",
+    "challengeOneStepAhead": "Si al final de tu turno el marcador de Iniciativa de los Saboteadores está en la posición más a la izquierda, aumenta el Valor Objetivo en 3.",
+    "challengeMoralHighGround": "Cuando coloques a tu Científico en una Localización, no obtienes Pases adicionales por los Saboteadores que haya a tu izquierda.",
+    "challengePeerReview": "No puedes usar fichas de Cita al publicar un Artículo.",
+    "challengePeerReviewUnlock": "Si desbloqueas una casilla de Cita, no puedes pagar 1 Pase de Ciencia para obtener 3 PC.",
+    "challengeIndependentPrototypes": "No puedes utilizar los Bots de los Saboteadores al construir un Prototipo como parte de una acción Descubrir.",
+    "challengeBudgetCuts": "Cada vez que obtengas financiación del medidor de Financiación del Laboratorio, trata el modificador debajo de tu marcador como «+0» (sigues obteniendo los beneficios de los medidores del Gobierno o de I+D).",
+    "infoCitationUnlock": "Si desbloqueas una casilla de Cita en el tablero, desbloquéala aquí en la apliación también.",
+    "infoGovernmentRunMachine": "i el Gobierno activa una 3 sección de su Máquina, umenta el Valor Objetivo en 3 por cada Bot Saboteador que haya en esa sección.",
+    "infoRndBreakthrough": "Si realizas la acción Descubrir, 2 por cada Bot Saboteador que te proporcione una pieza al construir tu Prototipo, aumenta el Valor Objetivo en 2."
+  },
+  "turnSaboteur": {
+    "title": "Turno de los Saboteadores",
+    "gameLost": "El mazo del Informe de Seguridad está vacío. <b>Has perdido.</b>",
+    "gameLostHopes": "Teníamos tantas esperanzas puestas en ti.",
+    "moveSaboteur": "Mover al Saboteador al espacio de acción:",
+    "raiseTargetValue": "Aumenta el Valor Objetivo por cada pieza que quede en el espacio de acción.",
+    "moveLativ": "Mueve a Lativ, si es necesario.",
+    "saboteurActions": "Acciones del Saboteador:",
+    "actions": {
+      "claimInitiative": {
+        "text": "Los Saboteadores reclaman la <b>iniciativa</b>."
+      },
+      "discardResearchTokens": {
+        "text": "Los Saboteadores descartan un conjunto de <b>{count} Fichas de Investigación</b>, retíralas del juego."
+      },
+      "discardSecurityReport": {
+        "text": "Los Saboteadores descartan la carta superior del mazo de <b>Informe de seguridad</b>."
+      },
+      "drawSecurityReport": {
+        "text": "Los Saboteadores descartan la carta <b>Informe de Seguridad</b> actual y roban una nueva."
+      },
+      "getAwardToken": {
+        "text": "Las saboteadores obtienen un <b>Galardón</b>."
+      },
+      "governmentFlipSubsidy": {
+        "text": "<b>Voltea 1 loseta de Subvención</b> que tenga su cara azul bocarriba."
+      },
+      "governmentGetResearchToken": {
+        "text": "Los Saboteadores toman una <b>Ficha de Investigación</b> de la sección elegida.",
+        "researchTokenAvailable": "¿Hay una Ficha de Investigación disponible?"
+      },
+      "governmentPlaceBotResearchPriority": {
+        "text": "<b>Coloque un Bot</b> en un espacio de Bot vacío de una sección para la cual los Saboteadores tengan un <b>Químico que coincida</b>. Prefieren secciones en el orden dado con Fichas de Investigación disponibles. Mueve el Químico que coincida con el espacio de la Guarida al Suministro."
+      },
+      "governmentPlaceGearRemoveSubsidy": {
+        "text-top": "<b>Elimina</b> la <b>loseta de Subvención</b> superior disponible de la sección. Reemplácela con la <b>Pieza de Máquina</b> necesaria.",
+        "text-bottom": "<b>Elimina</b> la <b>loseta de Subvención</b> disponible más abajo de la sección. Reemplácela con la <b>Pieza de Máquina</b> necesaria."
+      },
+      "governmentRunMachine": {
+        "text": "Si todos los espacios de Bot de la sección ahora están llenos, el <b>Gobierno activa esa sección</b>. Aumenta el Valor Objetivo en 3 por cada Bot Saboteador en esa rama."
+      },
+      "increaseTargetValue": {
+        "text": "Aumenta el <b>Valor Objetivo de los Saboteadores en {count}</b>."
+      },
+      "increaseTargetValueOrDiscardSecurityReport": {
+        "text": "Aumenta el <b>Valor Objetivo de los Saboteadores en {count}</b> o descarta la carta superior del mazo de Informe de Seguridad.",
+        "increaseTargetValueOrDiscardSecurityReport": "¿Aumenta el Valor Objetivo de los Saboteadores? De lo contrario, se descartará una carta de Informe de Seguridad."
+      },
+      "lativsLabPlaceBotResearchPriority": {
+        "text": "<b>Coloque un Bot</b> en un espacio de Bot disponible de una sección para la cual los Saboteadores tengan un <b>Químico que coincida</b>, y con una <b>loseta de Experimento que coincida</b> en el despliegue . Los Saboteadores elegirán secciones con <b>la mayoría de los bots</b> (incluidos los bots de Lativ) y espacios en el orden dado. En caso de empate, preferirán las secciones con Fichas de Investigación disponibles. Los Bots de Lativ pueden ser retirados. Mueva el Químico que coincida con el espacio de la Guarida al Suministro."
+      },
+      "rndChemicalAvailable": {
+        "text": "¿Químico que coincida disponible?",
+        "chemicalAvailable": "¿Los Saboteadores tienen un Químico con el espacio del Bot elegido?"
+      },
+      "rndGetResearchToken": {
+        "text": "Los Saboteadores toman una <b>Ficha de Investigación</b> de la sección elegida.",
+        "researchTokenAvailable": "¿Hay una Ficha de Investigación disponible?"
+      },
+      "rndPlaceBotPreviousReportPriority": {
+        "text": "<b>Coloque un Bot</b> en un espacio de Bot vacío de una sección. Preferiblemente secciones y espacios en el orden dado. Los Saboteadores no pagan el coste adicional si colocan su Bot en el espacio inferior de la sección."
+      },
+      "rndPlaceBotResearchPriority": {
+        "text": "<b>Coloque un Bot</b> en un espacio de Bot vacío de una sección para la cual los Saboteadores tengan un <b>Químico que coincida</b>. Elija secciones en el orden dado con Fichas de Investigación disponibles. Mueve el químico que coincida con el espacio de la Guarida al Suministro."
+      },
+      "rndPlaceChemical": {
+        "text": "Los Saboteadores <b>mueven un Químico</b> de su Guarida al espacio de Bot elegido."
+      },
+      "takeChemicals": {
+        "text": "Los saboteadores toman <b>{count} Químico</b>. | Los Saboteadores toman <b>{count} Químicos</b>."
+      },
+      "takeExtremeWeatherTile": {
+        "text": "Tome la <b>Loseta de Clima Extremo</b> superior que coincida con el tipo de clima de la pila y colóquela en el espacio correspondiente en I+D, cubriendo cualquier loseta que ya esté allí. Cualquier marcador de Descubrimiento en la loseta existente se devuelve a la caja, y cualquier marcador de Gobierno se devuelve al área de Gobierno."
+      },
+      "unlockCitation": {
+        "text": "Retire la <b>Ficha de Bloqueo</b> del espacio de Cita correspondiente."
+      }
+    }
+  },
+  "experiment": {
+    "title": "Ejecutar Experimento en la Máquina Meteorológica",
+    "checkRunning": {
+      "runsIfBoth": "El Experimento se ejecuta si se cumplen ambas de las condiciones siguientes:",
+      "atLeastOneTile": "Hay al menos 1 loseta de Experimento en el despliegue del mismo Clima que la sección activa.",
+      "allBots": "Hay 1 Bot en cada casilla de la sección activa."
+    },
+    "running": {
+      "title": "Si el experimento se ejecuta...",
+      "player": {
+        "title": "Tu turno (si tienes bots en la sección activa)",
+        "returnBots": "Devuelve tus Bots de la sección activa a tu Taller. Si no tienes espacio para un Bot, devuélvelo a cualquier casilla vacía de las 2 secciones superiores de tu Línea de Montaje.",
+        "ifVouchersPayed": " Si pagas tantos Pases de Ciencia como indiqua la loseta de Experimento activa:",
+        "gainCP": "Obtén PC según indique la loseta de Experimento por cada Bot que acabas de devolver.",
+        "gainBenefit": "Obtén 1 de los 2 beneficios indicados en la loseta.",
+        "takeResearchToken": "Coge 1 ficha de Investigación de debajo de la sección activa (si hay alguna) y colócala inmediatamente en tu Oficina."
+      },
+      "saboteur": {
+        "title": "Turno de los Saboteadores",
+        "botsInActiveBranch": "¿Los Saboteadores tienen un bot en la sección activa?",
+        "returnBots": "Para cada uno de los Bots de los Saboteadores en la sección activa, devuelve ese Bot a la Guarida y aumenta el Valor objetivo por el PC representado en la Loseta de Experimento.",
+        "takeResearchToken": "Coge una ficha de Investigación de debajo de la sección activa (si está disponible).",
+        "researchTokenAvailable": "¿Hay una ficha de Investigación disponible? En caso afirmativo, elige el clima de la sección activa."
+      }
+    },
+    "afterExperiment": {
+      "title": "Después del Experimento",
+      "lativBotRemoveResearchToken": "Si hay uno de los Bots de Lativ en la sección, retira del juego 1 ficha de Investigación de debajo de la sección activa, si es posible.",
+      "returnLativBots": "Devuelve cualquiera de los Bots de Lativ en la sección activa al lado del laboratorio.",
+      "takeExtremeWeatherTile": "Tome la loseta superior de clima extremo de la pila que coincida con el tipo de clima y colóquela en el espacio correspondiente en I+D."
+    },
+    "notRunning": {
+      "title": "El experimento <i>no</i> se ejecuta",
+      "returnPlayerBots": "PuedeS optar por devolver tus Bots a su Taller",
+      "saboteurBotExtremeWeather": "Si los Saboteadores tienen al menos un Bot en la sección activa: Coloca una nueva loseta de Clima Extremo. Los Bots se quedan en la sección.",
+      "returnLativBots": "Devuelva cualquiera de los Bots de Lativ en la sección activa al lado del laboratorio."
+    },
+    "prepareNext": {
+      "title": "Preparar siguiente experimento",
+      "removeExperimentTile": "Retira de la partida la loseta de Experimento más a la derecha del despliegue que coincida con el Clima de la sección activa (si la hay). Rellena el despliegue.",
+      "moveLativAssistant": "Mueva al Asistente de Lativ a la siguiente sección."
+    }
+  },
+  "endOfRound": {
+    "title": "Fin de Ronda",
+    "turnOrder": {
+      "player": "Orden de turno: <b>Tú</b> vas primero.",
+      "saboteur": "Orden de turno: <b>los Saboteadores</b> van primero."
+    },
+    "lativOffice": "Si Lativ está en su oficina:",
+    "income": "Ingresos: Obtener beneficios.",
+    "challengeJammingDevices": "Durante cada ingreso, aumenta el Valor objetivo en 1 por cada BOT Saboteador en el tablero.",
+    "challengeCreativeAccounting": "Durante cada ingreso, mueva uno de sus marcadores de Financiación de vuelta a un espacio en una de las columnas. Debe elegir una columna en la que pueda hacer esto, si es posible.",
+    "moveLativSupply": "Mover Lativ a suministro."
+  },
+  "endOfGame": {
+    "title": "Final de la partida",
+    "phaseB": {
+      "title": "Durante la Fase B de la Ronda Final:",
+      "completeExperiments": "Empezando por la sección en la que se encuentra el Asistente y siguiendo el orden de las flechas, comprueba cada sección completa de la Máquina del Tiempo. Para cada sección, si hay una loseta de Experimento actual que coincida con el tipo de clima, ejecuta el experimento siguiendo las reglas habituales.",
+      "noExtremeWeather": "No coloques nuevas losetas de clima extremo en este momento.",
+      "placeResearchTokens": "Puedes colocar cualquier Ficha de Investigación y/o ficha de Galardón que tengas junto a tu Laboratorio en espacios vacíos de tu Oficina, siguiendo las reglas habituales."
+    },
+    "saboteurFinalScoring": {
+      "title": "Puntuación final para Saboteadores:",
+      "targetValue": "Aumenta el Valor Objetivo en 30."
+    },
+    "playerFinalScoring": {
+      "title": "Puntúa por lo siguiente:",
+      "fundingTracks": "PC según la posición de tu marcador en cada medidor de Financiación. Obtén el valor más alto de PC arriba o a la izquierda de tu marcador.",
+      "goalTiles": "5 PC por cada loseta de Objetivo en una de tus casillas de Objetivo para la cual cumplas las condiciones (ver ayuda de jugador).",
+      "nobelPrize": "5 PC si has obtenido el Premio Nobel."
+    },
+    "winSummary": "Después de esto, si su PC supera el Valor Objetivo, has <b>ganado la partida</b> y salvado la empresa. <i>De lo contrario, se unirá al resto de los científicos desempleados de la una vez genial Lightning Technologies, para actualizar su currículum.</i>",
+    "additionalQualifications": {
+      "title": "Logros Adicionales",
+      "level1": {
+        "title": "1. Terraformador",
+        "condition1": "120 o más PC.",
+        "condition2": "El medidor de Financiación más bajo se encuentra al menos en la 4.a casilla.",
+        "condition3": "El medidor de Financiación más alto se encuentra en la última casilla.",
+        "condition4": "6 o más losetas de Taller.",
+        "condition5": "No quedan más de 2 Pases en total."
+      },
+      "level2": {
+        "title": "2. Climatólogo",
+        "condition1": "110 o más PC.",
+        "condition2": "Premio Nobel.",
+        "condition3": "4 o más losetas de Objetivo cumplidas.",
+        "condition4": "Todos los Bots desbloqueados.",
+        "condition5": ""
+      },
+      "level3": {
+        "title": "3. Meteorólogo",
+        "condition1": "100 o más PC.",
+        "condition2": "3 o más Artículos publicados.",
+        "condition3": "1 o más medidores de Financiación se encuentran al menos en la 8ª casilla.",
+        "condition4": "3 o más losetas de Objetivo cumplidas.",
+        "condition5": "2 o más Galardones."
+      },
+      "level4": {
+        "title": "4. Pronosticador",
+        "condition1": "3 o más Artículos publicados.",
+        "condition2": "7 o más Bots en el tablero central.",
+        "condition3": "3 o más losetas de Objetivo cumplidas.",
+        "condition4": "1 o más Galardones.",
+        "condition5": ""
+      },
+      "level5": {
+        "title": "5. Cazatormentas",
+        "condition1": "2 o más losetas de Objetivo cumplidas.",
+        "condition2": "1 o más Galardones.",
+        "condition3": "",
+        "condition4": "",
+        "condition5": ""
+      }
+    }
+  },
+  "sidebar": {
+    "saboteursScheme": "El esquema de los Saboteadores:",
+    "priority": "Prioridad:",
+    "reportsLeft": "Reportar las cartas que quedan:",
+    "nextFirstPlayer": "Siguiente primer jugador:",
+    "unlockCitation": {
+      "title": "Desbloquear espacio de citas",
+      "description": "Si desbloqueó el espacio de la cita, puede pagar inmediatamente 1 pase de ciencia para obtener <b>3&nbsp;PC</b>.",
+      "unlock": "Desbloquear",
+      "lock": "Bloquear"
+    }
+  },
+  "lativMovement": {
+    "title": "Lativ en movimiento",
+    "nextLocation": "Si Lativ se mueve, va a la siguiente ubicación con un espacio de acción disponible (más a la izquierda).",
+    "weatherMachineActiveBranch": "Consulta la <b>sección activa de la Máquina del Tiempo</b> en el Laboratorio (donde está el Asistente).",
+    "weatherMachineActiveBranchStep1": "Si Lativ no tiene uno de sus Bots en esa sección, coloca 1 de los Bots de Lativ del área al lado del laboratorio en cualquier espacio vacío de la sección (no importa cuál).",
+    "weatherMachineActiveBranchStep2": "Si Lativ ya tiene un Bot en la sección, o la sección estaba llena, coloqua un Bot en la siguiente sección (siguiendo las flechas). Si todas las secciones están llenas o ya contienen uno de los Bots de Lativ, no pasa nada.",
+    "governmentRnd": "Cuando Lativ se mueva al <b>Gobierno o I+D</b>, descarta una Ficha de Investigación de la Ubicación actual de Lativ del mismo tipo de clima que la sección donde se encuentra actualmente el Asistente de Lativ."
+  },
+  "callSecurity": {
+    "title": "Llamar a Seguridad",
+    "confirm": "¿Quieres llamar a seguridad?",
+    "payVoucher": "Para continuar, tienes que pagar <b>1 Pase</b> (del tipo que coincida con la Ubicación en la que te encuentres, o un pase de ciencia).",
+    "report": {
+      "makeCurrent": "Informe actual",
+      "putBack": "Devolver ",
+      "discard": "Descartar"
+    },
+    "finish": "Finalizar llamar a Seguridad"
+  },
+  "claimInitiative": {
+    "title": "Reclamar Initiativa",
+    "claim": "Reclama la Initiativa para:",
+    "player": "Juegador",
+    "saboteur": "Saboteadores"
+  },
+  "endGameConditions": {
+    "title": "Condiciones de final de partida",
+    "goToEndOfGame": "Ve al final de partida",
+    "challengeCard": {
+      "nobelLaureate": "No puedes ganar el juego a menos que tengas el <b>Premio Nobel</b>.",
+      "onlyOverachieversApply": "No puedes ganar el juego a menos que cumplas las condiciones de al menos 5 de tus losetas de objetivo</b> en los espacios de objetivo de tu laboratorio.",
+      "publishOrPerish": "Debes ganar por <b>Victoria Inmediata</b> (restaurando el buen nombre de Lightning Technologies)."
+    },
+    "immediateWin": {
+      "title": "Restaurando el buen nombre de Lightning Technologies",
+      "intro": "Debes cumplir <b>todas</b> las siguientes condiciones al <i>comienzo de tu turno</i>:",
+      "targetValueHigher": "tu PC es más alto que el Valor Objetivo.",
+      "goalTiles": "Cumples las condiciones para al menos 4 de tus losetas de objetivo en los espacios de objetivo de tu laboratorio.",
+      "fundingTracks": "Al menos 2 de tus marcadores de Financiación han alcanzado o superado la 5.a casilla de su medidor de Financiación (la casilla donde empieza tu marcador es la casilla «0»).",
+      "outro": "Si esto sucede, <b>ganas la partida</b> de inmediato."
+    },
+    "standardEnding": {
+      "title": "Se agota el tiempo y el Gobierno interviene:",
+      "intro": "Esto sucede si se activa el fin de la partida por causa de 1 de las condiciones normales de fin de la partida:",
+      "nobelPrize": "Tú obtienes el Premio Nobel.",
+      "lastExperimentTile": "Se coloca la última loseta de Experimento en el despliegue.",
+      "governmentMachine": "La Máquina del Gobierno se ha completado.",
+      "researchFull": "Todas las casillas de Investigación de I+D están ocupadas.",
+      "outro": "Si esto sucede, <b>juega 1 ronda adicional</b> de forma normal, luego, calcula la puntuación final.. Durante la puntuación final, el valor objetivo de los saboteadores <b>aumenta en 30 CP adicionales</b>. Después de la puntuación final, si has obtenido más PC que el Valor Objetivo, tú ganas la partida."
+    },
+    "fail": {
+      "title": "«El Malvado Plan de los Saboteadores» tiene éxito:",
+      "intro": "Esto sucede si <b>se da uno</b> de los casos siguientes:",
+      "extremeWeather": "Al final de tu turno, hay 2 o más losetas de Clima Extremo de Nivel 3 en el tablero.",
+      "deckEmpty": "Al comienzo del turno de los Saboteadores, todas las cartas de Informes de Seguridad están en su pila de descarte.",
+      "outro": "Si esto sucede, <b>tú pierdes inmediatamente</b>. <i>Teníamos tantas esperanzas puestas en ti...</i>"
+    }
+  },
+  "agentLocationSelection": {
+    "select": "Seleccione",
+    "selectA": "A &",
+    "selectBC": "C,B /"
+  },
+  "takeChemical": {
+    "title": "Take Chemical",
+    "prioritySection": "Seleccionan un Producto Químico de la sección que muestra el menor número de pases de suministro.",
+    "priorityLeastAvailable": "Si hay más de un tipo de Químico en la sección más barata, toman el que menos tienen actualmente en su Guarida.",
+    "prioritySelection": {
+      "top": "Si aún están empatados, toman el <b> más alto </b> de los empatados.",
+      "bottom": "Si siguen empatados, toman el <b>más bajo</b> de los empatados."
+    }
+  },
+  "challengeCard": {
+    "fully-stocked-opponents": {
+      "title": "Oponentes Completamente Abastecidos",
+      "description": "Los Saboteadores empiezan la partida con 1 Producto Químico de cada tipo, en lugar de solo 2 Productos Químicos."
+    },
+    "jamming-device": {
+      "title": "Dispositivos de interferencias",
+      "description": "Durante los Ingresos, aumenta el Valor Objetivo en 1 por cada Bot Saboteador en el tablero."
+    },
+    "creative-accounting": {
+      "title": "Contabilidad creativa",
+      "description": "Los Saboteadores empiezan la partida con 1 Galardón. Durante los Ingresos, mueve 1 de tus marcadores de Financiación 1 casilla hacia atrás. Tienes que seleccionar un medidor en el que puedas hacer esto, si es posible."
+    },
+    "nobel-laureate": {
+      "title": "Ganador del Premio Nobel",
+      "description": "Los Saboteadores empiezan la partida con 1 Producto Químico adicional al azar (puede ser uno que ya tengan). No puedes ganar la partida a menos que obtengas el Premio Nobel."
+    },
+    "only-overachievers-apply": {
+      "title": "Solo para triunfadores",
+      "description": "No puedes ganar la partida a menos que cumplas las condiciones de, como mínimo, 5 de tus losetas de Objetivo en las casillas de Objetivo de tu Laboratorio."
+    },
+    "the-clock-is-ticking": {
+      "title": "El reloj avanza",
+      "description": "Tras la preparación, retira de la partida las 2 primeras cartas del mazo de Informes de Seguridad y devuélvelas a la caja."
+    },
+    "one-step-ahead": {
+      "title": "Un paso adelante",
+      "description": "Si al final de tu turno el marcador de Iniciativa de los Saboteadores está en la posición más a la izquierda, aumenta el Valor Objetivo en 3."
+    },
+    "moral-high-ground": {
+      "title": "Ventaja moral",
+      "description": "Cuando coloques a tu Científico en una Localización, no obtienes Pases adicionales por los Saboteadores que haya a tu izquierda."
+    },
+    "peer-review": {
+      "title": "Revisión por pares",
+      "description": "No puedes usar fichas de Cita al publicar un Artículo. Si desbloqueas una casilla de Cita, no puedes pagar 1 Pase de Ciencia para obtener 3 PC."
+    },
+    "independent-prototypes": {
+      "title": "Prototipos independientes",
+      "description": "Los Saboteadores empiezan la partida con ficha de Galardón. No puedes utilizar los Bots de los Saboteadores al construir un Prototipo como parte de una acción Descubrir."
+    },
+    "budget-cuts": {
+      "title": "Recortes presupuestarios",
+      "description": "Los Saboteadores empiezan la partida con 1 Producto Químico adicional al azar (puede ser uno que ya tengan). Cada vez que obtengas financiación del medidor de Financiación del Laboratorio, trata el modificador debajo de tu marcador como «+0» (sigues obteniendo los beneficios de los medidores del Gobierno o de I+D)."
+    },
+    "publish-or-perish": {
+      "title": "Publicar o morir",
+      "description": "Reduce el Valor Objetivo inicial en 5. Cada vez que los Saboteadores hagan que se retire 1 ficha de Bloqueo de una casilla de Cita, aumenta el Valor Objetivo en 5. Tienes que ganar por victoria inmediata (restituyendo el buen nombre de Tecnologías Lightning)."
+    }
+  },
+  "agent": {
+    "white": "Blanco",
+    "pink": "Rosa"
+  },
+  "location": {
+    "government": "Gobierno",
+    "lativs-lab": "Laboratorio de Lativ",
+    "rnd": "I+D"
+  },
+  "weather": {
+    "rain": "Lluvia",
+    "wind": "Viento",
+    "sun": "Sol",
+    "fog": "Niebla",
+    "snow": "Nieve"
+  },
+  "notfound": {
+    "title": "No encontrado"
+  },
+  "action": {
+    "playGame": "Jugar la Partida",
+    "startGame": "Empezar la Partida",
+    "next": "Siguiente",
+    "nextRound": "Siguiente Ronda",
+    "abortGame": "Abortar Partida",
+    "abortGameConfirm": "Abortando the patrtida en curto - ¿Estás seguro?",
+    "endGame": "Finalizar Partida",
+    "endGameConfirm": "Finaliza esta partida y vuelve a la pantalla de inicio -¿ Estás seguro?",
+    "cancel": "Cancelar",
+    "backToHome": "Volver al Inicio",
+    "back": "Volver",
+    "close": "Cerrar",
+    "select": "Seleccionar",
+    "reselect": "Reseleccionar",
+    "yes": "Si",
+    "no": "No",
+    "notPossible": "No es posible"
+  },
+  "footer": {
+    "credits": "Créditos"
+  }
+}
