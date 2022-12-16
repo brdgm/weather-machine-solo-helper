@@ -24,6 +24,16 @@
     </div>
   </div>
 
+  <ModalDialog id="serviceWorkerUpdatedRefresh" :title="t('serviceWorkerUpdatedRefresh.title')">
+    <template #body>
+      <p v-html="t('serviceWorkerUpdatedRefresh.notice')"></p>
+    </template>
+    <template #footer>
+      <button class="btn btn-primary" data-bs-dismiss="modal" @click="$router.go(0)">{{t('serviceWorkerUpdatedRefresh.title')}}</button>
+      <button class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.close')}}</button>
+    </template>
+  </ModalDialog>
+
   <div class="modal" id="creditsModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -59,24 +69,6 @@
       </div>
     </div>
   </div>
-
-  <div class="modal" id="serviceWorkerUpdatedRefresh" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">{{t('serviceWorkerUpdatedRefresh.title')}}</h5>
-          <button class="btn-close" data-bs-dismiss="modal" :aria-label="t('action.close')"></button>
-        </div>
-        <div class="modal-body">
-          {{t('serviceWorkerUpdatedRefresh.notice')}}
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-dismiss="modal" @click="$router.go(0)">{{t('serviceWorkerUpdatedRefresh.title')}}</button>
-          <button class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.close')}}</button>
-        </div>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script lang="ts">
@@ -85,6 +77,7 @@ import { useI18n } from 'vue-i18n'
 import { useStore } from '@/store'
 import AppHeader from 'brdgm-commons/src/components/structure/AppHeader.vue'
 import AppFooter from 'brdgm-commons/src/components/structure/AppFooter.vue'
+import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 import { Modal } from 'bootstrap'
 import getErrorMessage from 'brdgm-commons/src/util/error/getErrorMessage'
 import EndGameConditionsModal from './components/turn/EndGameConditionsModal.vue'
@@ -94,6 +87,7 @@ export default defineComponent({
   components: {
     AppHeader,
     AppFooter,
+    ModalDialog,
     EndGameConditionsModal
   },
   setup() {
