@@ -8,21 +8,11 @@
 
   <AppFooter :build-number="buildNumber" :credits-label="t('footer.credits')" credits-modal-id="creditsModal" zoom-enabled @zoomFontSize="zoomFontSize"/>
 
-  <div class="modal" tabindex="-1" id="errorMessage">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" :aria-label="t('action.close')"></button>
-        </div>
-        <div class="modal-body">
-          <div class="alert alert-danger" role="alert">{{errorMessage}}</div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.close')}}</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <ModalDialog id="errorMessage">
+    <template #body>
+      <div class="alert alert-danger" role="alert">{{errorMessage}}</div>
+    </template>
+  </ModalDialog>
 
   <ModalDialog id="serviceWorkerUpdatedRefresh" :title="t('serviceWorkerUpdatedRefresh.title')">
     <template #body>
@@ -34,41 +24,31 @@
     </template>
   </ModalDialog>
 
-  <div class="modal" id="creditsModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">{{t('footer.credits')}}</h5>
-          <button class="btn-close" data-bs-dismiss="modal" :aria-label="t('action.close')"></button>
-        </div>
-        <div class="modal-body">
-          <h4><a href="https://boardgamegeek.com/boardgame/237179/weather-machine" target="_blank" rel="noopener">{{t('gameTitle')}}</a></h4>
-          <dl>
-            <dt>Game design</dt>
-            <dd>Vital Lacerda</dd>
-            <dt>Graphics design</dt>
-            <dd>Ian O'Toole</dd>
-            <dt>Solo Mode Design</dt>
-            <dd>Dávid Turczi</dd>
-            <dt>Publisher</dt>
-            <dd><a href="https://www.eaglegames.net/" target="_blank" rel="noopener">Eagle-Gryphon Games</a></dd>
-          </dl>
-          <h4 class="border-top pt-3">{{appTitle}}</h4>
-          <dl>
-            <dt>Application Development</dt>
-            <dd>Stefan Seifert</dd>
-            <dt>Version</dt>
-            <dd>{{buildNumber}}</dd>
-            <dt>Source Code (Apache-2.0 License)</dt>
-            <dd><a href="https://github.com/brdgm/weather-machine-solo-helper" target="_blank" rel="noopener">https://github.com/brdgm/weather-machine-solo-helper</a></dd>
-          </dl>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.close')}}</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <ModalDialog id="creditsModal" :title="t('footer.credits')">
+    <template #body>
+      <h4><a href="https://boardgamegeek.com/boardgame/237179/weather-machine" target="_blank" rel="noopener">{{t('gameTitle')}}</a></h4>
+      <dl>
+        <dt>Game design</dt>
+        <dd>Vital Lacerda</dd>
+        <dt>Graphics design</dt>
+        <dd>Ian O'Toole</dd>
+        <dt>Solo Mode Design</dt>
+        <dd>Dávid Turczi</dd>
+        <dt>Publisher</dt>
+        <dd><a href="https://www.eaglegames.net/" target="_blank" rel="noopener">Eagle-Gryphon Games</a></dd>
+      </dl>
+      <h4 class="border-top pt-3">{{appTitle}}</h4>
+      <dl>
+        <dt>Application Development</dt>
+        <dd>Stefan Seifert</dd>
+        <dt>Version</dt>
+        <dd>{{buildNumber}}</dd>
+        <dt>Source Code (Apache-2.0 License)</dt>
+        <dd><a href="https://github.com/brdgm/weather-machine-solo-helper" target="_blank" rel="noopener">https://github.com/brdgm/weather-machine-solo-helper</a></dd>
+      </dl>
+    </template>
+  </ModalDialog>
+
 </template>
 
 <script lang="ts">
@@ -78,8 +58,8 @@ import { useStore } from '@/store'
 import AppHeader from 'brdgm-commons/src/components/structure/AppHeader.vue'
 import AppFooter from 'brdgm-commons/src/components/structure/AppFooter.vue'
 import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
-import { Modal } from 'bootstrap'
 import getErrorMessage from 'brdgm-commons/src/util/error/getErrorMessage'
+import showModal from 'brdgm-commons/src/util/modal/showModal'
 import EndGameConditionsModal from './components/turn/EndGameConditionsModal.vue'
 
 export default defineComponent({
@@ -123,8 +103,7 @@ export default defineComponent({
   },
   errorCaptured(err : unknown) {
     this.errorMessage = getErrorMessage(err, translErr => this.t(translErr.key, translErr.named, translErr.plural))
-    const modal = new Modal(document.getElementById('errorMessage') as Element)
-    modal.show()
+    showModal('errorMessage')
   }
 })
 </script>
