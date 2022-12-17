@@ -26,42 +26,32 @@
     {{t('endOfGame.additionalQualifications.title')}}
   </button>
 
-  <div class="modal" tabindex="-1" id="modalAdditionalQualifications">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">{{t('endOfGame.additionalQualifications.title')}}</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" :aria-label="t('action.close')"></button>
-        </div>
-        <div class="modal-body">
-          <div class="accordion" id="accordionCondition">
+  <ModalDialog id="modalAdditionalQualifications" :title="t('endOfGame.additionalQualifications.title')"
+      :size-lg="true" :scrollable="true">
+    <template #body>
+      <div class="accordion" id="accordionCondition">
 
-            <div class="accordion-item" v-for="level of 5" :key="level">
-              <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" :data-bs-target="`#accordionAdditionalQualificationItem${level}`" :aria-controls="`accordionAdditionalQualificationItem${level}`">
-                  {{t(`endOfGame.additionalQualifications.level${level}.title`)}}
-                </button>
-              </h2>
-              <div :id="`accordionAdditionalQualificationItem${level}`" class="accordion-collapse collapse" aria-labelledby="headingOne">
-                <div class="accordion-body">
-                  <ul>
-                    <template v-for="condition of 5" :key="condition">
-                      <li v-if="t(`endOfGame.additionalQualifications.level${level}.condition${condition}`)"
-                          v-html="t(`endOfGame.additionalQualifications.level${level}.condition${condition}`)"></li>
-                    </template>
-                  </ul>
-                </div>
-              </div>
+        <div class="accordion-item" v-for="level of 5" :key="level">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" :data-bs-target="`#accordionAdditionalQualificationItem${level}`" :aria-controls="`accordionAdditionalQualificationItem${level}`">
+              {{t(`endOfGame.additionalQualifications.level${level}.title`)}}
+            </button>
+          </h2>
+          <div :id="`accordionAdditionalQualificationItem${level}`" class="accordion-collapse collapse" aria-labelledby="headingOne">
+            <div class="accordion-body">
+              <ul>
+                <template v-for="condition of 5" :key="condition">
+                  <li v-if="t(`endOfGame.additionalQualifications.level${level}.condition${condition}`)"
+                      v-html="t(`endOfGame.additionalQualifications.level${level}.condition${condition}`)"></li>
+                </template>
+              </ul>
             </div>
-
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.close')}}</button>
-        </div>
+
       </div>
-    </div>
-  </div>
+    </template>
+  </ModalDialog>
 
   <FooterButtons endGameButtonType="endGame"/>
 </template>
@@ -70,11 +60,13 @@
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
+import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 
 export default defineComponent({
   name: 'EndOfGame',
   components: {
-    FooterButtons
+    FooterButtons,
+    ModalDialog
   },
   setup() {
     const { t } = useI18n()

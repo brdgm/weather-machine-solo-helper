@@ -57,28 +57,20 @@
     </div>
   </div>
 
-  <div class="modal" tabindex="-1" id="modalUnlockCitation">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">{{t('sidebar.unlockCitation.title')}}</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" :aria-label="t('action.close')"></button>
-        </div>
-        <div class="modal-body">
-          <div class="float-start">
-            <AppIcon type="weather" :name="unlockCitationWeather" class="icon"/>
-          </div>
-          <p v-if="challengePeerReview"><ChallengeIcon/> <span v-html="t('turnPlayer.challengePeerReviewUnlock')"></span></p>
-          <p v-else v-html="t('sidebar.unlockCitation.description')"></p>
-        </div>
-        <div class="modal-footer">
-          <button v-if="isCitationUnlocked(unlockCitationWeather)" type="button" class="btn btn-danger" data-bs-dismiss="modal" @click="lockCitation(unlockCitationWeather)">{{t('sidebar.unlockCitation.lock')}}</button>
-          <button v-else type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="unlockCitation(unlockCitationWeather)">{{t('sidebar.unlockCitation.unlock')}}</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.cancel')}}</button>
-        </div>
+  <ModalDialog id="modalUnlockCitation" :title="t('sidebar.unlockCitation.title')">
+    <template #body>
+      <div class="float-start">
+        <AppIcon type="weather" :name="unlockCitationWeather" class="icon"/>
       </div>
-    </div>
-  </div>
+      <p v-if="challengePeerReview"><ChallengeIcon/> <span v-html="t('turnPlayer.challengePeerReviewUnlock')"></span></p>
+      <p v-else v-html="t('sidebar.unlockCitation.description')"></p>
+    </template>
+    <template #footer>
+      <button v-if="isCitationUnlocked(unlockCitationWeather)" type="button" class="btn btn-danger" data-bs-dismiss="modal" @click="lockCitation(unlockCitationWeather)">{{t('sidebar.unlockCitation.lock')}}</button>
+      <button v-else type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="unlockCitation(unlockCitationWeather)">{{t('sidebar.unlockCitation.unlock')}}</button>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.cancel')}}</button>
+    </template>
+  </ModalDialog>
 
   <CallSecurityModal :current-report="currentReport" :deck="deck" @call-security="callSecurity"/>
   <ClaimInitiativeModal :round="round" :player="player" @claimed-initiative="claimedInitiative" />
@@ -96,10 +88,11 @@ import AgentLocationIcon from '../structure/AgentLocationIcon.vue'
 import AppIcon from '../structure/AppIcon.vue'
 import ResearchTokenIcon from '../structure/ResearchTokenIcon.vue'
 import Weather from '@/services/enum/Weather'
-import { Modal } from 'bootstrap'
 import { CallSecurityAction } from '@/services/CardDeck'
 import ChallengeIcon from '../structure/ChallengeIcon.vue'
+import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 import ChallengeCard from '@/services/enum/ChallengeCard'
+import showModal from 'brdgm-commons/src/util/modal/showModal'
 
 export default defineComponent({
   name: 'TurnSidebar',
@@ -109,7 +102,8 @@ export default defineComponent({
     AgentLocationIcon,
     AppIcon,
     ResearchTokenIcon,
-    ChallengeIcon
+    ChallengeIcon,
+    ModalDialog
   },
   emits: {
     updateInitiativePlayer(payload:{player:Player}) {
@@ -197,8 +191,7 @@ export default defineComponent({
         return
       }
       this.unlockCitationWeather = weather
-      const modal = new Modal(document.getElementById('modalUnlockCitation') as Element)
-      modal.show()
+      showModal('modalUnlockCitation')
     },
     callSecurity(payload: CallSecurityAction[]) : void {
       this.$emit('callSecurity', payload)

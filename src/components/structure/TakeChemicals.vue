@@ -7,35 +7,26 @@
     </button>
   </div>
 
-  <div class="modal" tabindex="-1" id="modalTakeChemical">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">{{t('takeChemical.title')}}</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" :aria-label="t('action.close')"></button>
-        </div>
-        <div class="modal-body">
-          <ol>
-            <li>
-              <AppIcon name="chemical-priority-section" class="icon chemical-priority-section"/>
-              <span v-html="t('takeChemical.prioritySection')"></span>
-            </li>
-            <li>
-              <AppIcon name="chemical-priority-least-available" class="icon chemical-priority-least-available"/>
-              <span v-html="t('takeChemical.priorityLeastAvailable')"></span>
-            </li>
-            <li>
-              <AppIcon type="selection-priority" :name="selectionPriority" class="icon selection-priority"/>
-              <span v-html="t(`takeChemical.prioritySelection.${selectionPriority}`)"></span>
-            </li>
-          </ol>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.close')}}</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <ModalDialog id="modalTakeChemical" :title="t('takeChemical.title')"
+      :size-lg="true" :scrollable="true">
+    <template #body>
+      <ol>
+        <li>
+          <AppIcon name="chemical-priority-section" class="icon chemical-priority-section"/>
+          <span v-html="t('takeChemical.prioritySection')"></span>
+        </li>
+        <li>
+          <AppIcon name="chemical-priority-least-available" class="icon chemical-priority-least-available"/>
+          <span v-html="t('takeChemical.priorityLeastAvailable')"></span>
+        </li>
+        <li>
+          <AppIcon type="selection-priority" :name="selectionPriority" class="icon selection-priority"/>
+          <span v-html="t(`takeChemical.prioritySelection.${selectionPriority}`)"></span>
+        </li>
+      </ol>
+    </template>
+  </ModalDialog>
+
 </template>
 
 <script lang="ts">
@@ -43,11 +34,13 @@ import SelectionPriority from '@/services/enum/SelectionPriority'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppIcon from './AppIcon.vue'
+import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 
 export default defineComponent({
   name: 'TakeChemicals',
   components: {
-    AppIcon
+    AppIcon,
+    ModalDialog
   },
   setup() {
     const { t } = useI18n()
