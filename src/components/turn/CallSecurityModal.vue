@@ -1,52 +1,46 @@
 <template>
-  <div class="modal" tabindex="-1" id="modalCallSecurity">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">{{t('callSecurity.title')}}</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" :aria-label="t('action.close')"></button>
-        </div>
-        <div class="modal-body">
-          <template v-if="!securityCalled">
-            <p v-html="t('callSecurity.confirm')"></p>
-            <p v-html="t('callSecurity.payVoucher')"></p>
-          </template>
-          <template v-else>
-            <div class="report-container" v-for="(card,cardIndex) of reports" :key="cardIndex">
-              <div class="report">
-                <div>
-                  <AgentLocationIcon :agent="card.agent" :location="card.location" class="mt-2"/>
-                </div>
-                <div class="mt-2">
-                  {{t('sidebar.priority')}}<br/>
-                  <AppIcon type="weather" :name="card.weather" class="weather-icon mt-2"/>
-                  <AppIcon type="selection-priority" :name="card.selectionPriority" class="selection-priority-icon mt-2"/>
-                </div>
-              </div>
-              <div v-for="action of callSecurityCardActions" :key="action">
-                <input class="form-check-input" type="radio" :id="`report-${cardIndex}-${action}`" :value="action"
-                    v-model="callSecurityCardAction[cardIndex]" @change="callSecurityCardActionChanged(cardIndex)">
-                <label class="form-check-label" :for="`report-${cardIndex}-${action}`">
-                  {{t(`callSecurity.report.${action}`)}}
-                </label>
-              </div>
+  <ModalDialog id="modalCallSecurity" :title="t('callSecurity.title')"
+      :size-lg="true" :scrollable="true">
+    <template #body>
+      <template v-if="!securityCalled">
+        <p v-html="t('callSecurity.confirm')"></p>
+        <p v-html="t('callSecurity.payVoucher')"></p>
+      </template>
+      <template v-else>
+        <div class="report-container" v-for="(card,cardIndex) of reports" :key="cardIndex">
+          <div class="report">
+            <div>
+              <AgentLocationIcon :agent="card.agent" :location="card.location" class="mt-2"/>
             </div>
-          </template>
+            <div class="mt-2">
+              {{t('sidebar.priority')}}<br/>
+              <AppIcon type="weather" :name="card.weather" class="weather-icon mt-2"/>
+              <AppIcon type="selection-priority" :name="card.selectionPriority" class="selection-priority-icon mt-2"/>
+            </div>
+          </div>
+          <div v-for="action of callSecurityCardActions" :key="action">
+            <input class="form-check-input" type="radio" :id="`report-${cardIndex}-${action}`" :value="action"
+                v-model="callSecurityCardAction[cardIndex]" @change="callSecurityCardActionChanged(cardIndex)">
+            <label class="form-check-label" :for="`report-${cardIndex}-${action}`">
+              {{t(`callSecurity.report.${action}`)}}
+            </label>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button v-if="!securityCalled" type="button" class="btn btn-danger" @click="doCallSecurity()">{{t('callSecurity.title')}}</button>
-          <button v-else type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="finishCallSecurity()">{{t('callSecurity.finish')}}</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="reset()">{{t('action.cancel')}}</button>
-        </div>
-      </div>
-    </div>
-  </div>
+      </template>
+    </template>
+    <template #footer>
+      <button v-if="!securityCalled" type="button" class="btn btn-danger" @click="doCallSecurity()">{{t('callSecurity.title')}}</button>
+      <button v-else type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="finishCallSecurity()">{{t('callSecurity.finish')}}</button>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="reset()">{{t('action.cancel')}}</button>
+    </template>
+  </ModalDialog>
 </template>
 
 <script lang="ts">
 import CallSecurityCardAction from '@/services/enum/CallSecurityCardAction'
 import AgentLocationIcon from '../structure/AgentLocationIcon.vue'
 import AppIcon from '../structure/AppIcon.vue'
+import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 import Card from '@/services/Card'
 import { CallSecurityAction } from '@/services/CardDeck'
 import { useStore } from '@/store'
@@ -58,7 +52,8 @@ export default defineComponent({
   name: 'CallSecurityModal',
   components: {
     AgentLocationIcon,
-    AppIcon
+    AppIcon,
+    ModalDialog
   },
   emits: {
     callSecurity(payload: CallSecurityAction[]) {

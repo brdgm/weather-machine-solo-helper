@@ -1,32 +1,24 @@
 <template>
-  <div class="modal" tabindex="-1" id="modalClaimInitiative">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">{{t('claimInitiative.title')}}</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" :aria-label="t('action.close')"></button>
-        </div>
-        <div class="modal-body">
-          <div class="float-start">
-            <AppIcon name="claim-initiative" class="icon"/>
-          </div>
-          <p>
-            <span v-html="t('claimInitiative.claim')"></span><br/>
-            <template v-for="player of players" :key="player">
-              <input class="form-check-input" type="radio" :id="`initiative-${player}`" :value="player" v-model="selectedPlayer">
-              <label class="form-check-label" :for="`initiative-${player}`" :class="{'fw-bold':selectedPlayer==player}">
-                {{t(`claimInitiative.${player}`)}}
-              </label><br/>
-            </template>
-          </p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="claimInitiative()">{{t('claimInitiative.title')}}</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.cancel')}}</button>
-        </div>
+  <ModalDialog id="modalClaimInitiative" :title="t('claimInitiative.title')">
+    <template #body>
+      <div class="float-start">
+        <AppIcon name="claim-initiative" class="icon"/>
       </div>
-    </div>
-  </div>
+      <p>
+        <span v-html="t('claimInitiative.claim')"></span><br/>
+        <template v-for="player of players" :key="player">
+          <input class="form-check-input" type="radio" :id="`initiative-${player}`" :value="player" v-model="selectedPlayer">
+          <label class="form-check-label" :for="`initiative-${player}`" :class="{'fw-bold':selectedPlayer==player}">
+            {{t(`claimInitiative.${player}`)}}
+          </label><br/>
+        </template>
+      </p>
+    </template>
+    <template #footer>
+      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="claimInitiative()">{{t('claimInitiative.title')}}</button>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.cancel')}}</button>
+    </template>
+  </ModalDialog>
 </template>
 
 <script lang="ts">
@@ -35,11 +27,13 @@ import { useStore } from '@/store'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppIcon from '../structure/AppIcon.vue'
+import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 
 export default defineComponent({
   name: 'ClaimInitiativeModal',
   components: {
-    AppIcon
+    AppIcon,
+    ModalDialog
   },
   emits: {
     claimedInitiative(payload: { player: Player }) {

@@ -72,18 +72,23 @@ export default defineComponent({
       }
     },
     alternativeLocations() : Location[] {      
-      if (!MainLocations.includes(this.location)) {
+      if (this.location == Location.FOLLOW_LATIV) {
         return []
       }
-      const result = []
-      const currentLocationIndex = MainLocations.indexOf(this.location)
-      for (let i=currentLocationIndex+1; i<MainLocations.length; i++) {
-        result.push(MainLocations[i])
+      else if (this.location == Location.SUPPLY) {
+        return MainLocations
       }
-      for (let i=0; i<currentLocationIndex; i++) {
-        result.push(MainLocations[i])
+      else {
+        const result = []
+        const currentLocationIndex = MainLocations.indexOf(this.location)
+        for (let i=currentLocationIndex+1; i<MainLocations.length; i++) {
+          result.push(MainLocations[i])
+        }
+        for (let i=0; i<currentLocationIndex; i++) {
+          result.push(MainLocations[i])
+        }
+        return result
       }
-      return result
     }
   },
   methods: {
