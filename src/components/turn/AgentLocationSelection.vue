@@ -24,6 +24,7 @@
       <button class="btn btn-secondary btn-sm"  @click="selectLocationOr(location)">{{t('agentLocationSelection.selectBC')}}</button>
     </div>
   </div>
+  <p class="mt-4 small col-lg-7" v-html="t('agentLocationSelection.moveInfo')"></p>
 </template>
 
 <script lang="ts">
