@@ -323,7 +323,8 @@
   "agentLocationSelection": {
     "select": "Wählen",
     "selectA": "A &",
-    "selectBC": "C,B /"
+    "selectBC": "C,B /",
+    "moveInfo": "Wenn der Saboteur nicht zu einem Ort gehen kann (weil alle Aktionsfelder besetzt sind, der Saboteur sich bereits an dem Ort befindet oder der Laufende Report Lativs Ort angibt und Lativ in seinem Büro ist), bewege ihn an den nächsten Hauptort (in der angezeigten Reihenfolge)."
   },
   "takeChemical": {
     "title": "Chemikalie nehmen",

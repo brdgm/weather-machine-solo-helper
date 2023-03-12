@@ -325,7 +325,8 @@
   "agentLocationSelection": {
     "select": "Select",
     "selectA": "A &",
-    "selectBC": "C,B /"
+    "selectBC": "C,B /",
+    "moveInfo": "If the Saboteur cannot move to a Location (because all action spaces are full, the Saboteur is already at that Location, or because the Current Report depicts Lativ’s Location and he’s in his Office), move them to the next Main Location in the given order."
   },
   "takeChemical": {
     "title": "Take Chemical",
