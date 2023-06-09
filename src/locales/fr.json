@@ -1,0 +1,435 @@
+{
+  "gameTitle": "Weather Machine",
+  "home": {
+    "title": "Assistant pour le Mode Solo de la Weather Machine",
+    "play1": "Affrontez les Saboteurs, les adversaires du Mode Solo de <a href='https://boardgamegeek.com/boardgame/237179/weather-machine' target='_blank' rel='noopener'><b>Weather Machine</b></a>.",
+    "play2": "Cette application d'aide remplace les cartes solo et le plateau de la cachette. Elle suit les jetons de recherche des saboteurs et les déblocages de citations pour guider les saboteurs vers les bons endroits conformément aux règles.",
+    "feedback": "Discussion et Retours :"
+  },
+  "setupDifficultyLevel": {
+    "title": "Choix du Niveau de Difficulté",
+    "firstTime": "Si vous jouez pour la première fois, passez directement à la configuration du jeu.",
+    "greaterChallenge": "Pour un défi plus important, vous pouvez utiliser 1 ou plusieurs défis supplémentaires :",
+    "pickChallengeCards": "Choisir des Cartes de Défi",
+    "pickRandom": "Choisir au Hasard",
+    "clearAll": "Tout Effacer"
+  },
+  "setupGame": {
+    "title": "Configuration du Jeu",
+    "setupWithChanges": "Configurez le jeu avec les modifications suivantes :",
+    "lativBots": "Placez un des <b>Bots de Lativ</b> dans chaque branche de la Machine Météorologique du Laboratoire.",
+    "researchTokens": "Utilisez uniquement <b>2 jetons de recherche</b> de chaque type dans chaque Lieu Principal.",
+    "goalTiles": "Préparez les <b>Tuiles Objectif</b> :",
+    "goalTilesStep1": "Retirez toutes les Tuiles Objectif qui montrent une icône de majorité en haut à droite. Retirez également la tuile qui nécessite d'avoir 3 jetons de récompense.",
+    "goalTilesStep2": "Parmi les Tuiles Objectif restantes, choisissez 2 de chaque couleur au hasard. Si vous tirez 2 tuiles avec la même icône au milieu de la tuile, défaussez la deuxième et continuez à piocher jusqu'à ce que vous obteniez des tuiles différentes.",
+    "goalTilesStep3": "Retirez toutes les Tuiles Objectif restantes du jeu. Les Saboteurs n'utilisent pas les Tuiles Objectif.",
+    "anotherPlayerColor": "Sélectionnez une <b>autre couleur de joueur</b> pour les Saboteurs. Les Saboteurs n'utilisent pas de marqueurs de Laboratoire ou de Bon d'Échange.",
+    "scoringMarker": "Placez le <b>marqueur de Score des Saboteurs</b> sur <b>{startingTargetValue} PC</b>. C'est la Valeur Cible initiale.",
+    "turnOrder": "Placez les marqueurs <b>Ordre de Tour</b> et <b>Initiative</b> (les vôtres et ceux des Saboteurs) en vous plaçant en premier dans l'ordre du tour pour les deux.",
+    "hideout": "Désignez une zone près du Plateau Principal comme la Cachette des Saboteurs.",
+    "hideoutBots": "Placez les <b>Bots des Saboteurs</b> dans la Cachette.",
+    "hideoutChemicals": "Sélectionnez les <b>Produits Chimiques</b> suivants, prenez-les depuis les espaces les plus à gauche de la Réserve et placez-les dans la Cachette :",
+    "hideoutAward": "Les Saboteurs commencent la partie avec un <b>jeton de Récompense</b> :",
+    "placeAgentMiddlePosition": "Placez <b>l'Agent {agent}</b> sur l'emplacement <b>{location}</b>, espace d'action central.",
+    "placeAgentRightPosition": "Placez <b>l'Agent {agent}</b> sur l'emplacement <b>{location}</b>, espace d'action le plus à droite.",
+    "takeWeatherToken": "Déplacez un <b>jeton de recherche {weather}</b> de cet emplacement vers la cachette.",
+    "playerLaboratory": "Laboratoire du Joueur",
+    "playerSetupLaboratory": "Configurez votre laboratoire comme d'habitude en incluant une <b>Tuile Atelier</b> et une <b>Pièce de Machine</b> aléatoires.",
+    "playerDetermineMachinePart": "Déterminez la Pièce de Machine",
+    "playerPostSetupSupplyRound": "Effectuez votre <b>tour d'approvisionnement</b> après la configuration."
+  },
+  "turnPlayer": {
+    "title": "Votre tour",
+    "useSubsidyInvestment": "Utilisez 1 tuile de Subvention OU 1 tuile d'Investissement.",
+    "moveScientist": "Déplacez votre Scientifique.",
+    "moveScientistRound1": "Tour 1 : Vous n'êtes pas autorisé à sélectionner l'action la plus à gauche.",
+    "performActions": "Effectuez des actions.",
+    "placeResearchTokens": "Placez des jetons de Recherche.",
+    "challengeOneStepAhead": "Si, à la fin de votre tour, le marqueur Initiative des Saboteurs est en position la plus à gauche, augmentez la Valeur Cible de 3.",
+    "challengeMoralHighGround": "Lorsque vous placez votre Scientifique dans un Lieu, vous ne gagnez pas de bons supplémentaires pour les Saboteurs à votre gauche.",
+    "challengePeerReview": "Vous ne pouvez pas utiliser de jetons de Citation lors de la publication d'un article.",
+    "challengePeerReviewUnlock": "Lorsque vous débloquez un espace de Citation, vous <b>ne pouvez pas</b> payer un bon de Science pour obtenir 3 PC.",
+    "challengeIndependentPrototypes": "Vous ne pouvez pas utiliser les Robots des Saboteurs lors de la construction d'un prototype dans le cadre d'une action Percée.",
+    "challengeBudgetCuts": "Chaque fois que vous recevez un financement de la piste de Financement du Laboratoire, considérez le modificateur sous votre marqueur comme +0 (vous bénéficiez toujours des avantages de la piste du Gouvernement ou de la R&D).",
+    "infoCitationUnlock": "Lorsque vous débloquez un espace de citation sur le plateau de jeu, débloquez-le également ici dans l'application.",
+    "infoGovernmentRunMachine": "Lorsque le gouvernement active une branche de leur machine, augmentez la Valeur Cible de 3 pour chaque Robot Saboteur dans cette branche.",
+    "infoRndBreakthrough": "Lorsque vous effectuez une action Percée, pour chaque Robot Saboteur qui vous fournit une pièce lors de la construction de votre prototype, augmentez la Valeur Cible de 2."
+  },
+  "turnSaboteur": {
+    "title": "Tour des Saboteurs",
+    "gameLost": "Le deck de Rapports de sécurité est vide. <b>Vous avez perdu.</b>",
+    "gameLostHopes": "Nous avions de grands espoirs pour vous.",
+    "moveSaboteur": "Déplacer le Saboteur vers l'espace d'action :",
+    "raiseTargetValue": "Augmenter la valeur cible pour chaque pièce restante de l'espace d'action.",
+    "moveLativ": "Déplacer Lativ, si nécessaire.",
+    "saboteurActions": "Actions des Saboteurs :",
+    "actions": {
+      "claimInitiative": {
+        "text": "Les Saboteurs revendiquent l'<b>initiative</b>."
+      },
+      "discardResearchTokens": {
+        "text": "Les Saboteurs défaussent un ensemble de <b>{count} jetons de recherche</b>, ils sont retirés du jeu."
+      },
+      "discardSecurityReport": {
+        "text": "Les Saboteurs défaussent la carte <b>Rapport de Sécurité</b> du dessus du paquet."
+      },
+      "drawSecurityReport": {
+        "text": "Les Saboteurs défaussent le <b>Rapport de Sécurité</b> actuel et en piochent un nouveau."
+      },
+      "getAwardToken": {
+        "text": "Les Saboteurs obtiennent un <b>jeton Récompense</b>."
+      },
+      "governmentFlipSubsidy": {
+        "text": "<b>Retourner</b> une <b>tuile Subvention</b> avec le côté bleu vers le haut."
+      },
+      "governmentGetResearchToken": {
+        "text": "Les Saboteurs prennent un <b>jeton de recherche</b> dans la branche choisie.",
+        "researchTokenAvailable": "Un jeton de recherche est-il disponible ?"
+      },
+      "governmentPlaceBotResearchPriority": {
+        "text": "<b>Placer un Bot</b> sur un emplacement de Bot vide d'une branche pour laquelle les Saboteurs possèdent un <b>Produit Chimique correspondant</b>. Ils préfèrent les branches dans l'ordre donné avec des jetons de recherche disponibles. Déplacer le Produit Chimique correspondant de la Planque à la Réserve."
+      },
+      "governmentPlaceGearRemoveSubsidy": {
+        "text-top": "<b>Retirer</b> la <b>tuile Subvention</b> disponible la plus haute de la branche. La remplacer par la <b>Pièce de Machine</b> requise.",
+        "text-bottom": "<b>Retirer</b> la <b>tuile Subvention</b> disponible la plus basse de la branche. La remplacer par la <b>Pièce de Machine</b> requise."
+      },
+      "governmentRunMachine": {
+        "text": "Si tous les emplacements de Bot de la branche sont maintenant occupés, le <b>Gouvernement active cette branche</b>. Augmenter la Valeur Cible de 3 pour chaque Bot Saboteur dans cette branche."
+      },
+      "increaseTargetValue": {
+        "text": "Augmenter la <b>Valeur Cible des Saboteurs de {count}</b>."
+      },
+      "increaseTargetValueOrDiscardSecurityReport": {
+        "text": "Soit augmenter la <b>Valeur Cible des Saboteurs de {count}</b>, soit défausser la carte du dessus du paquet de Rapport de Sécurité.",
+        "increaseTargetValueOrDiscardSecurityReport": "Augmenter la valeur cible des Saboteurs ? Sinon, un rapport de sécurité sera défaussé."
+      },
+      "lativsLabPlaceBotResearchPriority": {
+        "text": "<b>Placer un Bot</b> sur un emplacement de Bot disponible d'une branche pour laquelle les Saboteurs possèdent un <b>Produit Chimique correspondant</b>, et avec une <b>tuile d'Expérience correspondante</b> dans l'affichage. Ils préfèrent les branches avec le <b>plus de Bots</b> (y compris les Bots de Lativ) et les emplacements dans l'ordre donné. En cas d'égalité, ils préfèrent les branches avec des jetons de recherche disponibles. Les Bots de Lativ peuvent être déplacés. Déplacer le Produit Chimique correspondant de la Planque à la Réserve."
+      },
+      "rndChemicalAvailable": {
+        "text": "Produit Chimique correspondant disponible ?",
+        "chemicalAvailable": "Les Saboteurs possèdent-ils un Produit Chimique correspondant à l'emplacement de Bot choisi ?"
+      },
+      "rndGetResearchToken": {
+        "text": "Les Saboteurs prennent un <b>jeton de recherche</b> dans la branche choisie.",
+        "researchTokenAvailable": "Un jeton de recherche est-il disponible ?"
+      },
+      "rndPlaceBotPreviousReportPriority": {
+        "text": "<b>Placer un Bot</b> sur un emplacement de Bot vide d'une branche. Ils préfèrent les branches et les emplacements dans l'ordre donné. Les Saboteurs ne paient pas le coût supplémentaire s'ils placent leur Bot sur l'emplacement du bas de la branche."
+      },
+      "rndPlaceBotResearchPriority": {
+        "text": "<b>Placer un Bot</b> sur un emplacement de Bot vide d'une branche pour laquelle les Saboteurs possèdent un <b>Produit Chimique correspondant</b>. Ils préfèrent les branches dans l'ordre donné avec des jetons de recherche disponibles. Déplacer le Produit Chimique correspondant de la Planque à la Réserve."
+      },
+      "rndPlaceChemical": {
+        "text": "Les Saboteurs <b>déplacent un Produit Chimique</b> de leur planque à l'emplacement de Bot choisi."
+      },
+      "takeChemicals": {
+        "text": "Les Saboteurs prennent <b>{count} Produit Chimique</b>. | Les Saboteurs prennent <b>{count} Produits Chimiques</b>."
+      },
+      "takeExtremeWeatherTile": {
+        "text": "Prendre la <b>tuile Météo Extrême</b> correspondant au type de météo dans la pile et la placer sur l'emplacement correspondant dans R&D, en recouvrant éventuellement une tuile déjà présente. Les marqueurs de Découverte sur la tuile existante sont renvoyés dans la boîte, et les marqueurs du Gouvernement sont renvoyés dans la zone du Gouvernement."
+      },
+      "unlockCitation": {
+        "text": "Retirer le <b>marqueur de verrouillage</b> de l'emplacement de Citation correspondant."
+      }
+    }
+  },
+  "experiment": {
+    "title": "Lancer l'expérience de la Machine Météorologique",
+    "checkRunning": {
+      "runsIfBoth": "L'expérience est lancée si <b>les deux</b> conditions suivantes sont remplies :",
+      "atLeastOneTile": "Il y a au moins une tuile d'expérience affichée correspondant à la météo de la branche active.",
+      "allBots": "Il y a un Bot sur chaque emplacement de la branche active."
+    },
+    "running": {
+      "title": "L'expérience est en cours",
+      "player": {
+        "title": "Votre Tour (si vous avez des bots sur la branche active)",
+        "returnBots": "Récupérez vos Bots de la branche active.",
+        "ifVouchersPayed": "Si vous payez des Bons de Science de la tuile d'expérience active :",
+        "gainCP": "Gagnez des PC tels que représentés sur la tuile d'expérience pour chaque Bot que vous venez de récupérer.",
+        "gainBenefit": "Bénéficiez de l'un des deux avantages représentés sur la tuile.",
+        "takeResearchToken": "Prenez un jeton de recherche de la branche active (si disponible), et placez-le immédiatement dans votre Bureau."
+      },
+      "saboteur": {
+        "title": "Tour des Saboteurs",
+        "botsInActiveBranch": "Est-ce que les saboteurs ont un bot dans la branche active ?",
+        "returnBots": "Pour chaque Bot des Saboteurs dans la branche active, récupérez ce Bot dans la Cachette et augmentez la Valeur Cible des Saboteurs de la valeur des PC représentée sur la tuile d'expérience.",
+        "takeResearchToken": "Prenez un jeton de recherche situé en dessous de la branche active (si disponible).",
+        "researchTokenAvailable": "Un jeton de recherche est-il disponible ? Si oui, choisissez la météo de la branche active."
+      }
+    },
+    "afterExperiment": {
+      "title": "Après l'expérience",
+      "lativBotRemoveResearchToken": "S'il y a un des Bots de Lativ dans la branche, retirez du jeu 1 jeton de recherche situé en dessous de la branche active, si possible.",
+      "returnLativBots": "Récupérez tous les Bots de Lativ présents dans la branche active et replacez-les à côté du Laboratoire.",
+      "takeExtremeWeatherTile": "Prenez la tuile de Météo Extrême supérieure de la pile correspondant au type de météo et placez-la sur l'emplacement correspondant dans la R&D."
+    },
+    "notRunning": {
+      "title": "L'expérience <i>n'est pas</i> en cours",
+      "returnPlayerBots": "Vous pouvez choisir de récupérer vos bots de la branche active.",
+      "saboteurBotExtremeWeather": "Si les Saboteurs ont au moins un Bot présent dans la branche active : Placez une nouvelle tuile de Météo Extrême. Les Bots restent dans la branche.",
+      "returnLativBots": "Récupérez tous les Bots de Lativ présents dans la branche active et replacez-les à côté du Laboratoire."
+    },
+    "prepareNext": {
+      "title": "Préparez-vous pour la prochaine expérience",
+      "removeExperimentTile": "Retirez la tuile d'expérience la plus à droite affichée correspondant à la météo de la branche active (si présente). Remplissez à nouveau l'affichage.",
+      "moveLativAssistant": "Déplacez l'Assistant de Lativ vers la prochaine branche."
+    }
+  },
+  "endOfRound": {
+    "title": "Fin du Tour",
+    "turnOrder": {
+      "player": "Ordre du tour : <b>Vous</b> commencez.",
+      "saboteur": "Ordre du tour : les <b>Saboteurs</b> commencent."
+    },
+    "lativOffice": "Si Lativ est à son bureau :",
+    "income": "Revenu : Bénéficiez des avantages.",
+    "challengeJammingDevices": "Lors de chaque revenu, augmentez la Valeur Cible de 1 pour chaque Bot Saboteur sur le plateau.",
+    "challengeCreativeAccounting": "Lors de chaque revenu, déplacez un de vos marqueurs de Financement d'un espace en arrière sur l'une des pistes. Vous devez choisir une piste où vous êtes en mesure de le faire, si possible.",
+    "moveLativSupply": "Déplacez Lativ vers la Réserve."
+  },
+  "endOfGame": {
+    "title": "Fin de partie",
+    "phaseB": {
+      "title": "Pendant la phase B du dernier tour :",
+      "completeExperiments": "À partir de la branche où se trouve l'Assistant, et en suivant l'ordre des flèches, vérifiez chaque branche terminée de la Machine météorologique. Pour chaque branche, s'il y a une tuile d'expérience actuelle correspondant au type de météo, exécutez l'expérience en suivant les règles habituelles.",
+      "noExtremeWeather": "Ne placez pas de nouvelles tuiles de météo extrême à ce moment-là.",
+      "placeResearchTokens": "Vous pouvez placer tous les jetons de recherche et/ou les jetons de récompense que vous avez à côté de votre Laboratoire sur les espaces vides de votre Bureau, en suivant les règles habituelles."
+    },
+    "saboteurFinalScoring": {
+      "title": "Décompte final pour les saboteurs :",
+      "targetValue": "Augmentez la valeur cible de 30."
+    },
+    "playerFinalScoring": {
+      "title": "Vous marquez des points pour les éléments suivants :",
+      "fundingTracks": "CP en fonction de la position de votre marqueur sur chaque piste de financement. Marquez le nombre de CP le plus élevé au-dessus ou à gauche de votre marqueur.",
+      "goalTiles": "5 CP pour chaque tuile de but sur l'un de vos espaces de but pour lesquelles vous remplissez les conditions (voir Aide du joueur).",
+      "nobelPrize": "5 CP si un joueur possède le prix Nobel."
+    },
+    "winSummary": "Après cela, si votre total de CP dépasse la valeur cible, vous avez <b>gagné la partie</b> et sauvé l'entreprise. <i>Sinon, vous vous joignez au reste des scientifiques au chômage de l'ancienne grande entreprise Lightning Technologies pour mettre à jour votre CV.</i>",
+    "additionalQualifications": {
+      "title": "Qualifications supplémentaires",
+      "level1": {
+        "title": "1. Terraformer",
+        "condition1": "120+ CP",
+        "condition2": "La piste de financement la plus basse est au moins sur la 4e case",
+        "condition3": "La piste de financement la plus élevée est sur la dernière case",
+        "condition4": "6+ tuiles d'atelier",
+        "condition5": "Pas plus de 2 bons d'échange au total"
+      },
+      "level2": {
+        "title": "2. Climatologue",
+        "condition1": "110+ CP",
+        "condition2": "Prix Nobel",
+        "condition3": "4+ tuiles de but remplies",
+        "condition4": "Tous les Bots débloqués",
+        "condition5": ""
+      },
+      "level3": {
+        "title": "3. Météorologue",
+        "condition1": "100+ CP",
+        "condition2": "3+ articles publiés",
+        "condition3": "1+ piste de financement au moins sur la 8e case",
+        "condition4": "3+ tuiles de but remplies",
+        "condition5": "2+ récompenses"
+      },
+      "level4": {
+        "title": "4. Prévisionniste",
+        "condition1": "3+ articles publiés",
+        "condition2": "7+ Bots sur le plateau principal",
+        "condition3": "3+ tuiles de but remplies",
+        "condition4": "1+ récompense",
+        "condition5": ""
+      },
+      "level5": {
+        "title": "5. Chasseur de tempêtes",
+        "condition1": "2+ tuiles de but remplies",
+        "condition2": "1+ récompense",
+        "condition3": "",
+        "condition4": "",
+        "condition5": ""
+      }
+    }
+  },
+  "sidebar": {
+    "saboteursScheme": "Plan des saboteurs :",
+    "priority": "Priorité :",
+    "reportsLeft": "Cartes de rapport restantes :",
+    "nextFirstPlayer": "Prochain premier joueur :",
+    "unlockCitation": {
+      "title": "Débloquer l'espace de citation",
+      "description": "Si vous débloquez l'espace de citation, vous pouvez immédiatement payer 1 bon d'échange scientifique pour obtenir <b>3 CP</b>.",
+      "unlock": "Débloquer",
+      "lock": "Verrouiller"
+    }
+  },
+  "lativMovement": {
+    "title": "Déplacement de Lativ",
+    "nextLocation": "Si Lativ se déplace, il va à l'emplacement suivant avec un espace d'action disponible (le plus à gauche).",
+    "weatherMachineActiveBranch": "Vérifiez la <b>branche active de la Machine météorologique</b> dans le Laboratoire (celle où se trouve l'Assistant).",
+    "weatherMachineActiveBranchStep1": "Si Lativ n'a pas l'un de ses Bots dans cette branche, placez 1 des Bots de Lativ de la zone à côté du Laboratoire sur n'importe quel espace vide de la branche (peu importe lequel).",
+    "weatherMachineActiveBranchStep2": "Si Lativ a déjà un Bot dans la branche ou si la branche était pleine, placez un Bot dans la branche suivante (en suivant les flèches). Si toutes les branches sont pleines ou contiennent déjà l'un des Bots de Lativ, rien ne se passe.",
+    "governmentRnd": "Lorsque Lativ se déplace vers le <b>Gouvernement</b> ou la <b>R&D</b>, défaussez un jeton de recherche de l'emplacement actuel de Lativ du même type de météo que la branche où se trouve actuellement l'Assistant de Lativ."
+  },
+  "callSecurity": {
+    "title": "Appeler la sécurité",
+    "confirm": "Voulez-vous appeler la sécurité ?",
+    "payVoucher": "Pour continuer, vous devez payer <b>1 bon d'échange</b> (du type correspondant à l'emplacement où vous vous trouvez, ou un bon d'échange scientifique).",
+    "report": {
+      "makeCurrent": "Rapport actuel",
+      "putBack": "Remettre",
+      "discard": "Défausser"
+    },
+    "finish": "Terminer l'appel à la sécurité"
+  },
+  "claimInitiative": {
+    "title": "Revendiquer l'initiative",
+    "claim": "Revendiquer l'initiative pour :",
+    "player": "Joueur",
+    "saboteur": "Saboteurs"
+  },
+  "endGameConditions": {
+    "title": "Conditions de fin de partie",
+    "goToEndOfGame": "Aller à la fin de la partie",
+    "challengeCard": {
+      "nobelLaureate": "Vous ne pouvez pas gagner la partie à moins d'avoir le <b>prix Nobel</b>.",
+      "onlyOverachieversApply": "Vous ne pouvez pas gagner la partie à moins de remplir les conditions d'au <b>moins 5 de vos tuiles de but</b> sur les espaces de but de votre Laboratoire.",
+      "publishOrPerish": "Vous devez gagner par une <b>victoire immédiate</b> (rétablissement de la bonne réputation de Lightning Technologies)."
+    },
+    "immediateWin": {
+      "title": "Rétablissement de la bonne réputation de Lightning Technologies",
+      "intro": "Vous devez remplir <b>toutes</b> les conditions suivantes au <i>début de votre tour</i> :",
+      "targetValueHigher": "Votre total de CP est supérieur à la valeur cible.",
+      "goalTiles": "Vous remplissez actuellement les conditions d'au moins 4 de vos tuiles de but sur les espaces de but de votre Laboratoire.",
+      "fundingTracks": "Au moins 2 de vos marqueurs de financement sont sur ou au-delà de la 5e case de leur piste de financement (l'emplacement où votre marqueur commence est la 0e case).",
+      "outro": "Si cela se produit, <b>vous remportez immédiatement la partie</b>."
+    },
+    "standardEnding": {
+      "title": "Le temps s'écoule et le gouvernement intervient",
+      "intro": "Cela se produit si la fin de la partie est déclenchée en raison de l'une des conditions de fin de partie régulières :",
+      "nobelPrize": "Vous obtenez le prix Nobel.",
+      "lastExperimentTile": "La dernière tuile d'expérience est placée dans l'affichage.",
+      "governmentMachine": "La Machine gouvernementale est complétée.",
+      "researchFull": "Tous les espaces de recherche de la R&D sont occupés.",
+      "outro": "Si cela se produit, <b>jouez un tour supplémentaire</b> comme d'habitude, puis passez au décompte final. Pendant le décompte final, la valeur cible des saboteurs est <b>augmentée de 30 CP supplémentaires</b>. Après le décompte final, si votre total de CP est supérieur à la valeur cible, vous remportez la partie."
+    },
+    "fail": {
+      "title": "Les plans néfastes des saboteurs réussissent",
+      "intro": "Cela se produit si <b>l'une des deux</b> conditions suivantes est remplie :",
+      "extremeWeather": "À la fin de votre tour, il y a 2 tuiles de Météo extrême de niveau 3 ou plus sur le plateau.",
+      "deckEmpty": "Au début du tour des saboteurs, toutes les cartes de Rapport de sécurité sont dans la pile de défausse.",
+      "outro": "Si cela se produit, <b>vous perdez immédiatement</b>. <i>Nous avions tellement d'espoir en vous.</i>"
+    }
+  },
+  "agentLocationSelection": {
+    "select": "Sélectionner",
+    "selectA": "A &",
+    "selectBC": "C,B /",
+    "moveInfo": "Si le saboteur ne peut pas se déplacer vers un emplacement (parce que tous les espaces d'action sont occupés, le saboteur est déjà à cet emplacement, ou parce que le Rapport actuel représente l'emplacement de Lativ et qu'il est dans son bureau), déplacez-le vers l'emplacement principal suivant dans l'ordre donné."
+  },
+  "takeChemical": {
+    "title": "Prendre un produit chimique",
+    "prioritySection": "Ils sélectionnent un produit chimique dans la section qui représente le moins de bons d'échange de fourniture.",
+    "priorityLeastAvailable": "S'il y a plus d'un type de produit chimique dans la section la moins chère, ils prennent celui dont ils ont le moins dans leur repaire.",
+    "prioritySelection": {
+      "top": "Si les produits chimiques sont toujours équivalents, ils prennent celui <b>le plus en haut</b> parmi ceux qui sont à égalité.",
+      "bottom": "Si les produits chimiques sont toujours équivalents, ils prennent celui <b>le plus en bas</b> parmi ceux qui sont à égalité."
+    }
+  },
+  "challengeCard": {
+    "fully-stocked-opponents": {
+      "title": "Adversaires bien approvisionnés",
+      "description": "Les Saboteurs commencent la partie avec 1 exemplaire de chaque produit chimique au lieu de 2."
+    },
+    "jamming-device": {
+      "title": "Dispositifs de brouillage",
+      "description": "À chaque revenu, augmentez la valeur cible de 1 pour chaque Saboteur Bot sur le plateau."
+    },
+    "creative-accounting": {
+      "title": "Comptabilité créative",
+      "description": "Les Saboteurs commencent la partie avec un jeton de récompense. À chaque revenu, déplacez l'un de vos marqueurs de financement d'un espace en arrière sur l'une des pistes. Vous devez choisir une piste où cela est possible, si possible."
+    },
+    "nobel-laureate": {
+      "title": "Lauréat du prix Nobel",
+      "description": "Les Saboteurs commencent la partie avec un produit chimique supplémentaire choisi au hasard (il peut être identique à l'un de ceux qu'ils possèdent déjà). Vous ne pouvez pas gagner la partie à moins d'avoir le prix Nobel."
+    },
+    "only-overachievers-apply": {
+      "title": "Seuls les surperformants s'appliquent",
+      "description": "Vous ne pouvez pas gagner la partie à moins de remplir les conditions d'au moins 5 de vos tuiles de but sur les espaces de but de votre Laboratoire."
+    },
+    "the-clock-is-ticking": {
+      "title": "Le temps presse",
+      "description": "2 cartes du paquet de Rapport de sécurité sont retirées du jeu."
+    },
+    "one-step-ahead": {
+      "title": "Un pas d'avance",
+      "description": "Si, à la fin de votre tour, le marqueur d'initiative des Saboteurs est à la position la plus à gauche, augmentez la valeur cible de 3."
+    },
+    "moral-high-ground": {
+      "title": "Haute moralité",
+      "description": "Lorsque vous placez votre scientifique dans un emplacement, vous ne gagnez pas de bons d'échange supplémentaires pour les Saboteurs à votre gauche."
+    },
+    "peer-review": {
+      "title": "Évaluation par les pairs",
+      "description": "Vous ne pouvez pas utiliser de jetons de citation lors de la publication d'un article. Lorsque vous déverrouillez un espace de citation, vous ne pouvez pas payer un bon d'échange scientifique pour gagner 3 CP."
+    },
+    "independent-prototypes": {
+      "title": "Prototypes indépendants",
+      "description": "Les Saboteurs commencent la partie avec un jeton de récompense. Vous ne pouvez pas utiliser les Bots des Saboteurs lors de la construction d'un prototype dans le cadre d'une action Percée."
+    },
+    "budget-cuts": {
+      "title": "Restrictions budgétaires",
+      "description": "Les Saboteurs commencent la partie avec un produit chimique supplémentaire choisi au hasard (il peut être identique à l'un de ceux qu'ils possèdent déjà). Chaque fois que vous recevez un financement de la piste de financement du laboratoire, considérez le modificateur situé en dessous de votre marqueur comme +0 (vous bénéficiez toujours des avantages de la piste du gouvernement ou de R&D)."
+    },
+    "publish-or-perish": {
+      "title": "Publier ou périr",
+      "description": "Réduisez la valeur cible de départ de 5. Chaque fois que les Saboteurs provoquent la suppression d'un jeton de verrouillage d'un espace de citation, augmentez la valeur cible de 5. Vous devez gagner par une victoire immédiate (restaurer la bonne réputation de Lightning Technologies)."
+    }
+  },
+  "agent": {
+    "white": "Blanc",
+    "pink": "Rose"
+  },
+  "location": {
+    "government": "Gouvernement",
+    "lativs-lab": "Laboratoire de Lativ",
+    "rnd": "R&D"
+  },
+  "weather": {
+    "rain": "Pluie",
+    "wind": "Vent",
+    "sun": "Soleil",
+    "fog": "Brouillard",
+    "snow": "Neige"
+  },
+  "notfound": {
+    "title": "Non trouvé"
+  },
+  "action": {
+    "playGame": "Jouer",
+    "startGame": "Démarrer la partie",
+    "next": "Suivant",
+    "nextRound": "Tour suivant",
+    "abortGame": "Abandonner la partie",
+    "abortGameConfirm": "Abandonner la partie en cours - êtes-vous sûr(e) ?",
+    "endGame": "Terminer la partie",
+    "endGameConfirm": "Terminer cette partie et retourner à l'écran d'accueil - êtes-vous sûr(e) ?",
+    "cancel": "Annuler",
+    "backToHome": "Retour à l'accueil",
+    "back": "Retour",
+    "close": "Fermer",
+    "select": "Sélectionner",
+    "reselect": "Re-sélectionner",
+    "yes": "Oui",
+    "no": "Non",
+    "notPossible": "Non possible"
+  },
+  "footer": {
+    "credits": "Crédits"
+  },
+  "serviceWorkerUpdatedRefresh": {
+    "title": "Actualiser l'application",
+    "notice": "L'application a été mise à jour - souhaitez-vous l'actualiser pour utiliser la dernière version ?"
+  }
+}
