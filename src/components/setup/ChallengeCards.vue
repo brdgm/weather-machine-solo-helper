@@ -137,6 +137,7 @@ button.btn-sm {
     white-space: nowrap;
     .form-check-label {
       margin-left: 0.5rem;
+      white-space: normal;
     }
   }
   .card-text {
