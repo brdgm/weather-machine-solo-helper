@@ -1,6 +1,6 @@
-import Action from "./enum/Action"
-import Weather from "./enum/Weather"
-import { ResearchTokenSet } from "./TokenCollector"
+import Action from './enum/Action'
+import Weather from './enum/Weather'
+import { ResearchTokenSet } from './TokenCollector'
 
 export default interface ActionStep {
   action: Action

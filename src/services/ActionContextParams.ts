@@ -1,6 +1,6 @@
-import { Token } from "@/store"
-import SelectionPriority from "./enum/SelectionPriority"
-import Weather from "./enum/Weather"
+import { Token } from '@/store'
+import SelectionPriority from './enum/SelectionPriority'
+import Weather from './enum/Weather'
 
 export default interface ActionContextParams {
   selectionPriority: SelectionPriority

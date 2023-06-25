@@ -1,4 +1,4 @@
-import MachinePart from "@/services/enum/MachinePart";
+import MachinePart from '@/services/enum/MachinePart';
 
 export default function(machinePart : MachinePart) : string {
   switch (machinePart) {

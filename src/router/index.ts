@@ -8,7 +8,7 @@ import PhaseBExperiment from '@/views/PhaseBExperiment.vue'
 import PhaseCEndOfRound from '@/views/PhaseCEndOfRound.vue'
 import EndOfGame from '@/views/EndOfGame.vue'
 import NotFound from '@/views/NotFound.vue'
-import createRouter from "brdgm-commons/src/util/router/createRouter"
+import createRouter from 'brdgm-commons/src/util/router/createRouter'
 
 const LOCALSTORAGE_KEY = process.env.VUE_APP_LOCALSTORAGE_KEY_PREFIX + "route"
 

@@ -1,8 +1,8 @@
-import { Token } from "@/store"
+import { Token } from '@/store'
 import getPrioritizedEnumValues from 'brdgm-commons/src/util/enum/getPrioritizedEnumValues';
-import MainLocations from "@/util/MainLocations"
-import Location from "./enum/Location"
-import Weather from "./enum/Weather"
+import MainLocations from '@/util/MainLocations'
+import Location from './enum/Location'
+import Weather from './enum/Weather'
 
 /**
  * Calculates sets of tokens

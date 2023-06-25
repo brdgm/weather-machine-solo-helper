@@ -1,4 +1,4 @@
-import { LocationQuery, RouteLocation, RouteMeta, RouteParams, RouteRecord, RouteRecordName } from "vue-router";
+import { LocationQuery, RouteLocation, RouteMeta, RouteParams, RouteRecord, RouteRecordName } from 'vue-router';
 
 export default function (params?: MockRouteLocationParams) : RouteLocation {
   return {

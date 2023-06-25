@@ -1,10 +1,10 @@
-import { CardDeckPersistence } from "@/store"
-import MainLocations from "@/util/MainLocations"
-import * as _ from "lodash"
-import { shuffle } from "lodash"
-import Card from "./Card"
-import Cards from "./Cards"
-import CallSecurityCardAction from "./enum/CallSecurityCardAction"
+import { CardDeckPersistence } from '@/store'
+import MainLocations from '@/util/MainLocations'
+import * as _ from 'lodash'
+import { shuffle } from 'lodash'
+import Card from './Card'
+import Cards from './Cards'
+import CallSecurityCardAction from './enum/CallSecurityCardAction'
 
 /**
  * Deck of security report cards.
