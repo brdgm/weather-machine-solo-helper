@@ -1,11 +1,11 @@
-import { Token } from "@/store"
-import ActionStep from "./ActionStep"
-import Action from "./enum/Action"
-import ActionSlot from "./enum/ActionSlot"
-import Location from "./enum/Location"
-import Player from "./enum/Player"
-import Weather from "./enum/Weather"
-import TokenCollector, { ResearchTokenSet } from "./TokenCollector"
+import { Token } from '@/store'
+import ActionStep from './ActionStep'
+import Action from './enum/Action'
+import ActionSlot from './enum/ActionSlot'
+import Location from './enum/Location'
+import Player from './enum/Player'
+import Weather from './enum/Weather'
+import TokenCollector, { ResearchTokenSet } from './TokenCollector'
 
 /**
  * Determines the saboteurs actions after taking the action location.

@@ -33,7 +33,7 @@ import Location from '@/services/enum/Location'
 import ActionSlot from '@/services/enum/ActionSlot'
 import { defineComponent, PropType } from 'vue'
 import AppIcon from '../structure/AppIcon.vue'
-import MainLocations from "@/util/MainLocations"
+import MainLocations from '@/util/MainLocations'
 import { useI18n } from 'vue-i18n'
 
 export default defineComponent({

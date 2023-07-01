@@ -1,4 +1,4 @@
-import CardDeck from "@/services/CardDeck";
+import CardDeck from '@/services/CardDeck';
 
 export default function (params?: MockCardDeckParams) : CardDeck {  
   return CardDeck.fromPersistence({
