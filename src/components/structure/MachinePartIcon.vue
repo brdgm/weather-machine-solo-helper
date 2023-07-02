@@ -22,10 +22,6 @@ import { defineComponent, PropType } from 'vue'
 
 export default defineComponent({
   name: 'MachinePartIcon',
-  setup() {
-    const images = require.context('@/assets/icons', true, /\.png$/)
-    return { images }
-  },
   props: {
     machinePart: {
       type: String as PropType<MachinePart>,
