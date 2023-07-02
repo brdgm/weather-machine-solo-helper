@@ -154,7 +154,7 @@ export default defineComponent({
 }
 
 body {
-  background-image: url('~@/assets/background.jpg');
+  background-image: url('@/assets/background.jpg');
   background-size: 120rem;
 }
 </style>
