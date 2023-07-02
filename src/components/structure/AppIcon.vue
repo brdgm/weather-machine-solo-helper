@@ -7,10 +7,6 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'AppIcon',
-  setup() {
-    const images = require.context('@/assets/icons', true, /\.png$/)
-    return { images }
-  },
   props: {
     type: {
       type: String,
@@ -24,10 +20,10 @@ export default defineComponent({
   computed: {
     imageUrl() : string {
       if (this.type) {
-        return this.images(`./${this.type}/${this.name}.png`)
+        return new URL(`/src/assets/icons/${this.type}/${this.name}.png`, import.meta.url).toString()
       }
       else {
-        return this.images(`./${this.name}.png`)
+        return new URL(`/src/assets/icons/${this.name}.png`, import.meta.url).toString()
       }
     }
   }
