@@ -1,3 +1,4 @@
+import Card from '@/services/Card'
 import CardDeck from '@/services/CardDeck'
 import Player from '@/services/enum/Player'
 import Weather from '@/services/enum/Weather'
@@ -11,6 +12,7 @@ export default class NavigationState {
   readonly initiativePlayer : Player
   readonly lastRoundInitiativePlayer : Player
   readonly cardDeck : CardDeck
+  readonly currentReport : Card
   readonly tokens : Token[]
   readonly citationUnlock : Weather[]
 
@@ -27,6 +29,7 @@ export default class NavigationState {
     }
 
     this.cardDeck = NavigationState.getCardDeck(loadStateRound, state)
+    this.currentReport = this.cardDeck.currentReport
     this.tokens = NavigationState.getTokens(loadStateRound, state)
     this.citationUnlock = NavigationState.getCitationUnlock(loadStateRound, state)
   }

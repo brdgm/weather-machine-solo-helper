@@ -1,8 +1,8 @@
 <template>
   <TurnSidebar :round="round"
       :player="navigationState.player"
-      :current-report="currentReport"
-      :previous-report="previousReport"
+      :current-report="cardDeck.currentReport"
+      :previous-report="cardDeck.previousReport"
       :deck="cardDeck.deck"
       :tokens="tokens"
       :citation-unlock="citationUnlock"
@@ -21,9 +21,9 @@
     <ol>
       <li>
         <span v-html="t('turnSaboteur.moveSaboteur')"></span><br/>
-        <AgentLocationSelection v-if="!selectedLocation" class="mt-2" :agent="currentReport.agent" :location="currentReport.location" @location-selected="locationSelected"/>
+        <AgentLocationSelection v-if="!selectedLocation" class="mt-2" :agent="navigationState.currentReport.agent" :location="navigationState.currentReport.location" @location-selected="locationSelected"/>
         <template v-else>
-          <AgentLocationIcon class="mt-2" :agent="currentReport.agent" :location="selectedLocation" :action-slot="selectedActionSlot"/>
+          <AgentLocationIcon class="mt-2" :agent="navigationState.currentReport.agent" :location="selectedLocation" :action-slot="selectedActionSlot"/>
           <button class="btn btn-outline-secondary btn-sm" @click="unselectLocation">{{t('action.reselect')}}</button>
         </template>
       </li>
@@ -69,7 +69,6 @@ import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
 import TurnSidebar from '@/components/turn/TurnSidebar.vue'
 import LativMovement from '@/components/turn/LativMovement.vue'
-import Card from '@/services/Card'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import AgentLocationSelection from '@/components/turn/AgentLocationSelection.vue'
 import AgentLocationIcon from '@/components/structure/AgentLocationIcon.vue'
@@ -188,20 +187,14 @@ export default defineComponent({
     gameLostDeckEmpty() : boolean {
       return this.navigationState.cardDeck.deck.length == 0
     },
-    currentReport() : Card {
-      return this.cardDeck.currentReport
-    },
-    previousReport() : Card {
-      return this.cardDeck.previousReport
-    },
     actionContextParams() : ActionContextParams {
       const that = this  // eslint-disable-line @typescript-eslint/no-this-alias
       return {
         get selectionPriority() : SelectionPriority {
-          return that.previousReport.selectionPriority
+          return that.cardDeck.previousReport.selectionPriority
         },
         get weatherPriority() : Weather {
-          return that.previousReport.weather
+          return that.cardDeck.previousReport.weather
         },
         get citationUnlock() : Weather[] {
           return that.citationUnlock
@@ -293,7 +286,7 @@ export default defineComponent({
       }
       if (!this.endOfTurnResearchTokenSetAdded) {
         // check if saboteurs can complete one token set
-        const tokenCollector = new TokenCollector(this.tokens, this.citationUnlock, this.currentReport.weather)
+        const tokenCollector = new TokenCollector(this.tokens, this.citationUnlock, this.cardDeck.previousReport.weather)
         const researchTokenSets = tokenCollector.getValidResearchTokenSets()
         if (researchTokenSets.length > 0) {
           const researchTokenSet = researchTokenSets[0]
