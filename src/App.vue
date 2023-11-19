@@ -64,6 +64,7 @@ import showModal, { showModalIfExist } from 'brdgm-commons/src/util/modal/showMo
 import EndGameConditionsModal from './components/turn/EndGameConditionsModal.vue'
 import { version, description } from '@/../package.json'
 import { registerSW } from 'virtual:pwa-register'
+import onRegisteredSWCheckForUpdate from 'brdgm-commons/src/util/serviceWorker/onRegisteredSWCheckForUpdate'
 
 export default defineComponent({
   name: 'App',
@@ -80,8 +81,13 @@ export default defineComponent({
     })
     const store = useStore()
 
-    // PWA refresh
+    // handle PWA updates with prompt if a new version is detected, check every 8h for a new version
+    const checkForNewVersionsIntervalSeconds = 8 * 60 * 60
     const updateServiceWorker = registerSW({
+      // check for new app version, see https://vite-pwa-org.netlify.app/guide/periodic-sw-updates.html
+      onRegisteredSW(swScriptUrl : string, registration? : ServiceWorkerRegistration) {
+        onRegisteredSWCheckForUpdate(swScriptUrl, registration, checkForNewVersionsIntervalSeconds)
+      },
       onNeedRefresh() {
         showModalIfExist('serviceWorkerUpdatedRefresh')
       }
