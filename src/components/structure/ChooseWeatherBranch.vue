@@ -50,7 +50,7 @@ export default defineComponent({
   },
   computed: {
     availableWeathers() : Weather[] {
-      return this.weathers || getAllEnumValues(Weather)
+      return this.weathers ?? getAllEnumValues(Weather)
     }
   },
   methods: {
