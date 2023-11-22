@@ -68,7 +68,7 @@ export default class NavigationState {
    */
   static getCitationUnlock(roundNo : number, state : State) : Weather[] {
     const round = state.rounds.find(item => item.round==roundNo)
-    return round?.citationUnlock || []
+    return round?.citationUnlock ?? []
   }
 
   /**
