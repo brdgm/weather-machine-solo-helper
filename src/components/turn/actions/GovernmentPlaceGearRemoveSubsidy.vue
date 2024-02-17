@@ -40,7 +40,7 @@ export default defineComponent({
       return this.actionContextParams.selectionPriority
     },
     weatherBranch() : Weather {
-      return this.actionStep.weatherBranchChosen || Weather.RAIN
+      return this.actionStep.weatherBranchChosen ?? Weather.RAIN
     }
   }
 })

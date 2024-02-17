@@ -354,7 +354,7 @@ function newSaboteurActions(params : {
   return new SaboteurActions({
     location: params.location,
     actionSlot: params.actionSlot,
-    initiativePlayer: params.initiativePlayer || Player.PLAYER,
-    citationUnlock: params.citationUnlock || []
+    initiativePlayer: params.initiativePlayer ?? Player.PLAYER,
+    citationUnlock: params.citationUnlock ?? []
   })
 }

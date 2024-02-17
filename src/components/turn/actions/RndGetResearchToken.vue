@@ -52,7 +52,7 @@ export default defineComponent({
       return Location.RND
     },
     weatherBranch() : Weather {
-      return this.actionStep.weatherBranchChosen || Weather.RAIN
+      return this.actionStep.weatherBranchChosen ?? Weather.RAIN
     }    
   },
   methods: {

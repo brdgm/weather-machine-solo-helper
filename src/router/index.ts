@@ -1,4 +1,6 @@
 import { RouteRecordRaw } from 'vue-router'
+import createRouterMatomoTracking from 'brdgm-commons/src/util/router/createRouterMatomoTracking'
+import { name, version, appDeployName } from '@/../package.json'
 import AppHome from '@/views/AppHome.vue'
 import SetupDifficultyLevel from '@/views/SetupDifficultyLevel.vue'
 import SetupGame from '@/views/SetupGame.vue'
@@ -8,8 +10,6 @@ import PhaseBExperiment from '@/views/PhaseBExperiment.vue'
 import PhaseCEndOfRound from '@/views/PhaseCEndOfRound.vue'
 import EndOfGame from '@/views/EndOfGame.vue'
 import NotFound from '@/views/NotFound.vue'
-import createRouter from 'brdgm-commons/src/util/router/createRouter'
-import { name } from '@/../package.json'
 
 const LOCALSTORAGE_KEY = `${name}.route`
 
@@ -61,4 +61,4 @@ const routes: Array<RouteRecordRaw> = [
   }
 ]
 
-export default createRouter(routes, LOCALSTORAGE_KEY, 'AppHome')
+export default createRouterMatomoTracking(routes, LOCALSTORAGE_KEY, appDeployName, version, 'AppHome')

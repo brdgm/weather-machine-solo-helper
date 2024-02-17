@@ -44,7 +44,7 @@ export default defineComponent({
   },
   computed: {
     weather() : Weather {
-      return this.actionStep.weatherBranchChosen || Weather.RAIN
+      return this.actionStep.weatherBranchChosen ?? Weather.RAIN
     },
     challengeCards() : ChallengeCard[] {
       return this.$store.state.setup.challengeCards

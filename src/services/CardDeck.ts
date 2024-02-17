@@ -1,6 +1,5 @@
 import { CardDeckPersistence } from '@/store'
 import MainLocations from '@/util/MainLocations'
-import * as _ from 'lodash'
 import { shuffle } from 'lodash'
 import Card from './Card'
 import Cards from './Cards'
@@ -159,7 +158,7 @@ export default class CardDeck {
    */
   public static new() : CardDeck {
     let deck = [...Cards.getAll()]
-    deck = _.shuffle(deck)
+    deck = shuffle(deck)
     return new CardDeck(deck, undefined, [])
   }
 

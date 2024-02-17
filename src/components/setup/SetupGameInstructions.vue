@@ -9,7 +9,7 @@
           <li v-html="t('setupGame.goalTiles')"></li>
           <ol>
             <li>
-              <img src="@/assets/goal-tiles.png" class="goal-tiles">
+              <img src="@/assets/goal-tiles.png" class="goal-tiles" alt="">
               <span v-html="t('setupGame.goalTilesStep1')"></span>
             </li>
             <li v-html="t('setupGame.goalTilesStep2')"></li>
