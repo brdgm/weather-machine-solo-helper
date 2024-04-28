@@ -62,7 +62,7 @@
 import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
-import { useStore } from '@/store'
+import { useStateStore } from '@/store/state'
 import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
 import LativMovement from '@/components/turn/LativMovement.vue'
@@ -85,10 +85,10 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const store = useStore()
+    const state = useStateStore()
     const route = useRoute()
 
-    const navigationState = new NavigationState(route, store.state)
+    const navigationState = new NavigationState(route, state)
     const round = navigationState.round
     const cardDeck = ref(navigationState.cardDeck.clone())
     const tokens = navigationState.tokens
@@ -96,7 +96,7 @@ export default defineComponent({
     const initiativePlayer = ref(navigationState.initiativePlayer)
     const lastRoundInitiativePlayer = navigationState.lastRoundInitiativePlayer
 
-    return { t, round, navigationState, cardDeck, tokens, citationUnlock, initiativePlayer, lastRoundInitiativePlayer }
+    return { t, state, round, navigationState, cardDeck, tokens, citationUnlock, initiativePlayer, lastRoundInitiativePlayer }
   },
   computed: {
     nextButtonRouteTo() : string {
@@ -119,7 +119,7 @@ export default defineComponent({
       }
     },
     challengeCards() : ChallengeCard[] {
-      return this.$store.state.setup.challengeCards
+      return this.state.setup.challengeCards
     },
     challengeOneStepAhead() : boolean {
       return this.challengeCards.includes(ChallengeCard.ONE_STEP_AHEAD)
@@ -140,15 +140,15 @@ export default defineComponent({
   methods: {
     updateInitiativePlayer(payload:{player:Player}) : void {
       this.initiativePlayer = payload.player
-      this.$store.commit('claimInitiative', {round:this.round, player:payload.player})
+      this.state.claimInitiative({round:this.round, player:payload.player})
     },
     updateCitationUnlock(payload:{citationUnlock:Weather[]}) : void {
       this.citationUnlock = payload.citationUnlock
-      this.$store.commit('updateCitation', {round:this.round, citationUnlock:this.citationUnlock})
+      this.state.updateCitation({round:this.round, citationUnlock:this.citationUnlock})
     },
     callSecurity(payload: CallSecurityAction[]) : void {
       this.cardDeck.callSecurity(payload)
-      this.$store.commit('roundCardDeck', {round:this.round, cardDeck:this.cardDeck.toPersistence()})
+      this.state.roundCardDeck({round:this.round, cardDeck:this.cardDeck.toPersistence()})
     }
   }
 })

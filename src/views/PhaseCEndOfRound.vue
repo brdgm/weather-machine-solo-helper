@@ -29,7 +29,7 @@
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
-import { useStore } from '@/store'
+import { useStateStore } from '@/store/state'
 import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
 import Player from '@/services/enum/Player'
@@ -44,14 +44,14 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const store = useStore()
+    const state = useStateStore()
     const route = useRoute()
 
-    const navigationState = new NavigationState(route, store.state)
+    const navigationState = new NavigationState(route, state)
     const round = navigationState.round
     const initiativePlayer = navigationState.initiativePlayer
 
-    return { t, round, initiativePlayer }
+    return { t, state, round, initiativePlayer }
   },
   computed: {
     nextButtonRouteTo() : string {
@@ -66,7 +66,7 @@ export default defineComponent({
       return `/round/${this.round}/phaseBExperiment`
     },
     challengeCards() : ChallengeCard[] {
-      return this.$store.state.setup.challengeCards
+      return this.state.setup.challengeCards
     },
     challengeJammingDevices() : boolean {
       return this.challengeCards.includes(ChallengeCard.JAMMING_DEVICE)
