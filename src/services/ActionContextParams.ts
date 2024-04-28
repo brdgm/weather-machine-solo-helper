@@ -1,4 +1,4 @@
-import { Token } from '@/store'
+import { Token } from '@/store/state'
 import SelectionPriority from './enum/SelectionPriority'
 import Weather from './enum/Weather'
 

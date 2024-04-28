@@ -2,7 +2,7 @@ import Card from '@/services/Card'
 import CardDeck from '@/services/CardDeck'
 import Player from '@/services/enum/Player'
 import Weather from '@/services/enum/Weather'
-import { State, Token } from '@/store'
+import { State, Token } from '@/store/state'
 import { RouteLocation } from 'vue-router'
 
 export default class NavigationState {

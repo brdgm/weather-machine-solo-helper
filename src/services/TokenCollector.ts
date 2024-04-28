@@ -1,5 +1,5 @@
-import { Token } from '@/store'
-import getPrioritizedEnumValues from 'brdgm-commons/src/util/enum/getPrioritizedEnumValues';
+import { Token } from '@/store/state'
+import getPrioritizedEnumValues from 'brdgm-commons/src/util/enum/getPrioritizedEnumValues'
 import MainLocations from '@/util/MainLocations'
 import Location from './enum/Location'
 import Weather from './enum/Weather'
