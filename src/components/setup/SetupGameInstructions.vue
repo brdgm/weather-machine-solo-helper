@@ -66,7 +66,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore } from '@/store'
+import { useStateStore } from '@/store/state'
 import AppIcon from '../structure/AppIcon.vue'
 import ChallengeIcon from '../structure/ChallengeIcon.vue'
 import ChallengeCard from '@/services/enum/ChallengeCard'
@@ -89,8 +89,8 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    useStore()
-    return { t }
+    const state = useStateStore()
+    return { t, state }
   },
   props: {
     setupCards: {
@@ -109,7 +109,7 @@ export default defineComponent({
   },
   computed: {
     challengeCards() : ChallengeCard[] {
-      return this.$store.state.setup.challengeCards
+      return this.state.setup.challengeCards
     },
     initialChemicals() : Chemical[] {
       const result : Chemical[] = []

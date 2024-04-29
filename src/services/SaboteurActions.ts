@@ -1,4 +1,4 @@
-import { Token } from '@/store'
+import { Token } from '@/store/state'
 import ActionStep from './ActionStep'
 import Action from './enum/Action'
 import ActionSlot from './enum/ActionSlot'

@@ -1,9 +1,9 @@
-import findMandatory from 'brdgm-commons/src/util/map/findMandatory';
-import Card from './Card';
-import Agent from './enum/Agent';
-import Location from './enum/Location';
-import Weather from './enum/Weather';
-import SelectionPriority from './enum/SelectionPriority';
+import findMandatory from 'brdgm-commons/src/util/map/findMandatory'
+import Card from './Card'
+import Agent from './enum/Agent'
+import Location from './enum/Location'
+import Weather from './enum/Weather'
+import SelectionPriority from './enum/SelectionPriority'
 
 const cards = [
   {

@@ -15,7 +15,7 @@
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
-import { useStore } from '@/store'
+import { useStateStore } from '@/store/state'
 import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
 import Player from '@/services/enum/Player'
@@ -31,14 +31,14 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const store = useStore()
+    const state = useStateStore()
     const route = useRoute()
 
-    const navigationState = new NavigationState(route, store.state)
+    const navigationState = new NavigationState(route, state)
     const round = navigationState.round
     const lastRoundInitiativePlayer = navigationState.lastRoundInitiativePlayer
 
-    return { t, round, lastRoundInitiativePlayer, navigationState }
+    return { t, state, round, lastRoundInitiativePlayer, navigationState }
   },
   data() {
     return {
@@ -65,7 +65,7 @@ export default defineComponent({
       if (this.researchTokenGained != undefined) {
         token = {location:Location.LATIVS_LAB,weather:this.researchTokenGained}
       }
-      this.$store.commit('roundWeatherExperimentToken',{round:this.round+1,token})
+      this.state.roundWeatherExperimentToken({round:this.round+1,token})
       this.$router.push(this.nextButtonRouteTo)
     },
     experimentPhaseStatus(payload:{completed:boolean}) : void {

@@ -97,7 +97,7 @@
 
 <script lang="ts">
 import ChallengeCard from '@/services/enum/ChallengeCard'
-import { useStore } from '@/store'
+import { useStateStore } from '@/store/state'
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppIcon from '../structure/AppIcon.vue'
@@ -113,12 +113,12 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    useStore()
-    return { t }
+    const state = useStateStore()
+    return { t, state }
   },
   computed: {
     challengeCards() : ChallengeCard[] {
-      return this.$store.state.setup.challengeCards
+      return this.state.setup.challengeCards
     },
     nobelLaureate() : boolean {
       return this.challengeCards.includes(ChallengeCard.NOBEL_LAUREATE)
@@ -132,7 +132,7 @@ export default defineComponent({
   },
   methods: {
     goToEndOfGame() : void {
-      this.$router.push("/endOfGame")
+      this.$router.push('/endOfGame')
     }
   }
 })

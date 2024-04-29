@@ -18,6 +18,7 @@ import ActionContextParams from '@/services/ActionContextParams'
 import ActionStep from '@/services/ActionStep'
 import ChallengeCard from '@/services/enum/ChallengeCard'
 import Weather from '@/services/enum/Weather'
+import { useStateStore } from '@/store/state'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -30,7 +31,8 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    return { t }
+    const state = useStateStore()
+    return { t, state }
   },
   props: {
     actionStep: {
@@ -47,7 +49,7 @@ export default defineComponent({
       return this.actionStep.weatherBranchChosen ?? Weather.RAIN
     },
     challengeCards() : ChallengeCard[] {
-      return this.$store.state.setup.challengeCards
+      return this.state.setup.challengeCards
     },
     challengePublishOrPerish() : boolean {
       return this.challengeCards.includes(ChallengeCard.PUBLISH_OR_PERISH)

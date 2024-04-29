@@ -64,7 +64,7 @@
 import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
-import { Token, useStore } from '@/store'
+import { Token, useStateStore } from '@/store/state'
 import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
 import TurnSidebar from '@/components/turn/TurnSidebar.vue'
@@ -136,10 +136,10 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const store = useStore()
+    const state = useStateStore()
     const route = useRoute()
 
-    const navigationState = new NavigationState(route, store.state)
+    const navigationState = new NavigationState(route, state)
     const round = navigationState.round
     const cardDeck = ref(navigationState.cardDeck.clone())
     const tokens = ref(navigationState.tokens)
@@ -147,7 +147,7 @@ export default defineComponent({
     const initiativePlayer = ref(navigationState.initiativePlayer)
     const lastRoundInitiativePlayer = navigationState.lastRoundInitiativePlayer
 
-    return { t, round, navigationState, cardDeck, tokens, citationUnlock, initiativePlayer, lastRoundInitiativePlayer }
+    return { t, state, round, navigationState, cardDeck, tokens, citationUnlock, initiativePlayer, lastRoundInitiativePlayer }
   },
   data() {
     return {
@@ -213,8 +213,8 @@ export default defineComponent({
   },
   methods: {
     next() : void {
-      this.$store.commit('claimInitiative', {round:this.round, player:this.initiativePlayer})
-      this.$store.commit('round', {round: this.round+1,
+      this.state.claimInitiative({round:this.round, player:this.initiativePlayer})
+      this.state.round({round: this.round+1,
           cardDeck: this.cardDeck.toPersistence(),
           tokens: this.tokens,
           citationUnlock: this.citationUnlock})
