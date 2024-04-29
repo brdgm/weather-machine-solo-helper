@@ -44,12 +44,12 @@ export default defineComponent({
     awardTokens() : number {
       let result = 0
       if (this.challengeCards.includes(ChallengeCard.CREATIVE_ACCOUNTING)) {
-        result++;
+        result++
       }
       if (this.challengeCards.includes(ChallengeCard.INDEPENDENT_PROTOTYPES)) {
-        result++;
+        result++
       }
-      return result;
+      return result
     }
   },
   methods: {

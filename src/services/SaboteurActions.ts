@@ -20,16 +20,16 @@ export default class SaboteurActions {
     switch (params.location) {
       case Location.SUPPLY:
         this._actionSteps = SaboteurActions.buildSupplyActionSteps(params)
-        break;
+        break
       case Location.GOVERNMENT:
         this._actionSteps = SaboteurActions.buildGovernmentActionSteps(params)
-        break;
+        break
       case Location.LATIVS_LAB:
         this._actionSteps = SaboteurActions.buildLativsLabActionSteps(params)
-        break;
+        break
       case Location.RND:
         this._actionSteps = SaboteurActions.buildRndActionSteps(params)
-        break;
+        break
       default:
         throw new Error(`Invalid location: ${location}`)
     }
@@ -142,7 +142,7 @@ export default class SaboteurActions {
         const actionStep = this._actionSteps[i]
         if (actionStep.chooseWeatherBranch && i>unresolvedStepIndex) {
           // stop at next action that requires to choose a weather
-          break;
+          break
         }
         updateActionStepRecursively(actionStep, step => step.weatherBranchChosen = weatherBranchChosen)
       }
