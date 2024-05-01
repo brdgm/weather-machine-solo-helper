@@ -1,4 +1,4 @@
-import findMandatory from 'brdgm-commons/src/util/map/findMandatory'
+import findMandatory from '@brdgm/brdgm-commons/src/util/map/findMandatory'
 import Card from './Card'
 import Agent from './enum/Agent'
 import Location from './enum/Location'

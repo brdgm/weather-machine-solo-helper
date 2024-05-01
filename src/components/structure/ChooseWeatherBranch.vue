@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import Weather from '@/services/enum/Weather'
-import getAllEnumValues from 'brdgm-commons/src/util/enum/getAllEnumValues'
+import getAllEnumValues from '@brdgm/brdgm-commons/src/util/enum/getAllEnumValues'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppIcon from './AppIcon.vue'

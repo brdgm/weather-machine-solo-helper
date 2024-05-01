@@ -41,7 +41,7 @@ import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStateStore } from '@/store/state'
 import AppIcon from '../structure/AppIcon.vue'
-import rollDice from 'brdgm-commons/src/util/random/rollDice'
+import rollDice from '@brdgm/brdgm-commons/src/util/random/rollDice'
 import ChallengeCard from '@/services/enum/ChallengeCard'
 
 export default defineComponent({

@@ -90,9 +90,9 @@ import ResearchTokenIcon from '../structure/ResearchTokenIcon.vue'
 import Weather from '@/services/enum/Weather'
 import { CallSecurityAction } from '@/services/CardDeck'
 import ChallengeIcon from '../structure/ChallengeIcon.vue'
-import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
+import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 import ChallengeCard from '@/services/enum/ChallengeCard'
-import showModal from 'brdgm-commons/src/util/modal/showModal'
+import showModal from '@brdgm/brdgm-commons/src/util/modal/showModal'
 
 export default defineComponent({
   name: 'TurnSidebar',

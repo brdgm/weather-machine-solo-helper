@@ -34,7 +34,7 @@ import SelectionPriority from '@/services/enum/SelectionPriority'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppIcon from './AppIcon.vue'
-import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
+import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 
 export default defineComponent({
   name: 'TakeChemicals',

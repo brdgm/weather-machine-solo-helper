@@ -17,7 +17,7 @@ import ActionContextParams from '@/services/ActionContextParams'
 import ActionStep from '@/services/ActionStep'
 import SelectionPriority from '@/services/enum/SelectionPriority'
 import Weather from '@/services/enum/Weather'
-import getPrioritizedEnumValues from 'brdgm-commons/src/util/enum/getPrioritizedEnumValues'
+import getPrioritizedEnumValues from '@brdgm/brdgm-commons/src/util/enum/getPrioritizedEnumValues'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 
