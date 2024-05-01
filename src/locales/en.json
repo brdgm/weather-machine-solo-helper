@@ -118,7 +118,7 @@
         "text": "<b>Place a Bot</b> on an empty Bot space of a branch. They prefer branches and spaces in the given order. The Saboteurs do not pay the additional cost if they place their Bot at the bottom space of the branch."
       },
       "rndPlaceBotResearchPriority": {
-        "text": "<b>Place a Bot</b> onto an empty Bot space of a branch for which the Saboteurs have a <b>matching Chemical</b>. They prefer branches in the given order with available research tokens. Move the Chemical matching the space from the Hideout to the Supply."
+        "text": "<b>Place a Bot</b> onto an empty Bot space of a branch for which the Saboteurs have a <b>matching Chemical</b>. They prefer branches in the given order with available research tokens. Move the required Chemical from the Hideout to the space to the left of the Bot."
       },
       "rndPlaceChemical": {
         "text": "The Saboteurs <b>move a Chemical</b> from their hideout to the chosen Bot space."
