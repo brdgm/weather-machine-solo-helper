@@ -77,7 +77,7 @@
 </template>
 
 <script lang="ts">
-import { Token, useStore } from '@/store'
+import { Token, useStateStore } from '@/store/state'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import CallSecurityModal from '@/components/turn/CallSecurityModal.vue'
@@ -90,9 +90,9 @@ import ResearchTokenIcon from '../structure/ResearchTokenIcon.vue'
 import Weather from '@/services/enum/Weather'
 import { CallSecurityAction } from '@/services/CardDeck'
 import ChallengeIcon from '../structure/ChallengeIcon.vue'
-import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
+import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 import ChallengeCard from '@/services/enum/ChallengeCard'
-import showModal from 'brdgm-commons/src/util/modal/showModal'
+import showModal from '@brdgm/brdgm-commons/src/util/modal/showModal'
 
 export default defineComponent({
   name: 'TurnSidebar',
@@ -118,8 +118,8 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    useStore()
-    return { t }
+    const state = useStateStore()
+    return { t, state }
   },
   data() {
     return {
@@ -168,7 +168,7 @@ export default defineComponent({
       return this.player == Player.PLAYER
     },
     challengeCards() : ChallengeCard[] {
-      return this.$store.state.setup.challengeCards
+      return this.state.setup.challengeCards
     },
     endGameConditionChallenge() : boolean {
       return this.challengeCards.includes(ChallengeCard.NOBEL_LAUREATE)

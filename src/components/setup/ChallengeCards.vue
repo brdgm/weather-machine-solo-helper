@@ -37,11 +37,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore } from '@/store'
+import { useStateStore } from '@/store/state'
 import AppIcon from '../structure/AppIcon.vue'
-import rollDice from 'brdgm-commons/src/util/random/rollDice'
+import rollDice from '@brdgm/brdgm-commons/src/util/random/rollDice'
 import ChallengeCard from '@/services/enum/ChallengeCard'
 
 export default defineComponent({
@@ -51,14 +51,12 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    useStore()
-    return { t }
-  },
-  data() {
-    return {
-      showChallengeCards: this.$store.state.setup.challengeCards.length > 0,
-      selectedIndex: toSelectedIndex(this.$store.state.setup.challengeCards)
-    }
+    const state = useStateStore()
+
+    const showChallengeCards = ref(state.setup.challengeCards.length > 0)
+    const selectedIndex = ref(toSelectedIndex(state.setup.challengeCards))
+
+    return { t, state, showChallengeCards, selectedIndex }
   },
   computed: {
     challengeCards() : ChallengeCard[] {
@@ -98,7 +96,7 @@ export default defineComponent({
   watch: {
     selectedIndex: {
       handler() {
-        this.$store.commit('setup', {challengeCards:this.selectedChallengeCards})
+        this.state.setup = {challengeCards:this.selectedChallengeCards}
       },
       deep: true
     }

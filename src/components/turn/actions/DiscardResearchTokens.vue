@@ -14,7 +14,7 @@ import AppIcon from '@/components/structure/AppIcon.vue'
 import ResearchTokenIcon from '@/components/structure/ResearchTokenIcon.vue'
 import ActionContextParams from '@/services/ActionContextParams'
 import ActionStep from '@/services/ActionStep'
-import { Token } from '@/store'
+import { Token } from '@/store/state'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 

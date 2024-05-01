@@ -6,8 +6,8 @@
 </template>
 
 <script lang="ts">
-import Weather from '@/services/enum/Weather';
-import getPrioritizedEnumValues from 'brdgm-commons/src/util/enum/getPrioritizedEnumValues';
+import Weather from '@/services/enum/Weather'
+import getPrioritizedEnumValues from '@brdgm/brdgm-commons/src/util/enum/getPrioritizedEnumValues'
 import { defineComponent, PropType } from 'vue'
 import AppIcon from './AppIcon.vue'
 

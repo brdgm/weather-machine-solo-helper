@@ -1,7 +1,7 @@
-import CardDeck from '@/services/CardDeck';
-import Player from '@/services/enum/Player';
-import Weather from '@/services/enum/Weather';
-import { CardDeckPersistence, Round, Token } from '@/store';
+import CardDeck from '@/services/CardDeck'
+import Player from '@/services/enum/Player'
+import Weather from '@/services/enum/Weather'
+import { CardDeckPersistence, Round, Token } from '@/store/state'
 
 export default function (params?: MockRoundParams) : Round {
   return {

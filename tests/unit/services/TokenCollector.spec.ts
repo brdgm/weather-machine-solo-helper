@@ -1,7 +1,7 @@
 import Location from '@/services/enum/Location'
 import Weather from '@/services/enum/Weather'
 import TokenCollector from '@/services/TokenCollector'
-import { Token } from '@/store'
+import { Token } from '@/store/state'
 import { expect } from 'chai'
 
 describe('services/TokenCollector', () => {

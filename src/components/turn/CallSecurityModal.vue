@@ -40,13 +40,12 @@
 import CallSecurityCardAction from '@/services/enum/CallSecurityCardAction'
 import AgentLocationIcon from '../structure/AgentLocationIcon.vue'
 import AppIcon from '../structure/AppIcon.vue'
-import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
+import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 import Card from '@/services/Card'
 import { CallSecurityAction } from '@/services/CardDeck'
-import { useStore } from '@/store'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
-import getAllEnumValues from 'brdgm-commons/src/util/enum/getAllEnumValues'
+import getAllEnumValues from '@brdgm/brdgm-commons/src/util/enum/getAllEnumValues'
 
 export default defineComponent({
   name: 'CallSecurityModal',
@@ -62,7 +61,6 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    useStore()
     return { t }
   },
   props: {

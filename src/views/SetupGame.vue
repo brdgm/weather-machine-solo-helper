@@ -16,7 +16,7 @@ import { useI18n } from 'vue-i18n'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
 import SetupGameInstructions from '@/components/setup/SetupGameInstructions.vue'
 import ChallengeCard from '@/services/enum/ChallengeCard'
-import { Token, useStore } from '@/store'
+import { Token, useStateStore } from '@/store/state'
 import CardDeck from '@/services/CardDeck'
 
 export default defineComponent({
@@ -27,29 +27,29 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const store = useStore()
+    const state = useStateStore()
 
     // setup card deck for game and get setup cards for agent placement instruction
-    const challengeCards = store.state.setup.challengeCards
+    const challengeCards = state.setup.challengeCards
     const removeCards = challengeCards.includes(ChallengeCard.THE_CLOCK_IS_TICKING) ? 2 : 0
     const cardDeck = CardDeck.new()
     const setupCards = cardDeck.setupGame(removeCards)
 
-    return { t, cardDeck, setupCards }
+    return { t, state, cardDeck, setupCards }
   },
   computed: {
     challengeCards() : ChallengeCard[] {
-      return this.$store.state.setup.challengeCards
+      return this.state.setup.challengeCards
     },
     awardTokens() : number {
       let result = 0
       if (this.challengeCards.includes(ChallengeCard.CREATIVE_ACCOUNTING)) {
-        result++;
+        result++
       }
       if (this.challengeCards.includes(ChallengeCard.INDEPENDENT_PROTOTYPES)) {
-        result++;
+        result++
       }
-      return result;
+      return result
     }
   },
   methods: {
@@ -61,7 +61,7 @@ export default defineComponent({
       for (const card of this.setupCards) {
         tokens.push({location:card.location,weather:card.weather})
       }
-      this.$store.commit('round', {round:1, tokens: tokens, cardDeck: this.cardDeck.toPersistence()})
+      this.state.round({round:1, tokens: tokens, cardDeck: this.cardDeck.toPersistence()})
       this.$router.push('/round/1/phaseATurnPlayer')
     }
   }

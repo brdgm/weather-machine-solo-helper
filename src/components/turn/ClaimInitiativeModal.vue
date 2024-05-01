@@ -23,11 +23,11 @@
 
 <script lang="ts">
 import Player from '@/services/enum/Player'
-import { useStore } from '@/store'
+import { useStateStore } from '@/store/state'
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppIcon from '../structure/AppIcon.vue'
-import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
+import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 
 export default defineComponent({
   name: 'ClaimInitiativeModal',
@@ -42,8 +42,8 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    useStore()
-    return { t }
+    const state = useStateStore()
+    return { t, state }
   },
   props: {
     round: {
@@ -68,7 +68,7 @@ export default defineComponent({
   methods: {
     claimInitiative() : void {
       this.$emit('claimedInitiative', {player:this.selectedPlayer})
-      this.$store.commit('claimInitiative', {round:this.round, player:this.selectedPlayer})
+      this.state.claimInitiative({round:this.round, player:this.selectedPlayer})
     }
   }
 })

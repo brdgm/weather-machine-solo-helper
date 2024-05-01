@@ -1,5 +1,5 @@
-import ChallengeCard from '@/services/enum/ChallengeCard';
-import { Round, State } from '@/store';
+import ChallengeCard from '@/services/enum/ChallengeCard'
+import { Round, State } from '@/store/state'
 
 export default function (params?: MockStateParams) : State {  
   return {
