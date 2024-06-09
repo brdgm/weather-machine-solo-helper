@@ -1,0 +1,435 @@
+{
+  "gameTitle": "Weather Machine",
+  "home": {
+    "title": "Pomocnik do gry solo w Weather Machine",
+    "play1": "Zagraj przeciwko Sabotażystom, przeciwnikom w trybie solo w <a href='https://boardgamegeek.com/boardgame/237179/weather-machine' target='_blank' rel='noopener'><b>Weather Machine</b></a>.",
+    "play2": "Ta aplikacja pomocnika zastępuje karty solo i planszę Kryjówki. Śledzi znaczniki Badań uzyskane przez Sabotażystów i oblokowane Pola Cytatu, aby poprowadzić Sabotażystów we właściwe miejsca zgodnie z zasadami.",
+    "feedback": "Dyskusja i Feedback:"
+  },
+  "setupDifficultyLevel": {
+    "title": "Ustaw poziom trudności",
+    "firstTime": "Jeśli grasz po raz pierwszy, przejdź do przygotowania gry.",
+    "greaterChallenge": "Aby zwiększyć poziom trudności, możesz wybrać 1 lub więcej dodatkowych wyzwań:",
+    "pickChallengeCards": "Wybierz karty Wyzwań",
+    "pickRandom": "Wybierz losową",
+    "clearAll": "Wyczyść wszystkie"
+  },
+  "setupGame": {
+    "title": "Przygotuj grę",
+    "setupWithChanges": "Przygotuj grę z następującymi zmianami:",
+    "lativBots": "Umieść jednego z <b>Botów Lativa</b> na najniższym polu w każdym module Generatora w Laboratorium.",
+    "researchTokens": "W każdej Lokacji Głównej użyj tylko <b>2 znaczniki Badań</b> każdego typu.",
+    "goalTiles": "Przygotuj <b>kafle Celu</b>:",
+    "goalTilesStep1": "Usuń wszystkie kafle Celu, na których w prawym górnym rogu znajduje się ikona większości. Usuń także kafel, który wymaga posiadania 3 znaczników Nagrody.",
+    "goalTilesStep2": "Z pozostałych kafli Celu wybierz losowo po 2 każdego koloru. Jeśli dobierzesz 2 z tą samą ikoną na środku kafla, odrzuć drugi i dobieraj dalej, aż będziesz mieć dwa różne.",
+    "goalTilesStep3": "Usuń wszystkie pozostałe kafle Celu z gry. Sabotażyści nie korzystają z kafli Celu.",
+    "anotherPlayerColor": "Wybierz <b>inny kolor gracza</b> dla Sabotażystów. Sabotażyści nie korzystają z Pracowni ani ze znaczników Zezwoleń.",
+    "scoringMarker": "Umieść <b>znacznik Punktacji Sabotażystów</b> na <b>{startingTargetValue} PK</b>. Jest to początkowa Wartość Docelowa.",
+    "turnOrder": "Umieść znaczniki <b>Kolejności Tury</b> i Inicjatywy (zarówno swoje, jak i Sabotażystów) tak, abyś był pierwszy w kolejności na obu.",
+    "hideout": "Wyznacz obszar w pobliżu planszy głównej jako Kryjówkę Sabotażystów.",
+    "hideoutBots": "Umieść <b>Roboty Sabotażystów</b> w Kryjówce.",
+    "hideoutChemicals": "Wybierz następujące <b>Chemikalia</b>, weź je z pól znajdujących się najbardziej na lewo w Zaopatrzeniu i umieść je w Kryjówce:",
+    "hideoutAward": "Sabotażyści rozpoczynają grę z <b>znacznikiem Nagrody</b>:",
+    "placeAgentMiddlePosition": "Umieść znacznik <b>Agent {agent}</b> w lokalizacji <b>{location}</b>, na środkowym polu akcji.",
+    "placeAgentRightPosition": "Umieść znacznik <b>Agent {agent}</b> w lokalizacji <b>{location}</b>, na najdalszym w prawo polu akcji.",
+    "takeWeatherToken": "Przenieś znacznik Badań <b>{weather}</b> z tej lokalizacji do Kryjówki.",
+    "playerLaboratory": "Laboratorium Gracza",
+    "playerSetupLaboratory": "Przygotuj swoje Lboratorium jak zwykle, włączając w to jeden losowy <b>kafel Warsztatu</b> i jedną losową <b>Część Maszyny</b>.",
+    "playerDetermineMachinePart": "Określ mi Część Maszyny",
+    "playerPostSetupSupplyRound": "Jak zwykle przeprowadź <b>Rundę Zaopatrzenia</b> Po Przygotowaniu>."
+  },
+  "turnPlayer": {
+    "title": "Twoja tura",
+    "useSubsidyInvestment": "Użyj 1 kafla Dotacji LUB 1 kafla Inwestycji.",
+    "moveScientist": "Przemieść swojego Naukowca.",
+    "moveScientistRound1": "Runda 1: Nie możesz wybrać pola akcji znajdującego się po lewej stronie.",
+    "performActions": "Wykonaj Akcje.",
+    "placeResearchTokens": "Umieść znaczniki Badań.",
+    "challengeOneStepAhead": "Jeśli na zakończenie twojej tury znacznik Inicjatywy Sabotażystów jest na pozycji pierwszej od lewej, zwiększ Wartość Docelową o 3.",
+    "challengeMoralHighGround": "Umieszczając Naukowca w Lokacji nie otrzymujesz dodatkowych Zezwoleń za Sabotażystów po twojej lewej.",
+    "challengePeerReview": "Nie możesz korzystać ze znaczników Cytatu, gdy publikujesz Wyniki Badań.",
+    "challengePeerReviewUnlock": "Kiedy odblokujesz pole Cytatu, nie możesz wydać Zezwolenia Naukowego, by otrzymać 3 PK.",
+    "challengeIndependentPrototypes": "Nie możesz korzystać z Robotów Sabotażystów, kiedy budujesz prototyp w ramach akcji Przełomu.",
+    "challengeBudgetCuts": "Ilekroć otrzymasz grant z toru Grantów Laboratoryjnych, traktuj modyfikator pod swoim znacznikiem jako +0 (nadal otrzymujesz korzyści z toru Rządu oraz Badań i Rozwoju).",
+    "infoCitationUnlock": "Kiedy odblokujesz Cytat na planszy, odblokuj go również tutaj, w aplikacji.",
+    "infoGovernmentRunMachine": "Kiedy Rząd aktywuje moduł swojego Generatora, zwiększ Wartość Docelową o 3 za każdego Robota Sabotażystów w tym module.",
+    "infoRndBreakthrough": "Kiedy wykonujesz akcję Przełomu, za każdego Robota Sabotażystów, który zapewnia ci część podczas budowania Prototypu, zwiększ Wartość Docelową o 2."
+  },
+  "turnSaboteur": {
+    "title": "Tura Sabotażystów",
+    "gameLost": "Talia Raportu Bezpieczeństwa jest pusta. <b>Przegrałeś.</b>",
+    "gameLostHopes": "Mieliśmy wobec Ciebie większe oczekiwania.",
+    "moveSaboteur": "Przesuń Sabotażystę na pole akcji:",
+    "raiseTargetValue": "Zwiększ Wartość Docelową za każdy pionek znajdujący się na lewo od wybranego pola akcji.",
+    "moveLativ": "Jeśli to konieczne, przesuń Lativa.",
+    "saboteurActions": "Akcje Sabotażystów:",
+    "actions": {
+      "claimInitiative": {
+        "text": "Sabotażyści przejmują <b>Inicjatywę</b>."
+      },
+      "discardResearchTokens": {
+        "text": "Sabotażyści odrzucają Zestaw <b>{count} znaczników Badań</b> i usuwają je z gry."
+      },
+      "discardSecurityReport": {
+        "text": "Sabotażyści odrzucają wierzchnią kartę <b>Raportu Bezpieczeństwa</b> z talii."
+      },
+      "drawSecurityReport": {
+        "text": "Sabotażyści odrzucają bieżący <b>Raport Bezpieczeństwa</b> i losują nowy."
+      },
+      "getAwardToken": {
+        "text": "Sabotażyści otrzymują <b>znacznik Nagrody</b>."
+      },
+      "governmentFlipSubsidy": {
+        "text": "<b>Odwróć</b> <b>kafel Dotacji</b> leżący niebieską stroną do góry."
+      },
+      "governmentGetResearchToken": {
+        "text": "Sabotażyści biorą <b>znacznik Badań</b> z wybranego modułu.",
+        "researchTokenAvailable": "Czy znacznik Badań jest dostępny?"
+      },
+      "governmentPlaceBotResearchPriority": {
+        "text": "<b>Umieść Robota</b> na pustym polu Robota w module (pierwsze od lewej, jeśli jest zajęte to zgodnie z ruchem zegara), do którego Sabotażyści mają <b>pasujące Chemikalia</b>. Preferują oni moduły, zapewniające im znacznik Badań, który będzie najbardziej pomocny do ukończenia Zestawu. Sugeruj się podaną wyżej kolejnością z polami z dostępnymi znacznikami Badań. Następnie przesuń Chemikalia odpowiadające danemu obszarowi z Kryjówki do Zaopatrzenia."
+      },
+      "governmentPlaceGearRemoveSubsidy": {
+        "text-top": "<b>Usuń</b> najwyższy dostępny <b>kafel Dotacji</b> z modułu. Wymień go na wymaganą <b>Część Maszyny</b>.",
+        "text-bottom": "<b>Usuń</b> najniższy dostępny <b>kafel Dotacji</b> z modułu. Wymień go na wymaganą <b>Część Maszyny</b>."
+      },
+      "governmentRunMachine": {
+        "text": "Jeśli wszystkie miejsca na Roboty w danym module są teraz zajęte, <b>Rząd aktywuje ten moduł</b>. Zwiększ Wartość Docelową o 3 dla każdego Robota Sabotażystów w tym module."
+      },
+      "increaseTargetValue": {
+        "text": "Podnieś <b>Wartość Docelową sabotażystów o {count}</b>."
+      },
+      "increaseTargetValueOrDiscardSecurityReport": {
+        "text": "Albo podnieś <b>Wartość Docelową Sabotażystów o {count</b>, albo odrzuć wierzchnią kartę z talii Raportów bezpieczeństwa.",
+        "increaseTargetValueOrDiscardSecurityReport": "Zwiększyć Wartość Docelową Sabotażystów? W przeciwnym razie jeden Raport Bezpieczeństwa zostanie odrzucony."
+      },
+      "lativsLabPlaceBotResearchPriority": {
+        "text": "<b>Umieść Robota</b> na dostępnym polu Robota w module, do którego Sabotażyści mają <b>pasujące Chemikalia</b> i z <b>pasującym kaflem Eksperymentu</b> na wystawce. Preferują oni moduły z <b>największą ilością Robotów</b> (w tym z Robotami Lativa) i pola w podanej poniżej kolejności. W przypadku remisu preferowane są moduły zapewniające im znacznik Badań, który będzie najbardziej pomocny do ukończenia Zestawu z dostępnymi znacznikami Badań. Boty Lativa mogą zostać odsunięte. Przesuń Chemikalia odpowiadającą danemu obszarowi z Kryjówki do Zaopatrzenia."
+      },
+      "rndChemicalAvailable": {
+        "text": "Czy pasujące Chemikalia są dostępne?",
+        "chemicalAvailable": "Czy Sabotażyści posiadają pasujące Chemikalia do wybranego pola Robota??"
+      },
+      "rndGetResearchToken": {
+        "text": "Sabotażyści biorą <b>znacznik Badań</b> z wybranego modułu.",
+        "researchTokenAvailable": "Czy znacznik Badań jest dostępny?"
+      },
+      "rndPlaceBotPreviousReportPriority": {
+        "text": "<b>Umieść Robota</b> na pustym polu Robota w module. Sabotażyści preferują moduły i pola w podanej poniżej kolejności. Nie płacą oni dodatkowego kosztu, jeśli umieścili swojego Robota na dolnym obszarze modułu."
+      },
+      "rndPlaceBotResearchPriority": {
+        "text": "<b>Umieść Robota</b> na pustym polu Robota w module, do którego Sabotażyści mają <b>pasujące Chemikalia</b>. Preferują oni moduły w podanej kolejności z dostępnymi znacznikami Badań. Przesuń wymagane Chemikalia z Kryjówki na pole na lewo od Robota."
+      },
+      "rndPlaceChemical": {
+        "text": "Sabotażyści <b>przenoszą Chemikalia</b> ze swojej Kryjówki na wybrane pole Robota."
+      },
+      "takeChemicals": {
+        "text": "Sabotażyści biorą <b>{count} Chemikalia</b>. | Sabotażyści biorą <b>{count} Chemikalia</b>."
+      },
+      "takeExtremeWeatherTile": {
+        "text": "Weź górny <b>kafel Gwałtownej Pogody</b> odpowiadający danemu typowi pogody ze stosu i umieść go na odpowiednim polu w dziale Badań i Rozwoju, zakrywając znajdujący się już na nim kafel. Wszystkie znaczniki Przełomu znajdujące się na istniejącym kaflu należy odłożyć do pudełka, a znaczniki Rządu na obszar Rządu."
+      },
+      "unlockCitation": {
+        "text": "Usuń <b>znacznik Blokady</b> z odpowiedniego pola Cytatu."
+      }
+    }
+  },
+  "experiment": {
+    "title": "Uruchom Eksperyment Generatora Pogody",
+    "checkRunning": {
+      "runsIfBoth": "Eksperyment zostanie uruchomiony, jeśli zostaną spełnione <b>oba</b> warunki:",
+      "atLeastOneTile": "Na wystawce znajduje się co najmniej jeden kafel eksperymentu odpowiadający pogodzie z aktywnego modułu.",
+      "allBots": "Na każdym polu aktywnego modułu znajduje się Robot."
+    },
+    "running": {
+      "title": "Eksperyment zostaje przeprowadzony",
+      "player": {
+        "title": "Twoja kolej (jeśli masz Roboty w aktywnym module)",
+        "returnBots": "Odbierz swoje Roboty z aktywnego modułu.",
+        "ifVouchersPayed": "Jeśli chcesz zapłacić Zezwolenia Naukowe zgodnie z aktywnym kaflem Eksperymentu:",
+        "gainCP": "Zdobądź PK zgodnie z opisem na kaflu Eksperymentu za każdego Robota, którego właśnie odebrałeś.",
+        "gainBenefit": "Zdobądź jedną z dwóch korzyści przedstawionych na kaflu.",
+        "takeResearchToken": "Weź znacznik Badań z aktywnego modułu (jeśli jest dostępny) i natychmiast umieść go w swoim Biurze."
+      },
+      "saboteur": {
+        "title": "Tura Sabotażystów",
+        "botsInActiveBranch": "Czy Sabotażyści mają Robota w aktywnym module?",
+        "returnBots": "Za każdego Robota Sabotażystów w aktywnym module podnieś Wartość Docelową o PK przedstawione na kaflu Eksperymentu i zwróć tego Bota do Kryjówki.",
+        "takeResearchToken": "Daj im znacznik Badań z aktywnego modułu (jeśli jest dostępny).",
+        "researchTokenAvailable": "Czy znacznik Badań jest dostępny? Jeśli tak, wybierz pogodę aktywnego modułu."
+      }
+    },
+    "afterExperiment": {
+      "title": "Po Eksperymencie",
+      "lativBotRemoveResearchToken": "Jeśli w aktywowanym module znajduje się jeden z Robotów Lativa, usuń z gry 1 znacznik Badań spod aktywnego modułu, jeśli to możliwe.",
+      "returnLativBots": "Zwróć wszystkie Roboty Lativa z aktywnego modułu na bok Laboratorium.",
+      "takeExtremeWeatherTile": "Weź wierzchni kafel Gwałtownej Pogody ze stosu odpowiadającego aktywowanemu rodzajowi pogody i umieść go na odpowiednim polu w dziale Badań i Rozwoju."
+    },
+    "notRunning": {
+      "title": "Experiment <i>nie</i> zostaje przeprowadzony",
+      "returnPlayerBots": "Możesz zdecydować o odebraniu swoich Robotów z aktywnego modułu.",
+      "saboteurBotExtremeWeather": "Jeśli Sabotażyści mają przynajmniej jednego Robota w aktywnym module: umieść nową płytkę Gwałtownej Pogody. Roboty pozostają w module.",
+      "returnLativBots": "Zwróć wszystkie Roboty Lativa z aktywnego modułu na bok Laboratorium."
+    },
+    "prepareNext": {
+      "title": "Przygotuj się na następny Eksperyment",
+      "removeExperimentTile": "Usuń najbardziej wysunięty na prawo kafel Eksperymentu z wystawki odpowiadający pogodzie aktywnego modułu (jeśli istnieje). Uzupełnij wystawkę.",
+      "moveLativAssistant": "Przenieś Asystenta Lativa do następnego modułu."
+    }
+  },
+  "endOfRound": {
+    "title": "Koniec rundy",
+    "turnOrder": {
+      "player": "Kolejność tury: <b>Ty</b> jesteś pierwszy.",
+      "saboteur": "Kolejność tury: <b>Sabotażyści</b> są pierwsi."
+    },
+    "lativOffice": "Jeśli Lativ jest w swoim biurze:",
+    "income": "Dochód: Zdobądź korzyści.",
+    "challengeJammingDevices": "Podczas każdego rozpatrywania Dochodu, zwiększ Wartość Docelową o 1 za każdego Robota Sabotażystów na planszy.",
+    "challengeCreativeAccounting": "Podczas każdego rozpatrywania Dochodu cofnij swój znacznik na jednym z torów Grantów o jedno pole. Jeśli to możliwe, musisz wybrać tor, na którym możesz to zrobić.",
+    "moveLativSupply": "Przesuń Lativa na pole Zaopatrzenia."
+  },
+  "endOfGame": {
+    "title": "Koniec gry",
+    "phaseB": {
+      "title": "Podczas fazy B rundy finałowej:",
+      "completeExperiments": "Zaczynając od modułu, w którym znajduje się Asystent i postępując zgodnie ze strzałkami, sprawdź każdy ukończony moduł Generatora Pogody. Dla każdego modułu, jeśli jest wyłożony kafel Eksperymentu odpowiadający danemu rodzajowi pogody, przeprowadź Eksperyment zgodnie ze zwykłymi zasadami.",
+      "noExtremeWeather": "Nie umieszczaj w tym momencie nowych kafli Gwałtownej Pogody.",
+      "placeResearchTokens": "Możesz umieścić dowolne znaczniki Badań i/lub znaczniki Nagród, które posiadasz obok swojego Laboratorium na pustych polach swojego Biura, zgodnie ze zwykłymi zasadami."
+    },
+    "saboteurFinalScoring": {
+      "title": "Końcowa punktacja dla Sabotażystów:",
+      "targetValue": "Zwiększ Wartość Docelową o 30."
+    },
+    "playerFinalScoring": {
+      "title": "Otrzymujesz punkty za następujące elementy:",
+      "fundingTracks": "Tory Grantów. Otrzymujesz PK zgodnie z pozycją Twojego znacznika na każdym torze Grantów. Zdobądź PK o najwyższej wartości powyżej lub na lewo od twojego znacznika.",
+      "goalTiles": "Cele. Otrzymujesz 5 PK za każdy kafel Celu na jednym ze swoich pól Celu, którego warunki zostały spełnione (patrz Pomoc Gracza).",
+      "nobelPrize": "Nagroda Nobla. Otrzymujesz 5 PK jeśli udało ci się zdobyć Nagrodę Nobla."
+    },
+    "winSummary": "Na koniec, jeśli Twoja wartość PK przekroczyła Wartość Docelową, <b>wygrałeś grę</b> i uratowałeś firmę. <i>W innym wypadku dołączasz do reszty bezrobotnych naukowców zatrudnionych w niegdyś wspaniałym Lightning Technologies, uaktualniając swoje CV.</i>",
+    "additionalQualifications": {
+      "title": "Dodatkowe kwalifikacje",
+      "level1": {
+        "title": "1. Pogodowy Guru",
+        "condition1": "120+ PK",
+        "condition2": "Jesteś przynajmniej na 4 polu na każdym torze Grantów",
+        "condition3": "Jesteś na ostatnim polu przynajmniej na jednym torze Grantów",
+        "condition4": "6+ kafli Warsztatu",
+        "condition5": "Nie pozostały w sumie więcej niż 2 Zezwolenia"
+      },
+      "level2": {
+        "title": "2. Klimatolog",
+        "condition1": "110+ PK",
+        "condition2": "Nagroda Nobla",
+        "condition3": "4+ spełnione kafle Celu",
+        "condition4": "Wszystkie Roboty odblokowane",
+        "condition5": ""
+      },
+      "level3": {
+        "title": "3. Meteorolog",
+        "condition1": "100+ PK",
+        "condition2": "3+ opublikowane Wyniki Badań",
+        "condition3": "1+ tor Grantów przynajmniej na 8 polu",
+        "condition4": "3+ spełnionych kafli Celu",
+        "condition5": "2+ Nagrody"
+      },
+      "level4": {
+        "title": "4. Synoptyk",
+        "condition1": "3+ opublikowane Wyniki Badań",
+        "condition2": "7+ Robotów na planszy Gry",
+        "condition3": "3+ spełnionych kafli Celu",
+        "condition4": "1+ Nagroda",
+        "condition5": ""
+      },
+      "level5": {
+        "title": "5. Stormchaser",
+        "condition1": "2+ spełnione kafle Celu",
+        "condition2": "1+ Nagroda",
+        "condition3": "",
+        "condition4": "",
+        "condition5": ""
+      }
+    }
+  },
+  "sidebar": {
+    "saboteursScheme": "Spisek Sabotażystów:",
+    "priority": "Priorytet:",
+    "reportsLeft": "Pozostałe karty Raportu Bezpieczeństwa:",
+    "nextFirstPlayer": "Next first player:",
+    "unlockCitation": {
+      "title": "Odblokuj pole Cytatu",
+      "description": "Jeśli odblokowałeś pole Cytatu, możesz natychmiast zapłacić 1 Zezwolenie Naukowe, aby otrzymać <b>3&nbsp;PK</b>.",
+      "unlock": "Odblokuj",
+      "lock": "Zablokuj"
+    }
+  },
+  "lativMovement": {
+    "title": "Poruszanie Lativem",
+    "nextLocation": "Jeśli Lativ się porusza, zawsze udaje się  do następnej lokalizacji z dostępnym polem akcji (najbardziej na lewo).",
+    "weatherMachineActiveBranch": "Sprawdź <b>aktywny moduł Generatora Pogody</b> w Laboratorium (ten, w którym znajduje się Asystent).",
+    "weatherMachineActiveBranchStep1": "Jeśli Lativ nie ma żadnego ze swoich Robotów w tym module, umieść 1 z Robotów Lativa z obszaru obok Laboratorium na dowolnym pustym polu tego modułu (nie ma znaczenia, na którym z nich).",
+    "weatherMachineActiveBranchStep2": "Jeśli Lativ ma już Robota w tym module lub moduł jest pełny, umieść Robota w następnym module (zgodnie ze strzałkami). Jeśli wszystkie moduły są zajęte lub zawierają już jednego z Robotów Lativa, nic się nie dzieje.",
+    "governmentRnd": "Kiedy Lativ przesuwa się do <b>Rządu lub Działu Badań i Rozwoju</b>, odrzuć znacznik Badań z aktualnej Lokacji Lativa o takim samym typie pogody jak moduł, w której obecnie przebywa Asystent Lativa."
+  },
+  "callSecurity": {
+    "title": "Wezwij Ochronę",
+    "confirm": "Czy chcesz wezwać Ochronę?",
+    "payVoucher": "Aby kontynuować, musisz zapłacić <b>1 Zezwolenie</b> (typu odpowiadającego lokalizacji, w której się znajdujesz, lub Zezwolenie Naukowe).",
+    "report": {
+      "makeCurrent": "Bieżący Raport Bezpieczeństwa",
+      "putBack": "Odłóż z powrotem do talii",
+      "discard": "Odrzuć"
+    },
+    "finish": "Wezwij Ochronę "
+  },
+  "claimInitiative": {
+    "title": "Przejmij Inicjatywę",
+    "claim": "Przejmij Inicjatywę dla:",
+    "player": "Gracz",
+    "saboteur": "Sabotażyści"
+  },
+  "endGameConditions": {
+    "title": "Warunki zakończenia gry",
+    "goToEndOfGame": "Przejdź do zakończenia gry",
+    "challengeCard": {
+      "nobelLaureate": "Nie możesz wygrać gry nie posiadając <b>Nagrody Nobla</b>.",
+      "onlyOverachieversApply": "Nie możesz wygrać gry bez spełnienia warunków przynajmniej <b>5 kafli Celu na polach Celu</b> w twojej Pracowni.",
+      "publishOrPerish": "Musisz wygrać przez <b>natychmiastowe zwycięstwo</b> (przywracając dobre imię Lightning Technologies)."
+    },
+    "immediateWin": {
+      "title": "Przywrócenie dobrego imienia Lightning Technologies",
+      "intro": "<i>Na początku swojej tury </i> musisz spełnić <b>wszystkie</b> poniższe warunki:",
+      "targetValueHigher": "Twój wsakźnik PK musi być wyższy niż Wartość Docelowa.",
+      "goalTiles": "Musisz spełniać warunki dla co najmniej 4 swoich kafli Celu na polach Celu swojego Laboratorium.",
+      "fundingTracks": "Co najmniej 2 Twoje znaczniki Grantów muszą znajdowaćsię na 5. polu toru Grantów lub poza nim (pole, na którym zaczyna się Twój znacznik, to 0. pole).",
+      "outro": "Jeśli tak się stanie, natychmiast <b>wygrywasz grę</b> ."
+    },
+    "standardEnding": {
+      "title": "Czas się kończy i wkracza Rząd",
+      "intro": "Dzieje się tak, jeśli koniec gry zostanie aktywowany w wyniku któregokolwiek z normalnych warunków zakończenia gry:",
+      "nobelPrize": "Jeśli dostajesz Nagrodę Nobla.",
+      "lastExperimentTile": "Jeśli ostatni kafel Eksperymentu zostaje umieszczony na wystawce.",
+      "governmentMachine": "Jeśli Rządowy Generator zostaje ukończony.",
+      "researchFull": "Jeśli wszystkie pola badawcze w dziale Badań i Rozwoju zostają zajęte.",
+      "outro": "Jeśli tak się stanie, <b>rozegraj jeszcze jedną rundę</b> jak zwykle, a następnie przejdź do końcowego punktowania. Podczas końcowego punktowania wartość docelowa Sabotażystów <b>zwiększa się o dodatkowe 30 PK</b>. Jeśli po końcowym punktowaniu wartość Twoich PK jest wyższa niż Wartość Docelowa, wygrywasz grę."
+    },
+    "fail": {
+      "title": "Nikczemny plan Sabotażystów powiódł się:",
+      "intro": "Ma to miejsce, jeśli zaistnieje <b>którakolwiek</b> z poniższych okoliczności:",
+      "extremeWeather": "Na koniec twojej tury na planszy znajdują się przynajmniej 2 kafle Gwałtownej Pogody Poziomu 3.",
+      "deckEmpty": "Na początku tury Sabotażystów wszystkie karty Raportów Bezpieczeństwa znajdują się na stosie kart odrzuconych.",
+      "outro": "Jeśli ma to miejsce, <b>natychmiast przegrywasz</b>. <i>Mieliśmy wobec Ciebie większe oczekiwania.</i>"
+    }
+  },
+  "agentLocationSelection": {
+    "select": "Wybierz",
+    "selectA": "A &",
+    "selectBC": "C,B /",
+    "moveInfo": "Jeśli Sabotażysta nie może poruszyć się do Lokacji (ponieważ wszystkie pola akcji są zajęte, Sabotażysta jest już w tej Lokacji lub ponieważ bieżący Raport Bezpieczeństwa przedstawia Lokację Lativa i znajduje się on w swoim Biurze), przesuń go do następnej Lokacji Głównej w podanej kolejności."
+  },
+  "takeChemical": {
+    "title": "Weź Chemikalia",
+    "prioritySection": "Wybierają Chemikalia z sekcji, która przedstawia najmniejszą liczbę Zezwoleń Zaopatrzenia.",
+    "priorityLeastAvailable": "Jeśli w najtańszej sekcji znajduje się więcej niż jeden rodzaj Chemikaliów, wybierają ten, którego aktualnie mają najmniej w swojej Kryjówce.",
+    "prioritySelection": {
+      "top": "Jeśli nadal jest remis, wybierają Chemikalia o <b>najwyższej</b> pozycji spośród remisujących.",
+      "bottom": "Jeśli nadal jest remis, wybierają Chemikalia o <b>najniższej</b> pozycji spośród remisujących."
+    }
+  },
+  "challengeCard": {
+    "fully-stocked-opponents": {
+      "title": "Dobrze Wyposażeni Przeciwnicy",
+      "description": "Sabotażyści rozpoczynają grę posiadając po 1 Chemikaliach każdego rodzaju, zamiast posiadać 2 Chemikalia."
+    },
+    "jamming-device": {
+      "title": "Urządzenia Zagłuszające",
+      "description": "Podczas każdego rozpatrywania Dochodu, zwiększ Wartość Docelową o 1 za każdego Robota Sabotażystów na planszy."
+    },
+    "creative-accounting": {
+      "title": "Kreatywna Księgowość",
+      "description": "Sabotażyści rozpoczynają grę ze znacznikiem Nagrody. Podczas każdego rozpatrywania Dochodu cofnij swój znacznik na jednym z torów Grantów o jedno pole. Jeśli to możliwe, musisz wybrać tor, na którym możesz to zrobić."
+    },
+    "nobel-laureate": {
+      "title": "Laureat Nagrody Nobla",
+      "description": "Sabotażyści rozpoczynają grę z dodatkowymi 1 Chemikaliami wybranymi losowo (mogą to być również te, które już posiadają). Nie możesz wygrać gry nie posiadając Nagrody Nobla."
+    },
+    "only-overachievers-apply": {
+      "title": "Tylko dla Najlepszych",
+      "description": "Nie możesz wygrać gry bez spełnienia warunków przynajmniej 5 kafli Celu na polach Celu w twojej Pracowni."
+    },
+    "the-clock-is-ticking": {
+      "title": "Zegar Tyka",
+      "description": "Po Przygotowaniu Rozgrywki usuń z gry 2 wierzchnie karty z talii Raportu Bezpieczeństwa i odłóż je do pudełka."
+    },
+    "one-step-ahead": {
+      "title": "O Krok Przed Innymi",
+      "description": "Jeśli na zakończenie twojej tury znacznik Inicjatywy Sabotażystów jest na pozycji pierwszej od lewej, zwiększ Wartość Docelową o 3."
+    },
+    "moral-high-ground": {
+      "title": "Wyżyny Moralności",
+      "description": "Umieszczając Naukowca w Lokacji nie otrzymujesz dodatkowych Zezwoleń za Sabotażystów po twojej lewej."
+    },
+    "peer-review": {
+      "title": "Recenzja Naukowa",
+      "description": "Nie możesz korzystać ze znaczników Cytatu, gdy publikujesz Wyniki Badań. Kiedy odblokujesz pole Cytatu, nie możesz wydać Zezwolenia Naukowego, by otrzymać 3 PK."
+    },
+    "independent-prototypes": {
+      "title": "Niezależne Prototypy",
+      "description": "Sabotażyści rozpoczynają grę ze znacznikiem Nagrody. Nie możesz korzystać z Robotów Sabotażystów, kiedy budujesz prototyp w ramach akcji Przełomu."
+    },
+    "budget-cuts": {
+      "title": "Cięcia Budżetowe",
+      "description": "Sabotażyści rozpoczynają grę z dodatkowymi 1 Chemikaliami, wybranymi losowo (mogą to być również te, które już posiadają). Ilekroć otrzymasz grant z toru Grantów Laboratoryjnych, traktuj modyfikator pod swoim znacznikiem jako +0 (nadal otrzymujesz korzyści z toru Rządu oraz Badań i Rozwoju)."
+    },
+    "publish-or-perish": {
+      "title": "Publikuj albo Giń",
+      "description": "Zmniejsz początkową Wartość Docelową o 5. Ilekroć Sabotażyści sprawią, że znacznik Blokady ma zostać usunięty z pola Cytatu, podnieś Wartość Docelową o 5. Musisz wygrać przez natychmiastowe zwycięstwo (przywracając dobre imię Lightning Technologies)."
+    }
+  },
+  "agent": {
+    "white": "Biały",
+    "pink": "Różowy"
+  },
+  "location": {
+    "government": "Rząd",
+    "lativs-lab": "Laboratorium Lativa",
+    "rnd": "Badania i Rozwój"
+  },
+  "weather": {
+    "rain": "Deszcz",
+    "wind": "Wiatr",
+    "sun": "Słońce",
+    "fog": "Mgła",
+    "snow": "Śnieg"
+  },
+  "notfound": {
+    "title": "Nie znaleziono"
+  },
+  "action": {
+    "playGame": "Zagraj",
+    "startGame": "Rozpocznij grę",
+    "next": "Dalej",
+    "nextRound": "Następna runda",
+    "abortGame": "Przerwij grę",
+    "abortGameConfirm": "Obecna gra zostanie przerwana. Czy chcesz kontynuować?",
+    "endGame": "Zakończ grę",
+    "endGameConfirm": "Zakończ obecną grę i powróć na stronę główną - Jesteś pewien?",
+    "cancel": "Anuluj",
+    "backToHome": "Wróć na stronę główną",
+    "back": "Wróć",
+    "close": "Zamknij",
+    "select": "Wybierz",
+    "reselect": "Wybierz ponownie",
+    "yes": "Tak",
+    "no": "Nie",
+    "notPossible": "Niemożliwe"
+  },
+  "footer": {
+    "credits": "Credits"
+  },
+  "serviceWorkerUpdatedRefresh": {
+    "title": "Odśwież aplikację",
+    "notice": "Aplikacja została zaktualizowana - Czy chcesz ją odświeżyć, aby skorzystać z najnowszej wersji?"
+  }
+}
