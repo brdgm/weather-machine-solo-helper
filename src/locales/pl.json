@@ -100,7 +100,7 @@
         "text": "Podnieś <b>Wartość Docelową sabotażystów o {count}</b>."
       },
       "increaseTargetValueOrDiscardSecurityReport": {
-        "text": "Albo podnieś <b>Wartość Docelową Sabotażystów o {count</b>, albo odrzuć wierzchnią kartę z talii Raportów bezpieczeństwa.",
+        "text": "Albo podnieś <b>Wartość Docelową Sabotażystów o {count}</b>, albo odrzuć wierzchnią kartę z talii Raportów bezpieczeństwa.",
         "increaseTargetValueOrDiscardSecurityReport": "Zwiększyć Wartość Docelową Sabotażystów? W przeciwnym razie jeden Raport Bezpieczeństwa zostanie odrzucony."
       },
       "lativsLabPlaceBotResearchPriority": {
