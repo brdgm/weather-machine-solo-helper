@@ -185,6 +185,8 @@
     },
     "lativOffice": "Wenn Lativ sich in seinem Büro befindet:",
     "income": "Einkommen: Erhalte die Boni.",
+    "challengeJammingDevices": "Erhöhe in jeder Einkommensphase den Zielwert um 1 für jeden Saboteur-Bot auf dem Plan.",
+    "challengeCreativeAccounting": "Rücke in jeder Einkommensphase 1 deiner Finanzierungsmarker auf einer der Leisten ein Feld zurück. Du musst dabei eine Leiste wählen, wo das geht, falls möglich.",
     "moveLativSupply": "Lativ wandert auf sein Feld im Vorrat."
   },
   "endOfGame": {
