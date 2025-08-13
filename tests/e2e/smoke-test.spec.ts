@@ -12,7 +12,7 @@ test('smoke test', async ({ page }) => {
   await page.getByRole('button', { name: 'Start Game' }).click()
 
   // play a few turns
-  await page.getByRole('link', { name: 'Next' }).click();
+  await page.getByRole('link', { name: 'Next' }).click()
   await page.getByRole('button', { name: 'A &' }).first().click()
 
   // abort game
