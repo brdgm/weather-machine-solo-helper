@@ -1,6 +1,6 @@
 import CardDeck from '@/services/CardDeck'
 
-export default function (params?: MockCardDeckParams) : CardDeck {  
+export default function mockCardDeck(params?: MockCardDeckParams) : CardDeck {  
   return CardDeck.fromPersistence({
     deck: params?.deck ?? [],
     current: params?.current,

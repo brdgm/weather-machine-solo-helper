@@ -17,7 +17,7 @@ export default class NavigationState {
   readonly citationUnlock : Weather[]
 
   constructor(route : RouteLocation, state : State) {
-    this.round = parseInt(route.params['round'] as string)
+    this.round = Number.parseInt(route.params['round'] as string)
     this.player = (route.name == 'PhaseATurnSaboteur') ? Player.SABOTEUR : Player.PLAYER
     this.initiativePlayer = NavigationState.getInitiativePlayer(this.round, state)
     this.lastRoundInitiativePlayer = NavigationState.getInitiativePlayer(this.round-1, state)

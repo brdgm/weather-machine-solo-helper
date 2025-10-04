@@ -265,7 +265,7 @@ export default defineComponent({
       this.citationUnlock = this.saboteurActions.processCitationUnlock(this.navigationState.citationUnlock)
       this.initiativePlayer = this.saboteurActions.processInitiativePlayer(this.navigationState.initiativePlayer)
       this.cardDeck = this.navigationState.cardDeck.clone()
-      this.saboteurActions.processSecurityReport().forEach(action => {
+      for (const action of this.saboteurActions.processSecurityReport()) {
         if (this.cardDeck.deck.length > 0) {
           if (action==Action.DRAW_SECURITY_REPORT) {
             this.cardDeck.draw()
@@ -274,7 +274,7 @@ export default defineComponent({
             this.cardDeck.discardFromDeck()
           }
         }
-      })
+      }
       if (!this.saboteurActions.allDecisionsResolved) {
         return
       }
