@@ -279,7 +279,9 @@ export default class SaboteurActions {
 function updateActionStepRecursively(actionStep : ActionStep, update: (step: ActionStep) => void) {
   update(actionStep)
   if (actionStep.alternativeActions) {
-    actionStep.alternativeActions.forEach(step => updateActionStepRecursively(step, update))
+    for (const step of actionStep.alternativeActions) {
+      updateActionStepRecursively(step, update)
+    }
   }
 }
 

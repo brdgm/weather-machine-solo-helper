@@ -3,7 +3,7 @@ import Player from '@/services/enum/Player'
 import Weather from '@/services/enum/Weather'
 import { CardDeckPersistence, Round, Token } from '@/store/state'
 
-export default function (params?: MockRoundParams) : Round {
+export default function mockRound(params?: MockRoundParams) : Round {
   return {
     round: params?.round ?? 1,
     cardDeck: params?.cardDeck ?? CardDeck.new().toPersistence(),

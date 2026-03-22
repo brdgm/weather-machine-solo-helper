@@ -1,6 +1,6 @@
 import MachinePart from '@/services/enum/MachinePart'
 
-export default function(machinePart : MachinePart) : string {
+export default function getMachinePartColor(machinePart : MachinePart) : string {
   switch (machinePart) {
     case MachinePart.GREEN:
       return '#6bbe4b'
