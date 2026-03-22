@@ -1,0 +1,435 @@
+{
+  "gameTitle": "웨더 머신",
+  "home": {
+    "title": "웨더 머신 솔로 헬퍼",
+    "play1": "<a href='https://boardgamegeek.com/boardgame/237179/weather-machine' target='_blank' rel='noopener'><b>웨더 머신</b></a>의 솔로 모드 상대인 방해꾼들과 플레이하세요.",
+    "play2": "이 헬퍼 애플리케이션은 솔로 카드와 은신처 보드를 대체합니다. 방해꾼들의 연구 토큰과 인용 해금을 추적하여 규칙에 따라 방해꾼들을 올바른 장소로 안내합니다.",
+    "feedback": "토론 및 피드백:"
+  },
+  "setupDifficultyLevel": {
+    "title": "난이도 설정",
+    "firstTime": "처음 플레이한다면, 게임 설정으로 진행하세요.",
+    "greaterChallenge": "더 큰 도전을 위해 1개 이상의 추가 도전을 사용할 수 있습니다:",
+    "pickChallengeCards": "도전 카드 선택",
+    "pickRandom": "무작위 선택",
+    "clearAll": "모두 지우기"
+  },
+  "setupGame": {
+    "title": "게임 설정",
+    "setupWithChanges": "다음 변경사항을 적용하여 게임을 설정하세요:",
+    "lativBots": "연구소의 웨더 머신 각 가지에 <b>라티브의 봇</b> 하나씩을 놓으세요.",
+    "researchTokens": "각 주요 위치에 각 유형별로 <b>연구 토큰 2개</b>만 사용하세요.",
+    "goalTiles": "<b>목표 타일</b>을 준비하세요:",
+    "goalTilesStep1": "오른쪽 위에 다수 아이콘이 있는 모든 목표 타일을 제거하세요. 또한 보상 토큰 3개를 필요로 하는 타일도 제거하세요.",
+    "goalTilesStep2": "남은 목표 타일에서 각 색깔별로 2개씩 무작위로 선택하세요. 타일 중앙의 아이콘이 같은 2개를 뽑으면, 두 번째 것을 버리고 모두 다른 것을 얻을 때까지 계속 뽑으세요.",
+    "goalTilesStep3": "남은 모든 목표 타일을 게임에서 제거하세요. 방해꾼들은 목표 타일을 사용하지 않습니다.",
+    "anotherPlayerColor": "방해꾼들을 위해 <b>다른 플레이어 색깔</b>을 선택하세요. 방해꾼들은 연구실이나 바우처 마커를 사용하지 않습니다.",
+    "scoringMarker": "<b>방해꾼들의 점수 마커</b>를 <b>{startingTargetValue} CP</b>에 놓으세요. 이것이 초기 목표 수치입니다.",
+    "turnOrder": "<b>턴 순서</b>와 선제권 마커(당신의 것과 방해꾼들의 것 모두)를 당신이 두 항목 모두에서 첫 번째가 되도록 놓으세요.",
+    "hideout": "메인 보드 근처 영역을 방해꾼들의 은신처로 지정하세요.",
+    "hideoutBots": "<b>방해꾼들의 봇</b>을 은신처에 놓으세요.",
+    "hideoutChemicals": "다음 <b>화학물질</b>을 선택하여 공급처의 가장 왼쪽 칸에서 가져와 은신처에 놓으세요:",
+    "hideoutAward": "방해꾼들은 <b>보상 토큰</b>을 가지고 게임을 시작합니다:",
+    "placeAgentMiddlePosition": "<b>요원 {agent}</b>을 <b>{location}</b>의 중앙 행동 칸에 놓으세요.",
+    "placeAgentRightPosition": "<b>요원 {agent}</b>을 <b>{location}</b>의 맨 오른쪽 행동 칸에 놓으세요.",
+    "takeWeatherToken": "그 위치에서 <b>{weather} 연구 토큰</b>을 은신처로 옮기세요.",
+    "playerLaboratory": "플레이어의 연구실",
+    "playerSetupLaboratory": "무작위 <b>작업장 타일</b> 1개와 무작위 <b>기계 부품</b> 1개를 포함하여 평소와 같이 연구실을 설정하세요.",
+    "playerDetermineMachinePart": "기계 부품 결정",
+    "playerPostSetupSupplyRound": "설정 후 <b>공급 라운드</b>를 진행하세요."
+  },
+  "turnPlayer": {
+    "title": "당신의 턴",
+    "useSubsidyInvestment": "보조금 타일 1개 또는 투자 타일 1개를 사용하세요.",
+    "moveScientist": "과학자를 이동시키세요.",
+    "moveScientistRound1": "1라운드: 가장 왼쪽 행동 칸을 선택할 수 없습니다.",
+    "performActions": "행동을 수행하세요.",
+    "placeResearchTokens": "연구 토큰을 놓으세요.",
+    "challengeOneStepAhead": "턴이 끝날 때 방해꾼들의 선제권 마커가 맨 왼쪽 위치에 있으면 목표 수치를 3 증가시키세요.",
+    "challengeMoralHighGround": "과학자를 위치에 놓을 때 왼쪽에 있는 방해꾼들에 대한 추가 바우처를 얻지 못합니다.",
+    "challengePeerReview": "논문을 발표할 때 인용 토큰을 사용할 수 없습니다.",
+    "challengePeerReviewUnlock": "인용 칸을 해금할 때 과학 바우처를 지불하여 3 CP를 얻을 수 <b>없습니다</b>.",
+    "challengeIndependentPrototypes": "돌파 행동의 일환으로 프로토타입을 제작할 때 방해꾼들의 봇을 사용할 수 없습니다.",
+    "challengeBudgetCuts": "연구실 자금 트랙에서 자금을 받을 때, 마커 아래의 수정치를 +0으로 취급합니다(정부나 R&D 트랙의 혜택은 여전히 받습니다).",
+    "infoCitationUnlock": "게임 보드의 인용 칸을 해금할 때 앱에서도 해금하세요.",
+    "infoGovernmentRunMachine": "정부가 머신의 가지를 활성화하면, 그 가지에 있는 각 방해꾼 봇마다 목표 수치를 3씩 증가시키세요.",
+    "infoRndBreakthrough": "돌파 행동을 수행할 때 프로토타입을 제작할 때 부품을 제공하는 각 방해꾼 봇마다 목표 수치를 2씩 증가시키세요."
+  },
+  "turnSaboteur": {
+    "title": "방해꾼들의 턴",
+    "gameLost": "보안 보고서 덱이 비었습니다. <b>패배했습니다.</b>",
+    "gameLostHopes": "당신에게 큰 기대를 했었는데 말이죠.",
+    "moveSaboteur": "방해꾼을 행동 칸으로 이동:",
+    "raiseTargetValue": "행동 칸 왼쪽의 각 조각에 대해 목표 수치를 증가시키세요.",
+    "moveLativ": "필요하다면 라티브를 이동시키세요.",
+    "saboteurActions": "방해꾼의 행동:",
+    "actions": {
+      "claimInitiative": {
+        "text": "방해꾼들이 <b>선제권</b>을 획득합니다."
+      },
+      "discardResearchTokens": {
+        "text": "방해꾼들이 <b>{count}개의 연구 토큰</b> 세트를 버리고 게임에서 제거합니다."
+      },
+      "discardSecurityReport": {
+        "text": "방해꾼들이 덱 맨 위의 <b>보안 보고서</b> 카드를 버립니다."
+      },
+      "drawSecurityReport": {
+        "text": "방해꾼들이 현재 <b>보안 보고서</b>를 버리고 새로운 것을 뽑습니다."
+      },
+      "getAwardToken": {
+        "text": "방해꾼들이 <b>보상 토큰</b>을 획득합니다."
+      },
+      "governmentFlipSubsidy": {
+        "text": "파란색 면이 위를 향한 <b>보조금 타일</b>을 <b>뒤집습니다</b>."
+      },
+      "governmentGetResearchToken": {
+        "text": "방해꾼들이 선택한 가지에서 <b>연구 토큰</b>을 가져갑니다.",
+        "researchTokenAvailable": "연구 토큰이 있나요?"
+      },
+      "governmentPlaceBotResearchPriority": {
+        "text": "방해꾼들이 <b>일치하는 화학물질</b>을 가진 가지의 빈 봇 칸에 <b>봇을 놓습니다</b>. 연구 토큰이 있는 주어진 순서의 가지를 선호합니다. 은신처에서 칸과 일치하는 화학물질을 공급처로 이동시킵니다."
+      },
+      "governmentPlaceGearRemoveSubsidy": {
+        "text-top": "가지에서 맨 위에 있는 이용 가능한 <b>보조금 타일</b>을 <b>제거</b>합니다. 필요한 <b>기계 부품</b>으로 교체합니다.",
+        "text-bottom": "가지에서 맨 아래에 있는 이용 가능한 <b>보조금 타일</b>을 <b>제거</b>합니다. 필요한 <b>기계 부품</b>으로 교체합니다."
+      },
+      "governmentRunMachine": {
+        "text": "가지의 모든 봇 칸이 차면 <b>정부가 그 가지를 활성화</b>합니다. 그 가지에 있는 각 방해꾼 봇마다 목표 수치를 3씩 증가시킵니다."
+      },
+      "increaseTargetValue": {
+        "text": "방해꾼들의 <b>목표 수치를 {count} 증가</b>시킵니다."
+      },
+      "increaseTargetValueOrDiscardSecurityReport": {
+        "text": "방해꾼들의 <b>목표 수치를 {count} 증가</b>시키거나 보안 보고서 덱의 맨 위 카드를 버립니다.",
+        "increaseTargetValueOrDiscardSecurityReport": "방해꾼들의 목표 수치를 증가시키나요? 그렇지 않으면 보안 보고서가 버려집니다."
+      },
+      "lativsLabPlaceBotResearchPriority": {
+        "text": "방해꾼들이 <b>일치하는 화학물질</b>을 가지고 있고 진열된 <b>일치하는 실험 타일</b>이 있는 가지의 이용 가능한 봇 칸에 <b>봇을 놓습니다</b>. <b>가장 많은 봇</b>(라티브의 봇 포함)이 있는 가지와 주어진 순서의 칸을 선호합니다. 동점인 경우 연구 토큰이 있는 가지를 선호합니다. 라티브의 봇은 이동될 수 있습니다. 은신처에서 칸과 일치하는 화학물질을 공급처로 이동시킵니다."
+      },
+      "rndChemicalAvailable": {
+        "text": "일치하는 화학물질이 있나요?",
+        "chemicalAvailable": "방해꾼들이 선택한 봇 칸과 일치하는 화학물질을 가지고 있나요?"
+      },
+      "rndGetResearchToken": {
+        "text": "방해꾼들이 선택한 가지에서 <b>연구 토큰</b>을 가져갑니다.",
+        "researchTokenAvailable": "연구 토큰이 있나요?"
+      },
+      "rndPlaceBotPreviousReportPriority": {
+        "text": "가지의 빈 봇 칸에 <b>봇을 놓습니다</b>. 주어진 순서의 가지와 칸을 선호합니다. 방해꾼들이 가지의 맨 아래 칸에 봇을 놓으면 추가 비용을 지불하지 않습니다."
+      },
+      "rndPlaceBotResearchPriority": {
+        "text": "방해꾼들이 <b>일치하는 화학물질</b>을 가진 가지의 빈 봇 칸에 <b>봇을 놓습니다</b>. 연구 토큰이 있는 주어진 순서의 가지를 선호합니다. 은신처에서 필요한 화학물질을 봇 왼쪽 칸으로 이동시킵니다."
+      },
+      "rndPlaceChemical": {
+        "text": "방해꾼들이 은신처에서 선택한 봇 칸으로 <b>화학물질을 이동</b>시킵니다."
+      },
+      "takeChemicals": {
+        "text": "방해꾼들이 <b>화학물질 {count}개</b>를 가져갑니다. | 방해꾼들이 <b>화학물질 {count}개</b>를 가져갑니다."
+      },
+      "takeExtremeWeatherTile": {
+        "text": "날씨 유형과 일치하는 맨 위의 <b>극한 날씨 타일</b>을 스택에서 가져와 R&D의 해당 칸에 놓고 이미 있던 타일을 덮습니다. 기존 타일의 돌파 마커는 상자로 돌아가고 정부 마커는 정부 영역으로 돌아갑니다."
+      },
+      "unlockCitation": {
+        "text": "해당 인용 칸에서 <b>잠금 토큰</b>을 제거합니다."
+      }
+    }
+  },
+  "experiment": {
+    "title": "웨더 머신 실험 진행",
+    "checkRunning": {
+      "runsIfBoth": "실험은 <b>두</b> 조건이 모두 충족되면 진행됩니다:",
+      "atLeastOneTile": "활성 가지의 날씨와 일치하는 실험 타일이 진열에 적어도 하나 있습니다.",
+      "allBots": "활성 가지의 모든 칸에 봇이 있습니다."
+    },
+    "running": {
+      "title": "실험이 진행 중",
+      "player": {
+        "title": "당신의 턴 (활성 가지에 봇이 있는 경우)",
+        "returnBots": "활성 가지에서 봇들을 돌려보내세요.",
+        "ifVouchersPayed": "활성 실험 타일의 과학 바우처를 지불하면:",
+        "gainCP": "방금 돌려보낸 각 봇에 대해 실험 타일에 묘사된 CP를 얻습니다.",
+        "gainBenefit": "타일에 묘사된 두 혜택 중 하나를 얻습니다.",
+        "takeResearchToken": "활성 가지에서 연구 토큰을 가져와(가능하면) 즉시 사무실에 놓습니다."
+      },
+      "saboteur": {
+        "title": "방해꾼들의 턴",
+        "botsInActiveBranch": "방해꾼들이 활성 가지에 봇을 가지고 있나요?",
+        "returnBots": "활성 가지에 있는 방해꾼들의 각 봇에 대해 그 봇을 은신처로 돌려보내고 실험 타일에 묘사된 CP만큼 목표 수치를 증가시킵니다.",
+        "takeResearchToken": "활성 가지 아래에서 연구 토큰을 가져갑니다(가능하면).",
+        "researchTokenAvailable": "연구 토큰이 있나요? 있다면 활성 가지의 날씨를 선택하세요."
+      }
+    },
+    "afterExperiment": {
+      "title": "실험 후",
+      "lativBotRemoveResearchToken": "가지에 라티브의 봇이 하나 있으면, 가능하다면 활성 가지 아래에서 연구 토큰 1개를 게임에서 제거합니다.",
+      "returnLativBots": "활성 가지에 있는 라티브의 봇들을 연구실 옆으로 돌려보냅니다.",
+      "takeExtremeWeatherTile": "날씨 유형과 일치하는 맨 위의 극한 날씨 타일을 스택에서 가져와 R&D의 해당 칸에 놓습니다."
+    },
+    "notRunning": {
+      "title": "실험이 진행되지 <i>않음</i>",
+      "returnPlayerBots": "활성 가지에서 봇들을 돌려보낼 수 있습니다.",
+      "saboteurBotExtremeWeather": "방해꾼들이 활성 가지에 적어도 하나의 봇을 가지고 있으면: 새로운 극한 날씨 타일을 놓습니다. 봇들은 가지에 남아있습니다.",
+      "returnLativBots": "활성 가지에 있는 라티브의 봇들을 연구실 옆으로 돌려보냅니다."
+    },
+    "prepareNext": {
+      "title": "다음 실험 준비",
+      "removeExperimentTile": "활성 가지의 날씨와 일치하는 진열의 맨 오른쪽 실험 타일을 제거합니다(있다면). 진열을 다시 채웁니다.",
+      "moveLativAssistant": "라티브의 보조자를 다음 가지로 이동시킵니다."
+    }
+  },
+  "endOfRound": {
+    "title": "라운드 종료",
+    "turnOrder": {
+      "player": "턴 순서: <b>당신</b>이 먼저 갑니다.",
+      "saboteur": "턴 순서: <b>방해꾼들</b>이 먼저 갑니다."
+    },
+    "lativOffice": "라티브가 사무실에 있다면:",
+    "income": "소득: 혜택을 얻습니다.",
+    "challengeJammingDevices": "각 소득 동안 보드에 있는 각 방해꾼 봇마다 목표 수치를 1씩 증가시킵니다.",
+    "challengeCreativeAccounting": "각 소득 동안 하나의 트랙에서 자금 마커 중 하나를 한 칸 뒤로 이동시킵니다. 가능하다면 이를 할 수 있는 트랙을 선택해야 합니다.",
+    "moveLativSupply": "라티브를 공급처로 이동시킵니다."
+  },
+  "endOfGame": {
+    "title": "게임 종료",
+    "phaseB": {
+      "title": "마지막 라운드 페이즈 B 동안:",
+      "completeExperiments": "보조자가 있는 가지부터 시작하여 화살표 순서대로 웨더 머신의 각 완성된 가지를 확인합니다. 각 가지에 대해 날씨 유형과 일치하는 현재 실험 타일이 있다면 평소 규칙에 따라 실험을 진행합니다.",
+      "noExtremeWeather": "이때는 새로운 극한 날씨 타일을 놓지 않습니다.",
+      "placeResearchTokens": "가지고 있는 연구 토큰 및/또는 보상 토큰을 평소 규칙에 따라 사무실의 빈 칸에 놓을 수 있습니다."
+    },
+    "saboteurFinalScoring": {
+      "title": "방해꾼들의 최종 점수:",
+      "targetValue": "목표 수치를 30 증가시킵니다."
+    },
+    "playerFinalScoring": {
+      "title": "다음에 대해 점수를 얻습니다:",
+      "fundingTracks": "각 자금 트랙에서 마커 위치에 따른 CP. 마커의 위나 왼쪽에 있는 가장 높은 CP 값을 점수로 합니다.",
+      "goalTiles": "조건을 만족하는 목표 칸에 있는 각 목표 타일마다 5 CP (플레이어 보조자 참조).",
+      "nobelPrize": "노벨상을 가지고 있으면 5 CP."
+    },
+    "winSummary": "이 후 당신의 CP가 목표 수치를 초과하면 <b>게임에서 승리</b>하여 회사를 구했습니다. <i>그렇지 않으면, 한때 위대했던 라이트닝 테크놀로지의 실업한 과학자들과 함께 이력서를 업데이트하게 됩니다.</i>",
+    "additionalQualifications": {
+      "title": "추가 자격",
+      "level1": {
+        "title": "1. 테라포머",
+        "condition1": "120+ CP",
+        "condition2": "가장 낮은 자금 트랙이 적어도 4번째 칸에 있음",
+        "condition3": "가장 높은 자금 트랙이 마지막 칸에 있음",
+        "condition4": "작업장 타일 6개 이상",
+        "condition5": "남은 총 바우처가 2개 이하"
+      },
+      "level2": {
+        "title": "2. 기후학자",
+        "condition1": "110+ CP",
+        "condition2": "노벨상",
+        "condition3": "만족한 목표 타일 4개 이상",
+        "condition4": "모든 봇 해금",
+        "condition5": ""
+      },
+      "level3": {
+        "title": "3. 기상학자",
+        "condition1": "100+ CP",
+        "condition2": "발표한 논문 3개 이상",
+        "condition3": "자금 트랙 1개 이상이 적어도 8번째 칸에 있음",
+        "condition4": "만족한 목표 타일 3개 이상",
+        "condition5": "보상 2개 이상"
+      },
+      "level4": {
+        "title": "4. 예보관",
+        "condition1": "발표한 논문 3개 이상",
+        "condition2": "메인 보드에 봇 7개 이상",
+        "condition3": "만족한 목표 타일 3개 이상",
+        "condition4": "보상 1개 이상",
+        "condition5": ""
+      },
+      "level5": {
+        "title": "5. 스톰체이서",
+        "condition1": "만족한 목표 타일 2개 이상",
+        "condition2": "보상 1개 이상",
+        "condition3": "",
+        "condition4": "",
+        "condition5": ""
+      }
+    }
+  },
+  "sidebar": {
+    "saboteursScheme": "방해꾼들의 계략:",
+    "priority": "우선순위:",
+    "reportsLeft": "남은 보고서 카드:",
+    "nextFirstPlayer": "다음 첫 번째 플레이어:",
+    "unlockCitation": {
+      "title": "인용 칸 해금",
+      "description": "인용 칸을 해금했다면 과학 바우처 1개를 즉시 지불하여 <b>3&nbsp;CP</b>를 얻을 수 있습니다.",
+      "unlock": "해금",
+      "lock": "잠금"
+    }
+  },
+  "lativMovement": {
+    "title": "라티브 이동",
+    "nextLocation": "라티브가 이동한다면, 이용 가능한 행동 칸(가장 왼쪽)이 있는 다음 위치로 갑니다.",
+    "weatherMachineActiveBranch": "연구실의 <b>웨더 머신 활성 가지</b>(보조자가 있는 곳)를 확인하세요.",
+    "weatherMachineActiveBranchStep1": "라티브가 그 가지에 자신의 봇을 가지고 있지 않다면, 연구실 옆 영역에서 라티브의 봇 1개를 가지의 빈 칸에 놓습니다(어느 것이든 상관없음).",
+    "weatherMachineActiveBranchStep2": "라티브가 이미 가지에 봇을 가지고 있거나 가지가 가득 찼다면, 다음 가지에 봇을 놓습니다(화살표를 따라). 모든 가지가 가득 찼거나 이미 라티브의 봇이 하나씩 있다면 아무 일도 일어나지 않습니다.",
+    "governmentRnd": "라티브가 <b>정부나 R&D</b>로 이동할 때, 라티브의 보조자가 현재 있는 가지의 날씨 유형과 같은 연구 토큰을 라티브의 현재 위치에서 버립니다."
+  },
+  "callSecurity": {
+    "title": "보안 호출",
+    "confirm": "보안을 호출하시겠습니까?",
+    "payVoucher": "계속하려면 <b>바우처 1개</b>(당신이 있는 위치와 일치하는 유형이거나 과학 바우처)를 지불해야 합니다.",
+    "report": {
+      "makeCurrent": "현재 보고서로 만들기",
+      "putBack": "돌려놓기",
+      "discard": "버리기"
+    },
+    "finish": "보안 호출 완료"
+  },
+  "claimInitiative": {
+    "title": "선제권 획득",
+    "claim": "선제권 획득 대상:",
+    "player": "플레이어",
+    "saboteur": "방해꾼들"
+  },
+  "endGameConditions": {
+    "title": "게임 종료 조건",
+    "goToEndOfGame": "게임 종료로 가기",
+    "challengeCard": {
+      "nobelLaureate": "<b>노벨상</b>을 가지지 않으면 게임에서 승리할 수 없습니다.",
+      "onlyOverachieversApply": "연구실의 목표 칸에서 <b>적어도 5개의 목표 타일</b> 조건을 만족하지 않으면 게임에서 승리할 수 없습니다.",
+      "publishOrPerish": "<b>즉시 승리</b>(라이트닝 테크놀로지의 좋은 명성 회복)로 승리해야 합니다."
+    },
+    "immediateWin": {
+      "title": "라이트닝 테크놀로지의 좋은 명성 회복",
+      "intro": "<i>턴 시작 시</i> 다음 조건을 <b>모두</b> 만족해야 합니다:",
+      "targetValueHigher": "당신의 CP가 목표 수치보다 높습니다.",
+      "goalTiles": "현재 연구실의 목표 칸에 있는 목표 타일 중 적어도 4개의 조건을 만족하고 있습니다.",
+      "fundingTracks": "자금 마커 중 적어도 2개가 해당 자금 트랙의 5번째 칸 이상에 있습니다(마커가 시작하는 칸은 0번째 칸).",
+      "outro": "이것이 일어나면 <b>즉시 게임에서 승리</b>합니다."
+    },
+    "standardEnding": {
+      "title": "시간이 다 되어 정부가 개입",
+      "intro": "일반적인 게임 종료 조건 중 하나로 게임 종료가 트리거된 경우:",
+      "nobelPrize": "노벨상을 획득합니다.",
+      "lastExperimentTile": "마지막 실험 타일이 진열에 놓입니다.",
+      "governmentMachine": "정부 머신이 완성됩니다.",
+      "researchFull": "R&D의 모든 연구 칸이 점유됩니다.",
+      "outro": "이것이 일어나면 평소와 같이 <b>한 라운드 더 플레이</b>한 후 최종 점수로 진행합니다. 최종 점수 동안 방해꾼들의 목표 수치가 <b>추가로 30 CP 증가</b>됩니다. 최종 점수 후 당신의 CP가 목표 수치보다 높으면 게임에서 승리합니다."
+    },
+    "fail": {
+      "title": "방해꾼들의 사악한 계획이 성공",
+      "intro": "다음 중 <b>하나라도</b> 발생하면:",
+      "extremeWeather": "턴이 끝날 때 보드에 레벨 3 극한 날씨 타일이 2개 이상 있습니다.",
+      "deckEmpty": "방해꾼들의 턴이 시작될 때 모든 보안 보고서 카드가 버린 더미에 있습니다.",
+      "outro": "이것이 일어나면 <b>즉시 패배</b>합니다. <i>당신에게 큰 기대를 했었는데 말이죠.</i>"
+    }
+  },
+  "agentLocationSelection": {
+    "select": "선택",
+    "selectA": "A &",
+    "selectBC": "C,B /",
+    "moveInfo": "방해꾼이 위치로 이동할 수 없다면(모든 행동 칸이 차있거나, 방해꾼이 이미 그 위치에 있거나, 현재 보고서가 라티브의 위치를 묘사하는데 그가 사무실에 있기 때문에), 주어진 순서의 다음 주요 위치로 이동시킵니다."
+  },
+  "takeChemical": {
+    "title": "화학물질 가져가기",
+    "prioritySection": "가장 적은 공급 바우처 수를 묘사하는 섹션에서 화학물질을 선택합니다.",
+    "priorityLeastAvailable": "가장 저렴한 섹션에 화학물질 유형이 둘 이상 있다면, 현재 은신처에서 가장 적게 가지고 있는 것을 가져갑니다.",
+    "prioritySelection": {
+      "top": "여전히 동점이라면 동점인 것들 중 <b>맨 위</b>의 것을 가져갑니다.",
+      "bottom": "여전히 동점이라면 동점인 것들 중 <b>맨 아래</b>의 것을 가져갑니다."
+    }
+  },
+  "challengeCard": {
+    "fully-stocked-opponents": {
+      "title": "완전 무장한 상대",
+      "description": "방해꾼들은 화학물질 2개 대신 각 화학물질 1개씩으로 게임을 시작합니다."
+    },
+    "jamming-device": {
+      "title": "교란 장치",
+      "description": "각 소득 동안 보드에 있는 각 방해꾼 봇마다 목표 수치를 1씩 증가시킵니다."
+    },
+    "creative-accounting": {
+      "title": "창조적 회계",
+      "description": "방해꾼들은 보상 토큰을 가지고 게임을 시작합니다. 각 소득 동안 하나의 트랙에서 자금 마커 중 하나를 한 칸 뒤로 이동시킵니다. 가능하다면 이를 할 수 있는 트랙을 선택해야 합니다."
+    },
+    "nobel-laureate": {
+      "title": "노벨상 수상자",
+      "description": "방해꾼들은 무작위로 선택된 추가 화학물질(이미 가진 것과 같을 수 있음)로 게임을 시작합니다. 노벨상을 가지지 않으면 게임에서 승리할 수 없습니다."
+    },
+    "only-overachievers-apply": {
+      "title": "우등생만 지원 가능",
+      "description": "연구실의 목표 칸에 있는 목표 타일 중 적어도 5개의 조건을 만족하지 않으면 게임에서 승리할 수 없습니다."
+    },
+    "the-clock-is-ticking": {
+      "title": "시계가 흘러가고 있다",
+      "description": "보안 보고서 덱의 카드 2장이 플레이에서 제거됩니다."
+    },
+    "one-step-ahead": {
+      "title": "한 발 앞서",
+      "description": "턴이 끝날 때 방해꾼들의 선제권 마커가 맨 왼쪽 위치에 있으면 목표 수치를 3 증가시킵니다."
+    },
+    "moral-high-ground": {
+      "title": "도덕적 우위",
+      "description": "과학자를 위치에 놓을 때 왼쪽에 있는 방해꾼들에 대한 추가 바우처를 얻지 못합니다."
+    },
+    "peer-review": {
+      "title": "동료 검토",
+      "description": "논문을 발표할 때 인용 토큰을 사용할 수 없습니다. 인용 칸을 해금할 때 과학 바우처를 지불하여 3 CP를 얻을 수 없습니다."
+    },
+    "independent-prototypes": {
+      "title": "독립적 프로토타입",
+      "description": "방해꾼들은 보상을 가지고 게임을 시작합니다. 돌파 행동의 일환으로 프로토타입을 제작할 때 방해꾼들의 봇을 사용할 수 없습니다."
+    },
+    "budget-cuts": {
+      "title": "예산 삭감",
+      "description": "방해꾼들은 무작위로 선택된 추가 화학물질(이미 가진 것과 같을 수 있음)로 게임을 시작합니다. 연구실 자금 트랙에서 자금을 받을 때 마커 아래의 수정치를 +0으로 취급합니다(정부나 R&D 트랙의 혜택은 여전히 받습니다)."
+    },
+    "publish-or-perish": {
+      "title": "발표하지 않으면 사라진다",
+      "description": "시작 목표 수치를 5 낮춥니다. 방해꾼들이 인용 칸에서 잠금 토큰을 제거하게 할 때마다 목표 수치를 5 증가시킵니다. 즉시 승리(라이트닝 테크놀로지의 좋은 명성 회복)로 승리해야 합니다."
+    }
+  },
+  "agent": {
+    "white": "흰색",
+    "pink": "분홍색"
+  },
+  "location": {
+    "government": "정부",
+    "lativs-lab": "라티브의 연구실",
+    "rnd": "R&D"
+  },
+  "weather": {
+    "rain": "비",
+    "wind": "바람",
+    "sun": "태양",
+    "fog": "안개",
+    "snow": "눈"
+  },
+  "notfound": {
+    "title": "찾을 수 없음"
+  },
+  "action": {
+    "playGame": "게임 플레이",
+    "startGame": "게임 시작",
+    "next": "다음",
+    "nextRound": "다음 라운드",
+    "abortGame": "게임 중단",
+    "abortGameConfirm": "진행 중인 게임을 중단합니다 - 확실한가요?",
+    "endGame": "게임 종료",
+    "endGameConfirm": "이 게임을 종료하고 홈 화면으로 돌아갑니다 - 확실한가요?",
+    "cancel": "취소",
+    "backToHome": "홈으로 돌아가기",
+    "back": "뒤로",
+    "close": "닫기",
+    "select": "선택",
+    "reselect": "다시 선택",
+    "yes": "예",
+    "no": "아니오",
+    "notPossible": "불가능"
+  },
+  "footer": {
+    "credits": "크레딧"
+  },
+  "serviceWorkerUpdatedRefresh": {
+    "title": "앱 새로고침",
+    "notice": "애플리케이션이 업데이트되었습니다 - 최신 버전을 사용하려면 새로고침하시겠습니까?"
+  }
+}
