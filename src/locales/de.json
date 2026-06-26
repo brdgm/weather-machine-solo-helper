@@ -77,7 +77,7 @@
         "text": "Die Saboteure werfen den aktuellen <b>Security-Report</b> ab und ziehen einen neuen."
       },
       "getAwardToken": {
-        "text": "Die Saboteure erhalten ein <b>Auszeichnungsstein</b>."
+        "text": "Die Saboteure erhalten einen <b>Auszeichnungsstein</b>."
       },
       "governmentFlipSubsidy": {
         "text": "<b>Drehe</b> ein <b>Subventionsplättchen</b> mit der blauen Seite oben um."
@@ -100,7 +100,7 @@
         "text": "Die Saboteure erhöhen den <b>Zielwert um {count}</b>."
       },
       "increaseTargetValueOrDiscardSecurityReport": {
-        "text": "Entweder erhöhen die Saboteure den <b>Zielwert um {count}</b> oder werfen den obersten Security-Report form Stapel ab.",
+        "text": "Entweder erhöhen die Saboteure den <b>Zielwert um {count}</b> oder werfen den obersten Security-Report vom Stapel ab.",
         "increaseTargetValueOrDiscardSecurityReport": "Zielwert der Saboteure erhöhen? Ansonsten wird ein Security-Report abgeworfen."
       },
       "lativsLabPlaceBotResearchPriority": {
@@ -145,11 +145,11 @@
       "title": "Experiment läuft",
       "player": {
         "title": "Dein Zug (wenn du Bots auf dem aktiven Zweig hast)",
-        "returnBots": "Nehme deine Bots vom aktiven Zweig zurück.",
+        "returnBots": "Nimm deine Bots vom aktiven Zweig zurück.",
         "ifVouchersPayed": "Wenn du die Wissenschaftscoupons des aktiven Experimentplättchens bezahlt hast:",
         "gainCP": "Erhalte die auf dem Experimentplättchen angegebene Anzahl an KP für jeden gerade zurückgegebenen Bot.",
         "gainBenefit": "Erhalte einen der zwei auf dem Plättchen angegebenen Boni.",
-        "takeResearchToken": "Nehme einen Forschungsstein des aktiven Zweigs (falls vorhanden) und lege ihn sofort in dein Büro."
+        "takeResearchToken": "Nimm einen Forschungsstein des aktiven Zweigs (falls vorhanden) und lege ihn sofort in dein Büro."
       },
       "saboteur": {
         "title": "Zug der Saboteure",
@@ -161,13 +161,13 @@
     },
     "afterExperiment": {
       "title": "Nach dem Experiment",
-      "lativBotRemoveResearchToken": "Falls einer von Lativs Bots auf dem aktiven Zweig ist, entferne 1 Forschungsstein vom aktiven Zweigs, wenn möglich.",
+      "lativBotRemoveResearchToken": "Falls einer von Lativs Bots auf dem aktiven Zweig ist, entferne 1 Forschungsstein vom aktiven Zweig, wenn möglich.",
       "returnLativBots": "Stellt alle von Lativs Bots vom aktiven Zweig an die Seite des Labors.",
       "takeExtremeWeatherTile": "Nehmt dann das obere Extremwetterplättchen vom Stapel mit dem passenden Wetter und legt es auf das entsprechende Feld in F&E."
     },
     "notRunning": {
       "title": "Experiment läuft <i>nicht</i>",
-      "returnPlayerBots": "Du darfst deine Bots zurück nehmen.",
+      "returnPlayerBots": "Du darfst deine Bots zurücknehmen.",
       "saboteurBotExtremeWeather": "Wenn mindestens ein Saboteur-Bot im Zweig stand, wird ein neues Extremwetterplättchen ausgelegt. Die Saboteur-Bots bleiben in dem Zweig.",
       "returnLativBots": "Stellt alle von Lativs Bots vom aktiven Zweig zurück an die Seite des Labors."
     },
@@ -230,7 +230,7 @@
         "title": "3. Meteorologe",
         "condition1": "100+ KP",
         "condition2": "3+ Abhandlungen veröffentlicht",
-        "condition3": "1+ Finanzierungsleiste mindestens. auf dem 8. Feld",
+        "condition3": "1+ Finanzierungsleiste mindestens auf dem 8. Feld",
         "condition4": "3+ Zielplättchen erfüllt",
         "condition5": "2+ Auszeichnungen"
       },
@@ -312,7 +312,7 @@
       "lastExperimentTile": "Das letzte Experimentplättchen wird in die Auslage gelegt.",
       "governmentMachine": "Die Regierungsmaschine ist vollständig.",
       "researchFull": "Alle Forschungsfelder in F&E sind besetzt.",
-      "outro": "Wenn das passiert, <b>spiele eine weitere Runde</b> und fahre dann mit der Schlusswertung fort.  Während der Schlusswertung wird der Zielwert der Saboteure um <b>zusätzliche 30 KP erhöht</b>. Wenn nach der Schlusswertung deine KP höher sind als der Zielwert, gewinnst du das Spiel."
+      "outro": "Wenn das passiert, <b>spiele eine weitere Runde</b> und fahre dann mit der Schlusswertung fort. Während der Schlusswertung wird der Zielwert der Saboteure um <b>zusätzliche 30 KP erhöht</b>. Wenn nach der Schlusswertung deine KP höher sind als der Zielwert, gewinnst du das Spiel."
     },
     "fail": {
       "title": "Die ruchlosen Pläne der Saboteure haben Erfolg",

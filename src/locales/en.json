@@ -104,7 +104,7 @@
         "increaseTargetValueOrDiscardSecurityReport": "Increase the target value of the Saboteurs? Otherwise a Security Report will be discarded."
       },
       "lativsLabPlaceBotResearchPriority": {
-        "text": "<b>Place a Bot</b> onto an available Bot space of a branch for which the Saboteurs have a <b>matching Chemical</b>, and with a <b>matching Experiment tile</b> in the display. They prefer branches with <b>most Bots</b> (including Lativ's Bots) and spaces in the given order. In case of a tie, the prefer branches with available research tokens. Lativ's Bots may be moved away. Move the Chemical matching the space from the Hideout to the Supply."
+        "text": "<b>Place a Bot</b> onto an available Bot space of a branch for which the Saboteurs have a <b>matching Chemical</b>, and with a <b>matching Experiment tile</b> in the display. They prefer branches with <b>most Bots</b> (including Lativ's Bots) and spaces in the given order. In case of a tie, they prefer branches with available research tokens. Lativ's Bots may be moved away. Move the Chemical matching the space from the Hideout to the Supply."
       },
       "rndChemicalAvailable": {
         "text": "Matching Chemical available?",
@@ -168,7 +168,7 @@
     "notRunning": {
       "title": "Experiment is <i>not</i> running",
       "returnPlayerBots": "You may choose to return your bots from the active branch.",
-      "saboteurBotExtremeWeather": "If the Saboteurs have at least on Bot present in the active branch: Place a new Extreme Weather tile. The Bots stay in the branch.",
+      "saboteurBotExtremeWeather": "If the Saboteurs have at least one Bot present in the active branch: Place a new Extreme Weather tile. The Bots stay in the branch.",
       "returnLativBots": "Return any of Lativ’s Bots on the active branch to the side of the Lab."
     },
     "prepareNext": {
